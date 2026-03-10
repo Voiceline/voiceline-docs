@@ -1,0 +1,48 @@
+---
+status: Live
+last_updated: 2026-03-06
+---
+
+# Leads
+
+Unqualified prospects — created at trade fairs, cold calls, or first meetings, before an account exists in the CRM.
+
+## Overview
+
+Leads represent new prospects that haven't yet become CRM accounts or contacts. VoiceLine syncs existing leads from your CRM and enables reps to create new leads via voice or business card scan. A deduplication cascade runs on every new lead to prevent creating a lead that's already in the CRM as a contact or account.
+
+## Where to find it
+
+Leads sync from your CRM automatically. Reps create new leads during recordings by saying "Create a new lead" or scanning a business card.
+
+## Configuration
+
+| Field | Description |
+|-------|-------------|
+| **Name** | First + last name of the prospect |
+| **Company** | Prospect's company name |
+| **Email** | Contact email |
+| **Phone** | Phone number |
+| **Source** | How the lead was generated (e.g., trade fair, cold call) |
+
+## Deduplication
+
+Every new lead triggers a three-step check before creation:
+
+1. **Existing lead?** → Update the existing lead record
+2. **Existing contact?** → Link the contact to an account and create an opportunity
+3. **Existing account?** → Create a contact at the account + create an opportunity
+
+Only if all three checks find nothing does VoiceLine create a new lead. See [Lead Creation](../../productivity/customer-data-quality/lead-creation.md) for the full flow.
+
+## Search behavior
+
+Leads are searchable by name and company. At trade fairs, VoiceLine can operate in **Industry Fair Mode** — optimized for rapid lead capture at high volume (20–100+ leads per day). See [Workflows — Lead](../../productivity/workflows/lead.md).
+
+## FAQ
+
+**Should reps use Lead or Contact for a new person they meet?**
+If the person is at a known existing customer account, create a Contact. If the company isn't in your CRM yet, create a Lead. At trade fairs, the assistant defaults to Lead creation.
+
+**When does a lead convert to an account/contact?**
+Conversion happens in your CRM following your existing qualification process. VoiceLine reflects the converted records at the next sync.

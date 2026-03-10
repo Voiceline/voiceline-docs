@@ -1,0 +1,15 @@
+---
+status: Coming soon
+bundles:
+  - field_sales_fundamentals
+last_updated: 2026-03-06
+---
+
+# AI Analyst
+
+> [!NOTE]
+> This feature is coming soon.
+
+## Overview
+
+The AI Analyst will provide a conversational interface for querying VoiceLine data in natural language. Ask questions like "Which accounts haven't been visited in 30 days?" or "Which reps mentioned competitor X most this quarter?" Planned capabilities include real-time alerts and automated insight summaries delivered to managers.

@@ -1,0 +1,56 @@
+---
+status: Live
+bundles:
+  - customer_data
+last_updated: 2026-03-06
+---
+
+# Contact Creation
+
+Before creating a new contact, VoiceLine checks whether the person already exists in your CRM.
+
+## Overview
+
+Contact duplicates are common in field sales CRM. A rep creates a contact for someone they met, not realizing the person was already in the system under a slightly different name or linked to a different account number. The result: two contact records for the same person, split history, and confused ownership.
+
+VoiceLine checks for existing contacts before creating a new one — and surfaces any matches so the rep can decide whether to link to an existing record or proceed with creation.
+
+> [!NOTE]
+> Available with the **[Customer Data](../../../commercial/modules.md#customer-data)** module.
+
+## Deduplication check
+
+When you create a contact — by voice or by business card scan — VoiceLine searches the CRM for existing contacts with a matching name, email, or phone number.
+
+**If a match is found:** You see the existing contact record(s). You can:
+- Select the existing contact to link your interaction to it (no duplicate created)
+- Confirm it's a different person and proceed with creating a new contact
+
+**If no match is found:** Contact creation proceeds normally. The new contact is written to your CRM, linked to the account you specify.
+
+## Account linking
+
+When you create a new contact, VoiceLine always links it to an account. If the account doesn't yet exist in your CRM, you'll be prompted to create it first — or you can create both in the same flow.
+
+This prevents orphaned contacts (contacts without an account) which are a common source of CRM data quality issues.
+
+## What syncs to your CRM
+
+| Field | Content |
+|---|---|
+| First name, last name | From voice or business card |
+| Title / role | From voice or business card |
+| Phone, email | From voice or business card |
+| Linked account | Selected or created in the same flow |
+| Notes | From your voice recording |
+
+## FAQ
+
+**What if the same person is listed under multiple accounts?**
+VoiceLine will surface all matches regardless of account. You can see which account each match is linked to and choose accordingly.
+
+**Can I update an existing contact's details when I find a match?**
+Yes. Selecting an existing contact opens it for editing — you can update fields from the information you just captured (new phone number, updated title, etc.).
+
+**Does the local save (on device) also use deduplication?**
+The dedup check runs against CRM records. Local saves are independent and don't check for duplicates.

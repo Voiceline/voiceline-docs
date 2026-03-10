@@ -1,0 +1,63 @@
+---
+status: Live
+bundles:
+  - field_sales_fundamentals
+  - sales_coaching_pro
+last_updated: 2026-03-03
+---
+
+# Playbook Builder
+
+Create and configure playbooks — define the questions your reps see during visits and decide which reps receive them.
+
+## Overview
+
+The Playbook Builder is the manager's workspace for creating question sets and controlling their distribution. Each playbook consists of one or more text questions and a target audience — the group of reps who will receive it.
+
+The builder separates two concerns: **what to ask** (the questions) and **who to ask it** (the target audience). This lets you maintain focused, relevant playbooks rather than piling all questions into one.
+
+> [!NOTE]
+> The Playbook Builder is available with the **[Field Sales Fundamentals](../../../commercial/field-sales-fundamentals.md)** bundle. Multiple concurrent playbooks with advanced target audience distribution require **[Sales Coaching Pro](../../../commercial/modules.md#sales-coaching-pro)**.
+
+## Where to find it
+
+Open the web app → **Playbook** in the sidebar → **Builder**.
+
+## Creating a playbook
+
+1. Click **New playbook** and give it a name (e.g., "New Product Launch Q1", "Competitive Accounts").
+2. Add questions — each question is a text prompt that appears to the rep during recording. Keep questions short and open-ended; reps respond by speaking, not typing.
+3. Set the **target audience** — the group of reps who should receive this playbook.
+4. Save and activate the playbook. It will appear for matching reps on their next recording.
+
+## Target audiences
+
+A target audience defines which reps receive a playbook. You can scope a playbook to a specific team, territory, role, or other segment.
+
+If a rep matches more than one active target audience, all applicable playbooks are combined automatically — the rep sees one merged, deduplicated list of questions.
+
+This lets you layer playbooks: a base playbook for all reps, plus a focused one for a specific product line, plus one for a competitive territory — without creating one giant playbook that everyone sees in full.
+
+## Question guidelines
+
+- Questions are text prompts shown on the recording screen. Reps respond verbally — no typing required.
+- Keep each question to one focused topic ("Did the customer mention any supply chain concerns?" is better than "What happened?").
+- Aim for 2–3 questions per playbook. More questions means more cognitive load during the visit.
+- Questions are never mandatory — reps can complete a visit report without addressing them.
+
+> [!NOTE]
+> Only text-based questions are supported currently. Additional question types are planned for a future release.
+
+## FAQ
+
+**How many playbooks can I create?**
+[TBD: confirm limit per workspace/bundle tier.]
+
+**Can I edit a playbook after publishing it?**
+[TBD: confirm whether edits take effect immediately or on the next recording.]
+
+**What happens to analytics data if I delete a playbook?**
+[TBD: confirm whether historical response data is retained.]
+
+**Can I duplicate a playbook?**
+[TBD: confirm whether a duplicate/copy action exists in the builder UI.]

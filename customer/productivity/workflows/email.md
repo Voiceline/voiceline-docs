@@ -1,0 +1,60 @@
+---
+status: Live
+bundles:
+  - field_sales_fundamentals
+last_updated: 2026-03-06
+---
+
+# Email
+
+Compose a professional follow-up email by speaking — sent within minutes of leaving the customer.
+
+## Overview
+
+The Email workflow lets you draft and send customer or colleague emails using voice. You describe what you want to communicate; the AI writes a professional email for you to review and send.
+
+Two sending options are available:
+
+- **Send directly** — VoiceLine sends the email from your email identity (via VoiceLine's mail infrastructure, in your name). The email appears as sent by you.
+- **Open in email client** — VoiceLine generates a pre-filled draft and opens your email client (Outlook, Gmail, etc.) with the full text ready. You send from your own client.
+
+> [!NOTE]
+> Available with **[Field Sales Fundamentals](../../../commercial/field-sales-fundamentals.md)**.
+
+## Where to find it
+
+Open the VoiceLine mobile app → tap **+** → select **Email**.
+
+## Creating an email
+
+1. **Open Email** from the + menu.
+2. **Speak your intent** — describe who the email is for and what you want to say. Example: *"Email to Thomas at Müller GmbH, follow up on our meeting today, confirm we'll send the pricing sheet by Friday."*
+3. **Review the AI draft** — the assistant generates a polished email: subject line, greeting, body, and closing.
+4. **Choose how to send:**
+   - Tap **Send** to send directly via VoiceLine
+   - Tap **Open in mail** to copy the draft into your email client
+
+**For customer-facing emails:** always review before sending. The AI writes well, but confirming tone and accuracy is your responsibility.
+
+**For internal/colleague emails:** these can typically be sent without detailed review once you're confident in the AI's output for your usual use cases.
+
+## What syncs to your CRM
+
+When sent via VoiceLine directly, the email is logged in your CRM as a sent communication (depending on CRM integration capabilities). When sent via your email client, CRM logging depends on your email-to-CRM sync setup.
+
+## FAQ
+
+**Which email address does "send directly" use?**
+The email is sent under your name and email address. Recipients see your address as the sender, not a VoiceLine address.
+
+**Can I add attachments?**
+[TBD: not confirmed — check with dev team]
+
+**Can I CC someone?**
+Yes. Mention CC recipients in your voice recording and the AI will add them. You can also add them manually in the review screen.
+
+**Can I create email templates?**
+Your workspace may have email tone and style guidelines configured. Individual templates are not currently a separate feature.
+
+**What languages does email writing support?**
+The email is written in the language of your workspace configuration. You can record in your native language and set the output language separately.

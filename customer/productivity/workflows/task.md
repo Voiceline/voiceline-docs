@@ -1,0 +1,59 @@
+---
+status: Live
+bundles:
+  - field_sales_fundamentals
+last_updated: 2026-03-06
+---
+
+# Task
+
+Hand off follow-up work to inside sales — or yourself — in one voice command.
+
+## Overview
+
+A task in VoiceLine is a structured action item created from the field and routed to the right person. You say what needs to be done, who should do it, and when — and VoiceLine creates the task in your CRM or sends it to a colleague's inbox.
+
+Tasks are typically created as part of your post-visit workflow, immediately after a meeting or call. The most common handover: a rep identifies a customer need during a visit and creates a task for inside sales to prepare a quote or send a document — without waiting until end of day.
+
+> [!NOTE]
+> Available with **[Field Sales Fundamentals](../../../commercial/field-sales-fundamentals.md)**.
+
+## Where to find it
+
+Open the VoiceLine mobile app → tap **+** → select **Task**.
+
+Tasks can also be created as part of any visit report recording — the assistant can detect action items from your voice and prompt you to create tasks from them.
+
+## Creating a task
+
+1. **Open Task** from the + menu.
+2. **Speak the task details** — describe what needs to happen, who it's for, and any deadline or context.
+3. **Review the draft** — the AI extracts: title, assignee, due date, and notes.
+4. **Submit** — the task is created in your CRM and/or sent to the assignee.
+
+**Example voice inputs:**
+- *"Create a task for Julia in inside sales to prepare a quote for Müller GmbH, needed by Thursday."*
+- *"Remind me to follow up on the contract with ABC AG next Monday."*
+
+## What syncs to your CRM
+
+Tasks sync to your CRM as task or activity records. If your workspace is configured for email handover (common when inside sales teams don't actively monitor CRM tasks), the assignee also receives an email notification.
+
+| Field | Content |
+|---|---|
+| Task title | AI-generated from voice |
+| Assignee | Selected from CRM team member list |
+| Due date | Extracted from your recording |
+| Notes | Context and instructions from your voice |
+| Linked account / contact | Attached from CRM |
+
+## FAQ
+
+**What if inside sales doesn't use the CRM?**
+Your workspace can be configured to send task handovers via email. The rep creates the task in VoiceLine; inside sales receives it as an email. Both ends see the same information.
+
+**Can I assign a task to myself?**
+Yes. Self-assigned tasks work as personal reminders with a structured record in the CRM. For a lighter-weight personal reminder without CRM sync, see [Reminder](./reminder.md).
+
+**Can I create multiple tasks from one recording?**
+Yes. Speak all action items in a single recording and the AI can create multiple tasks from one input. Each task can be assigned to a different person.

@@ -1,0 +1,74 @@
+---
+status: Live
+bundles:
+  - pipeline_management
+last_updated: 2026-03-06
+---
+
+# Opportunity
+
+Log a new deal or update a live one — by speaking, not navigating CRM menus.
+
+## Overview
+
+An opportunity in VoiceLine maps directly to a sales opportunity (or "chance") in your CRM. You can create a new opportunity when you identify a potential deal during a visit, or update an existing one when the deal progresses.
+
+Both actions are voice-driven: you describe the situation, the AI extracts the structured fields, and your CRM pipeline updates in real time.
+
+> [!NOTE]
+> Available with the **[Pipeline Management](../../../commercial/modules.md#pipeline-management)** module.
+
+## Where to find it
+
+Open the VoiceLine mobile app → tap **+** → select **Opportunity** (to create) or find an existing record to update from the account or visit context.
+
+## Creating an opportunity
+
+Use this when a customer expresses buying intent and you need to open a new deal in the pipeline.
+
+1. **Open Opportunity** from the + menu.
+2. **Speak the deal details** — describe the opportunity: customer, product or solution, estimated value, expected close date, and current stage. Example: *"New opportunity at Müller GmbH, hydraulic system upgrade, volume around €40k, closing end of Q2."*
+3. **Review the draft** — the AI extracts: deal name, linked account, stage, amount, close date, and notes.
+4. **Submit** — the opportunity is created in your CRM and immediately visible in pipeline reports.
+
+Standard opportunity fields:
+
+| Field | Description |
+|---|---|
+| Name | Short deal description |
+| Account | Linked customer |
+| Stage | Current sales stage (e.g. Qualification, Proposal) |
+| Amount | Estimated deal value |
+| Close date | Expected close |
+| Owner | Responsible rep |
+| Notes | Context from your voice |
+
+> [!NOTE]
+> In CRMs with large product catalogs (e.g. Helm's Salesforce with 245,000+ products), opportunity creation may involve two steps: creating the opportunity record and then linking products. VoiceLine handles both where the CRM integration supports it.
+
+## Updating an opportunity
+
+Use this when a deal you already have on the pipeline changes — stage, close date, amount, or competitive situation.
+
+1. From a visit report or from the account context, select an existing opportunity to update.
+2. **Speak what changed** — *"Move the Müller opportunity to Negotiation, close date is now end of May, amount revised down to €35k."*
+3. **Review the changes** — only the fields you mentioned are updated; others remain unchanged.
+4. **Submit** — the CRM record is patched immediately.
+
+## What syncs to your CRM
+
+Both create and update actions write directly to your CRM's opportunity object. Changes appear in pipeline views, forecasting dashboards, and manager reports as soon as you submit.
+
+## FAQ
+
+**What stages are available?**
+Stage options are configured per workspace to match your CRM's stage list. Common stages: Prospecting, Qualification, Needs Analysis, Proposal, Negotiation, Closed Won, Closed Lost.
+
+**Can I update an opportunity without a recording?**
+Yes. You can edit fields manually in the review screen if you prefer.
+
+**What if I don't know the exact amount yet?**
+Leave amount blank or estimate. You can update it later. Having an opportunity in the pipeline without a precise amount is better than missing the deal entirely.
+
+**How are opportunities linked to visit reports?**
+When you submit a visit report, VoiceLine can detect deal-related content and prompt you to create or update a linked opportunity. You can also create opportunities as standalone workflows.

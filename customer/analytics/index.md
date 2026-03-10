@@ -1,0 +1,35 @@
+---
+status: Live
+last_updated: 2026-03-06
+---
+
+# Analytics Platform
+
+Market intelligence and performance data extracted automatically from every field recording — no rep effort required.
+
+## Overview
+
+The Analytics Platform aggregates everything reps capture in the field and surfaces it as actionable insights for sales leadership. Competitive mentions, visit quality, team activity, and market signals are all extracted automatically from recordings — managers get a real-time view of what's happening across their territory without waiting for manual reports.
+
+## In this section
+
+| Section | What it covers | Status |
+|---------|---------------|--------|
+| [Competitor Analytics](./competitor-analytics.md) | Which competitors appear in field conversations, with what sentiment, and across which dimensions | Live |
+| [Data Lake](./data-lake.md) | Direct access to the full VoiceLine dataset for BI tools and custom reporting | Coming soon |
+| [AI Analyst](./ai-analyst.md) | Conversational interface for querying VoiceLine data + real-time alerts | Coming soon |
+| [Product Analytics](./product-analytics.md) | Which products are mentioned, how customers respond, and where opportunities are missed | Coming soon |
+| [Industry Analytics](./industry-analytics.md) | Field intelligence segmented by industry vertical | Coming soon |
+
+## Visit and team analytics
+
+Visit-level analytics and team activity dashboards are in the [Coaching Platform](../coaching/index.md):
+- **Team Activity** — rep action counts, daily trends, per-member performance
+- **Visit Analytics** — visit quality scoring, live feed, visit richness
+
+## How data flows
+
+1. Rep submits a visit report or call log via VoiceLine
+2. AI processes the recording — extracts competitors, products, sentiment, and structured fields
+3. Data is available in analytics views within minutes
+4. Managers filter by date, team, account, or competitor to surface insights

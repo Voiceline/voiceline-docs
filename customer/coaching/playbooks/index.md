@@ -1,0 +1,63 @@
+---
+status: Live
+bundles:
+  - field_sales_fundamentals
+  - sales_coaching_pro
+last_updated: 2026-03-03
+---
+
+# Playbooks
+
+Playbooks let managers define what reps should cover in every customer meeting — and track how well it's being followed.
+
+## Overview
+
+A playbook is a set of questions or topics a manager wants their reps to bring up during a visit. When a rep opens a recording in the VoiceLine app, their active playbooks appear automatically at the top of the recording screen — a lightweight guide to what matters most for that customer or context.
+
+Without playbooks, field execution depends entirely on each rep's memory, experience, and habits. New reps take months to develop intuition that experienced reps have built over years. Playbooks let managers close that gap. Instead of hoping reps cover a new product launch, a competitive situation, or a key account priority, you can shape the conversation — systematically, across the whole team — without adding mandatory steps to the workflow.
+
+> [!NOTE]
+> Single playbooks are included in the **[Field Sales Fundamentals](../../../commercial/field-sales-fundamentals.md)** bundle. Multiple playbooks with target audience distribution require the **[Sales Coaching Pro](../../../commercial/modules.md#sales-coaching-pro)** module.
+
+## Where to find it
+
+**Reps (mobile):** Open the VoiceLine app → start a recording → the **Playbook** panel appears automatically at the top of the recording screen.
+
+**Managers (web):** **Playbook** in the sidebar → **Analytics** to view coverage and responses, or **Builder** to create and manage playbooks.
+
+## How playbooks work
+
+### For reps
+
+When you open a recording, VoiceLine checks which playbooks apply to you and assembles them into a single list of questions. The questions are there as a reference — none are mandatory, and skipping them never blocks you from completing a visit report.
+
+If multiple playbooks apply to you at the same time (for example, one for your industry and one for your territory), the questions from all of them are merged and deduplicated into a single list.
+
+### For managers
+
+You create and manage playbooks in the [Builder](builder.md). Each playbook has a name, a set of questions, and a **target audience** — the segment of reps who receive it. When a rep matches a target audience, the playbook is delivered to them automatically during their next recording.
+
+[Playbook Analytics](analytics.md) shows you which reps are using their playbooks, how completely they're working through them, and what they're capturing in each question response.
+
+## Key features
+
+| Feature | What it does |
+|---------|-------------|
+| [Builder](builder.md) | Create question sets and assign target audiences |
+| Target audience distribution | Deliver different playbooks to different reps based on role, territory, or other criteria |
+| Playbook assembly | Multiple applicable playbooks are merged into one deduplicated list per rep |
+| [Analytics](analytics.md) | Track coverage, completion status, and question responses across your team |
+
+## FAQ
+
+**Are playbook questions mandatory?**
+No. Questions appear as a reference panel during recording and never block a rep from completing their visit report. The goal is to guide attention without interrupting the flow of the visit.
+
+**What happens if a rep matches multiple target audiences?**
+All applicable playbooks are combined into a single list shown to the rep. Duplicate questions are removed automatically.
+
+**Can I create different playbooks for different industries or territories?**
+Yes — that's exactly what target audiences are for. See [Playbook Builder](builder.md) for how to configure distribution.
+
+**What question types are supported?**
+Currently text-based questions only. Additional question types are planned for future releases.

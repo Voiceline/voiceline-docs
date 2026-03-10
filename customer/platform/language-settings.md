@@ -1,0 +1,52 @@
+---
+status: Live
+last_updated: 2026-03-06
+---
+
+# Language Settings
+
+Configure the language reps record in, the language reports are written in, and workspace-specific vocabulary.
+
+## Overview
+
+VoiceLine separates three distinct language concerns: the language reps speak when recording, the language AI-generated outputs (visit reports, call logs) are written in, and custom vocabulary that helps the assistant recognize workspace-specific terms. Each can be configured independently.
+
+## Where to find it
+
+Language configuration is managed by your VoiceLine account manager as part of workspace setup. Contact your account manager to change language settings.
+
+> [!NOTE]
+> Custom vocabulary (product aliases, technical terms) is configurable directly by workspace admins in **Workspace Settings** → **Product Recognition** → **Custom Terms**.
+
+## Workspace input language
+
+The primary language reps speak when recording. VoiceLine's speech recognition is tuned to this language.
+
+Supported input languages include German, English, French, Italian, Spanish, Dutch, and others. Contact your account manager to confirm your required language.
+
+## Report output language
+
+The language in which VoiceLine generates written visit reports, call logs, and other AI outputs. Output language can differ from input language — reps can speak in German and have reports written in English, for example.
+
+Multi-language workspaces (reps in multiple countries) can configure output language per group or per rep.
+
+## Custom vocabulary
+
+Workspace-specific terms the assistant should recognize:
+
+**Product aliases** — alternative names for products in your catalog. If a product is officially called "Model X-2000" but reps refer to it as "the 2000", add the alias so search resolves correctly.
+
+**Custom terms** — technical terms, internal acronyms, or brand names that differ from standard language. Adding these to the vocabulary reduces transcription errors for specialist terminology.
+
+Go to **Workspace Settings** → **Product Recognition** → **Custom Terms** or **Product Aliases** to manage these.
+
+## FAQ
+
+**Can individual reps record in a different language than the workspace default?**
+Contact your account manager. Per-rep language configuration is possible for multi-language workspaces.
+
+**What languages are supported for speech recognition?**
+VoiceLine supports major European languages. Contact your account manager for the current supported language list.
+
+**Does changing the output language affect historical recordings?**
+No — language changes apply to new recordings only. Historical reports remain in the language they were originally generated in.

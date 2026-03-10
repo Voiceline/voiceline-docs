@@ -1,0 +1,79 @@
+---
+status: Beta
+bundles:
+  - field_sales_fundamentals
+last_updated: 2026-03-03
+---
+
+# Visit Analytics
+
+A set of manager dashboards that show what your team is capturing in the field — in real time and over time.
+
+## Overview
+
+Visit Analytics gives managers a structured view of field activity across three connected perspectives. The **Visit Insight Feed** surfaces recent visits with AI-extracted highlights so you can stay close to the field without reading every report. **Visit Performance** shows the outcomes of visits — which ones produced offers, orders, or new opportunities. **Visit Richness** measures how thoroughly your team is documenting each conversation, across five core sales categories.
+
+Together, they answer three distinct questions: What's happening right now? Are visits producing results? Is my team having the right conversations?
+
+> [!NOTE]
+> Visit Analytics is available with the **[Field Sales Fundamentals](../../commercial/field-sales-fundamentals.md)** bundle. Visit Richness and the Visit Insight Feed are currently in **Beta**.
+
+## Where to find it
+
+Open the web app → **Team Activity** in the sidebar:
+- **Visit Insight Feed** — **Team Activity → Visit insight feed**
+- **Visit Richness** — **Team Activity → Visit Richness**
+- **Visit Performance** — **Team Activity → Market Intelligence → Visit Performance** tab
+
+## Visit Insight Feed
+
+The Visit Insight Feed gives you a rolling view of your team's recent visit reports — a quick way to stay close to what's happening in the field without reading individual reports in full.
+
+Use the **search and filter view** to narrow down by rep, date range, or keyword. This lets you spot interesting visits worth investigating, identify recurring themes across the team, or check in on a specific account or territory at a glance.
+
+## Visit Performance
+
+Visit Performance shows you the outcome distribution across your team's visits — which visits led to a concrete next step and which didn't.
+
+A visit is marked as **positive** when it produces one of the following:
+- An offer presented or negotiated
+- An order created
+- A new opportunity logged
+
+The dashboard shows the share of positive vs. other visits over time, broken down by team member. Use it to identify which reps are consistently converting visits into commercial outcomes — and which may need coaching support.
+
+> [!NOTE]
+> Visit Performance is a tab within **Market Intelligence**. The navigation path may change in a future release.
+
+## Visit Richness
+
+Visit Richness measures how thoroughly your team is documenting their visits across five key categories:
+
+| Category | What it captures |
+|----------|-----------------|
+| **Meeting outcome** | Was a result documented — decision made, offer discussed, next step agreed? |
+| **Product** | Were specific products or services discussed? |
+| **Customer development** | Was customer context captured — strategy, priorities, situation? |
+| **Service** | Were service topics or issues raised? |
+| **Competition** | Were competitor mentions or competitive situations documented? |
+
+Each rep receives a **richness score** (0–1) based on how consistently they're covering these categories across their visits. The dashboard shows individual scores alongside team averages, so you can identify coverage gaps at a glance.
+
+Use the **Sort by Richness** option to rank your team from highest to lowest score, or **Sort by visits** to view by activity volume.
+
+> [!NOTE]
+> Visit Richness is a Beta feature. A **Richness Playground** is available for admins to adjust scoring criteria and weights.
+
+## FAQ
+
+**Can reps see their own Visit Richness score?**
+Not currently — Visit Analytics is a manager-facing tool. Rep-facing views are planned for a future release.
+
+**How often is the richness score updated?**
+[TBD: confirm update frequency — per visit, daily, or real-time.]
+
+**What's the difference between Visit Richness and Playbook completion?**
+Visit Richness measures whether key conversation categories were covered in any given visit — it applies to all visits regardless of whether a playbook was active. [Playbook Analytics](playbooks/analytics.md) specifically tracks how well reps are following the structured questions you've defined. Both are complementary coaching tools.
+
+**Who can access Visit Analytics?**
+All three views are currently manager-facing. Field reps do not see these dashboards.

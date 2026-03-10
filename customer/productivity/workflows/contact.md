@@ -1,0 +1,75 @@
+---
+status: Live
+bundles:
+  - customer_data
+last_updated: 2026-03-06
+---
+
+# Contact
+
+Add a new person to your CRM from a business card or by speaking their details.
+
+## Overview
+
+A contact in VoiceLine is a person record linked to an account in your CRM. You create one when you meet a new decision maker, gatekeeper, or stakeholder that isn't already in the system.
+
+Business cards are the primary source: field reps collect cards constantly but almost never enter them into the CRM manually — it's too slow and too easy to put off. VoiceLine's contact workflow makes it fast enough to do on the spot.
+
+Two input methods:
+
+- **Voice** — describe the contact by speaking
+- **Business card scan** — photograph the card; the AI extracts all text
+
+> [!NOTE]
+> Available with the **[Customer Data](../../../commercial/modules.md#customer-data)** module.
+
+## Where to find it
+
+Open the VoiceLine mobile app → tap **+** → select **Contact**.
+
+## Creating a contact
+
+### By voice
+
+1. **Open Contact** from the + menu.
+2. **Speak the details** — name, title, company, phone, email. Example: *"New contact: Anna Keller, Head of Procurement at Braun AG, her mobile is 0172-44556677."*
+3. **Review the draft** — AI populates all extracted fields.
+4. **Handle deduplication** — if a contact with the same name at the same account already exists, you can select the existing record. Some flows trigger follow-up actions (e.g. matching a contact to an account may prompt an opportunity).
+5. **Submit** — contact is created in your CRM, linked to the relevant account.
+
+### By business card
+
+1. **Photograph the card** — front and back for best results. The AI reads all text.
+2. **Review the extracted data** — name, title, company, phone, email, address.
+3. **Handle deduplication** — same flow as above.
+4. **Add a voice recording** (optional) — speak context about this person before submitting.
+5. **Submit**.
+
+The contact record is saved locally (on your device) in addition to syncing to the CRM.
+
+## What syncs to your CRM
+
+| Field | Content |
+|---|---|
+| First name, last name | Extracted from voice or card |
+| Title / role | Extracted from voice or card |
+| Phone, email | Extracted from voice or card |
+| Linked account | Selected from CRM or created alongside |
+| Notes | From your voice recording |
+
+## FAQ
+
+**What if the person already exists in the CRM?**
+The deduplication step shows you existing contacts with similar names at the same company. Select the existing record to avoid duplicates. You can still add notes or update fields.
+
+**Can I add context after scanning a business card?**
+Yes. After reviewing the extracted card data, you can tap "Add recording" to speak additional context — relationship notes, what was discussed, next steps — before submitting.
+
+**What if the contact's company doesn't exist in my CRM yet?**
+Create the account first (see [Account](./account.md)), then create the contact linked to it. Or mention the company in your voice recording and the AI will prompt you to link or create the account.
+
+**Is the contact saved if I don't have a CRM connection?**
+The contact data is saved locally on your device regardless of CRM sync status. It will sync when connectivity is restored.
+
+**For trade fair use — is this part of Fair Mode?**
+Lead creation is the primary flow for trade fair contacts (not Contact). See [Lead](./lead.md) and [Industry Fair Mode](../assistant.md#fair-mode) for the full fair workflow.

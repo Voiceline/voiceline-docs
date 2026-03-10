@@ -1,0 +1,83 @@
+---
+status: Live
+bundles:
+  - field_sales_fundamentals
+last_updated: 2026-03-06
+---
+
+# Competitor Analytics
+
+Turns every field visit into competitive intelligence — showing which competitors appear most, where they're winning, and where they're vulnerable.
+
+## Overview
+
+Whenever a rep records a visit report or call log, VoiceLine automatically extracts competitor mentions and categorizes the sentiment. Competitor Analytics aggregates this signal across your entire team, giving leadership a real-time picture of the competitive landscape without requiring reps to fill in structured competitive fields.
+
+> [!NOTE]
+> Available with **[Field Sales Fundamentals](../../commercial/field-sales-fundamentals.md)**.
+
+## Where to find it
+
+Open VoiceLine → **Analytics** → **Market Intelligence** → **Competitors** tab.
+
+## Mention share
+
+A pie chart shows which competitors appear most frequently across your team's recordings in the selected period. Each slice represents one competitor — size corresponds to the number of field interactions mentioning that competitor.
+
+Use the **Competitor** filter to focus on a single competitor and see all the views below scoped to that competitor only.
+
+## Mention trend
+
+A daily line chart plots competitor mentions over time, broken down by sentiment: **positive** (our product preferred), **negative** (competitor preferred or gaining ground), and **neutral** (mentioned without a clear winner).
+
+Use this chart to spot sudden shifts — a spike in negative mentions can signal a competitor campaign, pricing change, or delivery issue before it shows up in win/loss reports.
+
+## Competitor radar
+
+For each competitor, a radar chart scores five dimensions based on what reps report in the field:
+
+| Dimension | What it reflects |
+|-----------|-----------------|
+| **Price** | How often customers compare pricing favorably or unfavorably |
+| **Quality** | Product or service quality mentions |
+| **Service** | After-sales or support mentions |
+| **Delivery** | Lead time and availability mentions |
+| **Support** | Technical support and responsiveness mentions |
+
+Each dimension shows a positive and negative hit count. A large positive spike means reps often hear good things about that category — a large negative spike means a weakness your team can exploit.
+
+## Supplier switching
+
+A bar chart showing, per competitor, how many accounts are currently using them as a supplier vs. how many accounts are open to switching. This surfaces the most actionable targets: accounts already considering a change.
+
+## Pricing feedback
+
+A breakdown of customer sentiment specifically around pricing, per competitor. Shows how often customers describe a competitor's pricing as favorable, unfavorable, or neutral — across all mentions in the period.
+
+## Filters
+
+| Filter | Effect |
+|--------|--------|
+| **Date range** | Scope all views to a specific period |
+| **Team / Group** | Limit to a specific team or region |
+| **Competitor** | Focus all views on one competitor |
+
+> [!NOTE]
+> Competitors are maintained in **Workspace Settings** → **Data Objects** → **Competitors**. Typical workspaces track 5–50 competitors. VoiceLine only detects competitors that are on the list — add new ones in settings as you learn about them.
+
+## FAQ
+
+**How does VoiceLine detect competitor mentions?**
+It analyzes the AI-processed transcript of each visit report and call log, matching against your configured competitor list. Reps don't need to manually flag competitors — the extraction is automatic.
+
+**What if a competitor isn't detected?**
+Add it to your competitor list under **Workspace Settings** → **Data Objects** → **Competitors**. Detection applies to recordings made after the competitor is added.
+
+**How is sentiment determined?**
+VoiceLine classifies each competitor mention as positive (your product preferred), negative (competitor preferred), or neutral based on the context of the conversation as transcribed.
+
+**How often is the data updated?**
+Competitor data is extracted when each visit report is processed — typically within minutes of submission. The dashboard reflects real-time data up to the selected date range.
+
+**Can I export the competitor data?**
+Raw competitive intelligence flows into the [Data Lake](./data-lake.md) alongside all other analytics data, available for export and custom analysis.
