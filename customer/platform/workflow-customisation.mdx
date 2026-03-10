@@ -1,0 +1,71 @@
+---
+title: "Workflow Configuration"
+description: "Define what reps are asked to capture in each workflow type — from visit reports to opportunities — using a configurable parts-based schema."
+status: Live
+last_updated: 2026-03-06
+---
+
+Define what reps are asked to capture in each workflow type — from visit reports to opportunities.
+
+## Overview
+
+Every VoiceLine workflow (visit report, call log, opportunity, lead, etc.) is built from a configurable schema of field "parts". Workspace administrators can define which fields appear in each workflow, in what order, and which are required — without code. This ensures reps capture exactly what your business needs, in the structure your CRM expects.
+
+## Where to find it
+
+Workflow configuration is managed by VoiceLine during workspace setup and adjusted via your account manager. Contact your account manager to request schema changes.
+
+<Note>The parts library and workflow schemas are maintained by VoiceLine — self-service schema editing is not currently available in the web UI.</Note>
+
+## How workflows are structured
+
+Each workflow type has a **schema** — a list of **parts** that define the fields the assistant asks for or extracts from the recording.
+
+**Example parts in a visit report:**
+- Meeting outcome (what was discussed / decided)
+- Products mentioned
+- Competitor mentions
+- Follow-up actions
+- Custom free-text fields
+
+## Parts library
+
+VoiceLine ships a parts library of 90+ configurable field types, including:
+
+| Part type | What it captures |
+|-----------|-----------------|
+| **Single line text** | Short text input (e.g., order number) |
+| **Multi-line text** | Free-form notes |
+| **Date picker** | Dates (e.g., close date, follow-up date) |
+| **Multi-select** | Multiple options from a predefined list |
+| **Single select** | One option from a list |
+| **Contact / Account picker** | Linked CRM entity |
+| **Product picker** | Products from catalog |
+| **Deduplication check** | Runs duplicate detection during creation flows |
+
+Parts are combined into schemas per workflow type and per workspace.
+
+## Workflow relations
+
+Some workflows trigger related workflows automatically:
+
+- **Visit report** → can auto-create a task or reminder if certain conditions are met
+- **Lead** → dedup cascade can auto-route to opportunity creation
+- **Opportunity** → can trigger product line item entry flow
+
+See [Customer Data Quality](/customer/productivity/customer-data-quality/index) for deduplication flow details.
+
+## Default vs. custom schemas
+
+VoiceLine provides standard schemas for each workflow type. Your workspace may use a customized schema if your CRM or business process requires different fields. Both custom and standard schemas use the same parts library.
+
+## FAQ
+
+**Can I add a custom field to visit reports?**
+Yes — custom fields are added via the parts library. Contact your VoiceLine account manager with the field name, type, and position in the workflow.
+
+**Can different teams use different schemas?**
+Yes — per-group or per-workflow-type schema overrides are supported. Contact your account manager to configure.
+
+**Do schema changes affect historical recordings?**
+No — schema changes apply to new recordings only. Existing records retain their original structure.

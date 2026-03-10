@@ -1,0 +1,48 @@
+---
+title: "Overview"
+description: "Understand the master records VoiceLine makes searchable and referenceable for reps in the field — from accounts and contacts to products and competitors."
+status: Live
+last_updated: 2026-03-06
+---
+
+The master records that VoiceLine makes searchable and referenceable for reps in the field.
+
+Data objects are the entities reps interact with during visit recordings — accounts, contacts, leads, products, competitors, and more. Most objects are synced from your CRM; some are managed directly in VoiceLine. All objects are indexed in VoiceLine's conversational search engine so reps can find them by name during recordings.
+
+## Where to manage them
+
+Go to **Workspace Settings** to configure individual data objects:
+
+| Object | Configuration location |
+|--------|----------------------|
+| [Competitors](/customer/platform/data-objects/competitors) | Workspace Settings → Competitors |
+| [Products](/customer/platform/data-objects/products) | Workspace Settings → Product Recognition |
+| All others | Configured via [Integrations](/customer/platform/integrations/index) — synced from CRM |
+
+## Available data objects
+
+| Object | Source | Used in |
+|--------|--------|---------|
+| [Accounts](/customer/platform/data-objects/accounts) | CRM | All field activities |
+| [Contacts](/customer/platform/data-objects/contacts) | CRM + rep-created | Call logs, meetings, leads |
+| [Leads](/customer/platform/data-objects/leads) | CRM + rep-created | Lead creation, dedup |
+| [Opportunities](/customer/platform/data-objects/opportunities) | CRM + rep-created | Opportunity creation / update |
+| [Products](/customer/platform/data-objects/products) | CRM / manual upload | Opportunity creation, cross-selling |
+| [Competitors](/customer/platform/data-objects/competitors) | Manually managed | Competitive intelligence extraction |
+| [Meetings](/customer/platform/data-objects/meetings) | VoiceLine → CRM | Meeting creation workflow |
+| [Tasks](/customer/platform/data-objects/tasks) | VoiceLine → CRM | Task creation workflow |
+| [Industries](/customer/platform/data-objects/industries) | CRM / manual | Market analytics segmentation |
+
+## Search behavior
+
+All data objects are searched conversationally — reps speak or type a name and VoiceLine returns matching records. Search is phonetic: "Müller" and "Mueller" resolve to the same result. Favourite records are surfaced first.
+
+See [Search Settings](/customer/platform/search-settings) for visibility, scoring, and permission configuration.
+
+## FAQ
+
+**Who can add or edit data objects?**
+Workspace administrators manage competitor lists and product catalogs directly. All other objects sync automatically from your CRM — edits should be made in the CRM and will sync to VoiceLine at the next refresh.
+
+**What happens if a record exists in VoiceLine but not in the CRM?**
+Records created by reps (new accounts, contacts, leads) are pushed to the CRM on submission. Once in the CRM, they sync back like any other record.

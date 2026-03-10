@@ -1,0 +1,58 @@
+---
+title: "Account Creation"
+description: "Learn how VoiceLine checks for existing accounts before creating a new one — and surfaces matching records so you link to the right one instead of adding a duplicate."
+status: Live
+bundles:
+  - customer_data
+last_updated: 2026-03-06
+---
+
+VoiceLine checks for existing accounts before creating a new one — and helps you pick the right record when multiple matches exist.
+
+## Overview
+
+Account duplicates are the most disruptive form of CRM pollution. When the same company exists under two account records, territory assignments split, visit history fragments, and forecasting breaks. In complex CRM setups, a single company can accumulate several account numbers over time (prospect, customer, old number, new number) — and reps don't know which one to use.
+
+VoiceLine surfaces existing account records that match the company you're trying to create, so you can link to the right one instead of adding another duplicate.
+
+<Note>Available with the **[Customer Data](/commercial/modules#customer-data)** module.</Note>
+
+## Deduplication check
+
+When you create a new account by voice, VoiceLine searches the CRM for accounts with a matching company name, address, or other identifying fields.
+
+**If matches are found:** You see the existing account record(s) with their details — name, address, account type, and status. You can:
+- Select an existing account to use it as the target for your visit report, contact, or opportunity (no new account created)
+- Confirm the company is genuinely new and proceed with creation
+
+**If no match is found:** Account creation proceeds normally.
+
+## CRM-specific account types
+
+Some CRM integrations (notably SAP C4C) require you to specify an account role or type when creating a new account — for example, whether the company is a **Prospect**, **Customer**, or another business partner category. VoiceLine surfaces these options in the creation flow, configured per workspace.
+
+## What syncs to your CRM
+
+| Field | Content |
+|---|---|
+| Company name | From voice |
+| Address (street, city, country) | From voice |
+| Account type / role | From CRM-configured options |
+| Industry | From voice or CRM picklist |
+| Notes | From your voice recording |
+
+The exact fields depend on your CRM and workspace configuration.
+
+## FAQ
+
+**What if the existing CRM account is outdated (old number, archived)?**
+You'll see all matches regardless of status. If the existing account is obsolete, you can still proceed with creating a new one — the dedup flow presents options, it doesn't force a selection.
+
+**Should I create accounts before or after visit reports?**
+Before. If the account doesn't exist yet, create it first so you can link your visit report, contacts, and opportunities to it correctly.
+
+**What happens to the data quality when the CRM already has many duplicates?**
+VoiceLine prevents new duplicates from being created through the app. It doesn't retroactively merge existing CRM duplicates — that requires CRM administration work. For the broader data quality picture, see the [CRM Data Quality overview](/customer/productivity/customer-data-quality/index).
+
+**Who can create accounts?**
+All field reps. Your workspace admin may configure validation rules or approval workflows for new accounts depending on your CRM governance setup.

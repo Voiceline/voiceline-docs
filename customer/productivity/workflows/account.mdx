@@ -1,0 +1,58 @@
+---
+title: "Account"
+description: "Create a new customer account in your CRM on the spot by speaking — with automatic deduplication to prevent duplicate company records."
+status: Live
+bundles:
+  - customer_data
+last_updated: 2026-03-06
+---
+
+Create a new customer account in your CRM on the spot — no office required.
+
+## Overview
+
+An account in VoiceLine is a company record in your CRM. You create one when you discover a new potential customer in the field who doesn't yet exist in the system.
+
+Without this workflow, reps who meet new companies have no way to document the interaction until they return to a desk — and by then, context is lost. VoiceLine lets you create the account record on the spot, so subsequent visit reports, leads, and opportunities can be linked to it immediately.
+
+<Note>Available with the **[Customer Data](/commercial/modules#customer-data)** module.</Note>
+
+## Where to find it
+
+Open the VoiceLine mobile app → tap **+** → select **Account**.
+
+## Creating an account
+
+1. **Open Account** from the + menu.
+2. **Speak the account details** — company name, address, industry, size, and any relevant context. Example: *"New account: Schmidt Hydraulik GmbH, based in Stuttgart, mechanical engineering, about 80 employees, they're currently using a competitor for our product category."*
+3. **Review the draft** — the AI populates company name, address, industry classification, and notes.
+4. **Handle deduplication** — VoiceLine searches your CRM for existing accounts with similar names or addresses. If a potential match is found, you can select the existing record instead of creating a duplicate.
+5. **Submit** — the account is created in your CRM.
+
+## What syncs to your CRM
+
+The standard account generator creates the following fields:
+
+| Field | Content |
+|---|---|
+| Company name | From voice |
+| Address | From voice (street, city, country) |
+| Account type / role | Prospect, Customer, or other — configurable |
+| Industry | From voice or CRM picklist |
+| Notes | Context from your recording |
+
+CRM-specific fields (e.g. SAP C4C business partner role, Salesforce account type) are configured per workspace.
+
+## FAQ
+
+**What if the company already exists in the CRM?**
+The deduplication step will show you the match. Select the existing account to avoid creating a duplicate — you can proceed to log a visit or create a contact against the existing record instead.
+
+**Do I need to fill in the full address?**
+The AI extracts whatever address information you provide. A city and country is enough for most CRM configurations, though some workspaces require full street addresses.
+
+**Who can create accounts?**
+Account creation is available to all reps. Your workspace admin may configure approval workflows or validation rules — newly created accounts may appear as "pending" until reviewed, depending on your CRM setup.
+
+**Should I create the account before or after my visit report?**
+Before. If the account doesn't exist in the CRM, create it first so you can link your visit report to it.

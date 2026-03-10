@@ -1,0 +1,188 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "VoiceLine",
+  "colors": {
+    "primary": "#0066CC"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Product Documentation",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "customer/getting-started/index",
+              "customer/getting-started/platform-overview",
+              "customer/getting-started/quick-start"
+            ]
+          },
+          {
+            "group": "Productivity",
+            "pages": [
+              "customer/productivity/index",
+              "customer/productivity/assistant",
+              "customer/productivity/visit-briefing",
+              {
+                "group": "Workflows",
+                "pages": [
+                  "customer/productivity/workflows/index",
+                  "customer/productivity/workflows/visit-report",
+                  "customer/productivity/workflows/call-log",
+                  "customer/productivity/workflows/task",
+                  "customer/productivity/workflows/email",
+                  "customer/productivity/workflows/meeting",
+                  "customer/productivity/workflows/opportunity",
+                  "customer/productivity/workflows/lead",
+                  "customer/productivity/workflows/contact",
+                  "customer/productivity/workflows/account",
+                  "customer/productivity/workflows/reminder",
+                  "customer/productivity/workflows/survey",
+                  "customer/productivity/workflows/case"
+                ]
+              },
+              {
+                "group": "Customer Data Quality",
+                "pages": [
+                  "customer/productivity/customer-data-quality/index",
+                  "customer/productivity/customer-data-quality/lead-creation",
+                  "customer/productivity/customer-data-quality/contact-creation",
+                  "customer/productivity/customer-data-quality/account-creation"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Analytics",
+            "pages": [
+              "customer/analytics/index",
+              "customer/analytics/competitor-analytics",
+              "customer/analytics/product-analytics",
+              "customer/analytics/industry-analytics",
+              "customer/analytics/data-lake",
+              "customer/analytics/ai-analyst"
+            ]
+          },
+          {
+            "group": "Coaching",
+            "pages": [
+              "customer/coaching/index",
+              "customer/coaching/team-activity",
+              "customer/coaching/visit-analytics",
+              {
+                "group": "Playbooks",
+                "pages": [
+                  "customer/coaching/playbooks/index",
+                  "customer/coaching/playbooks/builder",
+                  "customer/coaching/playbooks/analytics"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Platform",
+            "pages": [
+              "customer/platform/index",
+              "customer/platform/workspace-admin",
+              "customer/platform/language-settings",
+              "customer/platform/search-settings",
+              "customer/platform/security",
+              "customer/platform/workflow-customisation",
+              {
+                "group": "Integrations",
+                "pages": [
+                  "customer/platform/integrations/index",
+                  "customer/platform/integrations/salesforce",
+                  "customer/platform/integrations/hubspot",
+                  "customer/platform/integrations/ms-dynamics",
+                  "customer/platform/integrations/sap-c4c-v1",
+                  "customer/platform/integrations/sap-c4c-v2",
+                  "customer/platform/integrations/zoho",
+                  "customer/platform/integrations/aurea"
+                ]
+              },
+              {
+                "group": "Data Objects",
+                "pages": [
+                  "customer/platform/data-objects/index",
+                  "customer/platform/data-objects/accounts",
+                  "customer/platform/data-objects/contacts",
+                  "customer/platform/data-objects/leads",
+                  "customer/platform/data-objects/opportunities",
+                  "customer/platform/data-objects/meetings",
+                  "customer/platform/data-objects/tasks",
+                  "customer/platform/data-objects/products",
+                  "customer/platform/data-objects/competitors",
+                  "customer/platform/data-objects/industries"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Commercials",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "commercial/pricing-overview",
+              "commercial/project-timeline"
+            ]
+          },
+          {
+            "group": "Pricing Structure",
+            "pages": [
+              "commercial/field-sales-fundamentals",
+              {
+                "group": "Modules",
+                "pages": [
+                  "commercial/modules/index",
+                  "commercial/modules/market-analytics-pro",
+                  "commercial/modules/sales-coaching-pro",
+                  "commercial/modules/pipeline-management",
+                  "commercial/modules/customer-data",
+                  "commercial/modules/marketing-surveys",
+                  "commercial/modules/service-cases",
+                  "commercial/modules/industry-fairs",
+                  "commercial/modules/inside-sales"
+                ]
+              },
+              {
+                "group": "Platform Packages",
+                "pages": [
+                  "commercial/platform/index",
+                  "commercial/platform/professional",
+                  "commercial/platform/enterprise"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Implementation",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "implementation/index"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Engineering",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "engineering/index"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

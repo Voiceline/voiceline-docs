@@ -1,0 +1,49 @@
+---
+title: "Products"
+description: "Manage your product catalog in VoiceLine so reps can reference products by name when logging offers, opportunities, and cross-sell recommendations."
+status: Live
+last_updated: 2026-03-06
+---
+
+Your product and service catalog — searchable by reps when logging offers, opportunities, or cross-sell recommendations.
+
+## Overview
+
+Products are your company's sellable items indexed in VoiceLine. Reps reference products when creating opportunities, logging offers in visit reports, or capturing what a customer discussed or ordered. Products can be synced from your CRM's product catalog or uploaded manually.
+
+## Where to configure it
+
+Go to **Workspace Settings** → **Product Recognition**.
+
+From here, administrators can:
+- Upload a product catalog manually (CSV/Excel)
+- Connect to a CRM product catalog (where supported by your integration)
+- Edit product names, IDs, and categories
+
+## Configuration
+
+| Field | Description |
+|-------|-------------|
+| **Name** | Product name as reps reference it |
+| **Product ID** | Internal or CRM-assigned identifier |
+| **Brand** | Brand or product line |
+| **Category** | Product category for filtering |
+
+Product names should reflect how reps actually refer to products in conversation — VoiceLine uses these names for conversational recognition. If reps commonly use abbreviations or trade names, add them as alternative names.
+
+## Search behavior
+
+Reps search products by name during opportunity creation or offer logging. Phonetic matching is active — minor pronunciation variations resolve correctly. The search is scoped to the product catalog for that workspace.
+
+For large catalogs (tens of thousands of SKUs), VoiceLine performs an extended search — the assistant prompts the rep to narrow down by product name, number, or category.
+
+## FAQ
+
+**How large can the product catalog be?**
+VoiceLine supports catalogs of up to hundreds of thousands of products. Large catalogs may require more specific search queries to narrow results.
+
+**Can reps add products during a visit report?**
+Products are primarily referenced in opportunity and offer contexts. Mention a product by name during a visit report and VoiceLine extracts it for cross-selling analytics.
+
+**How often does the product catalog sync from the CRM?**
+Sync frequency depends on the CRM integration. Manual uploads are applied immediately. For automated syncs, products update on the scheduled refresh cycle.
