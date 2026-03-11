@@ -59,6 +59,61 @@ The internal KB is **not changing**. This is a separate layer on top.
 
 ---
 
+## Writing conventions (commercial docs)
+
+Commercial docs (`commercial/`) are for internal audiences — sales, CS, and SAs. They explain what's in each package, why it exists, and what value it creates. They are not customer-facing.
+
+### Page structure
+
+Every commercial page follows this structure:
+
+1. **YAML frontmatter** — `title`, `status`, `last_updated` (and `price_per_user_month` for FSF)
+2. **Price callout** — `> **€X / month**` immediately under frontmatter
+3. **One-paragraph summary** — what the package/module is in plain language
+4. **Why it exists** (modules only) — the problem it solves and the value logic. Two to three sentences. Lead with the customer pain, then explain how the module addresses it. No ROI numbers — explain the logic, not the math.
+5. **Feature sections** — one `###` section per feature group, each with:
+   - A short description (1–2 sentences) of what the feature set does
+   - A `Feature | What it does` table (see below)
+   - An optional `→ [Section docs](/path)` link for the overview page
+
+### Feature table format
+
+Use a two-column table. The first column names the feature (with an optional hyperlink to its customer doc). The second column gives a one-liner explanation of what the feature does.
+
+```markdown
+| Feature | What it does |
+|---------|-------------|
+| [Feature name](/customer/area/page) | One sentence describing what it does for the user |
+| Feature without a doc yet | One sentence describing what it does |
+```
+
+**Rules:**
+- No "Notes", "Status", or "Docs" columns — feature flags and caveats belong in the source customer docs, not here
+- No `—` placeholders — if there's no doc, omit the link; always write a description
+- Keep descriptions to one sentence — under 15 words
+- Link to the most specific customer doc available; link to section overviews only when no specific page exists
+
+### Callout usage
+
+Use `<Note>` (Mintlify component) for:
+- Module dependency requirements (e.g. requires FSF to be live)
+- Trial period inclusions (e.g. 1-month free trial)
+- Coming soon status notices
+
+Do not use `> [!NOTE]` (GitHub markdown) — this is a Mintlify project.
+
+### Links
+
+All links use absolute paths without file extensions:
+- ✓ `/customer/productivity/assistant`
+- ✗ `../customer/productivity/assistant.md`
+
+Cross-references to other commercial pages:
+- ✓ `/commercial/modules/market-analytics-pro`
+- ✗ `modules.md#market-analytics-pro`
+
+---
+
 ## YAML frontmatter
 
 Required on every customer doc page:

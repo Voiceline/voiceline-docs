@@ -27,10 +27,23 @@ voiceline-docs/
 │   └── figma_links.md      Figma URLs per feature
 │
 ├── commercial/             Internal sales/pricing docs
-│   ├── index.md            Bundle overview table with pricing
-│   ├── field-sales-fundamentals.md
-│   ├── modules.md
-│   └── platform.md
+│   ├── pricing-overview.mdx         Stacking model + implementation fees
+│   ├── field-sales-fundamentals.mdx Base package (FSF)
+│   ├── project-timeline.mdx         Stub
+│   ├── modules/                     One file per add-on module
+│   │   ├── index.mdx
+│   │   ├── pipeline-management.mdx
+│   │   ├── customer-data.mdx
+│   │   ├── marketing-surveys.mdx
+│   │   ├── service-cases.mdx
+│   │   ├── market-analytics-pro.mdx
+│   │   ├── sales-coaching-pro.mdx
+│   │   ├── industry-fairs.mdx
+│   │   └── inside-sales.mdx
+│   └── platform/
+│       ├── index.mdx
+│       ├── professional.mdx
+│       └── enterprise.mdx
 │
 ├── engineering/            Developer docs (stub)
 ├── implementation/         Solutions Architect guides (stub)
@@ -65,9 +78,22 @@ voiceline-docs/
 - Second-person ("you"), active voice, short sentences
 - Lead with concept before mechanics — what it is before how to use it
 - UI navigation paths in bold: **Settings → Integrations → CRM Name**
-- Module requirement as `[!NOTE]` callout after `## Overview`
+- Module requirement as `<Note>` callout after `## Overview`
 - Cross-links inline on first mention only — no standalone "Related" sections
 - No ROI numbers, no internal framing, no CPO notes
+
+## Writing rules (commercial docs)
+
+- Active voice, third-person or neutral — these are internal reference pages, not instructions
+- Every page answers: what it is → what problem it solves → what's included
+- **Feature tables use two columns: `Feature | What it does`** — no Notes/Status/Docs columns
+  - Link the feature name to its customer doc when one exists
+  - Write one sentence (under 15 words) in the "What it does" column
+  - No `—` placeholders — always write a description
+- `## Why it exists` section (modules only): 2–3 sentences, lead with the customer pain
+- No ROI numbers — explain the value logic, not the math
+- Feature flags, caveats, and status notes belong in the customer docs, not here
+- Use `<Note>` (Mintlify) for dependency requirements and trial callouts — not `> [!NOTE]`
 
 ---
 
@@ -88,26 +114,26 @@ Platform pages (integrations, data objects, admin) omit the `bundles:` field.
 
 | Slug | Commercial page |
 |------|----------------|
-| `field_sales_fundamentals` | `commercial/field-sales-fundamentals.md` |
-| `pipeline_management` | `commercial/modules.md#pipeline-management` |
-| `customer_data` | `commercial/modules.md#customer-data` |
-| `marketing_surveys` | `commercial/modules.md#marketing-surveys` |
-| `service_cases` | `commercial/modules.md#service-cases` |
-| `market_analytics_pro` | `commercial/modules.md#market-analytics-pro` |
-| `sales_coaching_pro` | `commercial/modules.md#sales-coaching-pro` |
-| `industry_fairs` | `commercial/modules.md#industry-fairs` |
+| `field_sales_fundamentals` | `/commercial/field-sales-fundamentals` |
+| `pipeline_management` | `/commercial/modules/pipeline-management` |
+| `customer_data` | `/commercial/modules/customer-data` |
+| `marketing_surveys` | `/commercial/modules/marketing-surveys` |
+| `service_cases` | `/commercial/modules/service-cases` |
+| `market_analytics_pro` | `/commercial/modules/market-analytics-pro` |
+| `sales_coaching_pro` | `/commercial/modules/sales-coaching-pro` |
+| `industry_fairs` | `/commercial/modules/industry-fairs` |
 
 ---
 
 ## Cross-reference paths
 
-All links use relative paths.
+All links use **absolute paths without file extensions** (Mintlify convention).
 
 | From | To | Pattern |
 |------|----|---------|
-| `customer/X/page.md` | Another customer page | `../other-page.md` or `../../area/page.md` |
-| `customer/X/page.md` | Commercial page | `../../commercial/modules.md#anchor` |
-| `commercial/page.md` | Customer page | `../customer/area/page.md` |
+| `customer/X/page.mdx` | Another customer page | `/customer/area/page` |
+| `customer/X/page.mdx` | Commercial page | `/commercial/modules/page` |
+| `commercial/page.mdx` | Customer page | `/customer/area/page` |
 
 ---
 
