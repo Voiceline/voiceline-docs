@@ -1,0 +1,116 @@
+---
+title: "Concepts"
+description: "The core building blocks of VoiceLine — understand how the assistant, workflows, integrations, market insights, and playbooks work before diving into individual features."
+status: Live
+last_updated: 2026-03-11
+---
+
+The five concepts below appear throughout VoiceLine. Understanding them will make every other part of the documentation easier to follow.
+
+## AI Assistant
+
+The assistant is the voice interface reps use to document customer interactions. It is available as a mobile app (iOS and Android) and via a dedicated phone number — reps choose whichever is more convenient in the moment.
+
+After a customer visit, a rep speaks naturally for a few minutes about what happened: what the customer said, what was agreed, what the next step is. The assistant processes the recording, extracts the relevant information, and generates a structured CRM record ready for review. The rep checks the record in the app, makes any edits, and submits. The record syncs to the CRM automatically — without the rep ever opening the CRM.
+
+The same assistant handles:
+
+- **Full visit reports and call logs** — documented by speaking, not typing
+- **Quick voice memos** — for short captures while driving or between meetings
+- **Business card scanning** — scan a card and the contact is created in the CRM with data automatically extracted
+- **Industry Fair Mode** — a dedicated mode for fast-paced booth interactions at events, optimized for capturing dozens of contacts per day
+
+The assistant also serves as a search interface — reps can look up accounts, contacts, and recent activity by speaking, without opening the CRM.
+
+→ [Assistant](/customer/productivity/assistant)
+
+## Workflows
+
+A workflow is a record type the assistant can create. When a rep finishes speaking, VoiceLine determines which workflow is appropriate and fills in the fields from the spoken content. The rep reviews the pre-filled record and submits.
+
+VoiceLine includes the following workflows:
+
+| Workflow | What it creates |
+|----------|----------------|
+| Visit Report | Customer visit record synced to CRM |
+| Call Log | Phone call record synced to CRM |
+| Task | Action item for yourself or inside sales |
+| Email | AI-drafted follow-up email, sent directly or via your email client |
+| Reminder | Personal calendar reminder |
+| Meeting | Meeting record + calendar invite sent to attendees |
+| Opportunity | New deal or update to an existing pipeline entry |
+| Lead | New prospect by voice or business card scan |
+| Account | New company record with duplicate detection |
+| Contact | New person record by voice or business card scan |
+
+Each workflow maps to a specific CRM object. The exact fields captured depend on your workspace configuration — a workspace admin can customize the schema for each workflow to match your CRM setup and your team's needs.
+
+→ [Workflows](/customer/productivity/workflows/index) · [Workflow Configuration](/customer/platform/workflow-customisation)
+
+## Integrations
+
+VoiceLine connects to your existing CRM — it does not replace it. The integration runs in both directions:
+
+- **Inbound**: accounts, contacts, products, and other master data sync from your CRM into VoiceLine so reps can search and reference them during visits
+- **Outbound**: visit reports, call logs, tasks, opportunities, and other records created by reps sync back to the CRM automatically
+
+Reps do not need CRM credentials or access to use VoiceLine. The integration is configured once by a workspace administrator and runs in the background from that point on.
+
+Supported CRMs include SAP Cloud for Customer, Salesforce, Microsoft Dynamics 365, Aurea CRM, ZOHO CRM, and HubSpot.
+
+→ [Integrations](/customer/platform/integrations/index)
+
+## Market Insights
+
+Every recording a rep submits is analyzed for market signals — not just to create a CRM record, but to extract intelligence about the competitive and product landscape. This happens automatically, without reps filling in any extra fields.
+
+VoiceLine extracts:
+
+- **Competitor mentions** — which competitors came up, what the customer's sentiment was, and whether they're gaining or losing ground
+- **Product discussions** — which of your products were mentioned, how customers responded, and where opportunities were missed
+- **Industry signals** — field intelligence segmented by vertical or territory
+
+These signals are aggregated across the entire field team and surfaced in the Analytics platform. A single rep's visit might not tell you much — but when hundreds of visits are analyzed together, patterns emerge: a competitor with a new pricing campaign, a product with unexpected pushback, an industry with a shifting buying dynamic. Managers and leadership see this in near real time, without waiting for survey results or quarterly reports.
+
+→ [Analytics](/customer/analytics/index) · [Competitor Analytics](/customer/analytics/competitor-analytics)
+
+## Playbooks
+
+A playbook is a set of questions or topics a manager wants their reps to bring up during customer visits. When a rep starts a recording, their active playbooks appear automatically at the top of the recording screen as a lightweight guide.
+
+Playbooks close the gap between experienced reps and new ones. Instead of hoping that a rep covers a new product launch, a competitive situation, or a key account priority, a manager can add it to a playbook and it reaches every rep in that audience the next time they open the app — without changing anything about the recording workflow.
+
+Key things to know:
+
+- **Non-mandatory** — questions appear as a reference only and never block a rep from submitting a visit report
+- **Targeted** — different playbooks can be sent to different reps based on role, territory, or other criteria
+- **Tracked** — Playbook Analytics shows managers which reps are covering their playbook questions and what responses they're capturing
+- **Stacked** — if multiple playbooks apply to a rep, the questions are merged into a single deduplicated list
+
+→ [Playbooks](/customer/coaching/playbooks/index)
+
+## How the concepts connect
+
+Each concept feeds the next. A rep uses the **assistant** to speak after a visit. The assistant creates a **workflow** record — a visit report, opportunity, or task — with fields extracted from the recording. That record syncs to the CRM via the **integration**, and master data (accounts, contacts) flows back the other way so reps always have current information at hand.
+
+While the workflow record is being created, the same recording is also analyzed for **market insights** — competitor mentions, product reactions, sentiment — without the rep doing anything extra. Those signals accumulate across the team and surface in the Analytics dashboards for leadership.
+
+Before the next visit, the rep sees their active **playbook** questions on the recording screen. The playbook shapes what gets discussed. What gets discussed ends up in the recording. The recording feeds both the CRM and the analytics layer.
+
+```
+Workspace admin configures
+  └── Integrations (CRM sync) + Workflow schemas + Playbooks
+
+Rep opens the assistant
+  └── Playbook questions guide the conversation
+        ↓
+Rep speaks after the visit
+  └── Assistant extracts workflow fields → rep reviews → submits
+        ↓
+Workflow record syncs to CRM       Market insights extracted
+(visit report, opportunity, task…) (competitors, products, sentiment)
+        ↓                                    ↓
+CRM updated in real time       Analytics dashboards updated same day
+                                             ↓
+                               Manager coaches based on insights
+```

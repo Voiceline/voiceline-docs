@@ -1,21 +1,108 @@
 ---
 title: "Overview"
-description: "Everything you need to understand the VoiceLine platform and get your team running."
+description: "Learn how VoiceLine turns field recordings into structured CRM data, market intelligence, and coaching insights across four interconnected platforms."
 status: Live
-last_updated: 2026-03-06
+last_updated: 2026-03-11
 ---
 
-Everything you need to understand the VoiceLine platform and get your team running.
+VoiceLine is the operating system for enterprise field teams — turning every customer visit into structured CRM data, market intelligence, and coaching insights automatically.
+
+Field sales reps spend 20–30% of their working time on manual CRM documentation — after hours, from memory, with poor data quality. VoiceLine eliminates this by letting reps speak naturally after a visit and converting that into structured records that sync directly to the CRM.
+
+Beyond data entry, every recording becomes a source of business intelligence: which competitors came up, which products were discussed, what the customer's sentiment was — all extracted automatically, without reps filling in extra fields.
 
 ## In this section
 
 | Page | What it covers |
 |------|---------------|
-| [Platform Overview](/customer/getting-started/platform-overview) | What VoiceLine is, how it's structured, and how the pieces fit together |
+| [Concepts](/customer/getting-started/concepts) | The core building blocks: assistant, workflows, integrations, market insights, and playbooks |
 | [Quick Start](/customer/getting-started/quick-start) | Step-by-step guide to getting your first rep recording their first visit |
 
-## New to VoiceLine?
+## The four platforms
 
-Start with the [Platform Overview](/customer/getting-started/platform-overview) to understand how VoiceLine connects field recordings to CRM data and analytics. Then follow the [Quick Start](/customer/getting-started/quick-start) to walk through setup and your first recording.
+VoiceLine is organized into four interconnected platforms:
 
-For workspace configuration — users, integrations, and data objects — see the [Platform](/customer/platform/index) section.
+### Productivity Platform
+
+The rep-facing layer of VoiceLine. Reps use it daily — on their phone, by speaking, without opening the CRM.
+
+After a customer visit, a rep opens the VoiceLine app and speaks naturally about what happened. The assistant transcribes the recording, extracts the relevant fields, and generates a CRM record pre-filled and ready for review. The rep checks the record, makes any edits, and submits. From that point, the record syncs to the CRM automatically.
+
+The Productivity Platform covers:
+
+- **Visit reports and call logs** — the core documentation workflow. Speak once, get a structured CRM record
+- **Tasks, emails, meetings, and reminders** — action items and follow-ups captured from the same voice recording
+- **Opportunities, leads, accounts, and contacts** — new pipeline entries and contact records created by voice or business card scan
+- **Visit Briefing** — before a scheduled visit, VoiceLine pushes a summary of recent activity for that account so the rep walks in prepared
+- **Industry Fair Mode** — a dedicated experience for events, optimized for capturing dozens of contacts quickly with scan-and-record
+
+Each workflow's field schema is configurable by the workspace admin — the exact structure of a visit report or opportunity record can be tailored to your CRM and team needs.
+
+→ [Productivity Platform](/customer/productivity/index)
+
+### Analytics Platform
+
+Leadership-facing intelligence extracted automatically from every recording your team submits. No rep effort required beyond their normal visit documentation.
+
+As reps speak, VoiceLine extracts market signals from their recordings: which competitors were mentioned and with what sentiment, which products came up, how customers responded. These signals are aggregated across the full field team and surfaced in dashboards that update within minutes of each submission.
+
+What the Analytics Platform surfaces:
+
+- **Competitor Analytics** — which competitors appear most, where they're gaining ground, how customers describe their pricing, quality, and service, and which accounts are considering a switch
+- **Product Analytics** — product mention trends, customer reactions, and missed opportunities *(coming soon)*
+- **Industry Analytics** — field intelligence segmented by vertical or territory *(coming soon)*
+- **Data Lake** — direct access to the full VoiceLine dataset for BI tools and custom reporting *(coming soon)*
+- **AI Analyst** — conversational interface for querying VoiceLine data with real-time alerts *(coming soon)*
+
+→ [Analytics Platform](/customer/analytics/index)
+
+### Coaching Platform
+
+Manager-facing tools for understanding field performance, coaching reps, and driving consistent execution across the team.
+
+The Coaching Platform connects three things: what reps *should* do (Playbooks), what they *actually* do (Team Activity), and how *well* they do it (Visit Analytics). Together they give managers a continuous feedback loop — without relying on anecdotal observations or manual tracking.
+
+- **Playbooks** — managers define question sets that appear automatically during rep recordings, guiding what gets covered in every visit without blocking the workflow. Target audiences let different playbooks reach different reps. Playbook Analytics tracks which reps are covering the questions and what they're capturing
+- **Team Activity** — dashboards showing rep action counts, daily volume trends, and per-rep activity profiles. Managers see who is active, at what frequency, and on which account types — filtered by team, date, or individual rep
+- **Visit Analytics** — each visit report gets a quality score (visit richness) based on the depth and detail of what was captured. A live visit feed and performance benchmarks let managers spot quality gaps and target coaching where it matters
+
+→ [Coaching Platform](/customer/coaching/index)
+
+### Workspace Settings
+
+Workspace configuration — set up once during implementation, managed by the workspace administrator.
+
+Workspace Settings is where an admin connects VoiceLine to the CRM, configures what data is available to reps, and controls how the workspace behaves. Individual reps have no access to these settings.
+
+What workspace admins configure:
+
+- **Integrations** — connect your CRM (SAP, Salesforce, Dynamics, Aurea, ZOHO, HubSpot). Once connected, account and contact data flows inbound from the CRM, and rep-created records sync outbound automatically
+- **Data Objects** — the master records reps can search and reference: accounts, contacts, products, competitors, leads, opportunities. Synced from the CRM and extended by rep activity
+- **Workspace Administration** — user invitations, role assignments, and workspace name
+- **Language Settings** — recording language, output language, and custom vocabulary for product names and industry terms
+- **Workflow Configuration** — customize the field schemas for each workflow type to match your CRM and team's requirements
+- **Search Settings** — ownership filters, extended search behavior, and permission controls for what reps can find
+
+→ [Workspace Settings](/customer/platform/index)
+
+## Key concepts
+
+**Workspace** — A VoiceLine workspace represents your organization. One workspace connects to one CRM and contains all your users, data objects, and analytics.
+
+**Bundles** — VoiceLine is sold in feature bundles. Each bundle unlocks a set of capabilities. See [Bundles](/commercial/index) for what's included in each.
+
+For a detailed explanation of the assistant, workflows, integrations, market insights, and playbooks — and how they work together — see [Concepts](/customer/getting-started/concepts).
+
+## FAQ
+
+**Does VoiceLine replace the CRM?**
+No — VoiceLine connects to your existing CRM and enriches it. Reps continue using VoiceLine for capture; managers use both VoiceLine and the CRM for reporting and management.
+
+**Is VoiceLine available offline?**
+The mobile app supports recording in low-connectivity conditions. Recordings sync to the server when connectivity is restored.
+
+**Which languages are supported?**
+VoiceLine supports major European languages including German, English, French, Italian, Spanish, and Dutch. See [Language Settings](/customer/platform/language-settings).
+
+**How long does setup take?**
+A typical implementation — CRM integration, user import, language configuration — takes 1–3 days. See the [Quick Start](/customer/getting-started/quick-start) for the setup sequence.

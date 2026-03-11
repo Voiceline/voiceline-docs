@@ -14,7 +14,7 @@
             "group": "Getting Started",
             "pages": [
               "customer/getting-started/index",
-              "customer/getting-started/platform-overview",
+              "customer/getting-started/concepts",
               "customer/getting-started/quick-start"
             ]
           },
@@ -81,7 +81,7 @@
             ]
           },
           {
-            "group": "Platform",
+            "group": "Workspace Settings",
             "pages": [
               "customer/platform/index",
               "customer/platform/workspace-admin",
