@@ -4,7 +4,7 @@ description: "Learn how VoiceLine checks for existing accounts before creating a
 status: Live
 bundles:
   - customer_data
-last_updated: 2026-03-06
+last_updated: 2026-03-23
 ---
 
 VoiceLine checks for existing accounts before creating a new one — and helps you pick the right record when multiple matches exist.
@@ -19,7 +19,18 @@ VoiceLine surfaces existing account records that match the company you're trying
 
 ## Deduplication check
 
-When you create a new account by voice, VoiceLine searches the CRM for accounts with a matching company name, address, or other identifying fields.
+When you create a new account by voice, VoiceLine searches the CRM for existing accounts. It evaluates each candidate using these signals:
+
+| Signal | What it means |
+|---|---|
+| Street address match | The street from the business card or voice matches a CRM entry |
+| City match | The city matches a CRM entry |
+| Street + city both match | Highest confidence — both address fields align |
+| Cross-confirmation | A contact linked to this company also matched a CRM entry |
+| User favorite | This account has been repeatedly selected by you for similar calls |
+| Name similarity | Fuzzy match above 90% — used as a fallback only when no address data is available |
+
+Company names alone are not a reliable signal — common names like "Müller GmbH" can refer to many different companies. Address data is what distinguishes one company from another.
 
 **If matches are found:** You see the existing account record(s) with their details — name, address, account type, and status. You can:
 - Select an existing account to use it as the target for your visit report, contact, or opportunity (no new account created)

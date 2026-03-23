@@ -4,7 +4,7 @@ description: "Learn how VoiceLine checks for existing contacts before creating a
 status: Live
 bundles:
   - customer_data
-last_updated: 2026-03-06
+last_updated: 2026-03-23
 ---
 
 Before creating a new contact, VoiceLine checks whether the person already exists in your CRM.
@@ -19,7 +19,14 @@ VoiceLine checks for existing contacts before creating a new one — and surface
 
 ## Deduplication check
 
-When you create a contact — by voice or by business card scan — VoiceLine searches the CRM for existing contacts with a matching name, email, or phone number.
+When you create a contact — by voice or by business card scan — VoiceLine searches the CRM for existing contacts. It evaluates each candidate using these signals:
+
+| Signal | What it means |
+|---|---|
+| Email match | The email from the business card matches a CRM entry — very high confidence |
+| Phone match | Mobile or office phone matches a CRM entry — very high confidence |
+| Cross-confirmation | The company they work for also matched a CRM account, corroborating the contact match |
+| Name similarity | Fuzzy match above 80% — used as a fallback only when no email or phone is available |
 
 **If a match is found:** You see the existing contact record(s). You can:
 - Select the existing contact to link your interaction to it (no duplicate created)

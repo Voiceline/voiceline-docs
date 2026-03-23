@@ -4,7 +4,7 @@ description: "Learn how VoiceLine prevents duplicate leads, contacts, and accoun
 status: Live
 bundles:
   - customer_data
-last_updated: 2026-03-06
+last_updated: 2026-03-23
 ---
 
 VoiceLine prevents the most common source of CRM pollution: reps creating duplicate or incorrect records in the field.
@@ -24,6 +24,14 @@ Each creation flow (lead, contact, account) runs a deduplication check before su
 - **Select an existing record** to link to instead of creating a duplicate
 - **Proceed with creation** if no match applies
 - **Trigger follow-up workflows** — some dedup matches unlock smarter actions (for example, a lead that matches an existing account can be converted directly into a contact + opportunity on that account)
+
+## How matches are evaluated
+
+The system reads the information available — name, company name, email, phone, and address from the business card or voice transcript — and searches the CRM for candidates. Each candidate is scored using a set of signals, with the results presented to the rep for confirmation.
+
+For contacts, email and phone are the strongest signals. For companies, address data (street and city) is the most reliable identifier — company names are often too ambiguous on their own. Name similarity is always a fallback used only when stronger signals are absent. No record is ever auto-merged: the rep confirms every match.
+
+See the individual pages below for the full signal breakdown per object type.
 
 ## Pages in this section
 
