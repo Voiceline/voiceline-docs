@@ -120,68 +120,6 @@
             ]
           }
         ]
-      },
-      {
-        "tab": "Commercials",
-        "groups": [
-          {
-            "group": "Overview",
-            "pages": [
-              "commercial/pricing-overview",
-              "commercial/project-timeline"
-            ]
-          },
-          {
-            "group": "Pricing Structure",
-            "pages": [
-              "commercial/field-sales-fundamentals",
-              {
-                "group": "Modules",
-                "pages": [
-                  "commercial/modules/index",
-                  "commercial/modules/market-analytics-pro",
-                  "commercial/modules/sales-coaching-pro",
-                  "commercial/modules/pipeline-management",
-                  "commercial/modules/customer-data",
-                  "commercial/modules/marketing-surveys",
-                  "commercial/modules/service-cases",
-                  "commercial/modules/industry-fairs",
-                  "commercial/modules/inside-sales"
-                ]
-              },
-              {
-                "group": "Platform Packages",
-                "pages": [
-                  "commercial/platform/index",
-                  "commercial/platform/professional",
-                  "commercial/platform/enterprise"
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Implementation",
-        "groups": [
-          {
-            "group": "Overview",
-            "pages": [
-              "implementation/index"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Engineering",
-        "groups": [
-          {
-            "group": "Overview",
-            "pages": [
-              "engineering/index"
-            ]
-          }
-        ]
       }
     ]
   }
