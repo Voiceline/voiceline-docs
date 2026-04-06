@@ -1,0 +1,41 @@
+---
+title: "ZOHO CRM — Setup"
+description: "Connect VoiceLine to ZOHO CRM via OAuth 2.0 to sync accounts, contacts, and deals in both directions."
+status: Live
+last_updated: 2026-04-04
+---
+
+Connects VoiceLine to ZOHO CRM via OAuth 2.0, syncing accounts, contacts, and deals in both directions.
+
+## Overview
+
+VoiceLine pulls accounts, contacts, and deals from ZOHO CRM so reps can search their customer base from the field. When reps submit visit reports, call logs, or tasks, VoiceLine pushes these as structured activity records linked to the relevant account, contact, or deal.
+
+## Where to configure it
+
+Go to **Workspace Settings** → **Integrations** → **ZOHO CRM**.
+
+## Prerequisites
+
+- ZOHO CRM account with API access (Standard edition or above)
+- Workspace administrator permissions in VoiceLine
+
+## Setup steps
+
+1. Open **Workspace Settings** → **Integrations**
+2. Select **ZOHO CRM**
+3. Click **Connect with ZOHO** — you'll be redirected to ZOHO's authorization page
+4. Log in with your ZOHO administrator account and grant access
+5. You're redirected back to VoiceLine — the integration is active
+
+## Authentication
+
+ZOHO CRM uses **OAuth 2.0**. The workspace administrator completes a one-time browser-based authorization. VoiceLine stores and auto-refreshes the access token.
+
+## FAQ
+
+**Which ZOHO CRM editions are supported?**
+ZOHO CRM Standard edition and above (API access required).
+
+**Can VoiceLine push deal updates to ZOHO?**
+Yes — rep-created opportunities sync back to ZOHO as deal updates.

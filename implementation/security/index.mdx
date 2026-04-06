@@ -1,0 +1,70 @@
+---
+title: "Security & Compliance"
+description: "VoiceLine's security posture, certifications, and answers to common procurement questions."
+status: Live
+last_updated: 2026-04-04
+---
+
+VoiceLine is built for enterprise field sales teams — which means it handles customer interaction data, CRM credentials, and business-critical workflows. Security is a foundational requirement, not an afterthought.
+
+## Trust Centre
+
+The authoritative source for VoiceLine's security documentation is our **Vanta-hosted Trust Centre**:
+
+**[trust.voiceline.ai](https://trust.voiceline.ai)**
+
+The Trust Centre contains:
+- Security certifications and audit reports
+- Penetration test reports
+- Data Processing Agreement (DPA) templates
+- Sub-processor list
+- Compliance status (SOC 2, ISO 27001, GDPR)
+- Policies: access control, incident response, business continuity
+
+If you need security documentation for a procurement review, start at the Trust Centre. Most questions are answered there.
+
+## Summary
+
+| Topic | Detail |
+|-------|--------|
+| Data residency | EU-hosted (AWS Frankfurt) |
+| Certifications | SOC 2 Type II — see Trust Centre for current status |
+| Authentication | Password, SSO (SAML 2.0), MFA — see [Security & Compliance docs](/customer/platform/security) |
+| Encryption | Data encrypted at rest (AES-256) and in transit (TLS 1.2+) |
+| CRM credentials | Encrypted at rest; never exposed to VoiceLine employees |
+| GDPR | DPA available on request via Trust Centre |
+| Sub-processors | Full list available in Trust Centre |
+| Incident response | Documented in Trust Centre; contractual notification SLAs in DPA |
+
+## Common procurement questions
+
+**Do you have a SOC 2 report?**
+Yes. The current report is available in the Trust Centre. Contact your SA or CSM to request access under NDA if required.
+
+**Can we sign a DPA before contract signature?**
+Yes — DPA templates are available in the Trust Centre. Your SA can facilitate the signing process.
+
+**Where is our data hosted?**
+All VoiceLine customer data is hosted in AWS Frankfurt (eu-central-1). We do not use US-based data centres for customer data.
+
+**Do you support SSO?**
+Yes — SAML 2.0 SSO is supported on the Enterprise platform package. See [Security & Compliance](/customer/platform/security) for configuration details.
+
+**Can VoiceLine employees access our CRM data?**
+CRM credentials are encrypted at rest and are not accessible to VoiceLine employees. Voice recordings and transcription data are processed by our AI pipeline and are not reviewed by employees except in the context of contracted support cases (with customer consent).
+
+**Do you conduct penetration tests?**
+Yes — annual penetration tests are conducted by an independent third party. The most recent report is available in the Trust Centre.
+
+---
+
+## SA-maintained: Additional compliance documentation
+
+<Note>This section is maintained by the Solutions Architecture team. Add any recurring customer questions and their answers here to avoid repeating the same information across deals.</Note>
+
+*Content to be added by SA team — use this space for:*
+- *GDPR-specific customer questions*
+- *Data residency confirmations per region*
+- *Security questionnaire FAQs*
+- *DPA process documentation*
+- *Specific enterprise compliance requirements (e.g. ISO 27001, TISAX)*

@@ -1,0 +1,50 @@
+---
+title: "Inside Sales"
+description: "Standard implementation for the Inside Sales module — call-centre and inside sales team workflows."
+status: Live
+last_updated: 2026-04-04
+---
+
+The Inside Sales module extends VoiceLine for call-centre and inside sales teams. Where FSF is optimised for field reps documenting visits, Inside Sales is designed for high-volume phone-based sales teams: call logging at speed, task management, and follow-up workflows built around outbound calling patterns.
+
+For a full description of what the module includes commercially, see [Inside Sales](/commercial/modules/inside-sales).
+
+## What it activates
+
+| Capability | Description |
+|-----------|-------------|
+| High-volume call logging | Optimised call log workflow for consecutive outbound calls |
+| Call outcome tracking | Structured call result capture (reached, voicemail, no answer, etc.) |
+| Follow-up scheduling | Follow-up call date and task creation inline with call logging |
+| Inside sales analytics | Call volume, contact rate, and outcome tracking per rep and team |
+
+## Standard implementation
+
+### Call log (inside sales variant)
+
+The inside sales call log is a leaner version of the FSF call log, optimised for speed:
+
+| Field | Component type | Notes |
+|-------|---------------|-------|
+| Account | CRMAccount | |
+| Contact | CRMRelatedContact | |
+| Call outcome | SingleSelect | Reached / Voicemail / No answer / Callback requested |
+| Summary | MultiLineText | Short — call duration is typically 5–15 minutes |
+| Follow-up date | Zeitraum (single date) | Auto-creates a follow-up task |
+| Next action | SingleSelect | Call back / Send email / Escalate / Close |
+
+### Task (follow-up)
+
+Follow-up tasks are created automatically from the call log when a follow-up date is set. No separate workflow step required.
+
+## Required scoping decisions
+
+**Call outcome values:** Provide the call outcome picklist values — these often need to match your CRM's activity result or call disposition model.
+
+**Follow-up task creation:** Confirm whether follow-up tasks should be created automatically when a follow-up date is set, or only when the rep explicitly requests it.
+
+**Team structure:** Inside Sales analytics are team-based. Confirm how inside sales reps and teams are structured in your CRM for correct dashboard segmentation.
+
+## Dependencies
+
+Inside Sales has no module dependencies. It can be activated as the first module after FSF — and is often rolled out in parallel with FSF for teams where phone-based selling is the primary motion.

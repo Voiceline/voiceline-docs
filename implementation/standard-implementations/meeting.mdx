@@ -1,0 +1,55 @@
+---
+title: "Meeting"
+description: "Default field structure, calendar sync behaviour, and configuration options for the Meeting workflow."
+status: Live
+last_updated: 2026-04-04
+---
+
+The Meeting workflow lets reps create and confirm customer meetings by voice — the meeting is created in the calendar and synced to the CRM without the rep needing to open either system.
+
+## What it captures
+
+| Field | Type | Description |
+|-------|------|-------------|
+| Meeting title | Text | AI-generated or stated by the rep |
+| Account | Lookup | The customer account the meeting is with |
+| Contact | Lookup | The contact attending the meeting |
+| Date and time | DateTime | When the meeting is scheduled |
+| Duration | Number | Meeting length in minutes |
+| Location | Text | Physical address or meeting link |
+| Meeting type | Picklist | e.g. product demo, follow-up, contract review |
+| Notes | Text | Pre-meeting context or agenda items |
+
+## Calendar and CRM sync
+
+Meetings are created in the rep's connected calendar and synced to the CRM as a meeting/event record.
+
+| CRM | Target object | Calendar | Sync trigger |
+|-----|--------------|----------|-------------|
+| SAP C4C | Appointment | — | On submission |
+| Salesforce | Event | Google / M365 | On submission |
+| MS Dynamics | Meeting | Outlook | On submission |
+| HubSpot | Meeting | Google / M365 | On submission |
+| ZOHO | Event | — | On submission |
+| Aurea | Meeting | — | On submission |
+
+## How your SA tailors this
+
+- **Meeting type values** — customise picklist to match your sales stage nomenclature
+- **Default duration** — set default meeting length per meeting type
+- **Calendar invite** — configure whether a calendar invitation is sent to the customer contact automatically
+- **Attendee logic** — configure whether additional attendees can be added (e.g. rep manager, internal team)
+- **Required fields** — mark date/time as required for submission
+
+## FAQ
+
+**Do customer contacts receive a calendar invitation?**
+This is configurable. The standard creates the meeting in the rep's calendar and CRM. Sending a customer-facing invitation requires calendar OAuth connection — your SA enables this during setup.
+
+**Can we link a meeting to an opportunity?**
+Meeting-to-opportunity linking is available as a configuration option and requires the [Pipeline Management](/commercial/modules/pipeline-management) module.
+
+**How do we document what happened in the meeting afterwards?**
+Use a Visit Report or Call Log after the meeting to capture the outcome, next steps, and any follow-ups.
+
+<Note>Need something beyond this standard? Your SA can adapt it using the [component library](/implementation/workflow-customisation/component-library), or raise a [custom requirement](/implementation/workflow-customisation/additional-customisation) if needed.</Note>

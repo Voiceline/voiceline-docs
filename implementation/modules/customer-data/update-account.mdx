@@ -1,0 +1,52 @@
+---
+title: "Update Account"
+description: "Standard implementation for the Update Account workflow — field structure, AI matching logic, and CRM sync."
+status: Live
+last_updated: 2026-04-04
+---
+
+The Update Account workflow lets reps update an existing account record by voice after a visit or interaction. It patches key account fields and notes directly on the existing CRM record — keeping account data current without manual entry.
+
+## What it captures
+
+| Field | Component type | Notes |
+|-------|---------------|-------|
+| Account | CRMAccount | The account being updated |
+| Phone | SingleLineText | Main account phone number |
+| Email | SingleLineText | Main account email |
+| Website | SingleLineText | |
+| Address | SingleLineText (multiple) | Street, city, postal code, country |
+| Account notes | MultiLineText | Relationship notes, context |
+| Account status | SingleSelect | e.g. active, at-risk, expansion — configurable values |
+
+## How it differs from Create Account
+
+| | Create Account | Update Account |
+|---|---|---|
+| Writes to | New record | Existing record |
+| Account selection | Not required — name is captured | Required — account selected from CRM |
+| Deduplication | Checks for duplicates before creation | Confirms correct account before update |
+| CRM behaviour | Creates new account object | Patches fields on existing object |
+
+## Deduplication behaviour
+
+Account selection follows the same CRM lookup used across all workflows — reps select from their assigned accounts. VoiceLine does not auto-create accounts from an update workflow. If the account does not exist in the CRM, the rep must create it via the Create Account workflow first.
+
+## Required scoping decisions
+
+**Updatable fields:** Confirm which account fields reps should be able to update by voice. Core contact fields (phone, email, address) are typically included. Sensitive fields (account type, territory, assigned owner) are typically excluded.
+
+**Account status values:** If account status is included, provide the picklist values — these should align with your CRM's account health or status taxonomy.
+
+**Address handling:** Confirm whether address updates should overwrite existing values or only fill empty fields. Overwriting risks losing previously validated address data if a rep provides partial information.
+
+## CRM sync
+
+| CRM | Target object | Behaviour |
+|-----|--------------|-----------|
+| SAP C4C | Account | PATCH on existing record |
+| Salesforce | Account | Update on existing record |
+| MS Dynamics | Account | Update on existing record |
+| HubSpot | Company | Update on existing record |
+| ZOHO | Account | Update on existing record |
+| Aurea | Account | Update on existing record |

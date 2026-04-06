@@ -1,0 +1,54 @@
+---
+title: "Create Account"
+description: "Standard implementation for the Create Account workflow — field structure, CRM sync behaviour, and configuration options."
+status: Live
+last_updated: 2026-04-04
+---
+
+The Account workflow lets reps update account information and add notes by voice — keeping account records current without manual CRM entry.
+
+## What it captures
+
+| Field | Type | Description |
+|-------|------|-------------|
+| Account | Lookup | The account being updated |
+| Account notes | Long text | General account context, relationship notes |
+| Account status | Picklist | e.g. active, at-risk, expansion opportunity |
+| Key contacts | Lookup (multi) | Contacts relevant to the account |
+| Next visit date | Date | When the rep plans to visit next |
+| Account health | AI-scored | Overall sentiment and relationship quality assessment |
+
+## Deduplication
+
+Account deduplication checks for existing records with matching name and address before any new account creation. VoiceLine does not create new account records by default — reps select from existing CRM accounts. New account creation is a separate, explicit action.
+
+## CRM sync
+
+| CRM | Target object | Sync trigger |
+|-----|--------------|-------------|
+| SAP C4C | Account | On submission |
+| Salesforce | Account | On submission |
+| MS Dynamics | Account | On submission |
+| HubSpot | Company | On submission |
+| ZOHO | Account | On submission |
+| Aurea | Account | On submission |
+
+## What can be configured
+
+- **Account status values** — customise to reflect your account health taxonomy
+- **Custom account fields** — add fields specific to your business (e.g. segment, region, customer tier)
+- **Next visit date logic** — configure default offset and reminder behaviour
+- **Account lookup scope** — filter which accounts are visible to each rep (by territory, team, or assignment)
+
+## What the standard does not include
+
+- New account creation by voice (reps update existing accounts; new account creation is done via the CRM or a separate flow)
+- Account hierarchy mapping (parent/subsidiary relationships managed in CRM)
+
+## FAQ
+
+**Can reps create new accounts by voice?**
+New account creation by voice is not part of the standard Account workflow — it requires a deliberate configuration decision due to the risk of creating duplicate accounts. If your process requires voice-based account creation, discuss this with your SA during implementation scoping.
+
+**How are accounts scoped per rep?**
+Account visibility follows your CRM's existing assignment and territory logic. VoiceLine reads the accounts assigned to each rep's CRM user and surfaces only those accounts in the lookup.

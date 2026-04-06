@@ -1,0 +1,54 @@
+---
+title: "Call Log"
+description: "Default field structure, CRM sync behaviour, and configuration options for the Call Log workflow."
+status: Live
+last_updated: 2026-04-04
+---
+
+The Call Log captures phone calls with customers — reps speak a summary immediately after the call, and VoiceLine extracts the content and syncs it to the CRM.
+
+## What it captures
+
+| Field | Type | Description |
+|-------|------|-------------|
+| Call summary | Long text | AI-generated summary of the call content |
+| Account | Lookup | The customer account called |
+| Contact | Lookup | The contact person spoken to |
+| Call date | Date | Date of the call (auto-populated) |
+| Call direction | Picklist | Inbound or outbound |
+| Call outcome | Picklist | e.g. reached, left voicemail, follow-up required |
+| Next steps | Text | Action items mentioned during the call |
+| Duration | Number | Call duration in minutes (if available from device) |
+
+## CRM sync
+
+| CRM | Target object | Sync trigger |
+|-----|--------------|-------------|
+| SAP C4C | Phone Call Activity | On submission |
+| Salesforce | Task (Call type) | On submission |
+| MS Dynamics | Phone Call Activity | On submission |
+| HubSpot | Call Activity | On submission |
+| ZOHO | Call Log | On submission |
+| Aurea | Phone Call Activity | On submission |
+
+For field-level mappings per CRM, see the [Integrations](/integrations) section.
+
+## How your SA tailors this
+
+- **Call outcome values** — customise picklist to match your sales process
+- **Call direction** — enable or disable the direction field depending on your CRM's requirements
+- **Additional structured fields** — add fields relevant to phone-based sales (e.g. lead stage, product discussed)
+- **Field labels** — rename to match CRM terminology
+
+## FAQ
+
+**Can reps log a call while still on the phone?**
+The standard workflow is designed for post-call documentation — reps speak immediately after hanging up, while the call is fresh. This produces better quality summaries than live transcription.
+
+**Does VoiceLine record the actual phone call?**
+No — VoiceLine captures a spoken summary after the call, not a recording of the call itself. The rep dictates what happened and VoiceLine extracts the structured content.
+
+**What if we want to log calls from our office team as well?**
+The Call Log workflow works for any phone-based interaction. For high-volume office or inside sales teams with different workflow needs, see the [Inside Sales](/commercial/modules/inside-sales) module.
+
+<Note>Need something beyond this standard? Your SA can adapt it using the [component library](/implementation/workflow-customisation/component-library), or raise a [custom requirement](/implementation/workflow-customisation/additional-customisation) if needed.</Note>

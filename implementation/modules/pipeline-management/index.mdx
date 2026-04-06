@@ -1,0 +1,48 @@
+---
+title: "Pipeline Management"
+description: "Standard implementation for the Pipeline Management module — opportunity capture, update workflows, and pipeline configuration."
+status: Live
+last_updated: 2026-04-04
+---
+
+The Pipeline Management module adds opportunity tracking to your VoiceLine implementation. Reps create and update opportunities by voice — deal value, stage, close date, and next steps are captured and synced to your CRM's opportunity object.
+
+For a full description of what the module includes commercially, see [Pipeline Management](/commercial/modules/pipeline-management).
+
+## What it activates
+
+| Capability | Description |
+|-----------|-------------|
+| Opportunity workflow | Create or update an opportunity record by voice |
+| Pipeline visibility | Opportunity data feeds the pipeline management dashboard |
+
+The standard Opportunity workflow is included in FSF. Pipeline Management extends this with the pipeline dashboard and coaching analytics on deal health.
+
+## Standard implementation
+
+The Opportunity workflow captures:
+
+| Field | Component type | Notes |
+|-------|---------------|-------|
+| Opportunity name | SingleLineText | Extracted or stated by rep |
+| Account | CRMAccount | Linked to account |
+| Contact | CRMRelatedContact | Primary contact at the account |
+| Opportunity stage | SingleSelect | Must match your CRM pipeline stages |
+| Estimated value | CurrencyInput | Deal value |
+| Close date | Zeitraum (single date) | Defaults to 90 days if not stated |
+| Next steps | MultiLineText | Actions agreed during the visit |
+| Probability | NumericalInput | Optional — configurable per workspace |
+
+## Required scoping decisions
+
+**Opportunity stage values:** Stage picklist values must match your CRM exactly. Provide the stage names from your CRM pipeline before configuration begins.
+
+**Create vs. update logic:** Confirm whether the workflow should always create a new opportunity, always update an existing one, or offer both options to the rep.
+
+**Pipeline access:** Confirm which team members should have access to the pipeline dashboard — typically team leads and sales managers.
+
+## Dependencies
+
+Pipeline Management has no module dependencies. It can be activated as the first module after FSF.
+
+<Note>Standard CRM field mappings for the Opportunity workflow are documented per CRM in the [Integrations](/integrations) tab.</Note>

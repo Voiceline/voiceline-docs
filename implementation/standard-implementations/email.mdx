@@ -1,0 +1,64 @@
+---
+title: "Email"
+description: "Default field structure, send behaviour, and configuration options for the Email workflow."
+status: Live
+last_updated: 2026-04-04
+---
+
+The Email workflow lets reps dictate emails to customers by voice. VoiceLine drafts, formats, and sends the email — with an optional review step before sending.
+
+## What it captures
+
+| Field | Type | Description |
+|-------|------|-------------|
+| Recipient | Contact lookup | The customer contact receiving the email |
+| Subject | Text | AI-generated or manually stated subject line |
+| Body | Long text | AI-drafted email body from the voice dictation |
+| Email type | Picklist | e.g. follow-up, offer, meeting confirmation, thank you |
+| Linked account | Lookup | The account context for the email |
+
+## Send behaviour
+
+The standard implementation uses a **review-before-send** flow:
+
+1. Rep dictates the email content by voice
+2. VoiceLine drafts the email and displays it for review
+3. Rep reviews, edits if needed, and confirms send
+4. Email is sent from the rep's connected email address
+5. Email is logged as a sent activity in the CRM
+
+An **auto-send** mode (send without review) is available as a configurable option — not recommended for initial rollout.
+
+## CRM sync
+
+Sent emails are logged as an activity record in the CRM, linked to the account and contact.
+
+| CRM | Target object | Sync trigger |
+|-----|--------------|-------------|
+| SAP C4C | Email Activity | On send |
+| Salesforce | Email Activity / Task | On send |
+| MS Dynamics | Email Activity | On send |
+| HubSpot | Email Activity | On send |
+| ZOHO | Email | On send |
+| Aurea | Email Activity | On send |
+
+## How your SA tailors this
+
+- **Email type values** — customise picklist to reflect your common email categories
+- **Default templates** — configure AI prompt templates per email type (e.g. always include product catalogue link in offer emails)
+- **Auto-send vs review** — toggle between review-before-send and auto-send per email type
+- **Connected email accounts** — configure which email account is used for sending (personal or shared)
+- **Signature** — configure email signature per rep or workspace-wide
+
+## FAQ
+
+**Which email accounts can be connected?**
+VoiceLine supports OAuth-based connection to Microsoft 365 and Google Workspace accounts.
+
+**Can we set up team-level email templates?**
+Yes — your SA configures default prompt templates per email type during setup. These shape how the AI drafts the email without requiring reps to specify format each time.
+
+**Can we use this for survey or campaign outreach?**
+The Email workflow is designed for individual rep-to-customer emails. For structured outreach campaigns, see the [Marketing Surveys](/commercial/modules/marketing-surveys) module.
+
+<Note>Need something beyond this standard? Your SA can adapt it using the [component library](/implementation/workflow-customisation/component-library), or raise a [custom requirement](/implementation/workflow-customisation/additional-customisation) if needed.</Note>

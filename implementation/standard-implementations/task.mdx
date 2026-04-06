@@ -1,0 +1,52 @@
+---
+title: "Task"
+description: "Default field structure, CRM sync behaviour, and configuration options for the Task workflow."
+status: Live
+last_updated: 2026-04-04
+---
+
+The Task workflow lets reps create follow-up tasks by voice — immediately after a visit or call, while the context is fresh.
+
+## What it captures
+
+| Field | Type | Description |
+|-------|------|-------------|
+| Task description | Text | What needs to be done |
+| Account | Lookup | The customer account the task relates to |
+| Contact | Lookup (optional) | The contact person the task relates to |
+| Due date | Date | When the task should be completed |
+| Priority | Picklist | e.g. high, normal, low |
+| Assigned to | Lookup | The rep responsible (defaults to the rep creating the task) |
+| Task type | Picklist | e.g. follow-up, send offer, internal action |
+
+## CRM sync
+
+| CRM | Target object | Sync trigger |
+|-----|--------------|-------------|
+| SAP C4C | Task | On submission |
+| Salesforce | Task | On submission |
+| MS Dynamics | Task | On submission |
+| HubSpot | Task | On submission |
+| ZOHO | Task | On submission |
+| Aurea | Task | On submission |
+
+For field-level mappings per CRM, see the [Integrations](/integrations) section.
+
+## How your SA tailors this
+
+- **Task type values** — customise picklist to reflect your team's common task categories
+- **Priority values** — adjust priority scale to match your CRM's picklist
+- **Delegation** — enable task delegation to other reps or managers
+- **Due date defaults** — configure default due date offset (e.g. 3 days from creation)
+- **Linked object scope** — configure which objects a task can be linked to (account only, account + contact, account + opportunity)
+- **Auto-creation from visit reports** — tasks can be automatically created when a rep mentions follow-up actions in a visit report; ask your SA to configure this
+
+## FAQ
+
+**Can reps assign tasks to their manager or a colleague?**
+Yes — delegation is configurable. Your SA enables this during setup if your process involves cross-rep task handoffs.
+
+**Does completing a task in VoiceLine update the CRM?**
+Task completion status syncs bidirectionally. Completing a task in VoiceLine marks it complete in the CRM, and vice versa.
+
+<Note>Need something beyond this standard? Your SA can adapt it using the [component library](/implementation/workflow-customisation/component-library), or raise a [custom requirement](/implementation/workflow-customisation/additional-customisation) if needed.</Note>

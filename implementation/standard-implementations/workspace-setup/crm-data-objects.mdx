@@ -1,0 +1,72 @@
+---
+title: "CRM Data Objects"
+description: "What VoiceLine reads from your CRM — data objects, sync scope, account assignment, and search configuration."
+status: Live
+last_updated: 2026-04-04
+---
+
+VoiceLine reads a set of data objects from your CRM at sync time. These are the records that appear in lookups, briefings, and analytics surfaces — accounts a rep can log a visit against, contacts they can tag in a call log, products they can reference by voice.
+
+Understanding what VoiceLine reads (and from where) is a critical scoping step. The objects and filters configured here determine what reps see in the app.
+
+## Standard data objects
+
+| Object | What VoiceLine reads | Used in |
+|--------|---------------------|---------|
+| Accounts | Name, address, account ID, assigned rep | All workflow lookups, visit briefing |
+| Contacts | Name, account link, email, phone | Contact lookups, call log |
+| Leads | Name, company, status | Lead lookups (if Customer Data module active) |
+| Opportunities | Name, account, stage, close date | Opportunity lookups (if Pipeline Management active) |
+| Products | Name, ID, synonyms | Product mentions in visit reports and call logs |
+| Competitors | Name, aliases | Competitor detection across all recordings |
+| Users | Name, email, CRM user ID | Rep assignment, team structure, access control |
+
+## Account scope per rep
+
+Each rep in VoiceLine only sees the accounts assigned to them in the CRM. Account scope follows your CRM's existing assignment and territory logic — VoiceLine does not maintain its own assignment model.
+
+The following must be confirmed during scoping:
+
+- **Assignment field**: Which CRM field determines account ownership (e.g. `OwnerId`, `AccountManagerId`, territory membership)
+- **Shared accounts**: Whether accounts shared across multiple reps should appear for all of them, or only the primary owner
+- **Unassigned accounts**: Whether accounts with no assigned rep should be visible to all users or hidden
+
+## Sync scope and filters
+
+Not all CRM records need to sync to VoiceLine. Filters can be applied to limit what is synced:
+
+| Object | Common filters |
+|--------|---------------|
+| Accounts | Account type (customer vs. prospect), active status, territory |
+| Contacts | Active status, associated with synced accounts only |
+| Leads | Status (open only, or all) |
+| Opportunities | Status (open only, or include closed) |
+| Products | Active status, product category |
+
+Overly broad sync scope (syncing all records without filter) increases sync time and degrades lookup performance. Your SA will recommend appropriate filters based on the size of your CRM data.
+
+## Search and meta information
+
+VoiceLine uses the synced data to power in-app search and voice-based lookups. The following fields are used for search:
+
+| Object | Search fields |
+|--------|--------------|
+| Accounts | Name, city, postal code |
+| Contacts | First name, last name, email |
+| Leads | First name, last name, company |
+| Opportunities | Name, account name |
+| Products | Name, synonyms |
+
+Additional meta fields (e.g. account segment, region, customer tier) can be synced and displayed in briefing cards without being searchable. Confirm with your SA which additional fields are useful to surface.
+
+## Deduplication behaviour
+
+VoiceLine's deduplication logic for new record creation uses synced data to detect existing matches before a record is written. The match thresholds are:
+
+| Object | Default match criteria |
+|--------|----------------------|
+| Contacts | First name + last name + account (exact or fuzzy match) |
+| Accounts | Company name + postal code |
+| Leads | First name + last name + email |
+
+Deduplication thresholds are configurable. Tighter matching reduces false positives; looser matching catches more potential duplicates but may surface false matches.

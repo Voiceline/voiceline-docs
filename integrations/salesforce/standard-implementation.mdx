@@ -1,0 +1,63 @@
+---
+title: "Salesforce — Standard Implementation"
+description: "How VoiceLine FSF workflows map to Salesforce objects — default configuration, required scoping decisions, and go-live checklist."
+status: Live
+last_updated: 2026-04-04
+---
+
+This page documents the standard VoiceLine FSF implementation on Salesforce — the default configuration your SA will deploy and the decisions required during scoping.
+
+## Salesforce object model
+
+| VoiceLine workflow | Salesforce object | Salesforce type |
+|-------------------|------------------|-----------------|
+| Visit Report | Event | ActivityType = "Customer Visit" (configurable) |
+| Call Log | Task | Type = "Call" |
+| Task | Task | Type = "Follow-Up" (configurable) |
+| Meeting | Event | ActivityType = "Meeting" |
+| Opportunity | Opportunity | Existing or new |
+| Lead | Lead | New |
+| Contact | Contact | New or update |
+
+## Required scoping decisions
+
+### 1. Activity type values
+Salesforce uses "Event Type" and "Task Type" to classify activities. VoiceLine needs these values to match your Salesforce configuration.
+
+**Decision required:** What Event Type value should Visit Reports use? What Task Type for call logs?
+
+### 2. Opportunity stage mapping
+VoiceLine presents opportunity stages to reps as a picklist. These must exactly match the stage values in your Salesforce pipeline.
+
+**Decision required:** Provide the list of Salesforce opportunity stage values your reps will use. (Recommendation: simplify to 4–6 stages for voice-based updates.)
+
+### 3. Rep account assignment
+Salesforce assigns accounts via the OwnerId field. Confirm that accounts are assigned to individual rep users, not to a shared team or queue.
+
+**Decision required:** Are accounts assigned to individual reps via Owner? If not, describe how accounts are scoped per rep.
+
+### 4. Connected App setup
+Salesforce requires a Connected App for OAuth 2.0. Your Salesforce administrator must create this before the connection can be established.
+
+**Decision required:** Connected App created in Salesforce by admin, with VoiceLine's OAuth callback URL configured.
+
+## Go-live checklist
+
+- [ ] Connected App created and OAuth callback URL configured
+- [ ] Connection test passed in VoiceLine workspace settings
+- [ ] Opportunity stage values confirmed and mapped
+- [ ] Activity type values confirmed and mapped
+- [ ] Account ownership confirmed (accounts visible to reps in lookup)
+- [ ] Initial sync completed (accounts and contacts visible in app)
+- [ ] Test visit report submitted and verified as Salesforce Event
+- [ ] Test call log submitted and verified as Salesforce Task
+- [ ] Test task submitted and verified as Salesforce Task
+- [ ] Pilot rep group onboarded and using workflows
+
+## Common Salesforce implementation issues
+
+**Opportunity stage mismatch:** If the stage value from VoiceLine does not match a Salesforce picklist value exactly (case-sensitive), the update will fail. Confirm exact stage values from the Salesforce field configuration.
+
+**Account lookup returning no results:** Verify that accounts are assigned to the rep's Salesforce user ID via OwnerId. If accounts are assigned to a shared queue or via a custom field, account lookup filtering needs custom configuration.
+
+**Event vs Task routing:** Visit reports default to Events. If your Salesforce configuration requires visit reports as Tasks (e.g. for activity reporting), this can be changed during implementation.

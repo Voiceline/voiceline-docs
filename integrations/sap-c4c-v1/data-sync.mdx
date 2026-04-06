@@ -1,0 +1,117 @@
+---
+title: "SAP C4C v1 — Data Sync Reference"
+description: "What data VoiceLine syncs with SAP C4C v1 — objects, directions, field mappings, and sync cadence."
+status: Live
+last_updated: 2026-04-04
+---
+
+This page documents what data flows between VoiceLine and SAP C4C v1, in which direction, and on what schedule.
+
+## Sync overview
+
+| Object | Direction | Trigger |
+|--------|-----------|---------|
+| Accounts | SAP → VoiceLine | On login + scheduled refresh |
+| Contacts | SAP → VoiceLine | On login + scheduled refresh |
+| Leads | SAP → VoiceLine | On login + scheduled refresh |
+| Opportunities | SAP → VoiceLine | On login + scheduled refresh |
+| CRM users (employees) | SAP → VoiceLine | On login |
+| Visit reports | VoiceLine → SAP Appointment | On submission |
+| Call logs | VoiceLine → SAP Phone Call Activity | On submission |
+| Tasks | VoiceLine → SAP Task | On submission |
+| New leads | VoiceLine → SAP Lead | On submission |
+| New contacts | VoiceLine → SAP Contact | On submission |
+
+## Inbound: SAP → VoiceLine
+
+### Accounts
+VoiceLine reads account records to populate the account lookup used in all workflows.
+
+| SAP C4C field | VoiceLine field | Notes |
+|---------------|-----------------|-------|
+| AccountID | Internal ID | Used for record linkage |
+| Name | Account name | Displayed in lookup |
+| City | City | Displayed in account context |
+| PostalCode | Postal code | |
+| Street | Street address | |
+| CountryCode | Country | |
+| AccountType | Account type | |
+| OwnerID | Assigned rep | Used to filter accounts per rep |
+
+### Contacts
+VoiceLine reads contact records to populate contact lookups in workflows.
+
+| SAP C4C field | VoiceLine field | Notes |
+|---------------|-----------------|-------|
+| ContactID | Internal ID | |
+| FirstName | First name | |
+| LastName | Last name | |
+| AccountID | Linked account | Used to filter contacts per account |
+| BusinessPhone | Phone | |
+| MobilePhone | Mobile | |
+| Email | Email | |
+| JobTitle | Job title | |
+
+### Opportunities
+VoiceLine reads opportunities for lookup in the Opportunity workflow.
+
+| SAP C4C field | VoiceLine field | Notes |
+|---------------|-----------------|-------|
+| OpportunityID | Internal ID | |
+| Name | Opportunity name | |
+| AccountID | Linked account | |
+| SalesStage | Stage | Displayed as current stage |
+| ExpectedValue | Value | |
+| CloseDate | Close date | |
+
+## Outbound: VoiceLine → SAP
+
+### Visit report → SAP Appointment
+
+| VoiceLine field | SAP C4C field | Notes |
+|-----------------|---------------|-------|
+| Visit summary | Text (Note/Body) | Full AI-generated summary |
+| Account | AccountID | Linked to account |
+| Contact | ContactID | Linked to contact |
+| Visit date | StartDateTime | Set to date of submission |
+| Visit type | AppointmentType | Mapped to configured appointment type values |
+| Next steps | Note (append) | Appended to appointment body |
+
+### Call log → SAP Phone Call Activity
+
+| VoiceLine field | SAP C4C field | Notes |
+|-----------------|---------------|-------|
+| Call summary | Text (Note) | |
+| Account | AccountID | |
+| Contact | ContactID | |
+| Call date | StartDateTime | |
+| Call direction | Direction | Inbound / Outbound |
+| Call outcome | Status | Mapped to SAP status values |
+
+### Task → SAP Task
+
+| VoiceLine field | SAP C4C field | Notes |
+|-----------------|---------------|-------|
+| Task description | Subject | |
+| Account | AccountID | |
+| Contact | ContactID | |
+| Due date | DueDate | |
+| Priority | Priority | High / Normal / Low |
+| Assigned to | OwnerID | Defaults to submitting rep |
+
+## Sync cadence
+
+| Direction | Trigger | Details |
+|-----------|---------|---------|
+| SAP → VoiceLine | On rep login | Full refresh of assigned accounts, contacts, leads, opportunities |
+| SAP → VoiceLine | Scheduled | Background refresh — interval configured during implementation (typically 4–6 hours) |
+| VoiceLine → SAP | On submission | Immediate; queued and retried if SAP is unreachable |
+
+## What VoiceLine does not sync
+
+- Financial records (orders, invoices, contracts)
+- SAP custom objects not in the standard data model
+- Email content
+- SAP workflow approvals or status triggers
+
+<Note>Field-level mappings shown here are the standard defaults. Your SA may configure different mappings during implementation to match your SAP field names and picklist values. Deviations from the standard are documented during your implementation scoping.</Note>

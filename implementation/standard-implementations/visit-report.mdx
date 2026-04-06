@@ -1,0 +1,62 @@
+---
+title: "Visit Report"
+description: "Default field structure, CRM sync behaviour, and configuration options for the Visit Report workflow."
+status: Live
+last_updated: 2026-04-04
+---
+
+The Visit Report is the core FSF workflow — the primary way reps document customer visits by voice after each interaction.
+
+## What it captures
+
+A standard visit report extracts the following fields from the voice recording:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| Visit summary | Long text | AI-generated summary of the visit content |
+| Account | Lookup | The customer account visited |
+| Contact | Lookup | Primary contact person at the visit |
+| Visit date | Date | Date of the visit (auto-populated) |
+| Visit type | Picklist | Classification of the visit (e.g. follow-up, new business, service) |
+| Next steps | Text | Action items and follow-ups mentioned in the recording |
+| Competitor mentions | Auto-extracted | Competitor names detected in the recording — feeds analytics |
+| Product mentions | Auto-extracted | Your product names detected — feeds analytics |
+| Mood / sentiment | Auto-scored | AI sentiment assessment of the visit |
+
+## CRM sync
+
+The visit report syncs to an **Activity** or **Appointment** object in your CRM, depending on the CRM's data model.
+
+| CRM | Target object | Sync trigger |
+|-----|--------------|-------------|
+| SAP C4C | Appointment | On submission |
+| Salesforce | Event / Task (configurable) | On submission |
+| MS Dynamics | Activity | On submission |
+| HubSpot | Note / Activity | On submission |
+| ZOHO | Activity | On submission |
+| Aurea | Visit (native) | On submission |
+
+For field-level mappings per CRM, see the [Integrations](/integrations) section.
+
+## How your SA tailors this
+
+Using the [component library](/implementation/workflow-customisation/component-library), the following can be adapted:
+
+- **Visit type values** — add, remove, or rename picklist values to match your taxonomy
+- **Additional custom fields** — add structured fields for information specific to your business (e.g. order volume, product discussed, campaign reference)
+- **Field labels** — rename standard fields to match your CRM's terminology
+- **Required fields** — mark fields as mandatory before submission
+- **Account/contact lookup scope** — filter which accounts are searchable (e.g. by territory, by rep assignment)
+
+## FAQ
+
+**Can we add fields that reps fill in manually during the recording?**
+Yes — the component library includes structured field components that prompt reps to provide specific information verbally. Your SA configures these during setup.
+
+**What if our CRM uses a custom activity object?**
+Standard CRM activity objects (Appointment, Event, Task, Note) are supported natively. Custom CRM objects require a non-standard implementation — let your SA know during setup so it can be scoped.
+
+**Can a visit automatically create an opportunity?**
+Automatic opportunity creation from a visit report is part of the [Pipeline Management](/commercial/modules/pipeline-management) module, not FSF.
+
+<Note>Need something beyond this standard? Your SA can adapt it using the [component library](/implementation/workflow-customisation/component-library), or raise a [custom requirement](/implementation/workflow-customisation/additional-customisation) if needed.</Note>

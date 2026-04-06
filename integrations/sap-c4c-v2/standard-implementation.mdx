@@ -1,0 +1,72 @@
+---
+title: "SAP C4C v2 — Standard Implementation"
+description: "How VoiceLine FSF workflows are implemented on SAP C4C v2 — default object mappings, configuration decisions, and go-live checklist."
+status: Live
+last_updated: 2026-04-04
+---
+
+This page documents the standard VoiceLine FSF implementation on SAP C4C v2 — the default configuration your SA will deploy, and the decisions that need to be made during scoping.
+
+SAP C4C v2 uses a REST-based API, replacing the OData/SOAP interface used in v1. The object model is largely consistent with v1, with some field name differences.
+
+## SAP C4C v2 object model
+
+| VoiceLine workflow | SAP object | SAP type |
+|-------------------|------------|----------|
+| Visit Report | Appointment | Configurable type (e.g. "Customer Visit") |
+| Call Log | Call Log | Configurable type |
+| Task | Task | Standard |
+| Meeting | Appointment | Configurable type (e.g. "Customer Meeting") |
+| Opportunity | Opportunity | Standard |
+| Lead | Lead | Standard |
+| Contact | Individual (Contact) | Standard |
+| Account | Account | Standard |
+
+## Required scoping decisions
+
+### 1. Appointment type values
+SAP C4C v2 uses configurable appointment types to classify activities. VoiceLine's Visit Report and Meeting workflows map to Appointment objects — your SA needs to know which appointment type values to use.
+
+**Decision required:** What appointment type should Visit Reports map to? What type should Meetings map to?
+
+### 2. Service user permissions
+The SAP service user must have read/write permissions for all objects VoiceLine syncs.
+
+**Decision required:** Service user created and permissions confirmed by IT.
+
+### 3. Account scope per rep
+SAP C4C assigns accounts to reps. VoiceLine uses owner assignment to filter which accounts each rep sees. If your SAP assigns accounts by territory group or another method, the lookup filter needs to be configured accordingly.
+
+**Decision required:** How are accounts assigned to reps in SAP?
+
+### 4. v1 vs v2 API version
+Your SA will confirm the correct API version with your SAP administrator based on your tenant configuration. v2 requires SAP C4C tenant version 2208 or higher.
+
+**Decision required:** Tenant version confirmed by SAP administrator.
+
+### 5. Network access
+On-premise or private-network SAP deployments require VPN access or IP whitelisting for VoiceLine's servers.
+
+**Decision required:** Is your SAP tenant accessible from the internet, or does it require VPN/IP whitelist? VPN setups are non-standard and billed at €1,300/day.
+
+## Go-live checklist
+
+- [ ] SAP tenant version confirmed (2208 or higher for v2 API)
+- [ ] Service user created with correct API permissions
+- [ ] SAP tenant URL confirmed and accessible
+- [ ] Appointment type values agreed and mapped
+- [ ] Account scope logic confirmed
+- [ ] Connection test passed in VoiceLine workspace settings
+- [ ] Initial sync completed (accounts and contacts visible in app)
+- [ ] Test visit report submitted and verified in SAP
+- [ ] Test call log submitted and verified in SAP
+- [ ] Test task submitted and verified in SAP
+- [ ] Pilot rep group onboarded and using workflows
+
+## Common SAP C4C v2 implementation issues
+
+**Appointment type not found:** If the appointment type value in VoiceLine does not match an active type in SAP, records will fail to create. Confirm exact type values with your SAP administrator.
+
+**Account lookup returning no results:** Verify that the service user has read access to Account objects and that accounts are assigned to the rep's user in SAP.
+
+**API version mismatch:** If you are unsure whether your tenant uses v1 or v2, check with your SAP administrator. Using the wrong API version will cause connection failures at setup.

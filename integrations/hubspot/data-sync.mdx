@@ -1,0 +1,120 @@
+---
+title: "HubSpot — Data Sync Reference"
+description: "What data VoiceLine syncs with HubSpot — objects, directions, field mappings, and sync cadence."
+status: Live
+last_updated: 2026-04-04
+---
+
+This page documents what data flows between VoiceLine and HubSpot, in which direction, and on what schedule.
+
+## HubSpot naming note
+
+HubSpot uses "Companies" instead of "Accounts" and "Deals" instead of "Opportunities". VoiceLine maps these internally — reps see "Account" and "Opportunity" labels in the app, which sync to Company and Deal objects in HubSpot.
+
+## Sync overview
+
+| Object | Direction | Trigger |
+|--------|-----------|---------|
+| Companies (Accounts) | HubSpot → VoiceLine | On login + scheduled refresh |
+| Contacts | HubSpot → VoiceLine | On login + scheduled refresh |
+| Deals (Opportunities) | HubSpot → VoiceLine | On login + scheduled refresh |
+| Owners | HubSpot → VoiceLine | On login |
+| Visit reports | VoiceLine → HubSpot Note | On submission |
+| Call logs | VoiceLine → HubSpot Note | On submission |
+| Meetings | VoiceLine → HubSpot Meeting | On submission |
+| Tasks | VoiceLine → HubSpot Task | On submission |
+| New contacts | VoiceLine → HubSpot Contact | On submission |
+| Deal updates | VoiceLine → HubSpot Deal | On submission |
+
+## Inbound: HubSpot → VoiceLine
+
+### Companies (Accounts)
+
+| HubSpot property | VoiceLine field | Notes |
+|-----------------|-----------------|-------|
+| id | Internal ID | Used for record linkage |
+| name | Account name | Displayed in lookup |
+| domain | Website | |
+| city | City | |
+| zip | Postal code | |
+| address | Street address | |
+| updatedAt | Last updated | Used for delta sync |
+
+### Contacts
+
+| HubSpot property | VoiceLine field | Notes |
+|-----------------|-----------------|-------|
+| id | Internal ID | |
+| firstname | First name | |
+| lastname | Last name | |
+| email | Email | Normalised to lowercase |
+| phone | Phone | |
+| jobtitle | Job title | |
+| company | Company name | |
+| city | City | |
+| zip | Postal code | |
+| address | Street address | |
+| updatedAt | Last updated | |
+
+### Deals (Opportunities)
+
+| HubSpot property | VoiceLine field | Notes |
+|-----------------|-----------------|-------|
+| id | Internal ID | |
+| dealname | Opportunity name | |
+| dealstage | Stage | Must match your pipeline stage IDs |
+| amount | Value | |
+| closedate | Close date | |
+
+## Outbound: VoiceLine → HubSpot
+
+### Visit report → HubSpot Note
+
+Notes are associated with the relevant Company, Contact, and/or Deal based on the visit context.
+
+| VoiceLine field | HubSpot property | Notes |
+|-----------------|-----------------|-------|
+| Visit summary | body | Full AI-generated summary |
+| Account | associations → company | Linked via association |
+| Contact | associations → contact | Linked via association |
+| Visit date | timestamp | Date of submission |
+
+### Call log → HubSpot Note
+
+| VoiceLine field | HubSpot property | Notes |
+|-----------------|-----------------|-------|
+| Call summary | body | |
+| Account | associations → company | |
+| Contact | associations → contact | |
+| Call date | timestamp | |
+
+### New contact → HubSpot Contact
+
+| VoiceLine field | HubSpot property | Notes |
+|-----------------|-----------------|-------|
+| First name | firstname | Required |
+| Last name | lastname | Required |
+| Email | email | Normalised to lowercase |
+| Phone | phone | |
+| Job title | jobtitle | |
+| Company | company | |
+| Website | website | |
+| Address.City | city | |
+| Address.PostalCode | zip | |
+| Address.Street | address | |
+
+## Sync cadence
+
+| Direction | Trigger | Details |
+|-----------|---------|---------|
+| HubSpot → VoiceLine | On rep login | Full refresh of companies, contacts, deals |
+| HubSpot → VoiceLine | Scheduled | Background refresh — interval configured during implementation (typically 4–6 hours) |
+| VoiceLine → HubSpot | On submission | Immediate |
+
+## What VoiceLine does not sync
+
+- HubSpot Marketing Hub data (campaigns, email sequences)
+- Service Hub tickets
+- Custom HubSpot objects (unless configured as a non-standard implementation)
+
+<Note>Field-level mappings shown here are the standard defaults. Your SA may configure additional mappings during implementation to match your HubSpot property names and pipeline stage values.</Note>

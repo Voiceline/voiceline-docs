@@ -1,0 +1,62 @@
+---
+title: "Lead Tracking"
+description: "How to track lead source and campaign attribution from industry fairs — CRM campaign sync and text/select field approaches."
+status: Live
+last_updated: 2026-04-04
+---
+
+Lead tracking ties contacts and leads captured at a fair back to the event. This matters for reporting — knowing which leads came from which event, and whether those leads converted. There are two approaches, and which one is right depends on your CRM and whether you use campaign objects for reporting.
+
+## Approach 1: CRM campaign sync (Salesforce)
+
+For Salesforce customers, VoiceLine can sync campaign records from Salesforce and link fair contacts directly to the relevant campaign.
+
+**How it works:**
+
+1. VoiceLine fetches active campaigns from Salesforce where `Type = Event` and `Status = Planned` or `In Progress`
+2. The matching campaign appears as a selectable field in the Fair Report (or is set as a fixed context for the duration of the event)
+3. When a lead or contact is created from the fair entry, VoiceLine creates a `CampaignMember` record linking the lead or contact to the campaign
+
+**What this enables:**
+- Standard Salesforce campaign reporting: contact rate, conversion rate, pipeline influenced
+- Native CRM attribution without custom fields
+- Campaign membership visible on the lead/contact record in Salesforce
+
+**Requirements:**
+- Salesforce with Campaign objects enabled
+- Active campaigns with Type=Event set up in Salesforce before the event
+- Pipeline Management or Customer Data module active (for lead/contact creation)
+
+## Approach 2: Text or single-select source field
+
+For non-Salesforce CRMs, or for customers who do not use Salesforce campaign objects, a simpler approach is to stamp a source field on all fair entries.
+
+**How it works:**
+
+1. A source field is added to the Fair Report workflow — either a `SingleLineText` (free text event name) or a `SingleSelect` (list of events/campaigns)
+2. The field value is written to the lead or contact record in the CRM on creation
+3. Reporting is done by filtering on the source field value
+
+**Variants:**
+
+| Variant | When to use |
+|---------|------------|
+| Fixed tag | All records from a specific event get the same tag — no rep input required; set per event activation |
+| SingleSelect | Rep selects from a list of events — useful when reps attend multiple events or the list is managed centrally |
+| SingleLineText | Rep types the event name — flexible but less consistent; not recommended for reporting |
+
+**What this enables:**
+- CRM-agnostic lead source attribution
+- Simple filtering and segmentation in CRM reports
+- No dependency on campaign objects
+
+## Which approach to use
+
+| | CRM Campaign Sync | Source Field |
+|---|---|---|
+| CRM | Salesforce only | All CRMs |
+| Reporting | Native Salesforce campaign reports | CRM filter/segment on field value |
+| Setup complexity | Requires campaign objects in Salesforce | Minimal — one field added to workflow |
+| Attribution granularity | Full campaign membership and conversion tracking | Lead source only |
+
+If you use Salesforce and actively report on campaign ROI, use the CRM campaign sync approach. For all other CRMs, or for simpler reporting needs, the source field approach is sufficient and faster to configure.

@@ -1,0 +1,65 @@
+---
+title: "Languages & Voice Recognition"
+description: "Language configuration for VoiceLine — workspace language, interface and output settings, and AI voice recognition."
+status: Live
+last_updated: 2026-04-04
+---
+
+VoiceLine supports multilingual teams and multinational deployments. Language configuration covers three distinct areas: the interface language shown to users, the languages reps can record in, and the output language for CRM sync and summaries.
+
+## Workspace default language
+
+The workspace default language is the primary language for the deployment. It determines:
+
+- The default interface language for all users in the workspace
+- The default recording language if no per-user override is set
+- The default output language for summaries and CRM field values
+
+## Interface language
+
+The interface language is what users see in the app — menus, labels, and in-app text. VoiceLine supports the following interface languages:
+
+- German
+- English
+- French
+- Spanish
+- Italian
+- Dutch
+- Polish
+
+Per-user interface language overrides are available in user settings.
+
+## Recording language
+
+Recording language determines which language model is used for voice recognition. Reps can switch recording language manually before starting a recording.
+
+Supported recording languages include all major European languages. Your SA will confirm which languages are included in your licence and configure them for your workspace.
+
+<Note>Recording language availability depends on your VoiceLine licence. Confirm which languages are included in scope during the kickoff session.</Note>
+
+## Output language
+
+Output language is the language in which summaries, CRM field values, and activity descriptions are written. Output language is independent of recording language — a rep can record in German and have the output written in English.
+
+| Setting | Description |
+|---------|-------------|
+| Output = recording language | Output is written in the same language the rep recorded in (default) |
+| Output = fixed language | All output is written in a single configured language, regardless of recording language |
+| Output = per-user preference | Each user can set their preferred output language independently |
+
+## AI voice recognition
+
+VoiceLine uses AI models for voice recognition and transcription. The following can be configured per workspace:
+
+| Setting | Description |
+|---------|-------------|
+| Domain vocabulary | Custom vocabulary for product names, internal terminology, and proper nouns (e.g. customer names, competitor names) |
+| Speaker language detection | Automatically detect the language spoken in a recording — useful for teams operating across multiple languages |
+| Noise tolerance | Configure the recognition model for high-noise environments (e.g. car, trade fair floor) |
+
+Custom vocabulary is provided as a list of terms and their expected spellings. This is particularly important for:
+- Product names with non-standard spelling or abbreviations
+- Internal CRM account names that differ from common usage
+- Competitor names and product names
+
+Your SA will collect this vocabulary list during the scoping session. Updates to custom vocabulary after go-live are handled via workspace settings.

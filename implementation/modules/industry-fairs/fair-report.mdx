@@ -1,0 +1,56 @@
+---
+title: "Fair Report"
+description: "Standard implementation for the Fair Report workflow — field structure, how it differs from a visit report, and CRM sync."
+status: Live
+last_updated: 2026-04-04
+---
+
+The Fair Report is the primary recording workflow for trade shows and industry events. It is a simplified version of the Visit Report, optimised for short booth interactions where the rep captures a new contact's details and the substance of the conversation in one step.
+
+## What it captures
+
+| Field | Component type | Notes |
+|-------|---------------|-------|
+| Contact name | SingleLineText | New contact — not a CRM lookup |
+| Company | SingleLineText | May or may not be in CRM already |
+| Email | SingleLineText | Key capture field — required by default |
+| Phone | SingleLineText | |
+| Job title | SingleLineText | |
+| Topics discussed | MultiLineText | Short summary of the conversation |
+| Interest level | SingleSelect | Hot / Warm / Cold — configurable values |
+| Follow-up action | SingleSelect | Call / Email / Demo / No follow-up |
+| Follow-up date | Zeitraum (single date) | Creates a follow-up task if set |
+| Notes | MultiLineText | Additional context |
+
+## How it differs from a Visit Report
+
+| | Visit Report | Fair Report |
+|---|---|---|
+| Contact field | CRM lookup (existing contact) | Free text (new contact) |
+| Account field | CRM lookup (existing account) | Free text (company name) |
+| Typical duration | 30–90 minutes | 5–15 minutes |
+| CRM sync target | Activity on existing account | New lead or contact record |
+| Purpose | Document an existing customer interaction | Capture a new prospect at an event |
+
+## How fair entries link to leads and contacts
+
+After a Fair Report is submitted, VoiceLine queues the captured contact for CRM creation:
+
+- If the [Customer Data](/implementation/modules/customer-data) module is active, the contact can be created directly as a Lead or Contact record
+- If the Customer Data module is not active, contacts are batched and reviewed after the event, then imported manually
+
+The lead creation behaviour — immediate vs. batched — is a required scoping decision (see below).
+
+## Required scoping decisions
+
+**CRM object type:** Confirm whether fair contacts should be created as Leads or Contacts (some CRMs do not have a separate Lead object).
+
+**Creation timing:** Confirm whether fair contacts should be created in the CRM immediately on submission, or held for review and batch-imported after the event.
+
+**Interest level values:** Provide the picklist values for interest level — these may need to align with your CRM's lead status or qualification model.
+
+**Event context:** Confirm how the event name is captured — as a fixed tag applied to all records from the event, or as a selectable field the rep chooses from.
+
+## Dependencies
+
+Fair Report requires the [Industry Fairs](/implementation/modules/industry-fairs) module to be active. CRM lead or contact creation from fair entries also requires the [Customer Data](/implementation/modules/customer-data) module.

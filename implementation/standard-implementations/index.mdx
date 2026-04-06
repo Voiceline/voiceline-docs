@@ -1,0 +1,50 @@
+---
+title: "Setting Up Field Sales Fundamentals"
+description: "What your SA configures to get FSF live — the setup sequence, the decisions you'll need to make, and what you'll have when it's done."
+status: Live
+last_updated: 2026-04-04
+---
+
+This section is the reference guide for your FSF implementation. It documents exactly what gets configured, in what order, and what decisions your team needs to make at each step.
+
+Your Solutions Architect owns this process. You don't configure VoiceLine yourself — your SA does. What this section gives you is full transparency into what's being built and why.
+
+## The setup sequence
+
+FSF setup happens in three stages:
+
+**[Step 1 — Workspace configuration](/implementation/standard-implementations/workspace-setup)**: Before any workflows are touched, your workspace needs to be set up correctly. This covers authentication, CRM connection, language settings, and the data objects VoiceLine reads from your CRM. Your SA handles this with your CRM administrator. It typically takes one to two working sessions.
+
+**[Step 2 — Core workflow configuration](/implementation/standard-implementations/workspace-setup)**: Your SA configures the six daily workflows — visit report, call log, task, email, meeting, and reminder. Each one starts from our standard implementation and is then tailored to your process: field labels, picklist values, required fields, and CRM mapping. This is where your sales process decisions matter most.
+
+**[Step 3 — Reference data](/implementation/standard-implementations/workspace-setup)**: Before your team goes live, your SA loads your product catalogue and competitor list into VoiceLine. This is what allows the AI to recognise your products and competitors by name in recordings from day one.
+
+## What decisions you need to make
+
+Most of the configuration is handled by your SA based on the standard. What you need to bring is:
+
+- **Process decisions** — visit types, call outcomes, task priorities, and other picklist values that reflect how your team actually works
+- **CRM field confirmation** — your CRM admin confirms which fields and objects the data writes to
+- **Language and team setup** — which languages your reps work in, and how users are provisioned
+- **Product and competitor data** — a list of your products and competitors so the AI can recognise them
+
+Your SA will walk you through each of these. No technical knowledge required on your side.
+
+## What you'll have when setup is complete
+
+- All FSF workflows live and syncing to your CRM
+- Your reps can document visits, calls, tasks, emails, and meetings by voice
+- Product and competitor mentions are extracted automatically from every recording
+- Your team lead has visibility into activity data and documentation rates
+- A clean baseline ready for the adoption phase
+
+## How workflows are tailored to your setup
+
+Every workflow in this section documents:
+- What it captures from the voice recording
+- What it writes to your CRM
+- How your SA tailors it to your process
+
+The standard is the starting point — proven, tested, and designed to drive adoption. Your SA adapts it using the [component library](/implementation/workflow-customisation/component-library). If you have requirements that go beyond the standard, your SA will consult with you on the best approach.
+
+<Note>Opportunity, Lead, Contact, and Account creation workflows are part of add-on modules, not FSF. See [Pipeline Management](/implementation/modules/pipeline-management) and [Customer Data](/implementation/modules/customer-data).</Note>

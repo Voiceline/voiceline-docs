@@ -1,0 +1,61 @@
+---
+title: "Update Contact"
+description: "Standard implementation for the Update Contact workflow — field structure, AI matching logic, and CRM sync."
+status: Live
+last_updated: 2026-04-04
+---
+
+The Update Contact workflow lets reps update an existing contact record by voice after an interaction. It selects the contact from the CRM, applies changes to their details, and writes back to the existing record — without creating a duplicate.
+
+## What it captures
+
+| Field | Component type | Notes |
+|-------|---------------|-------|
+| Contact | CRMRelatedContact | AI selects from contacts linked to the account |
+| Job title | SingleLineText | |
+| Phone | SingleLineText | Direct phone number |
+| Mobile | SingleLineText | |
+| Email | SingleLineText | |
+| Department | SingleSelect | Configurable values |
+| Notes | MultiLineText | Context from the interaction |
+
+## How the AI selects the contact
+
+VoiceLine matches the contact from the rep's spoken reference. The match uses:
+
+1. Contacts linked to the current account (the account the recording is logged against)
+2. Name similarity between the spoken name and CRM records
+
+If a rep says "I spoke with Maria Müller", VoiceLine searches the account's contacts for a match. If found, it selects that record. If multiple potential matches exist, the rep is prompted to confirm.
+
+## Deduplication behaviour
+
+Before writing an update, VoiceLine checks that the selected contact is the correct record. If the rep appears to be referencing a different person (e.g. a different account), the workflow surfaces the alternative and asks the rep to confirm.
+
+## How it differs from Create Contact
+
+| | Create Contact | Update Contact |
+|---|---|---|
+| Writes to | New record | Existing record |
+| Contact selection | Not required | Required — AI matches from CRM |
+| Deduplication | Prevents duplicate creation | Confirms correct record before update |
+| CRM behaviour | Creates new contact object | Patches fields on existing object |
+
+## Required scoping decisions
+
+**Updatable fields:** Confirm which contact fields reps should be able to update by voice. Fields like email address are often restricted to prevent accidental overwrites.
+
+**Account linkage on update:** Confirm whether the contact's account link can be changed via an update workflow (some customers restrict this to CRM-only changes).
+
+**Match confidence threshold:** Confirm how strict the contact matching should be. A looser threshold means more auto-matches; a tighter threshold requires more rep confirmation.
+
+## CRM sync
+
+| CRM | Target object | Behaviour |
+|-----|--------------|-----------|
+| SAP C4C | Individual (Contact) | PATCH on existing record |
+| Salesforce | Contact | Update on existing record |
+| MS Dynamics | Contact | Update on existing record |
+| HubSpot | Contact | Update on existing record |
+| ZOHO | Contact | Update on existing record |
+| Aurea | Contact | Update on existing record |

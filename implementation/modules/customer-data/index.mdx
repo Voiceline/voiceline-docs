@@ -1,0 +1,69 @@
+---
+title: "Customer Data"
+description: "Standard implementation for the Customer Data module — contact, account, and lead creation with deduplication."
+status: Live
+last_updated: 2026-04-04
+---
+
+The Customer Data module adds structured creation and update workflows for contacts, accounts, and leads. Reps capture new contact details, update account information, and qualify leads by voice — with deduplication logic that prevents duplicate records from being created in your CRM.
+
+For a full description of what the module includes commercially, see [Customer Data](/commercial/modules/customer-data).
+
+## What it activates
+
+| Capability | Description |
+|-----------|-------------|
+| Contact creation | Create a new contact record in the CRM by voice |
+| Account creation | Create or update an account record by voice |
+| Lead creation | Create and qualify a new lead by voice |
+| Deduplication | Duplicate detection and resolution before CRM write |
+
+The Contact, Account, and Lead workflows are available in FSF. Customer Data extends them with deduplication logic and the Customer Data Quality features in the analytics surface.
+
+## Standard implementation
+
+### Contact creation
+
+| Field | Component type | Notes |
+|-------|---------------|-------|
+| First name | SingleLineText | |
+| Last name | SingleLineText | |
+| Email | SingleLineText | |
+| Phone | SingleLineText | |
+| Job title | SingleLineText | |
+| Company / account | CRMAccount | Links contact to existing account |
+| Address | SingleLineText (multiple) | Street, city, postal code, country |
+
+### Account creation
+
+| Field | Component type | Notes |
+|-------|---------------|-------|
+| Company name | SingleLineText | Required |
+| Email | SingleLineText | |
+| Phone | SingleLineText | |
+| Website | SingleLineText | |
+| Address | SingleLineText (multiple) | Street, city, postal code, country |
+
+### Lead creation
+
+| Field | Component type | Notes |
+|-------|---------------|-------|
+| First name | SingleLineText | |
+| Last name | SingleLineText | |
+| Email | SingleLineText | |
+| Phone | SingleLineText | |
+| Company | SingleLineText | |
+| Lead source | SingleSelect | Configurable source values |
+| Notes | MultiLineText | Context from the conversation |
+
+## Required scoping decisions
+
+**Deduplication logic:** Confirm which fields are used to detect duplicates — typically email address and/or company name + contact name. Define what happens when a duplicate is found (block creation, prompt for confirmation, or merge).
+
+**Mandatory fields:** Agree which fields are required before a record can be submitted. Requiring email address reduces duplicates but may block rep workflow if email is unknown.
+
+**Lead qualification criteria:** If your CRM has a lead qualification stage model, confirm how the Lead workflow maps to your qualification fields.
+
+## Dependencies
+
+Customer Data has no module dependencies. It can be activated as the first module after FSF.
