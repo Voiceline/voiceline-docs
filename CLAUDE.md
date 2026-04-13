@@ -46,7 +46,13 @@ voiceline-docs/
 │       └── enterprise.mdx
 │
 ├── engineering/            Developer docs (stub)
-├── implementation/         Solutions Architect guides (stub)
+├── implementation/         Solutions Architect / delivery guides
+│   ├── getting-started/    initial-setup, project-team, adding-modules, adding-user-groups
+│   ├── standard-implementations/  FSF configuration — workspace, workflows, data
+│   ├── workflow-customisation/    Component library and customisation
+│   ├── modules/            Implementation guides per add-on module
+│   ├── data-integrations/  CRM connection and data flow reference
+│   └── security/           Security posture and compliance
 │
 └── customer/               Customer-facing product documentation
     ├── getting-started/    index.md, platform-overview.md, quick-start.md
@@ -73,8 +79,15 @@ voiceline-docs/
 
 ---
 
+## File naming and structure
+
+- File names must match the page's displayed title in kebab-case: `title: "Adding Modules"` → `adding-modules.mdx`
+- Folder names must mirror the navigation section names shown in the webapp: a page in the "Getting Started" nav group lives in a `getting-started/` subfolder
+- When creating or moving pages, update `docs.json` to match and delete the old files
+
 ## Writing rules (customer docs)
 
+- Index pages are always titled `"Overview"` — never repeat the parent category name as the page title
 - Second-person ("you"), active voice, short sentences
 - Lead with concept before mechanics — what it is before how to use it
 - UI navigation paths in bold: **Settings → Integrations → CRM Name**
@@ -84,11 +97,13 @@ voiceline-docs/
 
 ## Writing rules (commercial docs)
 
-- Active voice, third-person or neutral — these are internal reference pages, not instructions
+- Second-person ("you"), active voice — same register as customer docs and the Linear reference style
 - Every page answers: what it is → what problem it solves → what's included
+- **Section headings must be descriptive** — no generic headings like "What's included", "How pricing works", "How it works", or "Overview". Name the section after what it actually covers.
 - **Feature tables use two columns: `Feature | What it does`** — no Notes/Status/Docs columns
+  - Feature names use the actual product name (e.g., "Account Creation", "Visit Report") — not descriptive phrases like "Create a new account by voice"
   - Link the feature name to its customer doc when one exists
-  - Write one sentence (under 15 words) in the "What it does" column
+  - Write one sentence (under 15 words) in the "What it does" column — this is where the behaviour is described
   - No `—` placeholders — always write a description
 - `## Why it exists` section (modules only): 2–3 sentences, lead with the customer pain
 - No ROI numbers — explain the value logic, not the math
@@ -98,6 +113,8 @@ voiceline-docs/
 ---
 
 ## YAML frontmatter (required on every customer doc)
+
+Do **not** include a `description` field — page descriptions are not used.
 
 ```yaml
 ---

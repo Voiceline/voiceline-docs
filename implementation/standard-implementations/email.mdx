@@ -1,6 +1,5 @@
 ---
 title: "Email"
-description: "Default field structure, send behaviour, and configuration options for the Email workflow."
 status: Live
 last_updated: 2026-04-04
 ---
@@ -42,7 +41,13 @@ Sent emails are logged as an activity record in the CRM, linked to the account a
 | ZOHO | Email | On send |
 | Aurea | Email Activity | On send |
 
-## How your SA tailors this
+## Default schema
+
+The fields listed above are the standard email schema. The schema is configurable using the component library: fields can be added, removed, relabelled, or made required.
+
+To add, remove, or change components, see the [Component Library](/implementation/workflow-customisation/component-library).
+
+## Customising the schema
 
 - **Email type values** — customise picklist to reflect your common email categories
 - **Default templates** — configure AI prompt templates per email type (e.g. always include product catalogue link in offer emails)
@@ -50,15 +55,27 @@ Sent emails are logged as an activity record in the CRM, linked to the account a
 - **Connected email accounts** — configure which email account is used for sending (personal or shared)
 - **Signature** — configure email signature per rep or workspace-wide
 
+## Hard-coded fields
+
+Hard-coded fields are FDE-configured values stamped on every sent email's CRM activity record — regardless of what the rep enters. They do not appear in the rep's UI.
+
+| Example use case | Hard-coded field | Value |
+|-----------------|-----------------|-------|
+| Tag all VoiceLine emails | Source | VoiceLine |
+| Enforce activity subtype | Activity type | Customer Email |
+| Stamp campaign context | Campaign | Q2 Outreach |
+
+Your FDE configures hard-coded fields during workflow setup. Define the field name, the fixed value, and the CRM target field for each one.
+
 ## FAQ
 
 **Which email accounts can be connected?**
 VoiceLine supports OAuth-based connection to Microsoft 365 and Google Workspace accounts.
 
 **Can we set up team-level email templates?**
-Yes — your SA configures default prompt templates per email type during setup. These shape how the AI drafts the email without requiring reps to specify format each time.
+Yes — your FDE configures default prompt templates per email type during setup. These shape how the AI drafts the email without requiring reps to specify format each time.
 
 **Can we use this for survey or campaign outreach?**
 The Email workflow is designed for individual rep-to-customer emails. For structured outreach campaigns, see the [Marketing Surveys](/commercial/modules/marketing-surveys) module.
 
-<Note>Need something beyond this standard? Your SA can adapt it using the [component library](/implementation/workflow-customisation/component-library), or raise a [custom requirement](/implementation/workflow-customisation/additional-customisation) if needed.</Note>
+<Note>Need something beyond this standard? Your FDE can adapt it using the [component library](/implementation/workflow-customisation/component-library), or raise a [custom requirement](/implementation/workflow-customisation/additional-customisation) if needed.</Note>

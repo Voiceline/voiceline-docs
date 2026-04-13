@@ -1,0 +1,59 @@
+---
+title: "Workspace Settings"
+status: Live
+last_updated: 2026-04-08
+---
+
+Workspace setup covers everything that defines how the workspace is configured before any CRM connection or workflow build begins. Your FDE handles this with your project lead. It typically takes one working session.
+
+## Workspace name
+
+The workspace name is the identifier your team sees throughout the product — in the app header, email sender names, and CRM activity records. It is set during initial provisioning and should reflect how your team or deployment is identified.
+
+Confirm the workspace name with your project lead before your FDE begins configuration. Renaming a workspace after go-live is possible but requires FDE involvement.
+
+## Language settings
+
+VoiceLine supports multilingual teams and multinational deployments. Language configuration covers three independent settings:
+
+| Setting | What it controls |
+|---------|-----------------|
+| Interface language | The language of the app UI — menus, labels, in-app text |
+| Recording language | The speech recognition model used for voice input |
+| Output language | The language of AI-generated summaries and CRM field values |
+
+These three settings can be configured independently. A rep can, for example, see the interface in German, record in French, and have summaries written in English.
+
+**Interface languages supported:** German, English, French, Spanish, Italian, Dutch, Polish. Per-user overrides are available in user settings.
+
+**Recording languages:** All major European languages. Your FDE will confirm which are included in your licence during the kickoff session.
+
+<Note>Recording language availability depends on your VoiceLine licence. Confirm which languages are in scope at kickoff.</Note>
+
+**Output language options:**
+
+| Mode | Behaviour |
+|------|-----------|
+| Output = recording language | Output is written in the same language the rep recorded in (default) |
+| Output = fixed language | All output is written in one configured language, regardless of recording language |
+| Output = per-user preference | Each user sets their preferred output language independently |
+
+## CRM translation
+
+CRM translation is an Enterprise feature that extends output language for multinational teams. When enabled, reps record in their native language, summaries are generated in that language, and the output is then automatically translated into the workspace's configured CRM language before sync.
+
+This is useful when a central team or manager needs all CRM activity records in a single language, but reps across countries record in their own languages.
+
+**Scoping decision:** Confirm with your project lead whether CRM translation is required, and which language the CRM records should be written in.
+
+## Recording access
+
+<Note>This section is under development. Recording access controls who can listen to voice recordings within the workspace. There are multiple access levels. Your FDE will confirm the correct configuration for your team structure during setup.</Note>
+
+---
+
+**What your team needs to provide for this step:**
+- Agreed workspace name
+- Language matrix per user group (interface / recording / output)
+- Decision on whether CRM translation is required, and target CRM language
+- Recording access level decision (your FDE will guide this)

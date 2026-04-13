@@ -1,0 +1,60 @@
+---
+title: "Visit Records (Inbound)"
+status: Live
+last_updated: 2026-04-08
+---
+
+VoiceLine reads existing visit and activity records from your CRM to power the Visit Briefing. When a rep opens the briefing before a visit, they see a summary of recent activity at that account — including past visit reports logged through VoiceLine and, if configured, existing visit records that were in the CRM before VoiceLine was deployed.
+
+This page covers the inbound sync of CRM visit records. For the outbound sync — how VoiceLine writes new visit report records to your CRM — see [Visit Report](/implementation/standard-implementations/visit-report).
+
+## What VoiceLine reads
+
+VoiceLine syncs the following from your CRM's visit/activity objects:
+
+| Field | Used in |
+|-------|---------|
+| Activity date | Briefing timeline |
+| Activity type | Filtering and display label |
+| Summary / description | Briefing activity card |
+| Linked account | Account-scoped briefing lookup |
+| Linked contact | Contact display in activity card |
+| Assigned rep | Ownership attribution |
+
+Additional fields (e.g. visit outcome, product discussed, custom CRM fields) can be surfaced in the briefing card. Confirm with your FDE which fields are useful to show.
+
+## History window
+
+The default history window is **12 months**. VoiceLine reads activity records from the past 12 months for each account.
+
+If a longer or shorter history window is required, discuss with your FDE. A very large history window increases sync volume and may affect briefing load performance.
+
+## CRM object mapping
+
+Visit records map to different CRM objects depending on your CRM:
+
+| CRM | Visit record object |
+|-----|-------------------|
+| SAP C4C | Appointment |
+| Salesforce | Event (or Task, depending on your CRM setup) |
+| MS Dynamics | Appointment / Activity |
+| HubSpot | Note / Engagement |
+| ZOHO | Activity |
+| Aurea | Visit (native object) |
+
+The exact object type and which activity types are included must be confirmed with your CRM admin. Not all CRM activity types need to sync — confirm which types represent customer visit interactions.
+
+## What is not included
+
+- Records not stored in the account object (activities not linked to an account are not surfaced)
+- Email inbox content
+- Calendar events with no CRM record
+
+## Scoping decisions
+
+Before your FDE configures visit record inbound sync, confirm the following:
+
+- Which CRM object type(s) represent visit records in your CRM
+- Which activity type values should be included (e.g. "Field Visit", "Customer Meeting" — exclude internal activities)
+- Which CRM fields to surface in the briefing activity card
+- Whether to include pre-VoiceLine historical records, or start fresh from go-live

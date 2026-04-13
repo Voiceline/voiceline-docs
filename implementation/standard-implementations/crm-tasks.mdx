@@ -1,0 +1,62 @@
+---
+title: "Tasks"
+status: Live
+last_updated: 2026-04-08
+---
+
+Tasks in VoiceLine are bidirectional. VoiceLine reads open tasks from your CRM to show in Visit Briefing, and writes new tasks to the CRM when reps submit the Task workflow. Completed task status syncs in both directions.
+
+For the customer-facing description of tasks in VoiceLine, see [Tasks](/customer/platform/data-objects/tasks).
+
+## What VoiceLine reads from CRM (inbound)
+
+Open tasks assigned to a rep are surfaced in the Visit Briefing when that rep visits the linked account. This gives reps visibility into outstanding follow-ups before the visit.
+
+| Field | Used in |
+|-------|---------|
+| Task description | Briefing task card |
+| Due date | Briefing task card, overdue indicator |
+| Priority | Briefing task card |
+| Assigned rep | Rep-scoped task visibility |
+| Linked account | Account-scoped task lookup |
+| Linked contact | Contact display in task card |
+| Completion status | Determines whether task appears in briefing |
+
+## What VoiceLine writes to CRM (outbound)
+
+When a rep submits a Task workflow, VoiceLine creates a new task record in the CRM.
+
+| CRM | Target object | Sync trigger |
+|-----|--------------|-------------|
+| SAP C4C | Task | On submission |
+| Salesforce | Task | On submission |
+| MS Dynamics | Task | On submission |
+| HubSpot | Task | On submission |
+| ZOHO | Task | On submission |
+| Aurea | Task | On submission |
+
+## Completion sync (bidirectional)
+
+Task completion status syncs in both directions:
+
+- Marking a task complete in VoiceLine → marks it complete in the CRM
+- Marking a task complete in the CRM → removes it from the VoiceLine briefing at the next sync
+
+The bidirectional completion sync is enabled by default. If your team primarily manages task completion in the CRM (not in VoiceLine), confirm the expected flow with your CRM admin.
+
+## Sync filters
+
+| Filter | Description |
+|--------|-------------|
+| Open tasks only | Only sync tasks that are not yet completed — recommended |
+| Assigned to rep | Only surface tasks assigned to the viewing rep (not team-level tasks) |
+| Linked to account | Only surface tasks linked to an account in scope |
+| By task type | Filter to specific task types relevant to field sales (e.g. exclude IT or internal tasks) |
+
+## Scoping decisions
+
+Before your FDE configures task sync, confirm the following:
+
+- Which CRM task type values represent field sales tasks (to exclude unrelated tasks from briefing)
+- Whether to surface tasks assigned to others at the same account (team tasks) or only tasks assigned to the viewing rep
+- Whether auto-creation of tasks from visit reports is needed (see [Visit Report](/implementation/standard-implementations/visit-report))

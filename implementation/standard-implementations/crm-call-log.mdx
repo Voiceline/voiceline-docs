@@ -1,0 +1,63 @@
+---
+title: "Call Records (Inbound)"
+status: Live
+last_updated: 2026-04-08
+---
+
+VoiceLine reads existing call records from your CRM to surface recent call history in the Visit Briefing. Reps can see the last calls logged at an account before starting a visit, giving them context on recent phone interactions.
+
+Call records are a separate CRM object from visit records in most CRMs — they map to different objects and have different field structures. This page covers the inbound sync of call records specifically. For the outbound sync — how VoiceLine writes new call log records to your CRM — see [Call Log](/implementation/standard-implementations/call-log).
+
+## What VoiceLine reads
+
+| Field | Used in |
+|-------|---------|
+| Call date | Briefing timeline |
+| Call direction | Display label (inbound / outbound) |
+| Call outcome | Summary in briefing card |
+| Call summary / description | Briefing activity card |
+| Linked account | Account-scoped briefing lookup |
+| Linked contact | Contact display in activity card |
+| Assigned rep | Ownership attribution |
+| Duration | Optional display in briefing |
+
+## History window
+
+The default history window is **12 months**. VoiceLine reads call records from the past 12 months for each account.
+
+## CRM object mapping
+
+Call records map to different CRM objects depending on your CRM:
+
+| CRM | Call record object |
+|-----|------------------|
+| SAP C4C | Phone Call Activity |
+| Salesforce | Task (with type = Call) |
+| MS Dynamics | Phone Call Activity |
+| HubSpot | Call Engagement |
+| ZOHO | Call Log |
+| Aurea | Phone Call Activity |
+
+The exact object type must be confirmed with your CRM admin. In some CRMs (e.g. Salesforce), calls are stored as Tasks with a type field — your FDE needs to know which type values represent call records vs other task types.
+
+## What is not included
+
+- Records not stored in the account object (calls not linked to an account are not surfaced)
+- Live call transcription or call recording content from telephony systems
+- Call records from external telephony platforms unless they are synced into the CRM
+
+## Call direction filtering
+
+If your team only uses VoiceLine for outbound calls, you may want to filter inbound call records out of the briefing. This reduces noise for field sales teams who primarily make outbound customer calls.
+
+Discuss with your FDE whether direction filtering is appropriate for your team's workflow.
+
+## Scoping decisions
+
+Before your FDE configures call record inbound sync, confirm the following:
+
+- Which CRM object type represents call records in your CRM
+- Which type field values identify call records (e.g. for Salesforce Task type)
+- Whether to filter by call direction (inbound / outbound / both)
+- Which fields to surface in the briefing call card
+- Whether to include pre-VoiceLine historical call records

@@ -1,6 +1,5 @@
 ---
 title: "Call Log"
-description: "Default field structure, CRM sync behaviour, and configuration options for the Call Log workflow."
 status: Live
 last_updated: 2026-04-04
 ---
@@ -33,12 +32,30 @@ The Call Log captures phone calls with customers — reps speak a summary immedi
 
 For field-level mappings per CRM, see the [Integrations](/integrations) section.
 
-## How your SA tailors this
+## Default schema
+
+The fields listed above are the standard call log schema. The schema is configurable using the component library: fields can be added, removed, relabelled, or made required.
+
+To add, remove, or change components, see the [Component Library](/implementation/workflow-customisation/component-library).
+
+## Customising the schema
 
 - **Call outcome values** — customise picklist to match your sales process
 - **Call direction** — enable or disable the direction field depending on your CRM's requirements
 - **Additional structured fields** — add fields relevant to phone-based sales (e.g. lead stage, product discussed)
 - **Field labels** — rename to match CRM terminology
+
+## Hard-coded fields
+
+Hard-coded fields are FDE-configured values stamped on every call log submission — regardless of what the rep enters. They do not appear in the rep's UI.
+
+| Example use case | Hard-coded field | Value |
+|-----------------|-----------------|-------|
+| Tag all VoiceLine records | Source | VoiceLine |
+| Enforce activity subtype | Activity type | Phone Call |
+| Stamp team or channel | Channel | Field Sales |
+
+Your FDE configures hard-coded fields during workflow setup. Define the field name, the fixed value, and the CRM target field for each one.
 
 ## FAQ
 
@@ -51,4 +68,4 @@ No — VoiceLine captures a spoken summary after the call, not a recording of th
 **What if we want to log calls from our office team as well?**
 The Call Log workflow works for any phone-based interaction. For high-volume office or inside sales teams with different workflow needs, see the [Inside Sales](/commercial/modules/inside-sales) module.
 
-<Note>Need something beyond this standard? Your SA can adapt it using the [component library](/implementation/workflow-customisation/component-library), or raise a [custom requirement](/implementation/workflow-customisation/additional-customisation) if needed.</Note>
+<Note>Need something beyond this standard? Your FDE can adapt it using the [component library](/implementation/workflow-customisation/component-library), or raise a [custom requirement](/implementation/workflow-customisation/additional-customisation) if needed.</Note>

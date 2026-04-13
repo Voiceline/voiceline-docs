@@ -1,0 +1,130 @@
+---
+title: "Company Data"
+status: Live
+last_updated: 2026-04-09
+---
+
+Company data gives VoiceLine knowledge of your business context — what you sell, who you compete against, and the domain-specific terms your team uses. Your FDE collects this information during the scoping session and loads it before go-live. None of this requires CRM access; your project lead provides it directly.
+
+## Products
+
+VoiceLine uses product data to recognise product names and references in voice recordings. When a rep mentions a product by name, VoiceLine extracts it as structured data — linking it to the correct product record and surfacing it in visit report summaries, analytics, and CRM sync.
+
+Without product data configured, VoiceLine cannot reliably identify which products a rep is referring to during a recording. This step is required for any workspace where product references in visit reports are meaningful.
+
+For the customer-facing description of products in VoiceLine, see [Products](/customer/platform/data-objects/products).
+
+### How product data works
+
+Once product data is loaded, VoiceLine uses it in two ways:
+
+1. **Voice recognition** — Product names and synonyms are added to the AI vocabulary. This improves recognition accuracy for names that are unusual, abbreviated, or likely to be misheard.
+
+2. **Structured extraction** — When a product name is detected in a recording, VoiceLine links the mention to the product record and extracts it as a structured field — available for CRM sync and analytics.
+
+### How product data is provided
+
+There are two approaches. The choice depends on how often your product catalogue changes and whether your team can maintain an API sync:
+
+| Approach | Best for | Notes |
+|----------|----------|-------|
+| API sync (real-time) | Catalogues that change regularly | Keeps VoiceLine in sync automatically; requires API integration setup |
+| One-time JSON upload | Stable catalogues or initial setup | FDE imports the data during configuration; re-upload required for updates |
+
+In both cases, product data must be provided in VoiceLine's JSON format.
+
+<Note>For the full API specification and JSON format, see the [Product Sync API docs](https://app.getvoiceline.com/api/products/syncing/docs).</Note>
+
+### Synonyms and aliases
+
+Synonyms are alternative names, abbreviations, or common spoken variants for a product. They are important for recognition accuracy — reps rarely use formal product names in conversation.
+
+Examples:
+- Formal name: "Industrial Cleaning Solution 500" → Synonym: "ICS 500", "the cleaner"
+- Formal name: "Premium Service Package" → Synonym: "PSP", "full service"
+
+Include synonyms in the languages your reps record in. If reps across multiple countries record in different languages, provide synonyms for each recording language.
+
+### Scoping decisions
+
+Before product data is loaded, confirm the following with your project lead:
+
+- Which sync approach to use (API sync vs one-time upload)
+- Who owns the product catalogue and is responsible for keeping it current
+- Which product synonyms and abbreviations reps commonly use
+- Whether to include all products or a subset relevant to field sales
+
+## Competitors
+
+VoiceLine detects competitor mentions in voice recordings automatically. When a rep mentions a competitor during a visit or call, VoiceLine extracts the reference — capturing the competitor name, the context it was mentioned in, and the account it was mentioned at.
+
+FSF includes built-in competitor tracking. The [Market Analytics Pro](/commercial/modules/market-analytics-pro) module extends this with sub-competitor tracking, win/loss attribution, and advanced analytics dashboards.
+
+For the customer-facing description of competitor analytics in VoiceLine, see [Competitor Analytics](/customer/analytics/competitor-analytics).
+
+### How competitor detection works
+
+Competitor detection is passive — it runs on every recording automatically. Reps do not need to do anything; VoiceLine scans the full transcript for any configured competitor name or alias.
+
+Detection is **prospective only**: recordings made after a competitor is added are analysed. Recordings made before the competitor was added are not retroactively analysed.
+
+What triggers a detection: any match of a competitor name or alias in the transcript. VoiceLine captures the name and the surrounding sentence — not just a count, but the context.
+
+### How competitor data is provided
+
+Competitor data is loaded directly in workspace settings by your FDE.
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| Competitor name | Yes | The primary name used in your market |
+| Aliases | Strongly recommended | Alternative names, abbreviations, or informal names reps use in conversation |
+| Competitor ID | Optional | Reference ID for CRM alignment (if win/loss is tracked in CRM) |
+
+**Aliases are critical.** Reps rarely use a competitor's full formal name in conversation. If a competitor is commonly referred to by an abbreviation or shorthand, that alias must be configured — otherwise the mention will not be detected.
+
+Examples:
+- "SF" or "Salesforce.com" for Salesforce
+- "SAP" for SAP SE
+- "the orange guys" as an informal alias for a regional competitor
+
+### Where competitor data surfaces
+
+| Surface | What appears |
+|---------|-------------|
+| Visit report | Competitor mentions highlighted in the AI summary |
+| Competitor Analytics | Mention frequency by competitor, time period, and account segment |
+| Visit Briefing | Prior competitor mentions at the account (if any) |
+
+### Catalogue size
+
+Most workspaces track between 5 and 50 competitors. Including too many competitors (especially broad terms that appear in unrelated contexts) increases false positives. Focus on the competitors reps actively encounter in field conversations.
+
+### Scoping decisions
+
+Before competitor data is loaded, confirm the following with your project lead:
+
+- Initial competitor list (formal names)
+- Aliases and abbreviations reps use for each competitor
+- Whether win/loss attribution is needed (requires Market Analytics Pro and CRM mapping)
+- Which competitors are analytics-relevant vs low-signal noise
+
+## Custom vocabulary
+
+VoiceLine's AI voice recognition model can be extended with domain-specific vocabulary. This improves recognition accuracy for terms the general model is unlikely to know:
+
+- Product names with non-standard spelling or abbreviations
+- CRM account names that differ from common usage (e.g. "BASF" not "B-A-S-F")
+- Competitor names and product names reps use colloquially
+- Internal terminology, project names, or industry jargon
+
+Custom vocabulary is provided as a list of terms and their expected spellings. Your FDE will collect this list during the scoping session. Updates after go-live are handled via workspace settings.
+
+**When to collect this:** Before or during the scoping session — not after go-live. Missing vocabulary means early recordings will have lower recognition accuracy for those terms.
+
+---
+
+**What your team needs to provide for this step:**
+- Product catalogue in VoiceLine JSON format (or confirmation that API sync will be used)
+- Product synonyms and abbreviations reps commonly use, per recording language
+- Initial competitor list with formal names and aliases
+- Custom vocabulary list (domain terms, account names, internal terminology)

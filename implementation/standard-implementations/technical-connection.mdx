@@ -1,0 +1,107 @@
+---
+title: "Technical Connection"
+status: Live
+last_updated: 2026-04-08
+---
+
+Technical connection covers everything required to connect the workspace to your organisation's identity infrastructure, CRM, and corporate network. Your FDE handles this with your CRM administrator and IT team. It typically takes one working session, with possible follow-up for VPN or SSO configuration.
+
+## VoiceLine authentication
+
+VoiceLine supports two authentication methods:
+
+| Method | Description | When to use |
+|--------|-------------|-------------|
+| Basic auth | Email and password, managed in VoiceLine | Standard for most deployments — no IdP dependency |
+| SSO (SAML 2.0) | Single sign-on via your identity provider (Azure AD, Okta, etc.) | Enterprise customers with an existing IdP |
+
+SSO requires your IT team to configure a SAML application in your identity provider and provide the metadata URL or XML to your FDE. Confirm the authentication method during scoping — this must be set before user provisioning begins.
+
+## CRM connection
+
+VoiceLine connects to your CRM via OAuth. A service account or CRM administrator account is used to authorise the connection once. The OAuth token is stored securely and used for all ongoing sync operations — individual reps do not need a CRM login.
+
+**Required CRM permissions:**
+
+| Permission | Scope |
+|------------|-------|
+| Read access | Accounts, contacts, leads, opportunities, products, competitors, users |
+| Write access | Activity objects VoiceLine creates (visit reports, call logs, tasks, meetings, emails) |
+| Write access | Any CRM objects created by active modules (leads, contacts, opportunities) |
+
+Your FDE will provide the exact permission set for your CRM. The connection is tested end-to-end before Step 3 begins — if the test fails, Step 3 cannot proceed.
+
+**Supported CRMs:** SAP C4C (v1 and v2), Salesforce, MS Dynamics 365, Aurea CRM, ZOHO, HubSpot.
+
+## VPN and network requirements
+
+VoiceLine is a cloud-based service and does not require VPN by default. If your CRM is hosted on-premise or behind a corporate network, the following must be confirmed before configuration can begin:
+
+- Whether VoiceLine's cloud infrastructure can reach your CRM endpoint from the internet
+- Whether a VPN or IP allowlist is required for the CRM API
+- Whether the mobile app requires VPN to connect to VoiceLine services while in the field
+
+<Note>On-premise CRM deployments (e.g. Aurea CRM, SAP C4C on-premise) require network access from VoiceLine's cloud infrastructure. Confirm with your IT team before configuration begins — VPN setup adds time to Step 2.</Note>
+
+**VPN configuration options:**
+
+| Option | Description |
+|--------|-------------|
+| IP allowlist | VoiceLine provides a set of static IP addresses to allowlist in your CRM firewall |
+| Always-on VPN (MDM) | VPN is managed via MDM and active on all company devices — no per-user action required |
+| Per-session VPN | Reps manually connect VPN before using VoiceLine — not recommended for field use |
+
+## Mobile device management (MDM)
+
+If your organisation uses MDM to manage employee devices, confirm the following before user provisioning:
+
+- The VoiceLine mobile app is available on App Store and Google Play — confirm your MDM policy allows installation or manage deployment via MDM
+- Your FDE can provide the bundle ID and app metadata required for managed deployment
+- Push notification permissions are required for follow-up reminders and task notifications
+- If VPN is required, confirm the MDM-managed VPN profile is active when reps are in the field
+
+## Attachment handling
+
+VoiceLine supports attaching files (images, documents) to workflow submissions. Confirm the following with your project lead:
+
+| Setting | Options |
+|---------|---------|
+| Attachment types allowed | All file types / images only / none |
+| Storage location | VoiceLine-hosted (default) / CRM-linked |
+| Max file size | Configurable — default is 25 MB |
+
+## Sync cadence
+
+VoiceLine syncs CRM data on a configurable schedule. Standard cadences:
+
+| Object type | Default sync cadence |
+|-------------|---------------------|
+| Accounts | Every 4 hours |
+| Contacts | Every 4 hours |
+| Leads | Every 4 hours |
+| Opportunities | Every 4 hours |
+| Products | Daily |
+| Competitors | Daily |
+| Users | Daily |
+
+Near-real-time sync (15–30 minute intervals) is available for accounts and contacts where data freshness is critical. Discuss with your FDE if the 4-hour default is not sufficient.
+
+## Connection validation
+
+Before Step 3 begins, your FDE validates the full connection:
+
+1. CRM OAuth handshake succeeds
+2. Test sync pulls accounts, contacts, and users from the CRM
+3. A test submission writes a record to the CRM and confirms it appears
+4. Network path confirmed (VPN if applicable)
+
+Step 3 does not begin until all four checks pass.
+
+---
+
+**What your team needs to provide for this step:**
+- Authentication method decision (basic auth vs SSO)
+- CRM admin credentials or OAuth access for the service account
+- IT contact for VPN/network configuration (if applicable)
+- IdP metadata URL or XML (if SSO)
+- MDM app deployment confirmation

@@ -1,6 +1,5 @@
 ---
 title: "Reminder"
-description: "Default field structure and configuration options for the Reminder workflow."
 status: Live
 last_updated: 2026-04-04
 ---
@@ -26,11 +25,28 @@ Reminders are personal by default and do not sync to the CRM. If CRM task creati
 
 Optional CRM sync (creating a Task in the CRM from a Reminder) is available as a configuration option — disabled by default.
 
-## How your SA tailors this
+## Default schema
+
+The fields listed above are the standard reminder schema. The schema is configurable using the component library: fields can be added, removed, relabelled, or made required.
+
+To add, remove, or change components, see the [Component Library](/implementation/workflow-customisation/component-library).
+
+## Customising the schema
 
 - **CRM sync** — enable optional Task creation in CRM on reminder creation
 - **Default reminder offset** — set a default lead time (e.g. 1 day before) for reminders created without an explicit time
 - **Account linkage** — make account linkage required for reminders above a certain priority
+
+## Hard-coded fields
+
+Hard-coded fields are only relevant for reminders when optional CRM task creation is enabled. When a reminder creates a CRM task, hard-coded fields can be stamped on that task record.
+
+| Example use case | Hard-coded field | Value |
+|-----------------|-----------------|-------|
+| Tag source system | Source | VoiceLine |
+| Enforce task type | Task type | Personal Reminder |
+
+Your FDE configures hard-coded fields during workflow setup. Define the field name, the fixed value, and the CRM target field for each one.
 
 ## FAQ
 
@@ -38,6 +54,6 @@ Optional CRM sync (creating a Task in the CRM from a Reminder) is available as a
 A Reminder is personal — it fires as a push notification in VoiceLine and is not (by default) visible to anyone else or tracked in the CRM. A Task creates a record in the CRM that is trackable by managers and syncs across systems. Use Reminders for quick personal prompts; use Tasks for anything that needs to be tracked or delegated.
 
 **Can a Reminder also create a CRM task?**
-Yes — optional CRM task creation is a configurable setting. Your SA can enable this during setup if your team prefers all action items to appear in the CRM.
+Yes — optional CRM task creation is a configurable setting. Your FDE can enable this during setup if your team prefers all action items to appear in the CRM.
 
-<Note>Need something beyond this standard? Your SA can adapt it using the [component library](/implementation/workflow-customisation/component-library), or raise a [custom requirement](/implementation/workflow-customisation/additional-customisation) if needed.</Note>
+<Note>Need something beyond this standard? Your FDE can adapt it using the [component library](/implementation/workflow-customisation/component-library), or raise a [custom requirement](/implementation/workflow-customisation/additional-customisation) if needed.</Note>

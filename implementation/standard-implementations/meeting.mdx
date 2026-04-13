@@ -1,6 +1,5 @@
 ---
 title: "Meeting"
-description: "Default field structure, calendar sync behaviour, and configuration options for the Meeting workflow."
 status: Live
 last_updated: 2026-04-04
 ---
@@ -33,7 +32,13 @@ Meetings are created in the rep's connected calendar and synced to the CRM as a 
 | ZOHO | Event | — | On submission |
 | Aurea | Meeting | — | On submission |
 
-## How your SA tailors this
+## Default schema
+
+The fields listed above are the standard meeting schema. The schema is configurable using the component library: fields can be added, removed, relabelled, or made required.
+
+To add, remove, or change components, see the [Component Library](/implementation/workflow-customisation/component-library).
+
+## Customising the schema
 
 - **Meeting type values** — customise picklist to match your sales stage nomenclature
 - **Default duration** — set default meeting length per meeting type
@@ -41,10 +46,22 @@ Meetings are created in the rep's connected calendar and synced to the CRM as a 
 - **Attendee logic** — configure whether additional attendees can be added (e.g. rep manager, internal team)
 - **Required fields** — mark date/time as required for submission
 
+## Hard-coded fields
+
+Hard-coded fields are FDE-configured values stamped on every meeting record created in the CRM — regardless of what the rep enters. They do not appear in the rep's UI.
+
+| Example use case | Hard-coded field | Value |
+|-----------------|-----------------|-------|
+| Tag source system | Source | VoiceLine |
+| Enforce meeting category | Activity type | Customer Meeting |
+| Default to rep's business unit | Business unit | Field Sales |
+
+Your FDE configures hard-coded fields during workflow setup. Define the field name, the fixed value, and the CRM target field for each one.
+
 ## FAQ
 
 **Do customer contacts receive a calendar invitation?**
-This is configurable. The standard creates the meeting in the rep's calendar and CRM. Sending a customer-facing invitation requires calendar OAuth connection — your SA enables this during setup.
+This is configurable. The standard creates the meeting in the rep's calendar and CRM. Sending a customer-facing invitation requires calendar OAuth connection — your FDE enables this during setup.
 
 **Can we link a meeting to an opportunity?**
 Meeting-to-opportunity linking is available as a configuration option and requires the [Pipeline Management](/commercial/modules/pipeline-management) module.
@@ -52,4 +69,4 @@ Meeting-to-opportunity linking is available as a configuration option and requir
 **How do we document what happened in the meeting afterwards?**
 Use a Visit Report or Call Log after the meeting to capture the outcome, next steps, and any follow-ups.
 
-<Note>Need something beyond this standard? Your SA can adapt it using the [component library](/implementation/workflow-customisation/component-library), or raise a [custom requirement](/implementation/workflow-customisation/additional-customisation) if needed.</Note>
+<Note>Need something beyond this standard? Your FDE can adapt it using the [component library](/implementation/workflow-customisation/component-library), or raise a [custom requirement](/implementation/workflow-customisation/additional-customisation) if needed.</Note>

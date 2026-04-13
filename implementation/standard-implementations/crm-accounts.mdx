@@ -1,0 +1,78 @@
+---
+title: "Accounts"
+status: Live
+last_updated: 2026-04-08
+---
+
+Accounts are the foundation of the VoiceLine data model. Every visit report, call log, and workflow submission is linked to an account. This page documents what account data VoiceLine syncs from your CRM, how reps search for accounts, and how the system applies the access and territory structure your CRM already defines.
+
+For the customer-facing description of accounts in VoiceLine, see [Accounts](/customer/platform/data-objects/accounts).
+
+## Fields synced from CRM
+
+VoiceLine reads the following account fields at sync time:
+
+| Field | Required | Used in |
+|-------|----------|---------|
+| Account name | Yes | Search, workflow lookup, briefing header |
+| Account ID | Yes | CRM record linkage |
+| Assigned rep / owner | Yes | Rep-level account scope |
+| Address (street, city, postal code) | Recommended | Extended search, briefing |
+| Account type | Recommended | Sync filters, briefing |
+| Account status | Recommended | Active-only filter |
+| Customer number | Optional | Extended search |
+| Region / territory | Optional | Territory-based scope |
+
+Additional meta fields (e.g. account segment, customer tier, custom CRM fields) can be synced and displayed in Visit Briefing cards without being searchable. Confirm with your FDE which fields are useful to surface.
+
+## Account scope per rep
+
+Each rep in VoiceLine sees only the accounts they are responsible for. Account scope mirrors your CRM's existing assignment logic — VoiceLine does not maintain its own assignment model.
+
+The following must be confirmed during scoping:
+
+| Decision | Options |
+|----------|---------|
+| Assignment field | Which CRM field determines ownership (e.g. `OwnerId`, `AccountManagerId`, territory membership) |
+| Shared accounts | Whether accounts shared across multiple reps are visible to all, or only the primary owner |
+| Unassigned accounts | Whether accounts with no assigned rep are visible to all users or hidden |
+
+<Note>If your CRM uses a territory model (e.g. Salesforce Territory Management, SAP account groups), your FDE needs the full territory structure before configuration begins.</Note>
+
+## Search configuration
+
+Reps search for accounts during workflow submissions and when navigating to accounts manually. VoiceLine supports two search modes:
+
+**Standard search** (default): Searches by account name with phonetic matching. Handles common name variations, transliterations, and partial matches (e.g. "Müller" matches "Mueller").
+
+**Extended search** (optional): Adds additional search fields beyond name:
+
+| Extended field | When to enable |
+|---------------|---------------|
+| Customer number | Teams who know accounts by number rather than name |
+| City | Useful when multiple accounts share similar names |
+| Postal code | Geographic search for route-based reps |
+
+Extended search fields are configured per workspace. Enable only what reps will actually use — too many fields slow lookup performance and add noise.
+
+## Sync scope and filters
+
+Not all accounts in your CRM need to sync to VoiceLine. Filters narrow what is synced and reduce lookup noise:
+
+| Filter | Description |
+|--------|-------------|
+| Active only | Exclude inactive, dormant, or churned accounts |
+| By account type | Sync only customers, or include prospects |
+| By territory | Limit sync to a specific region or territory structure |
+| By status field | Use a custom CRM field to define which accounts are in scope |
+
+Overly broad sync scope increases sync time and degrades lookup performance. Your FDE will recommend appropriate filters based on your CRM data volume.
+
+## Scoping decisions
+
+Before your FDE configures the account environment, confirm the following:
+
+- Assignment field and territory model
+- Which search fields to enable beyond account name
+- Sync filters (active-only, account type, territory)
+- Any additional meta fields to surface in Visit Briefing

@@ -28,6 +28,17 @@ The internal KB is **not changing**. This is a separate layer on top.
 | `coaching/` | Playbooks, Team Activity, Visit Analytics |
 | `platform/` | Workspace admin, integrations, data objects, language, security, search, workflow customisation |
 
+### `implementation/` structure
+
+| Subfolder | Contents |
+|-----------|---------|
+| `getting-started/` | Initial Setup, Project Team, Adding Modules, Expanding to New User Groups |
+| `standard-implementations/` | FSF configuration guide — workspace setup, workflows, data |
+| `workflow-customisation/` | Component library and customisation options |
+| `modules/` | Implementation guides per add-on module |
+| `data-integrations/` | CRM connection and data flow reference |
+| `security/` | Security posture and compliance |
+
 ### `commercial/` structure
 
 | File | Contents |
@@ -61,7 +72,7 @@ The internal KB is **not changing**. This is a separate layer on top.
 
 ## Writing conventions (commercial docs)
 
-Commercial docs (`commercial/`) are for internal audiences — sales, CS, and SAs. They explain what's in each package, why it exists, and what value it creates. They are not customer-facing.
+Commercial docs (`commercial/`) explain what's in each package, why it exists, and what value it creates. Write in second-person ("you"), active voice — the same register as customer docs and the Linear reference style.
 
 ### Page structure
 
@@ -72,6 +83,8 @@ Every commercial page follows this structure:
 3. **One-paragraph summary** — what the package/module is in plain language
 4. **Why it exists** (modules only) — the problem it solves and the value logic. Two to three sentences. Lead with the customer pain, then explain how the module addresses it. No ROI numbers — explain the logic, not the math.
 5. **Feature sections** — one `###` section per feature group, each with:
+
+**Section heading rules:** Headings must be descriptive — name the section after what it actually covers. Avoid generic headings like "What's included", "How pricing works", "How it works", or "Overview".
    - A short description (1–2 sentences) of what the feature set does
    - A `Feature | What it does` table (see below)
    - An optional `→ [Section docs](/path)` link for the overview page
@@ -101,6 +114,18 @@ Use `<Note>` (Mintlify component) for:
 - Coming soon status notices
 
 Do not use `> [!NOTE]` (GitHub markdown) — this is a Mintlify project.
+
+### File naming convention
+
+File names must match the page's displayed title, converted to kebab-case. The folder structure must mirror the navigation sections shown in the webapp.
+
+**Rules:**
+- `title: "Adding Modules"` → filename `adding-modules.mdx` ✓
+- `title: "Adding Modules"` → filename `how-we-work.mdx` ✗
+- A page inside the "Getting Started" nav section → file lives in a `getting-started/` subfolder ✓
+- A page inside the "Getting Started" nav section → file lives in `our-approach/` ✗
+
+When renaming or moving pages, update `docs.json` to match and remove the old files.
 
 ### Links
 

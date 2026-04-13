@@ -1,6 +1,5 @@
 ---
 title: "Language Settings"
-description: "Configure the language reps record in, the language reports are written in, and workspace-specific vocabulary for accurate recognition."
 status: Live
 last_updated: 2026-03-06
 ---
@@ -28,6 +27,21 @@ Supported input languages include German, English, French, Italian, Spanish, Dut
 The language in which VoiceLine generates written visit reports, call logs, and other AI outputs. Output language can differ from input language — reps can speak in German and have reports written in English, for example.
 
 Multi-language workspaces (reps in multiple countries) can configure output language per group or per rep.
+
+## Translations
+
+<Note>CRM translation is an Enterprise feature. Contact your account manager to enable it.</Note>
+
+When CRM translation is enabled, reps can record and review their work entirely in their mother tongue. When a visit report, call log, or other output is synced to the CRM, VoiceLine translates it on the fly into the workspace language — so all data stored in the CRM is in a single unified language, regardless of what language each rep recorded in.
+
+This is useful in multi-country teams where managers and CRM users need to read every rep's data in one language, but individual reps are not fully fluent in the business language.
+
+**How it works:**
+- The rep records in their preferred language (input language)
+- AI-generated outputs are written in the rep's language and visible in VoiceLine in that language
+- On sync, VoiceLine translates the output to the workspace language before writing to the CRM
+
+Contact your account manager to configure the workspace language and enable translation for specific groups or the whole workspace.
 
 ## Custom vocabulary
 

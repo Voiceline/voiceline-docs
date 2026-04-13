@@ -1,6 +1,5 @@
 ---
 title: "Visit Report"
-description: "Default field structure, CRM sync behaviour, and configuration options for the Visit Report workflow."
 status: Live
 last_updated: 2026-04-04
 ---
@@ -38,7 +37,13 @@ The visit report syncs to an **Activity** or **Appointment** object in your CRM,
 
 For field-level mappings per CRM, see the [Integrations](/integrations) section.
 
-## How your SA tailors this
+## Default schema
+
+The fields listed above are the standard visit report schema — the starting point for every FSF deployment. The schema is configurable using the component library: fields can be added, removed, relabelled, or made required.
+
+To add, remove, or change components, see the [Component Library](/implementation/workflow-customisation/component-library).
+
+## Customising the schema
 
 Using the [component library](/implementation/workflow-customisation/component-library), the following can be adapted:
 
@@ -48,15 +53,30 @@ Using the [component library](/implementation/workflow-customisation/component-l
 - **Required fields** — mark fields as mandatory before submission
 - **Account/contact lookup scope** — filter which accounts are searchable (e.g. by territory, by rep assignment)
 
+## Hard-coded fields
+
+Hard-coded fields are FDE-configured values that are stamped on every visit report submitted — regardless of what the rep says or enters. They do not appear in the rep's UI; they are written silently to the CRM on submission.
+
+Use hard-coded fields to enforce consistent CRM metadata across all submissions without burdening reps:
+
+| Example use case | Hard-coded field | Value |
+|-----------------|-----------------|-------|
+| Tag all VoiceLine records | Source | VoiceLine |
+| Enforce activity type | Activity type | Field Visit |
+| Assign to a fixed team queue | Owner | Field Sales Team |
+| Stamp deployment region | Region | DACH |
+
+Your FDE configures hard-coded fields during workflow setup. Define the field name, the fixed value, and the CRM target field for each one.
+
 ## FAQ
 
 **Can we add fields that reps fill in manually during the recording?**
-Yes — the component library includes structured field components that prompt reps to provide specific information verbally. Your SA configures these during setup.
+Yes — the component library includes structured field components that prompt reps to provide specific information verbally. Your FDE configures these during setup.
 
 **What if our CRM uses a custom activity object?**
-Standard CRM activity objects (Appointment, Event, Task, Note) are supported natively. Custom CRM objects require a non-standard implementation — let your SA know during setup so it can be scoped.
+Standard CRM activity objects (Appointment, Event, Task, Note) are supported natively. Custom CRM objects require a non-standard implementation — let your FDE know during setup so it can be scoped.
 
 **Can a visit automatically create an opportunity?**
 Automatic opportunity creation from a visit report is part of the [Pipeline Management](/commercial/modules/pipeline-management) module, not FSF.
 
-<Note>Need something beyond this standard? Your SA can adapt it using the [component library](/implementation/workflow-customisation/component-library), or raise a [custom requirement](/implementation/workflow-customisation/additional-customisation) if needed.</Note>
+<Note>Need something beyond this standard? Your FDE can adapt it using the [component library](/implementation/workflow-customisation/component-library), or raise a [custom requirement](/implementation/workflow-customisation/additional-customisation) if needed.</Note>
