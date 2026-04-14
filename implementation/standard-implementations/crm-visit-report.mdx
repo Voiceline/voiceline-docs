@@ -50,6 +50,26 @@ Activity type filtering is the most common filter and should always be discussed
 
 <Note>Filtering by visit category — for example, to exclude inside sales visits from the briefing history — is not part of the standard configuration. If your CRM groups visit types in a way that requires this distinction, discuss it with your FDE.</Note>
 
+### Event status field requirement
+
+For [event selection](/implementation/standard-implementations/visit-report#event-selection) to work well, the CRM needs a way to distinguish completed visits from cancelled or pending ones. Without this, the event picker shows every synced event — including cancelled events and events that already have a visit report — making it harder for the rep to find the right one.
+
+The CRM should provide one of the following:
+
+- **A status field** with clear values like "Closed" or "Completed" that indicate the visit actually took place.
+- **A field that is only populated after the visit** — for example, a linked visit report reference. If the field is empty, the visit hasn't been reported yet; if populated, it has.
+
+Either approach allows VoiceLine to filter the event list so reps only see events that are eligible for a new visit report. Confirm the available field with your CRM admin during scoping.
+
+### Calendar sync requirements
+
+If your organisation syncs calendar events between an email client (Outlook, Gmail) and the CRM, two conditions must be met for event syncing and notifications to work correctly:
+
+- **Real CRM entities in calendar events** — the calendar sync must write actual CRM object references (account, contact) into the event record, not placeholder text. If the sync creates events with free-text names instead of linked CRM records, VoiceLine cannot match events to accounts.
+- **Event ownership** — the CRM user must be the owner of the synced event. If events are owned by a system user or another person, permission restrictions in the CRM may prevent VoiceLine from reading them.
+
+Discuss both points with your IT team and CRM admin during the technical connection phase.
+
 ## Separate visit report object
 
 Some customers store visit reports in a dedicated CRM object that is linked back to the visit record, rather than in the visit description field. This is common when the CRM is used for structured reporting, compliance tracking, or integration with other systems.

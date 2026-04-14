@@ -1371,10 +1371,14 @@ Each variant controls not just *which* fields appear, but also:
 
 Reports don't exist in isolation - they often relate to calendar events. A visit report might correspond to a scheduled meeting. A call log might be tied to a planned phone call. EventSelection lets the user **link their report to an existing CRM calendar event** or **create a new one**.
 
+<Note>EventSelection depends on [event syncing](/implementation/standard-implementations/crm-visit-report) — calendar events must be synced from the CRM before they can appear in the picker. For the distinction between event syncing and event selection, and how notifications depend on synced events, see [Visit Report — Event selection](/implementation/standard-implementations/visit-report#event-selection).</Note>
+
 
 #### How It Works
 
-When the component loads, it fetches available calendar events from the CRM (filtered by the selected account and date range). The user picks the relevant event, or creates a new one. Events carry their own metadata - subject, start/end time, and optionally sub-components for additional event-specific data.
+When the component loads, it shows available calendar events from the CRM (filtered by the selected account and date range). The AI reads the transcript, looks for time clues (dates, times of day, references like "this morning's meeting"), and pre-selects the most likely matching event. The user can accept the AI's suggestion, override it by picking a different event, or create a new one. If the AI cannot find a confident match, no event is pre-selected and the user chooses manually.
+
+Events carry their own metadata - subject, start/end time, and optionally sub-components for additional event-specific data.
 
 
 The data structure:
