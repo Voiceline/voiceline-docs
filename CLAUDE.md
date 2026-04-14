@@ -18,7 +18,8 @@ voiceline-docs/
 │
 ├── _internal/              NOT published — working files for AI agents and maintainers
 │   ├── README.md           Explains each internal file
-│   ├── feature_map.md      Master index: all 45+ pages with research/writing status
+│   ├── feature_map.md      Master index of all pages with file paths and status
+│   ├── docs_hidden_nav.json  Navigation sections removed from docs.json pending completion
 │   ├── blank_spots.md      Known gaps and open questions, routed by audience
 │   ├── cross_ref_queue.md  Forward-carry findings across batches
 │   ├── sources_scanned.md  Log of sources read (prevents re-reading)
@@ -26,11 +27,18 @@ voiceline-docs/
 │   ├── hierarchy_draft.md  CPO-provided feature hierarchy (authoritative)
 │   └── figma_links.md      Figma URLs per feature
 │
-├── commercial/             Internal sales/pricing docs
-│   ├── pricing-overview.mdx         Stacking model + implementation fees
-│   ├── field-sales-fundamentals.mdx Base package (FSF)
-│   ├── project-timeline.mdx         Stub
-│   ├── modules/                     One file per add-on module
+├── commercial/             Sales/pricing docs (Modules & Pricing tab)
+│   ├── index.mdx                       Overview — package structure and entry points
+│   ├── field-sales-fundamentals/       FSF base package
+│   │   ├── index.mdx
+│   │   ├── productivity.mdx
+│   │   ├── market-analytics.mdx
+│   │   └── sales-coaching.mdx
+│   ├── credits/                        AI credit system
+│   │   ├── index.mdx
+│   │   ├── packages.mdx
+│   │   └── consumption.mdx
+│   ├── modules/                        One file per add-on module
 │   │   ├── index.mdx
 │   │   ├── pipeline-management.mdx
 │   │   ├── customer-data.mdx
@@ -40,30 +48,47 @@ voiceline-docs/
 │   │   ├── sales-coaching-pro.mdx
 │   │   ├── industry-fairs.mdx
 │   │   └── inside-sales.mdx
-│   └── platform/
+│   ├── platform/
+│   │   ├── index.mdx
+│   │   ├── professional.mdx
+│   │   └── enterprise.mdx
+│   └── pricing-scenarios/              Example customer configurations
 │       ├── index.mdx
-│       ├── professional.mdx
-│       └── enterprise.mdx
+│       ├── small-customer.mdx
+│       ├── medium-customer.mdx
+│       └── enterprise-customer.mdx
 │
 ├── engineering/            Developer docs (stub)
-├── implementation/         Solutions Architect / delivery guides
+│
+├── implementation/         Solutions Architect / delivery guides (Implementation tab)
 │   ├── getting-started/    initial-setup, project-team, adding-modules, adding-user-groups
-│   ├── standard-implementations/  FSF configuration — workspace, workflows, data
+│   ├── standard-implementations/  FSF configuration — workspace, technical, env, workflows
 │   ├── workflow-customisation/    Component library and customisation
-│   ├── modules/            Implementation guides per add-on module
+│   ├── modules/            Implementation guides per add-on module (WIP — hidden nav)
 │   ├── data-integrations/  CRM connection and data flow reference
 │   └── security/           Security posture and compliance
 │
-└── customer/               Customer-facing product documentation
-    ├── getting-started/    index.md, platform-overview.md, quick-start.md
+├── integrations/           CRM integration docs — Setup, Data Sync, Standard Implementation
+│   ├── index.mdx           Overview — supported CRMs, connection overview
+│   ├── sap-c4c-v1/         SAP Cloud for Customer v1 (3 pages)
+│   ├── sap-c4c-v2/         SAP Cloud for Customer v2 (3 pages)
+│   ├── salesforce/         Salesforce (3 pages)
+│   ├── ms-dynamics/        Microsoft Dynamics 365 (3 pages)
+│   ├── hubspot/            HubSpot (3 pages)
+│   ├── zoho/               ZOHO CRM (3 pages)
+│   └── aurea/              Aurea CRM (3 pages)
+│                           (WIP — hidden nav; will become its own Integrations tab)
+│
+└── customer/               Customer-facing product documentation (Product tab)
+    ├── getting-started/    index.md, concepts.md, quick-start.md
     ├── productivity/       index.md, assistant.md, visit-briefing.md
     │   ├── workflows/      13 workflow pages (visit-report, call-log, task, email, ...)
     │   └── customer-data-quality/  3 pages (lead, contact, account creation)
-    ├── analytics/          6 pages (competitor, product, industry, data-lake, ai-analyst)
+    ├── analytics/          5 pages (competitor, product, industry, data-lake, ai-analyst)
     ├── coaching/           index.md, team-activity.md, visit-analytics.md
     │   └── playbooks/      index.md, builder.md, analytics.md
-    └── platform/           index.md + 6 top-level pages
-        ├── integrations/   8 CRM integration pages
+    └── platform/           index.md + 5 top-level pages
+        ├── integrations/   8 legacy CRM setup pages (superseded by integrations/ tab)
         └── data-objects/   10 data object pages
 ```
 
@@ -74,7 +99,9 @@ voiceline-docs/
 - **Find a feature page**: `_internal/feature_map.md` — master index of all pages with file paths and status
 - **Find known gaps**: `_internal/blank_spots.md`
 - **Understand a feature**: go to `customer/{area}/{feature}.md`
-- **Understand pricing**: go to `commercial/`
+- **Understand pricing or modules**: go to `commercial/`
+- **Understand implementation**: go to `implementation/`
+- **WIP sections not yet in docs.json**: see `_internal/docs_hidden_nav.json`
 - **Project history / decisions**: `_internal/docs_project.md`
 
 ---

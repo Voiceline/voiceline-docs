@@ -4,14 +4,13 @@ status: Live
 last_updated: 2026-04-14
 ---
 
+Environment configuration covers everything required to map your CRM data model into VoiceLine and load the business data the workspace needs before workflows can be built. Without this step, workflows cannot be built — there are no objects to read from or write to. Your FDE handles this with your CRM admin. The number of sessions depends on CRM complexity — object mapping and sync filter decisions often require back-and-forth with your CRM admin before configuration can be finalised.
+
 By the end of this step your FDE will have confirmed:
 
 - All CRM objects configured with agreed field mappings and sync filters
 - Business data (products, competitors, industries) loaded and verified
 - All checks passed — Workflow Setup can begin
-
-
-Environment configuration covers everything required to map your CRM data model into VoiceLine and load the business data the workspace needs before workflows can be built. Your FDE handles this with your CRM admin. The number of sessions depends on CRM complexity — object mapping and sync filter decisions often require back-and-forth with your CRM admin before configuration can be finalised.
 
 ## Objects to configure
 
@@ -28,10 +27,3 @@ Environment configuration covers everything required to map your CRM data model 
 
 Workflow Setup cannot begin until all required objects are confirmed.
 
-## What your team needs to provide
-
-- CRM admin available for field mapping, object confirmation, and sync filter decisions
-- Product catalogue in VoiceLine JSON format, or API access details if using API sync
-- Competitor list with formal names and all aliases reps use in conversation
-- Industry taxonomy decision (use CRM values as-is, or normalise to a standard set)
-- Territory model details if your CRM uses territory-based account assignment
