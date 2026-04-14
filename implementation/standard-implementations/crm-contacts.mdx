@@ -1,71 +1,44 @@
 ---
 title: "Contacts"
 status: Live
-last_updated: 2026-04-08
+last_updated: 2026-04-14
 ---
 
-Contacts are the people at accounts — the individuals reps tag in visit reports, call logs, and meetings. This page documents what contact data VoiceLine syncs, how contact search works, and how the permission model ties contacts to account visibility.
+By the end of this page your FDE will have confirmed with your CRM admin:
 
-For the customer-facing description of contacts in VoiceLine, see [Contacts](/customer/platform/data-objects/contacts).
+- The fields needed to reliably identify contacts within an account
+- The sync filters to apply
 
-## Fields synced from CRM
 
-| Field | Required | Used in |
-|-------|----------|---------|
-| First name | Yes | Search, workflow lookup |
-| Last name | Yes | Search, workflow lookup |
-| Account link | Yes | Account-scoped search, deduplication |
-| CRM contact ID | Yes | CRM record linkage |
-| Email address | Recommended | Extended search, deduplication |
-| Phone number | Optional | Briefing, contact card |
-| Mobile number | Optional | Briefing, contact card |
-| Job title | Optional | Briefing, contact card |
-| Department | Optional | Briefing, contact card |
+Contact sync depends on account sync being complete — visibility and search are account-scoped, so confirm account configuration before starting here. For how contacts work in VoiceLine, see [Contacts](/customer/platform/data-objects/contacts).
 
-## Permission model
+## Contact identification
 
-Contact visibility in VoiceLine is derived from account visibility — if a rep can see an account, they can see all contacts linked to that account. There is no separate contact-level permission model.
+The goal is ensuring reps can reliably retrieve the correct contact during a workflow. For most teams this means first name + last name is sufficient within an account scope, but teams with common names in their contact data may need additional fields.
 
-This means that contacts linked to accounts outside a rep's scope are not visible to that rep, regardless of who is listed as the contact owner in the CRM.
+Confirm with your CRM admin which fields are consistently populated before enabling them as search criteria — sparsely populated fields are not reliable.
 
-## Search configuration
+## Fields to sync
 
-Contact search in VoiceLine is account-scoped by default. When a rep selects an account in a workflow, the contact lookup shows only contacts linked to that account. This reduces lookup noise and prevents reps from tagging unrelated contacts.
+| Field | Required | Notes |
+|-------|----------|-------|
+| First name | Required | Primary search field |
+| Last name | Required | Primary search field |
+| Account link | Required | Account-scoped search and deduplication |
+| CRM contact ID | Required | CRM record linkage |
+| Email address | Optional | Extended search, deduplication |
 
-**Standard search:** First name and last name with phonetic matching. Handles name variations and partial matches.
+## Sync filters
 
-**Extended search fields:**
-
-| Field | When to enable |
-|-------|---------------|
-| Email address | Useful for inside sales teams who may have the contact's email but not their exact name |
-
-Global contact search (searching across all contacts without selecting an account first) is available as a configuration option. Discuss with your FDE if your team's workflow requires it — it increases lookup result volume significantly.
-
-## Deduplication
-
-When contacts are created via the [Customer Data](/implementation/modules/customer-data) module, VoiceLine checks for existing records before writing a new one. The default match criteria:
-
-| Match criteria | Default behaviour |
-|---------------|------------------|
-| First name + last name + account | Exact or fuzzy match flags as potential duplicate |
-
-Deduplication thresholds are configurable. Tighter matching reduces false positives; looser matching catches more potential duplicates but may surface false matches. Confirm the threshold with your CRM admin based on the quality of your existing contact data.
-
-## Sync scope and filters
+Filters control which contacts are synced from the CRM into VoiceLine. Contacts excluded by a filter are not visible to any rep.
 
 | Filter | Description |
 |--------|-------------|
-| Active contacts only | Exclude archived or inactive contacts |
-| Linked to synced accounts only | Do not sync contacts whose parent account is not in VoiceLine's account scope — recommended for all deployments |
+| Active only | Exclude archived or inactive contacts |
+| Linked to synced accounts only | Exclude contacts whose parent account is outside VoiceLine's account scope |
 
-The "linked to synced accounts only" filter is strongly recommended. Syncing orphaned contacts (contacts not linked to any account, or linked to accounts outside scope) adds noise to search results.
+The account-scoped filter is recommended for all deployments — syncing contacts without a matching account serves no purpose and adds noise to lookup results.
 
-## Scoping decisions
+## Permissions
 
-Before your FDE configures the contact environment, confirm the following:
-
-- Whether global contact search (cross-account) is required
-- Which extended search fields to enable
-- Deduplication match threshold
-- Active-only filter preference
+Contact visibility is derived from account visibility — if a rep can see an account, they can see all contacts linked to that account. Contacts linked to accounts outside a rep's scope are not visible, regardless of contact ownership in the CRM. There is no separate contact-level permission model to configure.

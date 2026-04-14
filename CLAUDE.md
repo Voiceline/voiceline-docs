@@ -85,6 +85,12 @@ voiceline-docs/
 - Folder names must mirror the navigation section names shown in the webapp: a page in the "Getting Started" nav group lives in a `getting-started/` subfolder
 - When creating or moving pages, update `docs.json` to match and delete the old files
 
+## Writing rules (all docs)
+
+- **Don't duplicate information across pages.** Every fact belongs in one place. If another page needs to reference it, link to the source page — don't copy the content. This prevents the docs from diverging and means updates only ever need to happen in one place.
+  - The canonical source for a topic is the page whose primary subject it is (e.g. language availability → `/customer/platform/language-settings`, CRM connection → the relevant integration page).
+  - Implementation and commercial docs may summarise a concept briefly, but must link to the canonical customer doc for full detail rather than restating it.
+
 ## Writing rules (customer docs)
 
 - Index pages are always titled `"Overview"` — never repeat the parent category name as the page title
@@ -109,6 +115,15 @@ voiceline-docs/
 - No ROI numbers — explain the value logic, not the math
 - Feature flags, caveats, and status notes belong in the customer docs, not here
 - Use `<Note>` (Mintlify) for dependency requirements and trial callouts — not `> [!NOTE]`
+
+## Writing rules (implementation docs)
+
+- Every configuration page opens with a **"By the end of this page your FDE will have confirmed..." block** followed by 2–4 bullet points — one per concrete deliverable. Each bullet describes the output of a piece of work, not just a topic.
+  - Name who confirms with whom: "with your CRM admin", "with your project lead", "with your IT team and CRM admin", or just "confirmed:" when there is no fixed counterpart.
+  - Write each bullet as the deliverable itself, not as a question — e.g. "The sync filters to apply" not "Which sync filters to use".
+  - The bullets are the reader's answer to: what does this page produce?
+- The body of the page explains the detail needed to make those decisions — fields, options, constraints.
+- **`Scoping decisions` sections** list the open questions the FDE must resolve — they complement the intro bullets (which state the outputs) and the body (which explains the options).
 
 ---
 

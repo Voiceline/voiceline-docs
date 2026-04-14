@@ -1,48 +1,35 @@
 ---
 title: "Tasks"
 status: Live
-last_updated: 2026-04-08
+last_updated: 2026-04-14
 ---
 
-Tasks in VoiceLine are bidirectional. VoiceLine reads open tasks from your CRM to show in Visit Briefing, and writes new tasks to the CRM when reps submit the Task workflow. Completed task status syncs in both directions.
+VoiceLine reads open tasks from the CRM and writes new tasks back on submission. For how tasks work in VoiceLine, see [Tasks](/customer/platform/data-objects/tasks).
 
-For the customer-facing description of tasks in VoiceLine, see [Tasks](/customer/platform/data-objects/tasks).
+By the end of this page your FDE will have confirmed with your CRM admin:
 
-## What VoiceLine reads from CRM (inbound)
+- Which task type values represent field sales tasks (to scope the briefing correctly)
+- The sync filters to apply (by type, assigned rep, linked account)
+- Whether task auto-creation from visit reports is needed
 
-Open tasks assigned to a rep are surfaced in the Visit Briefing when that rep visits the linked account. This gives reps visibility into outstanding follow-ups before the visit.
+## Fields synced from CRM
 
-| Field | Used in |
-|-------|---------|
-| Task description | Briefing task card |
-| Due date | Briefing task card, overdue indicator |
-| Priority | Briefing task card |
-| Assigned rep | Rep-scoped task visibility |
-| Linked account | Account-scoped task lookup |
-| Linked contact | Contact display in task card |
-| Completion status | Determines whether task appears in briefing |
+| Field | Required | Notes |
+|-------|----------|-------|
+| Title | Required | Displayed as the task heading in the briefing card |
+| Task description | Required | Displayed in the briefing task card |
+| Due date | Required | Briefing task card, overdue indicator |
+| Assigned rep | Required | Rep-scoped task visibility |
+| Linked account | Required | Account-scoped task lookup |
+| Completion status | Required | Determines whether task appears in briefing |
+| Priority | Optional | Displayed in the briefing task card |
+| Linked contact | Optional | Contact display in task card |
+| Linked call log | Optional | Associates the task with a call record |
+| Linked visit | Optional | Associates the task with a visit record |
 
-## What VoiceLine writes to CRM (outbound)
+## History window
 
-When a rep submits a Task workflow, VoiceLine creates a new task record in the CRM.
-
-| CRM | Target object | Sync trigger |
-|-----|--------------|-------------|
-| SAP C4C | Task | On submission |
-| Salesforce | Task | On submission |
-| MS Dynamics | Task | On submission |
-| HubSpot | Task | On submission |
-| ZOHO | Task | On submission |
-| Aurea | Task | On submission |
-
-## Completion sync (bidirectional)
-
-Task completion status syncs in both directions:
-
-- Marking a task complete in VoiceLine → marks it complete in the CRM
-- Marking a task complete in the CRM → removes it from the VoiceLine briefing at the next sync
-
-The bidirectional completion sync is enabled by default. If your team primarily manages task completion in the CRM (not in VoiceLine), confirm the expected flow with your CRM admin.
+The default history window is **12 months**. A longer or shorter window can be configured — discuss with your FDE. A very large history window increases sync volume and may affect performance.
 
 ## Sync filters
 
@@ -52,11 +39,3 @@ The bidirectional completion sync is enabled by default. If your team primarily 
 | Assigned to rep | Only surface tasks assigned to the viewing rep (not team-level tasks) |
 | Linked to account | Only surface tasks linked to an account in scope |
 | By task type | Filter to specific task types relevant to field sales (e.g. exclude IT or internal tasks) |
-
-## Scoping decisions
-
-Before your FDE configures task sync, confirm the following:
-
-- Which CRM task type values represent field sales tasks (to exclude unrelated tasks from briefing)
-- Whether to surface tasks assigned to others at the same account (team tasks) or only tasks assigned to the viewing rep
-- Whether auto-creation of tasks from visit reports is needed (see [Visit Report](/implementation/standard-implementations/visit-report))

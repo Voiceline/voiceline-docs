@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "palm",
+  "theme": "almond",
   "name": "VoiceLine",
   "colors": {
     "primary": "#0066CC"
@@ -104,6 +104,268 @@
                   "customer/platform/data-objects/industries"
                 ]
               }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Modules & Pricing",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "commercial/index"
+            ]
+          },
+          {
+            "group": "Pricing Structure",
+            "pages": [
+              {
+                "group": "Field Sales Fundamentals",
+                "pages": [
+                  "commercial/field-sales-fundamentals/index",
+                  "commercial/field-sales-fundamentals/productivity",
+                  "commercial/field-sales-fundamentals/market-analytics",
+                  "commercial/field-sales-fundamentals/sales-coaching"
+                ]
+              },
+              {
+                "group": "Credits",
+                "pages": [
+                  "commercial/credits/index",
+                  "commercial/credits/packages",
+                  "commercial/credits/consumption"
+                ]
+              },
+              {
+                "group": "Add-On Modules",
+                "pages": [
+                  "commercial/modules/index",
+                  "commercial/modules/market-analytics-pro",
+                  "commercial/modules/sales-coaching-pro",
+                  "commercial/modules/pipeline-management",
+                  "commercial/modules/customer-data",
+                  "commercial/modules/marketing-surveys",
+                  "commercial/modules/service-cases",
+                  "commercial/modules/industry-fairs",
+                  "commercial/modules/inside-sales"
+                ]
+              },
+              {
+                "group": "Platform Packages",
+                "pages": [
+                  "commercial/platform/index",
+                  "commercial/platform/professional",
+                  "commercial/platform/enterprise"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Pricing Scenarios",
+            "pages": [
+              "commercial/pricing-scenarios/index",
+              "commercial/pricing-scenarios/small-customer",
+              "commercial/pricing-scenarios/medium-customer",
+              "commercial/pricing-scenarios/enterprise-customer"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Implementation",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "implementation/getting-started/initial-setup",
+              "implementation/getting-started/project-team",
+              "implementation/getting-started/adding-modules",
+              "implementation/getting-started/adding-user-groups"
+            ]
+          },
+          {
+            "group": "Field Sales Fundamentals",
+            "pages": [
+              "implementation/standard-implementations/index",
+              "implementation/standard-implementations/workspace-setup",
+              "implementation/standard-implementations/technical-connection",
+              {
+                "group": "Environment Configuration",
+                "pages": [
+                  "implementation/standard-implementations/environment-configuration",
+                  "implementation/standard-implementations/crm-accounts",
+                  "implementation/standard-implementations/crm-contacts",
+                  "implementation/standard-implementations/crm-visit-report",
+                  "implementation/standard-implementations/crm-call-log",
+                  "implementation/standard-implementations/crm-tasks",
+                  "implementation/standard-implementations/products",
+                  "implementation/standard-implementations/competitors"
+                ]
+              },
+              {
+                "group": "Workflow Setup",
+                "pages": [
+                  "implementation/standard-implementations/visit-report",
+                  "implementation/standard-implementations/call-log",
+                  "implementation/standard-implementations/task",
+                  "implementation/standard-implementations/email",
+                  "implementation/standard-implementations/meeting",
+                  "implementation/standard-implementations/reminder",
+                  "implementation/standard-implementations/visit-preparation"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Modules",
+            "pages": [
+              "implementation/modules/index",
+              {
+                "group": "Pipeline Management",
+                "pages": [
+                  "implementation/modules/pipeline-management/index",
+                  "implementation/modules/pipeline-management/create-opportunity",
+                  "implementation/modules/pipeline-management/update-opportunity"
+                ]
+              },
+              {
+                "group": "Customer Data",
+                "pages": [
+                  "implementation/modules/customer-data/index",
+                  "implementation/modules/customer-data/create-lead",
+                  "implementation/modules/customer-data/create-contact",
+                  "implementation/modules/customer-data/update-contact",
+                  "implementation/modules/customer-data/create-account",
+                  "implementation/modules/customer-data/update-account"
+                ]
+              },
+              "implementation/modules/marketing-surveys",
+              "implementation/modules/service-cases",
+              "implementation/modules/market-analytics-pro",
+              "implementation/modules/sales-coaching-pro",
+              {
+                "group": "Industry Fairs",
+                "pages": [
+                  "implementation/modules/industry-fairs/index",
+                  "implementation/modules/industry-fairs/fair-report",
+                  "implementation/modules/industry-fairs/lead-tracking"
+                ]
+              },
+              "implementation/modules/inside-sales"
+            ]
+          },
+          {
+            "group": "Workflow Customisation",
+            "pages": [
+              "implementation/workflow-customisation/index",
+              {
+                "group": "Components",
+                "pages": [
+                  "implementation/workflow-customisation/components/text-fields",
+                  "implementation/workflow-customisation/components/selections",
+                  "implementation/workflow-customisation/components/crm-lookups",
+                  "implementation/workflow-customisation/components/dates-numbers",
+                  "implementation/workflow-customisation/components/summaries",
+                  "implementation/workflow-customisation/components/structured-data"
+                ]
+              },
+              "implementation/workflow-customisation/additional-customisation"
+            ]
+          },
+          {
+            "group": "Data & Integrations",
+            "pages": [
+              "implementation/data-integrations/index"
+            ]
+          },
+          {
+            "group": "Security & Compliance",
+            "pages": [
+              "implementation/security/index"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Integrations",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "integrations/index"
+            ]
+          },
+          {
+            "group": "SAP Cloud for Customer",
+            "pages": [
+              {
+                "group": "SAP C4C v1",
+                "pages": [
+                  "integrations/sap-c4c-v1/index",
+                  "integrations/sap-c4c-v1/data-sync",
+                  "integrations/sap-c4c-v1/standard-implementation"
+                ]
+              },
+              {
+                "group": "SAP C4C v2",
+                "pages": [
+                  "integrations/sap-c4c-v2/index",
+                  "integrations/sap-c4c-v2/data-sync",
+                  "integrations/sap-c4c-v2/standard-implementation"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Salesforce",
+            "pages": [
+              "integrations/salesforce/index",
+              "integrations/salesforce/data-sync",
+              "integrations/salesforce/standard-implementation"
+            ]
+          },
+          {
+            "group": "Microsoft Dynamics 365",
+            "pages": [
+              "integrations/ms-dynamics/index",
+              "integrations/ms-dynamics/data-sync",
+              "integrations/ms-dynamics/standard-implementation"
+            ]
+          },
+          {
+            "group": "HubSpot",
+            "pages": [
+              "integrations/hubspot/index",
+              "integrations/hubspot/data-sync",
+              "integrations/hubspot/standard-implementation"
+            ]
+          },
+          {
+            "group": "ZOHO CRM",
+            "pages": [
+              "integrations/zoho/index",
+              "integrations/zoho/data-sync",
+              "integrations/zoho/standard-implementation"
+            ]
+          },
+          {
+            "group": "Aurea CRM",
+            "pages": [
+              "integrations/aurea/index",
+              "integrations/aurea/data-sync",
+              "integrations/aurea/standard-implementation"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Engineering",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "engineering/index"
             ]
           }
         ]

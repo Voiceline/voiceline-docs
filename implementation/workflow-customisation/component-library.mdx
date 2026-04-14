@@ -519,13 +519,14 @@ NIDecimalV (5607) | Decimal | - | 2 | - | -
 
 The config struct sent to the frontend via `DenseInfo.NumericalInputInfo`:
 
-
+```go
 type NumericalInputConfig struct {
     DecimalPlaces int      `json:"decimal_places"`
     MinValue      *float64 `json:"min_value,omitempty"`
     MaxValue      *float64 `json:"max_value,omitempty"`
     Symbol        string   `json:"symbol,omitempty"`
 }
+```
 
 **Code reference:** `library/numericalinput.go`
 

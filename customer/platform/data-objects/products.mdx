@@ -1,48 +1,55 @@
 ---
 title: "Products"
 status: Live
-last_updated: 2026-03-06
+last_updated: 2026-04-14
 ---
 
-Your product and service catalog — searchable by reps when logging offers, opportunities, or cross-sell recommendations.
+Your company's sellable items — organised in a searchable hierarchy that reps reference when logging visits, opportunities, and offers.
 
 ## Overview
 
-Products are your company's sellable items indexed in VoiceLine. Reps reference products when creating opportunities, logging offers in visit reports, or capturing what a customer discussed or ordered. Products can be synced from your CRM's product catalog or uploaded manually.
+Products are your company's catalogue indexed in VoiceLine. Reps reference them when logging visit reports, creating opportunities, or capturing what a customer discussed or ordered. The catalogue is structured as a hierarchy of product groups containing products, which can have variants — so reps can identify and log the exact item, configuration, or SKU discussed in a conversation.
 
-## Where to configure it
+## Product hierarchy
 
-Go to **Workspace Settings** → **Product Recognition**.
+Products in VoiceLine are organised in three layers:
 
-From here, administrators can:
-- Upload a product catalog manually (CSV/Excel)
-- Connect to a CRM product catalog (where supported by your integration)
-- Edit product names, IDs, and categories
+- **Product groups** — categories and sub-categories that organise your catalogue (e.g., Workwear → Trousers)
+- **Products** — individual sellable items, each belonging to a product group
+- **Variants** — selectable options within a product (e.g., size, colour, configuration)
 
-## Configuration
+Product groups can nest to any depth. Products sit at the leaves of the group tree. Variants sit under individual products.
 
-| Field | Description |
-|-------|-------------|
-| **Name** | Product name as reps reference it |
-| **Product ID** | Internal or CRM-assigned identifier |
-| **Brand** | Brand or product line |
-| **Category** | Product category for filtering |
+**Example — workwear catalogue:**
 
-Product names should reflect how reps actually refer to products in conversation — VoiceLine uses these names for conversational recognition. If reps commonly use abbreviations or trade names, add them as alternative names.
+| Level | Example |
+|-------|---------|
+| Product group | Workwear |
+| Sub-group | Trousers |
+| Product | Cargo Pant Pro |
+| Variant | Black / Standard |
+| Variant | Navy / Reinforced knees |
 
-## Search behavior
+## Aliases
 
-Reps search products by name during opportunity creation or offer logging. Phonetic matching is active — minor pronunciation variations resolve correctly. The search is scoped to the product catalog for that workspace.
+Products, groups, and variants can have aliases — alternative names or abbreviations that reps use in conversation. For example, a "Super Blaster 2000" commonly referred to as "SB2000" needs "SB2000" as an alias so VoiceLine can match what the rep says to the correct product in the catalogue.
 
-For large catalogs (tens of thousands of SKUs), VoiceLine performs an extended search — the assistant prompts the rep to narrow down by product name, number, or category.
+Aliases can be added in three ways:
 
-## FAQ
+- **During catalogue sync** — included directly in the JSON payload alongside the product data
+- **In the administration interface** — added manually after the catalogue is loaded
+- **Via the performance dashboard** — when a product mention from a real conversation can't be matched automatically, an admin can link it to the correct product and save the term as an alias; the next time a rep uses that term, it is matched correctly
 
-**How large can the product catalog be?**
-VoiceLine supports catalogs of up to hundreds of thousands of products. Large catalogs may require more specific search queries to narrow results.
+<Note>Alias editing in the administration interface and the performance dashboard are coming soon.</Note>
 
-**Can reps add products during a visit report?**
-Products are primarily referenced in opportunity and offer contexts. Mention a product by name during a visit report and VoiceLine extracts it for cross-selling analytics.
+## Transcription vocabulary
 
-**How often does the product catalog sync from the CRM?**
-Sync frequency depends on the CRM integration. Manual uploads are applied immediately. For automated syncs, products update on the scheduled refresh cycle.
+Product names and aliases are automatically added to VoiceLine's custom transcription vocabulary. This means industry-specific terms, brand names, and product codes that a general speech model wouldn't otherwise recognise are picked up correctly from recordings — no extra configuration required.
+
+## Administration interface
+
+After the catalogue is synced or uploaded, the full product hierarchy is visible and navigable in the VoiceLine administration interface. Admins can browse product groups, sub-groups, products, and variants, and manage aliases at any level.
+
+## Search behaviour
+
+Reps search products by name during visit reports and opportunity creation. Phonetic matching is active — minor pronunciation variations resolve correctly. For large catalogues, VoiceLine prompts the rep to narrow the search by product name, number, or category.

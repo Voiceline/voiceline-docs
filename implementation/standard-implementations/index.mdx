@@ -20,9 +20,9 @@ Defines the workspace identity and language configuration, and loads the busines
 
 Connects the workspace to your organisation's identity infrastructure, CRM, and corporate network. Covers authentication (basic or SSO), CRM OAuth connection, VPN configuration for on-premise CRM deployments, and MDM app deployment. Your FDE works with your CRM administrator and IT team. Step 3 cannot begin until the connection test passes.
 
-**[Step 3 — CRM Configuration](/implementation/standard-implementations/crm-accounts)**
+**[Step 3 — Environment Configuration](/implementation/standard-implementations/environment-configuration)**
 
-Configures what data VoiceLine reads from your CRM — the objects that reps search, the records that appear in briefings, and the industry taxonomy that powers analytics. Covers accounts, contacts, visit records, call records, tasks, and industries. This is where the CRM data model is mapped into VoiceLine's working environment.
+Loads the data VoiceLine needs before workflows can be built. Covers the CRM objects the platform reads from and writes to (accounts, contacts, visit records, call records, tasks, industries), plus the business data required for AI recognition and analytics (products, competitors).
 
 **[Step 4 — Workflow Setup](/implementation/standard-implementations/visit-report)**
 
@@ -32,9 +32,9 @@ Configures the six daily workflows. Each workflow starts from VoiceLine's standa
 
 Most configuration is handled by your FDE. What you need to provide:
 
-- **Step 1**: Language decisions, translation requirements, product catalogue, competitor list, custom vocabulary
+- **Step 1**: Language decisions, translation requirements, user list
 - **Step 2**: Auth method decision, CRM admin credentials, IT contact for VPN/network
-- **Step 3**: Territory model, sync filter preferences, industry taxonomy
+- **Step 3**: CRM admin for field mapping, product catalogue, competitor list with aliases, industry taxonomy decision
 - **Step 4**: Visit types, call outcomes, task categories, and other picklist values that reflect how your team works
 
 Your FDE will walk you through each of these. No technical knowledge required on your side.

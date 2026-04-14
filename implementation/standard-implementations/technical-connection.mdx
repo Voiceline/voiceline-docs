@@ -4,6 +4,13 @@ status: Live
 last_updated: 2026-04-08
 ---
 
+By the end of this page your FDE will have confirmed with your IT team and CRM admin:
+
+- The authentication method (basic auth or SSO) and completed the connection setup
+- CRM OAuth authorisation passed and end-to-end connection validation completed
+- VPN, network, and MDM requirements resolved (if applicable)
+
+
 Technical connection covers everything required to connect the workspace to your organisation's identity infrastructure, CRM, and corporate network. Your FDE handles this with your CRM administrator and IT team. It typically takes one working session, with possible follow-up for VPN or SSO configuration.
 
 ## VoiceLine authentication
@@ -19,7 +26,7 @@ SSO requires your IT team to configure a SAML application in your identity provi
 
 ## CRM connection
 
-VoiceLine connects to your CRM via OAuth. A service account or CRM administrator account is used to authorise the connection once. The OAuth token is stored securely and used for all ongoing sync operations — individual reps do not need a CRM login.
+VoiceLine connects to your CRM via OAuth. A service account or CRM administrator account is used to authorise the platform connection. Each rep then logs in individually to link their VoiceLine account to their CRM account — this one-time step is required before they can submit records.
 
 **Required CRM permissions:**
 
@@ -31,7 +38,7 @@ VoiceLine connects to your CRM via OAuth. A service account or CRM administrator
 
 Your FDE will provide the exact permission set for your CRM. The connection is tested end-to-end before Step 3 begins — if the test fails, Step 3 cannot proceed.
 
-**Supported CRMs:** SAP C4C (v1 and v2), Salesforce, MS Dynamics 365, Aurea CRM, ZOHO, HubSpot.
+For supported CRMs and CRM-specific connection instructions, see [Integrations](/customer/platform/integrations).
 
 ## VPN and network requirements
 
@@ -60,31 +67,11 @@ If your organisation uses MDM to manage employee devices, confirm the following 
 - Push notification permissions are required for follow-up reminders and task notifications
 - If VPN is required, confirm the MDM-managed VPN profile is active when reps are in the field
 
-## Attachment handling
-
-VoiceLine supports attaching files (images, documents) to workflow submissions. Confirm the following with your project lead:
-
-| Setting | Options |
-|---------|---------|
-| Attachment types allowed | All file types / images only / none |
-| Storage location | VoiceLine-hosted (default) / CRM-linked |
-| Max file size | Configurable — default is 25 MB |
-
 ## Sync cadence
 
-VoiceLine syncs CRM data on a configurable schedule. Standard cadences:
+VoiceLine syncs CRM data on a scheduled basis. The sync frequency is configured per customer during implementation — your FDE will confirm the schedule based on your data volume and freshness requirements.
 
-| Object type | Default sync cadence |
-|-------------|---------------------|
-| Accounts | Every 4 hours |
-| Contacts | Every 4 hours |
-| Leads | Every 4 hours |
-| Opportunities | Every 4 hours |
-| Products | Daily |
-| Competitors | Daily |
-| Users | Daily |
-
-Near-real-time sync (15–30 minute intervals) is available for accounts and contacts where data freshness is critical. Discuss with your FDE if the 4-hour default is not sufficient.
+Outbound sync (workflow submissions from VoiceLine to CRM) is immediate on submission.
 
 ## Connection validation
 

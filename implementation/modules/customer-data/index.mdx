@@ -55,9 +55,19 @@ The Contact, Account, and Lead workflows are available in FSF. Customer Data ext
 | Lead source | SingleSelect | Configurable source values |
 | Notes | MultiLineText | Context from the conversation |
 
+## Contact deduplication
+
+Before creating a new contact, VoiceLine checks for existing records using the configured match criteria. Default match criteria:
+
+| Match criteria | Default behaviour |
+|----------------|-------------------|
+| First name + last name + account | Exact or fuzzy match flags as potential duplicate |
+
+Thresholds are configurable. Confirm the threshold with your CRM admin based on the quality of your existing contact data — stricter thresholds reduce false negatives but may surface more false positives for reps to resolve manually.
+
 ## Required scoping decisions
 
-**Deduplication logic:** Confirm which fields are used to detect duplicates — typically email address and/or company name + contact name. Define what happens when a duplicate is found (block creation, prompt for confirmation, or merge).
+**Deduplication threshold:** Confirm the match threshold based on your CRM's contact data quality. Define what happens when a duplicate is found (prompt for confirmation, or block creation).
 
 **Mandatory fields:** Agree which fields are required before a record can be submitted. Requiring email address reduces duplicates but may block rep workflow if email is unknown.
 

@@ -1,59 +1,76 @@
 ---
 title: "Workspace Settings"
 status: Live
-last_updated: 2026-04-08
+last_updated: 2026-04-14
 ---
+
+By the end of this page your FDE will have agreed with your project lead:
+
+- The workspace name and working languages to activate
+- The user list (first name, last name, email, organisational role) for all pilot or rollout participants
+- The recording access level (confirm with data protection or compliance team if applicable)
+
 
 Workspace setup covers everything that defines how the workspace is configured before any CRM connection or workflow build begins. Your FDE handles this with your project lead. It typically takes one working session.
 
 ## Workspace name
 
-The workspace name is the identifier your team sees throughout the product — in the app header, email sender names, and CRM activity records. It is set during initial provisioning and should reflect how your team or deployment is identified.
+Choose a workspace name and confirm it with your project lead before your FDE begins configuration.
 
-Confirm the workspace name with your project lead before your FDE begins configuration. Renaming a workspace after go-live is possible but requires FDE involvement.
+The workspace name is the identifier your team sees throughout the product — in the app header, email sender names, and CRM activity records. It should reflect how your team or deployment is identified.
+
+Renaming a workspace after go-live is possible but requires FDE involvement.
 
 ## Language settings
 
-VoiceLine supports multilingual teams and multinational deployments. Language configuration covers three independent settings:
+Decide which working languages to activate for the workspace. Once activated, each rep selects their own language during the onboarding flow — no per-user assignment is needed.
 
-| Setting | What it controls |
-|---------|-----------------|
-| Interface language | The language of the app UI — menus, labels, in-app text |
-| Recording language | The speech recognition model used for voice input |
-| Output language | The language of AI-generated summaries and CRM field values |
+For the full list of supported languages, see [Language Settings](/customer/platform/language-settings).
 
-These three settings can be configured independently. A rep can, for example, see the interface in German, record in French, and have summaries written in English.
+**The number of languages you can activate depends on your platform tier:**
 
-**Interface languages supported:** German, English, French, Spanish, Italian, Dutch, Polish. Per-user overrides are available in user settings.
+| Platform tier | Language allowance |
+|---------------|--------------------|
+| [Professional](/commercial/platform/professional) | Up to 3 languages; workspace configured in German or English |
+| [Enterprise](/commercial/platform/enterprise) | Unlimited languages across any supported language |
 
-**Recording languages:** All major European languages. Your FDE will confirm which are included in your licence during the kickoff session.
-
-<Note>Recording language availability depends on your VoiceLine licence. Confirm which languages are in scope at kickoff.</Note>
-
-**Output language options:**
-
-| Mode | Behaviour |
-|------|-----------|
-| Output = recording language | Output is written in the same language the rep recorded in (default) |
-| Output = fixed language | All output is written in one configured language, regardless of recording language |
-| Output = per-user preference | Each user sets their preferred output language independently |
+If the languages required by your team exceed what your current tier allows, you will need to upgrade before configuration begins. Confirm this with your project lead at kickoff.
 
 ## CRM translation
 
-CRM translation is an Enterprise feature that extends output language for multinational teams. When enabled, reps record in their native language, summaries are generated in that language, and the output is then automatically translated into the workspace's configured CRM language before sync.
+CRM translation is an Enterprise feature. When enabled, records are automatically translated from the rep's working language into the workspace's configured CRM language on sync — so CRM data stays in a single language regardless of what each rep records in.
 
-This is useful when a central team or manager needs all CRM activity records in a single language, but reps across countries record in their own languages.
+**Scoping decision:** Confirm with your project lead whether CRM translation is required, and which language CRM records should be written in. See [Language Settings](/customer/platform/language-settings) for full details.
 
-**Scoping decision:** Confirm with your project lead whether CRM translation is required, and which language the CRM records should be written in.
+## User data
+
+Provide a user list covering everyone who will take part in the pilot or rollout. Your FDE uses this to create all user accounts before go-live.
+
+**Required fields per user:**
+- First name
+- Last name
+- Email address
+- Organisational role
+
+The organisational role determines what the user can see in VoiceLine — specifically whether their activity is counted in coaching metrics and whether they have access to the Analytics and Coaching platforms. See [Organisational roles](/customer/platform/workspace-admin#organisational-roles) for the full role definitions and access breakdown.
+
+Provide the user list as a spreadsheet with one row per user. Your FDE will confirm the preferred format at kickoff.
 
 ## Recording access
 
-<Note>This section is under development. Recording access controls who can listen to voice recordings within the workspace. There are multiple access levels. Your FDE will confirm the correct configuration for your team structure during setup.</Note>
+Decide which recording access level the workspace should use. This controls who can open and listen to recordings submitted by other reps, and whether recordings are automatically deleted after a set period.
+
+<Note>Recording access levels 2–5 require the Enterprise platform tier. Professional workspaces are fixed to Baseline and cannot change this setting. See [Enterprise](/commercial/platform/enterprise) if an upgrade is needed.</Note>
+
+For the full breakdown of all five access levels, see [Recording access](/customer/platform/security#recording-access).
+
+**Scoping decision:** Confirm the required access level with your project lead and your customer's data protection or compliance team before configuration begins.
 
 ---
 
 **What your team needs to provide for this step:**
 - Agreed workspace name
-- Language matrix per user group (interface / recording / output)
+- Working languages to activate for the workspace
 - Decision on whether CRM translation is required, and target CRM language
-- Recording access level decision (your FDE will guide this)
+- User list (first name, last name, email, organisational role) for all pilot or rollout participants
+- Recording access level decision (confirm with data protection or compliance team if applicable)

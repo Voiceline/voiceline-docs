@@ -1,0 +1,177 @@
+---
+title: "Products"
+status: Live
+last_updated: 2026-04-14
+---
+
+Products are your company's catalogue loaded into VoiceLine as a structured hierarchy — product groups, products, and variants — so reps can find and log the right item during visit reports and opportunity creation, and VoiceLine can detect product mentions in recordings. The sync approach and data format must be agreed before the configuration session. For how products work in VoiceLine, see [Products](/customer/platform/data-objects/products).
+
+By the end of this work, your product catalogue is loaded and verified in VoiceLine, ready for workflows to go live.
+
+## Source system
+
+Your product catalogue typically lives in a PIM (Product Information Management) system or directly in the ERP. VoiceLine does not connect to these systems directly. You and your FDE work out how to export the catalogue and transform it into VoiceLine's JSON format. The JSON format is the same regardless of source system.
+
+## Sync approach
+
+| Approach | When to use | Notes |
+|----------|-------------|-------|
+| API sync | Catalogues that change regularly | Keeps VoiceLine in sync automatically; requires API integration setup |
+| JSON upload | Stable catalogues or when API access is unavailable | Can be re-uploaded whenever the catalogue changes |
+
+If API sync is chosen, you must provide API access before this step can be completed.
+
+<Note>For the full API specification and schema, see the [Product Sync API docs](https://app.getvoiceline.com/api/products/syncing/docs).</Note>
+
+## Data structure
+
+The JSON payload has two top-level arrays: `product_groups` and `products`.
+
+### Product groups
+
+Product groups are the organisational hierarchy. A group can belong to another group via `belongs_to_group_id`, allowing nesting to any depth. Groups without a `belongs_to_group_id` are top-level categories.
+
+### Products
+
+Products are the individual sellable items. Each product:
+
+- Has a stable, unique `id` — used to backlink to CRM records and other data objects
+- Belongs to a product group via `belongs_to_group_id`
+- Has localised names — one entry per recording language
+- Can have variants
+
+### Variants
+
+Variants are the selectable options within a product — size, colour, configuration, material, or any other differentiator. Each variant has a unique `variant_id` and localised names. Variants sit at the lowest level of the hierarchy.
+
+### Localisation
+
+All `name` fields are objects keyed by locale code (e.g., `"en-US"`, `"de-DE"`). Every locale that reps record in must have a corresponding name entry — missing locales mean the product will not be recognised in that recording language.
+
+### Example payload
+
+```json
+{
+  "products": [
+    {
+      "id": "prod-001",
+      "name": {
+        "en-US": "Premium Widget",
+        "de-DE": "Premium Widget"
+      },
+      "variants": [
+        {
+          "variant_id": "var-001-a",
+          "name": {
+            "en-US": "Small",
+            "de-DE": "Klein"
+          }
+        },
+        {
+          "variant_id": "var-001-b",
+          "name": {
+            "en-US": "Large",
+            "de-DE": "Groß"
+          }
+        }
+      ],
+      "belongs_to_group_id": "grp-widgets"
+    },
+    {
+      "id": "prod-002",
+      "name": {
+        "en-US": "Basic Gadget",
+        "de-DE": "Basis Gerät"
+      },
+      "variants": [],
+      "belongs_to_group_id": "grp-gadgets"
+    }
+  ],
+  "product_groups": [
+    {
+      "group_id": "grp-electronics",
+      "name": {
+        "en-US": "Electronics",
+        "de-DE": "Elektronik"
+      }
+    },
+    {
+      "group_id": "grp-widgets",
+      "name": {
+        "en-US": "Widgets",
+        "de-DE": "Widgets"
+      },
+      "belongs_to_group_id": "grp-electronics"
+    },
+    {
+      "group_id": "grp-gadgets",
+      "name": {
+        "en-US": "Gadgets",
+        "de-DE": "Geräte"
+      },
+      "belongs_to_group_id": "grp-electronics"
+    }
+  ]
+}
+```
+
+### Real-world mapping examples
+
+These examples show how an existing catalogue maps to VoiceLine's product group → product → variant structure.
+
+**Automotive — BMW**
+
+A dealership sells multiple car models with configurable options. Each model is a product; colour and engine combination become variants.
+
+| VoiceLine level | Example |
+|-----------------|---------|
+| Product group | Automobiles |
+| Sub-group | BMW |
+| Product | 3 Series |
+| Variant | 320i Petrol / Mineral White |
+| Variant | 320d Diesel / Black Sapphire |
+
+**Industrial — fasteners**
+
+A manufacturer sells bolts differentiated by material and dimensions. The base product (e.g., "Hex Bolt M6") is a VoiceLine product; material and length become variants.
+
+| VoiceLine level | Example |
+|-----------------|---------|
+| Product group | Fasteners |
+| Sub-group | Bolts |
+| Product | Hex Bolt M6 |
+| Variant | Stainless steel / 20 mm |
+| Variant | Zinc / 10 mm |
+
+**Workwear**
+
+A workwear brand sells clothing across product lines with colour and functional variations. Each garment style is a product; colour and feature combination become variants.
+
+| VoiceLine level | Example |
+|-----------------|---------|
+| Product group | Workwear |
+| Sub-group | Trousers |
+| Product | Cargo Pant Pro |
+| Variant | Black / Standard |
+| Variant | Navy / Reinforced knees |
+
+## Aliases
+
+Aliases are alternative names and abbreviations that reps use when referring to products in conversation. A product listed as "Super Blaster 2000" but commonly called "SB2000" by reps needs "SB2000" as an alias — otherwise that mention will not be matched.
+
+Aliases can be added at any level of the hierarchy: product group, product, or variant.
+
+**In the JSON payload**
+
+Add an `aliases` field to any product group, product, or variant object in the payload. Aliases included this way stay current automatically when the catalogue is re-uploaded or re-synced.
+
+**In the administration interface** *(coming soon)*
+
+After the catalogue is loaded, aliases can be added manually to any item in the product hierarchy through the VoiceLine web app.
+
+**Via the performance dashboard** *(coming soon)*
+
+The performance dashboard surfaces product mentions from real conversations that VoiceLine could not match to the catalogue. An admin can link the unmatched mention to the correct product and save it as an alias — the next time a rep uses that term, it is matched correctly.
+
+Collect aliases from reps and sales managers before the configuration session. Abbreviations, trade names, and internal shorthand are the most common cases.
+

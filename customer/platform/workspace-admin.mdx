@@ -34,6 +34,26 @@ The workspace name appears in reports and admin views. To change it, go to **Adm
 
 Admins can promote members to admin or remove users from the workspace.
 
+## Organisational roles
+
+Every user is assigned an organisational role when they are added to the workspace. This role reflects the user's function in the organisation and controls two things in VoiceLine:
+
+- **Activity tracking** — whether the user's submissions count toward activity metrics in the Coaching Platform
+- **Analytics & Coaching access** — whether the user can see the Analytics and Coaching platforms
+
+| Role | Activity tracked | Analytics & Coaching access |
+|------|:---:|:---:|
+| Field Sales Representative | Yes | No |
+| Inside Sales | No | No |
+| Account Executive | Yes | Yes |
+| Sales Team Lead | Yes | Yes |
+| Executive | No | Yes |
+| Project Lead | No | Yes |
+| CRM Manager | No | Yes |
+| IT | No | Yes |
+
+Reps in field-facing roles (Field Sales Representative, Account Executive, Sales Team Lead) have their activity counted because they are the primary users the Coaching Platform is designed to measure. Managers, executives, and operational roles get read access to analytics but are not measured themselves.
+
 **User status:**
 - **Active** — user has completed setup and can log in
 - **Invited** — invitation sent, setup not yet completed
