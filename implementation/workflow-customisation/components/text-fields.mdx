@@ -1,0 +1,61 @@
+---
+title: "Text Fields"
+status: Live
+last_updated: 2026-04-04
+---
+
+Text field components capture free-form content spoken by the rep — titles, descriptions, notes, next steps, and email bodies. The same component type serves many purposes depending on the title and prompt it is configured with.
+
+## SingleLineText
+
+A one-line input for short, focused content. The most widely used component in the system — present in nearly every workflow.
+
+The title and prompt determine what the AI extracts. Common uses:
+
+| Field label | Example use |
+|------------|-------------|
+| Report title | A short summary of the visit, generated silently by the AI |
+| Location | The city where the meeting took place |
+| Main contact | The primary person spoken with |
+| Company name | Which company was visited |
+| Customer number | A CRM or SAP identifier |
+
+**AI behaviour:** Most SingleLineText fields use `skip` ordering — the AI extracts the value silently from the transcript without asking. Some (like location) use `lead` to prompt the rep early in the recording if not mentioned.
+
+**Captures:** Plain string, typically under 50 characters.
+
+---
+
+## MultiLineText
+
+A multi-line input for longer content — descriptions, summaries, next steps, and anything that benefits from multiple sentences or paragraphs.
+
+| Field label | Example use |
+|------------|-------------|
+| Next steps | Follow-up actions mentioned in the recording |
+| Call notes | Full notes from a phone call |
+| Task description | Detailed task description with all relevant context |
+| Customer email | A customer-facing meeting summary |
+| Business case | Justification for a deal |
+
+**AI behaviour:** Descriptions and summaries use `skip` — the AI generates them from the full transcript. Next steps often use `trail` — the AI asks at the end "Were there any next steps discussed?" if nothing was mentioned.
+
+**Captures:** Plain string, multi-paragraph.
+
+---
+
+## MarkDownText
+
+An AI-generated email body, rendered as formatted markdown. Used exclusively in the Email workflow. The rep does not type into this field — the AI writes it.
+
+The component reads the other email fields in the workflow (recipient, template, CC) and generates a complete email with subject line and body based on the voice recording.
+
+**AI behaviour:** Always appears at the end of the Email workflow. Generates in the language the rep speaks — German input produces a German email.
+
+**Captures:** Two parts — `EmailSubject` (subject line) and `MarkdownText` (email body).
+
+**When to use:** Only in Email workflows. Not applicable to other workflow types.
+
+---
+
+See [Workflow Customisation](/implementation/product-customisation/workflow-customisation) for how text field components fit into the broader schema and CRM mapping model.

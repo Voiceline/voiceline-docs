@@ -1,0 +1,46 @@
+---
+title: "Salesforce — Setup"
+status: Live
+last_updated: 2026-04-04
+---
+
+Connects VoiceLine to Salesforce via OAuth 2.0, syncing accounts, contacts, leads, and opportunities in both directions.
+
+## Overview
+
+VoiceLine pulls accounts, contacts, leads, opportunities, and campaigns from Salesforce so reps can search their full customer base from the field. When reps submit field activities, VoiceLine pushes structured records back to Salesforce — visit reports as events, call logs as phone call activities, and tasks as Salesforce tasks — linked to the relevant account or contact.
+
+## Where to configure it
+
+Go to **Workspace Settings** → **Integrations** → **Salesforce**.
+
+## Prerequisites
+
+- Salesforce account with API access (Professional edition or above)
+- A Connected App configured in Salesforce (for OAuth 2.0)
+- Workspace administrator permissions in VoiceLine
+
+## Setup steps
+
+1. Open **Workspace Settings** → **Integrations**
+2. Select **Salesforce**
+3. Click **Connect with Salesforce** — you'll be redirected to Salesforce's OAuth authorization page
+4. Log in with your Salesforce administrator credentials and approve access
+5. You're redirected back to VoiceLine — the integration is active and the initial sync begins
+
+## Authentication
+
+Salesforce uses **OAuth 2.0**. The workspace administrator connects once via a browser-based authorization flow. VoiceLine stores and auto-refreshes the access token. No credentials are stored directly.
+
+A single workspace-level connection covers all reps — individual reps do not need Salesforce credentials to use VoiceLine.
+
+## FAQ
+
+**Which Salesforce editions are supported?**
+API access is required, available from Salesforce Professional edition and above.
+
+**Do all reps need individual Salesforce licenses?**
+Reps do not log into Salesforce through VoiceLine. Whether individual Salesforce licenses are required depends on your Salesforce licensing agreement.
+
+**How often does data sync from Salesforce?**
+Inbound data syncs on rep login and on a scheduled interval. See [Data Sync Reference](/integrations/salesforce/data-sync) for details.

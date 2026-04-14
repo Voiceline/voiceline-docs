@@ -1,0 +1,57 @@
+---
+title: "Update Opportunity"
+status: Live
+last_updated: 2026-04-04
+---
+
+The Update Opportunity workflow lets reps update an existing opportunity record by voice after a customer interaction. Rather than creating a new record, it selects the opportunity from the rep's CRM pipeline and applies changes to stage, close date, value, and next steps.
+
+## What it captures
+
+| Field | Component type | Notes |
+|-------|---------------|-------|
+| Opportunity | CRMOpportunity | AI selects from the rep's open opportunities |
+| Opportunity stage | SingleSelect | Must match your CRM pipeline stages |
+| Estimated value | CurrencyInput | Updated deal value |
+| Close date | Zeitraum (single date) | |
+| Probability | NumericalInput | Optional — configurable per workspace |
+| Next steps | MultiLineText | Actions agreed during the interaction |
+| Notes | MultiLineText | Context on deal progress or objections |
+
+## How the AI selects the opportunity
+
+When a rep starts an Update Opportunity recording, VoiceLine presents a list of open opportunities linked to the current account. The rep can:
+
+- State the opportunity name and VoiceLine matches it from the list
+- Select it manually from the account's open opportunities
+
+If the account has only one open opportunity, VoiceLine defaults to that record automatically.
+
+## How it differs from Create Opportunity
+
+| | Create Opportunity | Update Opportunity |
+|---|---|---|
+| Writes to | New record | Existing record |
+| Account required | Yes | Yes (used to filter opportunities) |
+| Opportunity name | Captured or generated | Selected from existing |
+| Stage | Required | Required |
+| CRM behaviour | Creates new opportunity object | Patches fields on existing object |
+
+## Required scoping decisions
+
+**Stage values:** Same stage picklist as Create Opportunity — must match your CRM exactly.
+
+**Fields to update:** Confirm which fields can be changed via an update. Some customers configure the workflow to allow full field updates; others restrict it to stage, close date, and next steps only.
+
+**Opportunity selection logic:** Confirm whether the AI should default to the most recently modified opportunity, the opportunity with the earliest close date, or always require explicit selection.
+
+## CRM sync
+
+| CRM | Target object | Behaviour |
+|-----|--------------|-----------|
+| SAP C4C | Opportunity | PATCH on existing record |
+| Salesforce | Opportunity | Update on existing record |
+| MS Dynamics | Opportunity | Update on existing record |
+| HubSpot | Deal | Update on existing record |
+| ZOHO | Deal | Update on existing record |
+| Aurea | Opportunity | Update on existing record |

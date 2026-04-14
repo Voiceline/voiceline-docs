@@ -1,0 +1,32 @@
+---
+title: "Overview"
+status: Live
+last_updated: 2026-04-14
+---
+
+FSF includes seven workflows that reps use to document their daily activity by voice. Three of them — Visit Report, Call Log, and Task — have configurable schemas that must be tailored to your CRM structure and sales process before go-live. The remaining four follow a fixed standard and require no FDE configuration.
+
+By the end of this section your FDE will have confirmed with your project lead:
+
+- The schema for each configurable workflow, including any fields added beyond the standard
+- The hard-coded fields to stamp on each workflow's CRM record on submission
+
+## Primary object: Account
+
+Every workflow is anchored to a CRM account record. The rep selects the account once at the start of a recording — it applies to all workflows created in that session. Reps do not re-select the account per workflow.
+
+This means Account is not part of any individual workflow schema. It is a session-level input, always present, always resolved before any workflow opens.
+
+## FSF workflows
+
+| Workflow | What it does | FDE configuration |
+|---|---|---|
+| [Visit Report](/implementation/standard-implementations/visit-report) | Documents customer visits by voice; syncs to CRM activity record | Schema, event selection, hard-coded fields |
+| [Call Log](/implementation/standard-implementations/call-log) | Documents phone calls by voice; syncs to CRM call record | Schema, hard-coded fields |
+| [Task](/implementation/standard-implementations/task) | Creates follow-up tasks by voice; syncs to CRM task object | Schema, hard-coded fields |
+| Email | Drafts and sends emails to customers by voice | Standard — no configuration required |
+| Meeting | Creates meetings in calendar and CRM by voice | Standard — no configuration required |
+| Reminder | Sets personal push-notification reminders by voice | Standard — no configuration required |
+| Visit Preparation | Surfaces a pre-visit briefing before each recording | Standard — no configuration required |
+
+For how Email, Meeting, Reminder, and Visit Preparation work from the rep's perspective, see their respective pages in the product docs: [Email](/customer/productivity/workflows/email), [Meeting](/customer/productivity/workflows/meeting), [Reminder](/customer/productivity/workflows/reminder), [Visit Briefing](/customer/productivity/visit-briefing).

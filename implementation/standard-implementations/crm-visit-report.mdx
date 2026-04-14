@@ -1,0 +1,64 @@
+---
+title: "Visits & Visit Reports"
+status: Live
+last_updated: 2026-04-14
+---
+
+VoiceLine syncs visits from your CRM to power Visit Briefings, pre-visit notifications, and analytics. In most deployments, visit reports are stored in the description field of the visit object itself. Some customers use a separate CRM object for visit reports, linked back to the visit record. This page covers both patterns.
+
+By the end of this page your FDE will have confirmed with your CRM admin:
+
+- Which storage pattern applies to your CRM setup
+- The visit object and the activity type values that identify field visits
+- The sync filters to apply (e.g. active accounts only, visit type exclusions)
+- The fields to sync and which to surface in the Visit Briefing card
+- If a separate visit report object is used: the object name, field structure, and link back to the visit record
+
+## Standard: visit reports in the visit description
+
+In the standard configuration, visit reports are stored in the description field of the visit object (meeting or appointment) in the CRM. VoiceLine syncs this single object for all purposes — briefings, notifications, and reading and writing visit report data.
+
+### Fields synced from CRM
+
+| Field | Required | Notes |
+|-------|----------|-------|
+| Title | Required | Displayed as the activity heading in the briefing card |
+| Activity date | Required | Used in the briefing timeline |
+| Summary / description | Required | Visit report content — read for prep and analytics, written on submission |
+| Linked account | Required | Used to scope briefings to the correct account |
+| Assigned rep | Required | Required to map visits to the correct rep |
+| Linked contact | Optional | Displayed in the briefing activity card |
+| Activity type | Optional | Can be used to control playbook distribution and to analyse visit performance |
+
+Additional fields (e.g. visit outcome, product discussed, custom CRM fields) can be surfaced in the briefing card. Confirm with your FDE which fields to show.
+
+### History window
+
+The default history window is **12 months**. A longer or shorter window can be configured — discuss with your FDE. A very large history window increases sync volume and may affect performance.
+
+### Sync filters
+
+Filters control which visit records are synced from the CRM into VoiceLine. Records excluded by a filter are not surfaced in the Visit Briefing or used for analytics.
+
+| Filter | Description |
+|--------|-------------|
+| Active accounts only | Exclude visit records linked to inactive or archived accounts |
+| By activity type | Include only specific activity type values — e.g. "Field Visit", "Customer Meeting". Exclude internal or irrelevant types. |
+| By visit category | Exclude specific visit categories, such as inside sales visits, if your CRM distinguishes them from field visits |
+
+Activity type filtering is the most common filter and should always be discussed with your CRM admin to identify which type values are in scope.
+
+<Note>Filtering by visit category — for example, to exclude inside sales visits from the briefing history — is not part of the standard configuration. If your CRM groups visit types in a way that requires this distinction, discuss it with your FDE.</Note>
+
+## Separate visit report object
+
+Some customers store visit reports in a dedicated CRM object that is linked back to the visit record, rather than in the visit description field. This is common when the CRM is used for structured reporting, compliance tracking, or integration with other systems.
+
+In this case, VoiceLine needs to sync **both** objects:
+
+- **The visit object** — same configuration as the standard pattern above, used for briefings and notifications.
+- **The visit report object** — synced separately to read historical report data for Visit Preparation and analytics, and to write new visit reports on submission.
+
+The historical sync of the report object is required for both Visit Preparation (surfacing past report content in the briefing) and analytics (competitor mentions, sentiment, visit frequency). Without it, only new reports submitted through VoiceLine are available.
+
+Your FDE will need to confirm the visit report object name, the fields to sync and map, and the field that links each report back to its parent visit record. This is additional scoping on top of the standard visit object configuration.

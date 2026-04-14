@@ -1,0 +1,44 @@
+---
+title: "Sales Coaching Pro"
+status: Live
+last_updated: 2026-04-04
+---
+
+The Sales Coaching Pro module adds structured coaching capabilities to VoiceLine. Team leads define playbooks — sets of questions or topics that should appear in customer conversations. VoiceLine tracks whether these are covered and surfaces coaching insights for managers.
+
+For a full description of what the module includes commercially, see [Sales Coaching Pro](/commercial/modules/sales-coaching-pro).
+
+## What it activates
+
+| Capability | Description |
+|-----------|-------------|
+| Playbook builder | Admin creates question sets tied to visit types or sales stages |
+| Playbook prompting | Questions surface during or after recording to guide rep behaviour |
+| Coaching analytics | Per-rep and per-team coverage tracking across playbook questions |
+| Visit analytics | Deeper visit-level analysis beyond FSF's standard activity view |
+
+## Standard implementation
+
+Sales Coaching Pro adds a playbook component to relevant workflows. The component (`PBSimple`) is added to visit report and call log workflows — it surfaces the configured playbook questions at the end of the recording for the rep to address.
+
+### Playbook component
+
+| Field | Component type | Notes |
+|-------|---------------|-------|
+| Playbook responses | PBSimple | One per playbook question set |
+
+The questions themselves are configured in workspace settings (Playbooks), not in the workflow schema directly.
+
+## Required scoping decisions
+
+**Playbook design:** Define the question sets — what "good looks like" for each visit type or sales stage. This is the core input for the module and requires time with your sales leadership team.
+
+**Question format:** Playbook questions are open-ended prompts, not scored fields. Confirm the questions with your team leads before configuration.
+
+**Coverage targets:** Confirm what coverage rate you want to track (e.g. what percentage of visits should address a given question).
+
+**Manager access:** Confirm which managers have access to rep-level coaching data. Coaching dashboards show individual rep performance.
+
+## Dependencies
+
+Sales Coaching Pro has no module dependencies. It can be activated as the first module after FSF.

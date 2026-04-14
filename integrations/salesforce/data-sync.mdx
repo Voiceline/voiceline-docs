@@ -1,0 +1,122 @@
+---
+title: "Salesforce — Data Sync Reference"
+status: Live
+last_updated: 2026-04-04
+---
+
+## Sync overview
+
+| Object | Direction | Trigger |
+|--------|-----------|---------|
+| Accounts | Salesforce → VoiceLine | On login + scheduled refresh |
+| Contacts | Salesforce → VoiceLine | On login + scheduled refresh |
+| Leads | Salesforce → VoiceLine | On login + scheduled refresh |
+| Opportunities | Salesforce → VoiceLine | On login + scheduled refresh |
+| Campaigns | Salesforce → VoiceLine | On login + scheduled refresh |
+| Visit reports | VoiceLine → Salesforce Event | On submission |
+| Call logs | VoiceLine → Salesforce Task (Call type) | On submission |
+| Tasks | VoiceLine → Salesforce Task | On submission |
+| Meetings | VoiceLine → Salesforce Event | On submission |
+| New leads | VoiceLine → Salesforce Lead | On submission |
+| New contacts | VoiceLine → Salesforce Contact | On submission |
+| Opportunity updates | VoiceLine → Salesforce Opportunity | On submission |
+
+## Inbound: Salesforce → VoiceLine
+
+### Accounts
+| Salesforce field | VoiceLine field | Notes |
+|-----------------|-----------------|-------|
+| Id | Internal ID | |
+| Name | Account name | |
+| BillingCity | City | |
+| BillingPostalCode | Postal code | |
+| BillingStreet | Street | |
+| BillingCountry | Country | |
+| OwnerId | Assigned rep | Used to filter accounts per rep |
+| Phone | Phone | |
+| Type | Account type | |
+
+### Contacts
+| Salesforce field | VoiceLine field | Notes |
+|-----------------|-----------------|-------|
+| Id | Internal ID | |
+| FirstName | First name | |
+| LastName | Last name | |
+| AccountId | Linked account | |
+| Phone | Phone | |
+| MobilePhone | Mobile | |
+| Email | Email | |
+| Title | Job title | |
+
+### Opportunities
+| Salesforce field | VoiceLine field | Notes |
+|-----------------|-----------------|-------|
+| Id | Internal ID | |
+| Name | Opportunity name | |
+| AccountId | Linked account | |
+| StageName | Stage | Displayed as current stage |
+| Amount | Value | |
+| CloseDate | Close date | |
+| OwnerId | Assigned rep | |
+
+## Outbound: VoiceLine → Salesforce
+
+### Visit report → Salesforce Event
+
+| VoiceLine field | Salesforce field | Notes |
+|-----------------|-----------------|-------|
+| Visit summary | Description | Full AI-generated summary |
+| Account | WhatId (Account) | |
+| Contact | WhoId (Contact) | |
+| Visit date | ActivityDate | |
+| Visit type | Subject | Prefixed with visit type (e.g. "Customer Visit — [summary]") |
+| Duration | DurationInMinutes | |
+
+### Call log → Salesforce Task (Call)
+
+| VoiceLine field | Salesforce field | Notes |
+|-----------------|-----------------|-------|
+| Call summary | Description | |
+| Account | WhatId | |
+| Contact | WhoId | |
+| Call date | ActivityDate | |
+| Call direction | CallType | Inbound / Outbound |
+| Call outcome | Status | Mapped to Salesforce task status values |
+
+### Task → Salesforce Task
+
+| VoiceLine field | Salesforce field | Notes |
+|-----------------|-----------------|-------|
+| Task description | Subject | |
+| Account | WhatId | |
+| Contact | WhoId | |
+| Due date | ActivityDate | |
+| Priority | Priority | High / Normal / Low |
+| Assigned to | OwnerId | |
+
+### Opportunity update → Salesforce Opportunity
+
+| VoiceLine field | Salesforce field | Notes |
+|-----------------|-----------------|-------|
+| Stage | StageName | Must match Salesforce stage picklist values exactly |
+| Value | Amount | |
+| Close date | CloseDate | |
+| Notes | Description | Appended to existing description |
+
+## Sync cadence
+
+| Direction | Trigger | Details |
+|-----------|---------|---------|
+| Salesforce → VoiceLine | On rep login | Full refresh of assigned accounts, contacts, leads, opportunities |
+| Salesforce → VoiceLine | Scheduled | Background refresh — interval configured during implementation (typically 4–6 hours) |
+| VoiceLine → Salesforce | On submission | Immediate; queued and retried if Salesforce is unreachable |
+
+## What VoiceLine does not sync from Salesforce
+
+- Cases, service tickets
+- Custom Salesforce objects not in the standard data model
+- Salesforce reports or dashboards
+- Email inbox content
+- Chatter / internal Salesforce messages
+
+<Note>Field mappings shown here are the standard defaults. Your SA may configure different mappings to match your Salesforce field names and picklist values during implementation.</Note>

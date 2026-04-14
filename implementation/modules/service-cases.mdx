@@ -1,0 +1,54 @@
+---
+title: "Service Cases"
+status: Live
+last_updated: 2026-04-04
+---
+
+The Service Cases module adds case creation and service technician workflows to VoiceLine. Field reps create service cases by voice when customers report issues. Service technicians update case status and capture resolution notes in the field.
+
+For a full description of what the module includes commercially, see [Service Cases](/commercial/modules/service-cases).
+
+## What it activates
+
+| Capability | Description |
+|-----------|-------------|
+| Case creation workflow | Field rep creates a case when a customer reports a service issue |
+| Case update workflow | Service technician logs progress and resolution notes |
+| Queue-based routing | Cases routed to a service queue rather than a named individual |
+
+## Standard implementation
+
+### Case creation (field rep)
+
+| Field | Component type | Notes |
+|-------|---------------|-------|
+| Case summary | MultiLineText | Description of the reported issue |
+| Account | CRMAccount | Affected customer account |
+| Contact | CRMRelatedContact | Person who reported the issue |
+| Issue type | SingleSelect | Configurable — e.g. Technical, Complaint, Inquiry |
+| Priority | SingleSelect | High / Normal / Low |
+| Assigned to | TeamSelector or queue | Individual rep or service queue |
+
+### Case update (service technician)
+
+| Field | Component type | Notes |
+|-------|---------------|-------|
+| Case reference | CRM lookup | Existing case being updated |
+| Status update | SingleSelect | In progress / Resolved / Escalated |
+| Resolution notes | MultiLineText | Work done and outcome |
+| Spare parts used | MultiLineText or LineItem | Optional — for compliance-heavy industries |
+| Next action | MultiLineText | If not resolved |
+
+## Required scoping decisions
+
+**CRM case object:** Confirm which CRM object cases are written to (e.g. SAP Service Request, Salesforce Case, Dynamics Service Activity). Field names and routing logic vary significantly by CRM.
+
+**Queue vs. individual assignment:** Confirm whether cases are routed to a named person or a shared queue. Queue routing requires the CRM's service queue configuration to be in place first.
+
+**Issue type values:** Provide the picklist values for issue type — these must match your CRM's case categorisation model.
+
+**Compliance fields:** Regulated industries (medical devices, chemicals) often require additional documentation fields. Flag these during scoping.
+
+## Dependencies
+
+Service Cases has no module dependencies. It can be activated as the first module after FSF.

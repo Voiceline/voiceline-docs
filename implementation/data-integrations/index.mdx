@@ -1,0 +1,75 @@
+---
+title: "Overview"
+status: Live
+last_updated: 2026-04-04
+---
+
+VoiceLine connects to your CRM bidirectionally — reading account and contact data to support reps in the field, and writing structured activity records back after each interaction.
+
+This page covers the CRM-agnostic data model. For field-level mappings, sync behaviour, and standard implementations specific to your CRM, see the [Integrations](/integrations) section.
+
+## How the integration works
+
+VoiceLine integrates with your CRM at the workspace level. A single integration configuration covers all reps in the workspace — no per-user OAuth tokens or individual CRM connections.
+
+**Inbound (CRM → VoiceLine):** Account, contact, and related record data is pulled from the CRM and made available to reps in the VoiceLine app. This data is used for lookups during workflow completion (e.g. selecting the account for a visit report).
+
+**Outbound (VoiceLine → CRM):** Completed workflows (visit reports, call logs, tasks, opportunities, etc.) are written back to the CRM as structured activity or object records. This happens on submission — not in real-time during recording.
+
+## What VoiceLine reads from the CRM
+
+| Object type | Purpose | Sync timing |
+|-------------|---------|------------|
+| Accounts | Account lookup in all workflows | On login + scheduled refresh |
+| Contacts | Contact lookup in workflows | On login + scheduled refresh |
+| Leads | Lead lookup in lead workflows | On login + scheduled refresh |
+| Opportunities | Opportunity lookup and update | On login + scheduled refresh |
+| Products | Product lookup in opportunity workflows | On login + scheduled refresh |
+| Competitors | Competitor reference data | On login + scheduled refresh |
+| CRM users | Rep identity and assignment mapping | On login |
+
+## What VoiceLine writes to the CRM
+
+| Workflow | CRM object created | Sync timing |
+|----------|-------------------|------------|
+| Visit Report | Appointment / Activity | On submission |
+| Call Log | Phone Call Activity | On submission |
+| Task | Task | On submission |
+| Email | Email Activity (sent from rep's account) | On send |
+| Meeting | Meeting / Event + calendar invite | On submission |
+| Opportunity | Opportunity (create or update) | On submission |
+| Lead | Lead | On submission |
+| Contact | Contact (create or update) | On submission |
+| Account update | Account | On submission |
+
+## Data VoiceLine does not read or write
+
+VoiceLine does not access:
+- Financial records (invoices, orders, contracts) — unless explicitly configured via a non-standard integration
+- ERP data outside the CRM integration scope
+- Email content (VoiceLine sends emails on behalf of reps but does not read inbox content)
+- Calendar data beyond what is written as part of Meeting workflow output
+
+## Data persistence and retention
+
+| Data type | Where stored | Retention |
+|-----------|-------------|-----------|
+| Voice recordings | VoiceLine servers (EU-hosted) | Retained for processing; deleted after transcription unless archiving is enabled |
+| Transcriptions and summaries | VoiceLine servers (EU-hosted) | Retained for 24 months by default; configurable |
+| CRM sync records | Written to CRM — governed by CRM retention policy | Not retained separately in VoiceLine after sync |
+| Analytics data | VoiceLine data lake (EU-hosted) | Retained for 24 months by default |
+| User data | VoiceLine servers (EU-hosted) | Retained for duration of contract + 90-day offboarding period |
+
+<Note>Exact retention periods and deletion SLAs are defined in your Data Processing Agreement. For security certifications, data residency confirmation, and DPA templates, see the [Trust Centre](https://trust.voiceline.ai) or the [Security & Compliance](/implementation/security) page.</Note>
+
+## CRM-specific details
+
+For field-level mappings, authentication methods, sync cadence, and standard implementation details per CRM, see:
+
+- [Salesforce](/integrations/salesforce)
+- [SAP C4C v1](/integrations/sap-c4c-v1)
+- [SAP C4C v2](/integrations/sap-c4c-v2)
+- [MS Dynamics](/integrations/ms-dynamics)
+- [HubSpot](/integrations/hubspot)
+- [ZOHO](/integrations/zoho)
+- [Aurea](/integrations/aurea)

@@ -1,7 +1,7 @@
 ---
 title: "Scenario: Enterprise Customer"
 status: Live
-last_updated: 2026-03-23
+last_updated: 2026-04-07
 ---
 
 **500 reps · Platform Enterprise · All modules**
@@ -16,7 +16,7 @@ A large enterprise with VoiceLine deployed across the full field organisation. S
 
 | Component | Calculation | Monthly |
 |-----------|-------------|---------|
-| [Field Sales Fundamentals](/commercial/field-sales-fundamentals) | 500 reps × €39 | €19,500 |
+| [Field Sales Fundamentals](/commercial/field-sales-fundamentals) | 500 reps × €49 | €24,500 |
 | [Platform Enterprise](/commercial/platform/enterprise) | Flat fee | €2,490 |
 | [Market Analytics Pro](/commercial/modules/market-analytics-pro) | Flat fee | €900 |
 | [Sales Coaching Pro](/commercial/modules/sales-coaching-pro) | Flat fee | €900 |
@@ -25,7 +25,7 @@ A large enterprise with VoiceLine deployed across the full field organisation. S
 | [Marketing Surveys](/commercial/modules/marketing-surveys) | Flat fee | €600 |
 | [Service Cases](/commercial/modules/service-cases) | Flat fee | €150 |
 | [Industry Fairs](/commercial/modules/industry-fairs) | Base flat fee | €150 |
-| **Fixed total** | | **€25,340** |
+| **Fixed total** | | **€30,340** |
 
 <Note>Industry Fairs day passes are billed separately per event and are not included in this estimate. See [Industry Fairs](/commercial/modules/industry-fairs) for day pass pricing.</Note>
 
@@ -60,26 +60,38 @@ Usage assumes high field activity across a mature deployment: approximately 18 f
 | Analytics insight extracted | 1 | 210 (70 visits × 3 insights) | 210 |
 | **Total** | | | **1,600** |
 
+### Call minutes
+
+An estimated 40% of workflow submissions are made via the conversational phone assistant, at an average of 2 minutes per call. Each live minute consumes 5 credits.
+
+| | Per rep / month |
+|--|----------------|
+| Voice-triggered workflow submissions | 433 |
+| Estimated phone calls (40%) | 173 |
+| Call credits (173 × 2 min × 5 credits) | **1,730** |
+
 ### Credit balance
 
 | | Credits / month |
 |--|----------------|
-| Estimated consumption (500 reps × 1,600) | 800,000 |
+| Workflow consumption (500 reps × 1,600) | 800,000 |
+| Call minutes (500 reps × 1,730) | 865,000 |
+| Total consumption | **1,665,000** |
 | Included baseline | 250,000 |
-| Monthly overage | **550,000** |
-| Annual overage | **~6,600,000** |
+| Monthly overage | **1,415,000** |
+| Annual overage | **~16,980,000** |
 
 ### Recommended credit packages
 
-At this scale, the Enterprise package (€0.03 / credit) is the only viable option.
+At this scale, the Enterprise package is the only viable option.
 
 | Package | Credits | Unit cost | Qty | Total credits | Total cost |
 |---------|---------|-----------|-----|---------------|-----------|
-| Enterprise | 200,000 | €0.03 | 33 | 6,600,000 | €198,000 |
+| Enterprise | 200,000 | €0.03 | 85 | 17,000,000 | €510,000 |
 
-33 Enterprise packages (6,600,000 credits total) covers the full year exactly.
+85 Enterprise packages (17,000,000 credits total) covers the full year with ~20,000 credits to spare.
 
-Annual credit cost: **€198,000**. Amortised monthly: **~€16,500**.
+Annual credit cost: **€510,000**. Amortised monthly: **~€42,500**.
 
 ---
 
@@ -87,23 +99,23 @@ Annual credit cost: **€198,000**. Amortised monthly: **~€16,500**.
 
 | | Monthly | Annual |
 |-|---------|--------|
-| FSF | €19,500 | €234,000 |
+| FSF | €24,500 | €294,000 |
 | Platform Enterprise | €2,490 | €29,880 |
 | All modules (base) | €3,350 | €40,200 |
-| Credits (amortised) | ~€16,500 | ~€198,000 |
-| **Total** | **~€41,840** | **~€502,080** |
+| Credits (amortised) | ~€42,500 | ~€510,000 |
+| **Total** | **~€72,840** | **~€874,080** |
 
 ---
 
 ## Adoption scenarios
 
-Adoption measures the proportion of the modeled workflow volume that reps actually complete. Fixed fees (FSF, Platform, Modules) are constant at all adoption levels — only credit consumption scales.
+Adoption measures the proportion of the modeled workflow volume that reps actually complete. Fixed fees (FSF, Platform, Modules) are constant at all adoption levels — credit consumption (workflows and call minutes) scales proportionally.
 
 | Adoption | Credits / rep / month | Monthly credit overage | Annual credit cost | Monthly total | Annual total |
 |----------|-----------------------|----------------------|-------------------|---------------|--------------|
-| 30% | 480 | — | €0 | ~€25,340 | ~€304,080 |
-| 60% | 960 | 230,000 | ~€84,000 | ~€32,340 | ~€388,080 |
-| 100% | 1,600 | 550,000 | ~€198,000 | ~€41,840 | ~€502,080 |
+| 30% | 1,000 | 250,000 | ~€90,000 | ~€37,840 | ~€454,080 |
+| 60% | 2,000 | 750,000 | ~€270,000 | ~€52,840 | ~€634,080 |
+| 100% | 3,330 | 1,415,000 | ~€510,000 | ~€72,840 | ~€874,080 |
 
 ---
 
@@ -122,15 +134,16 @@ Adoption measures the proportion of the modeled workflow volume that reps actual
 | A9 | 2 service cases / rep / month | Conservative — Service Cases is Coming Soon |
 | A10 | 3 analytics insights / visit report | Range 2–5; base case uses midpoint. Insight definition pending product confirmation. |
 | A11 | Industry Fairs day passes excluded | Variable by event calendar — budget separately |
+| A12 | 40% of voice workflows submitted via phone assistant, 2 min avg call duration | Internal estimate; no empirical data yet |
 
 ## Sensitivity analysis: analytics insights per visit
 
-Surveys (350 credits/rep/month) are now the single largest output driver, accounting for ~22% of total credit consumption. Analytics insights are the second-largest variable, accounting for ~13%.
+Surveys (350 credits/rep/month) are the single largest output driver, accounting for ~11% of total credit consumption including call minutes. Analytics insights account for ~6%.
 
-| Insights / visit | Credits / rep / month | Monthly consumption | Annual overage | Annual credit cost |
-|-----------------|-----------------------|---------------------|---------------|-------------------|
-| 2 | 1,530 | 765,000 | ~515,000 overage/mo | ~€186,000 (31 Enterprise pkgs) |
-| 3 (base) | 1,600 | 800,000 | ~550,000 overage/mo | ~€198,000 (33 Enterprise pkgs) |
-| 5 | 1,740 | 870,000 | ~620,000 overage/mo | ~€228,000 (38 Enterprise pkgs) |
+| Insights / visit | Credits / rep / month | Monthly consumption | Monthly overage | Annual credit cost |
+|-----------------|-----------------------|---------------------|-----------------|--------------------|
+| 2 | 3,260 | 1,630,000 | ~1,380,000 | ~€498,000 (83 Enterprise pkgs) |
+| 3 (base) | 3,330 | 1,665,000 | ~1,415,000 | ~€510,000 (85 Enterprise pkgs) |
+| 5 | 3,470 | 1,735,000 | ~1,485,000 | ~€540,000 (90 Enterprise pkgs) |
 
-The insight range now drives a €36,000 spread (€252k–€288k/year). See open decision D2c in [Pricing Architecture](/commercial/pricing-architecture).
+The insight range drives a ~€42,000 spread in annual credit cost.

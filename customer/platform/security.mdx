@@ -1,6 +1,5 @@
 ---
 title: "Security & Compliance"
-description: "Configure authentication methods and data protection settings to meet your organization's security and compliance requirements."
 status: Live
 last_updated: 2026-03-06
 ---
@@ -40,6 +39,26 @@ For workspaces operating in regulated environments (GDPR, etc.), VoiceLine can d
 **Consent settings** are managed via `DataProtectionSettings` in your workspace configuration — contact your VoiceLine account manager to enable or configure this feature.
 
 When enabled, reps must acknowledge the consent notice before each recording session. Consent timestamps are logged.
+
+## Recording access
+
+<Note>Recording access levels 2–5 are an Enterprise feature. Workspaces on the Professional tier use Baseline access and cannot change this setting.</Note>
+
+Recording access controls who can open and listen to voice recordings submitted by other reps in the workspace. The access level is set once per workspace and applies to all recordings.
+
+| Level | Name | Who can listen |
+|-------|------|----------------|
+| 1 | Baseline | Any workspace member with access to the relevant record — the default for all workspaces |
+| 2 | User only | Only the rep who made the recording can listen to it |
+| 3 | Deleted after transcription | Recording is deleted immediately after transcription; no one can listen |
+| 4 | Deleted after 90 days | Recording is deleted 90 days after submission; accessible until then by the recording owner only |
+| 5 | Deleted after 30 days | Recording is deleted 30 days after submission; accessible until then by the recording owner only |
+
+Levels 3, 4, and 5 also apply zero-retention mode to the transcription service — the audio is not retained by the speech provider after processing.
+
+Contact your account manager to configure recording access for your workspace.
+
+→ [Enterprise](/commercial/platform/enterprise)
 
 ## Data storage
 

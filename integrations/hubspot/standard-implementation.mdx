@@ -1,0 +1,55 @@
+---
+title: "HubSpot — Standard Implementation"
+status: Live
+last_updated: 2026-04-04
+---
+
+This page documents the standard VoiceLine FSF implementation on HubSpot — the default configuration your SA will deploy, and the decisions that need to be made during scoping.
+
+## HubSpot object model
+
+| VoiceLine workflow | HubSpot object | Notes |
+|-------------------|---------------|-------|
+| Visit Report | Note | Associated with Company and/or Contact |
+| Call Log | Note | Associated with Company and/or Contact |
+| Task | Task | Standard |
+| Meeting | Meeting | Standard |
+| Opportunity | Deal | Stage values must match your HubSpot pipeline |
+| Contact | Contact | Standard |
+
+## Required scoping decisions
+
+### 1. Note association logic
+Visit reports and call logs are pushed to HubSpot as Notes. Confirm whether notes should be associated with the Company, the Contact, or both. This affects where activity history is visible in HubSpot.
+
+**Decision required:** Associate notes with Company, Contact, or both?
+
+### 2. Deal stage mapping
+HubSpot deal stage values must match exactly. Provide the deal stage names and IDs from your HubSpot pipeline during scoping.
+
+**Decision required:** Deal stage picklist values provided and mapped.
+
+### 3. HubSpot plan tier
+VoiceLine's HubSpot integration requires API access, available on Sales Hub Starter or above.
+
+**Decision required:** HubSpot plan tier confirmed (Sales Hub Starter or higher).
+
+## Go-live checklist
+
+- [ ] OAuth connection authorised in VoiceLine workspace settings
+- [ ] Connection test passed
+- [ ] Note association logic confirmed (Company / Contact / both)
+- [ ] Deal stage values confirmed and mapped
+- [ ] HubSpot plan tier confirmed
+- [ ] Initial sync completed (companies and contacts visible in app)
+- [ ] Test visit report submitted and visible as HubSpot Note
+- [ ] Test task submitted and verified in HubSpot
+- [ ] Pilot rep group onboarded and using workflows
+
+## Common HubSpot implementation issues
+
+**Deal stages not mapping correctly:** If deal stage values in VoiceLine do not match your HubSpot pipeline stage IDs exactly, opportunity updates will fail. Confirm stage IDs (not display names) with your HubSpot administrator.
+
+**Notes not appearing on the right record:** This is usually a note association configuration issue. Verify which objects notes are associated with in your workspace settings.
+
+**API access denied:** Confirm your HubSpot subscription includes API access (Sales Hub Starter or above). Free HubSpot accounts do not have API access.

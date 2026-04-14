@@ -1,0 +1,29 @@
+---
+title: "Overview"
+status: Live
+last_updated: 2026-04-14
+---
+
+Environment configuration covers everything required to map your CRM data model into VoiceLine and load the business data the workspace needs before workflows can be built. Without this step, workflows cannot be built — there are no objects to read from or write to. Your FDE handles this with your CRM admin. The number of sessions depends on CRM complexity — object mapping and sync filter decisions often require back-and-forth with your CRM admin before configuration can be finalised.
+
+By the end of this step your FDE will have confirmed:
+
+- All CRM objects configured with agreed field mappings and sync filters
+- Business data (products, competitors, industries) loaded and verified
+- All checks passed — Workflow Setup can begin
+
+## Objects to configure
+
+| Object | Source | Required |
+|--------|--------|----------|
+| [Accounts](/implementation/standard-implementations/crm-accounts) | CRM sync | Yes |
+| [Contacts](/implementation/standard-implementations/crm-contacts) | CRM sync | Yes |
+| [Visit Records](/implementation/standard-implementations/crm-visit-report) | CRM sync | Yes |
+| [Call Records](/implementation/standard-implementations/crm-call-log) | CRM sync | Yes |
+| [Tasks](/implementation/standard-implementations/crm-tasks) | CRM sync (bidirectional) | Yes |
+| [Industries](/implementation/standard-implementations/crm-industries) | CRM field mapping | Required for analytics |
+| [Products](/implementation/standard-implementations/products) | JSON upload or API sync | Required for product tracking |
+| [Competitors](/implementation/standard-implementations/competitors) | Workspace settings | Required for competitor tracking |
+
+Workflow Setup cannot begin until all required objects are confirmed.
+

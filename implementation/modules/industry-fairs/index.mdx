@@ -1,0 +1,47 @@
+---
+title: "Industry Fairs"
+status: Live
+last_updated: 2026-04-04
+---
+
+The Industry Fairs module adds event-specific workflows to VoiceLine. At trade shows and industry events, reps capture leads, log booth visits, and document conversations using a simplified workflow optimised for high-volume, short-duration interactions.
+
+For a full description of what the module includes commercially, see [Industry Fairs](/commercial/modules/industry-fairs).
+
+## What it activates
+
+| Capability | Description |
+|-----------|-------------|
+| Fair visit workflow | Log a short booth interaction with contact capture |
+| Lead capture | Create lead records directly from fair conversations |
+| Fair-specific analytics | Activity and lead volume tracking per event |
+
+## Standard implementation
+
+The fair visit workflow is a simplified version of the visit report, designed for conversations lasting 5–15 minutes.
+
+| Field | Component type | Notes |
+|-------|---------------|-------|
+| Contact name | SingleLineText | New contact (not from CRM lookup) |
+| Company | SingleLineText | May or may not be in CRM |
+| Email | SingleLineText | Key capture field |
+| Phone | SingleLineText | |
+| Topics discussed | MultiLineText | Short summary |
+| Interest level | SingleSelect | Hot / Warm / Cold |
+| Follow-up action | SingleSelect | Call / Email / Demo / No follow-up |
+| Follow-up date | Zeitraum (single date) | |
+| Notes | MultiLineText | |
+
+Contacts captured at the fair are queued for CRM creation via the Customer Data workflow (if the module is active) or imported in bulk after the event.
+
+## Required scoping decisions
+
+**CRM lead creation:** Confirm whether fair contacts should be created as leads immediately on submission, or batched for review after the event.
+
+**Event context:** Confirm how the event name or context is captured — as a fixed tag on all records from the event, or as a selectable field.
+
+**Interest level values:** Provide the picklist values for interest level / lead qualification — these may need to align with your CRM's lead status model.
+
+## Dependencies
+
+Industry Fairs requires both [Customer Data](/implementation/modules/customer-data) and [Pipeline Management](/implementation/modules/pipeline-management) to be active. These must be configured before Industry Fairs can be rolled out.

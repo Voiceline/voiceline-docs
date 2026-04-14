@@ -1,0 +1,2064 @@
+---
+title: "Component Library"
+status: Live
+last_updated: 2026-04-04
+---
+
+Every VoiceLine workflow is assembled from components. Each component represents a specific type of input or output: a text field, a date picker, a CRM entity selector, an AI-generated summary.
+
+Your Solutions Architect uses this library to configure workflows to your setup. If a field or behaviour you need is listed here, it can be included in your implementation. If it is not, it can be requested through the [Product Customisation](/implementation/product-customisation/requesting-customisation) process.
+
+
+---
+
+## Quick Reference
+
+| ID | Name | Category | Description |
+|----|------|----------|-------------|
+| 1 | `SingleLineText` | Text | Short free-text input (one line) |
+| 2 | `MultiLineText` | Text | Long free-text input (multiple lines) |
+| 3 | `DatePicker` | Date & Time | Single date selector |
+| 4 | `SingleSelect` | Selection | Pick one option from a predefined list |
+| 5 | `MultiSelect` | Selection | Pick multiple options from a predefined list |
+| 6 | `CurrencyInput` | Numeric | Monetary value input |
+| 7 | `SpecialSummary` | Summary | AI-generated summary with bullet points |
+| 8 | `YesNo` | Selection | Binary yes/no toggle |
+| 9 | `TeamSelector` | Team | Pick one internal team member |
+| 10 | `LineItem` | Structured Data | Repeatable parent-child group of fields |
+| 11 | `CRMSingleSelect` | CRM - Generic | Pick one CRM entity from a generic list |
+| 12 | `CRMMultiSelect` | CRM - Generic | Pick multiple CRM entities from a generic list |
+| 13 | `CRMRelatedContacts` | CRM - Contacts | Multiple contacts related to the selected account |
+| 14 | `NumericalInput` | Numeric | Plain number input |
+| 15 | `Attachment` | Attachment | File/image upload |
+| 16 | `CRMRelatedContactSub` | CRM - Contacts | Sub-contact dependent on a parent contact selection |
+| 17 | `CombiSelectSingle` | Selection | Single pick from a hierarchical/combo list |
+| 18 | `CombiSelectMulti` | Selection | Multi-pick from a hierarchical/combo list |
+| 19 | `UtilBullets` | Summary | Bullet-point list (e.g. talking points, notes) |
+| 20 | `CRMRelatedContact` | CRM - Contacts | One main contact for the selected account |
+| 21 | `Zeitraum` | Date & Time | Time period / date range |
+| 22 | `CRMSoftRelatedOpportunities` | CRM - Opportunities | Opportunities found by searching the transcript |
+| 23 | `CRMMarketSegments` | CRM - Custom | Market segment selector |
+| 24 | `CRMProducts` | CRM - Products | Multiple product selector |
+| 25 | `TeamMultiSelector` | Team | Pick multiple internal team members |
+| 26 | `CRMContacts` | CRM - Contacts | External contacts (not tied to an account) |
+| 27 | `GenProfileInfo` | Profile | Structured contact/lead/account profile card |
+| 28 | `CRMAccounts` | CRM - Accounts | Multiple company/account selector |
+| 29 | `CRMProduct` | CRM - Products | Single product selector |
+| 30 | `CRMAccount` | CRM - Accounts | Single company/account selector |
+| 31 | `CRMProject` | CRM - Custom | Project or object selector |
+| 32 | `SearchableSingleSelect` | Selection | Searchable single-pick dropdown |
+| 33 | `CRMRelatedOppos` | CRM - Opportunities | Opportunities hard-filtered by the selected account |
+| 34 | `DenseTable` | Structured Data | Table with typed columns (numbers, yes/no, etc.) |
+| 35 | `SelectorEmployee` | Team | Single employee/participant selector |
+| 36 | `SelectorEmployees` | Team | Multiple employee/participant selector |
+| 37 | `EventSelection` | Events | Calendar event picker (link to or create events) |
+| 38 | `DeduplicationInformation` | System | Duplicate detection and resolution UI |
+| 39 | `MarkDownText` | Text | Rich markdown content (e.g. email body) |
+| 40 | `RecipientDraftEmail` | Email | Email recipient selector |
+| 41 | `CCEmail` | Email | CC recipient selector |
+| 42 | `Template` | Email | Email template picker |
+| 43 | `CRMRelatedOppo` | CRM - Opportunities | Single opportunity for the selected account |
+| 44 | `ReminderDateController` | Events | Reminder date/time picker |
+| 45 | `BookOfMaterials` | Structured Data | Product list with quantities |
+| 46 | `BoostedCCEmail` | Email | Enhanced CC selector with AI suggestions |
+| 47 | `CRMCombiRelated` | CRM - Composite | Flexible multi-entity relationship component |
+| 48 | `ICustomerFilter` | Intelligence | Customer summary filter configuration |
+| 49 | `IMarkdownContent` | Intelligence | AI-generated customer summary content |
+| 50 | `CRMLeadContact` | CRM - Leads | Single lead-or-contact selector |
+| 51 | `CRMLeadContactS` | CRM - Leads | Multiple leads and/or contacts selector |
+| 52 | `ErrorInfoComponent` | System | Error message display |
+| 53 | `PBSimple` | System | Playbook question (sales engagement tracking) |
+| 54 | `ConditionalSelect` | Selection | Single-select that controls visibility of child components |
+| 55 | `PregnantProduct` | Structured Data | Product selector with quantity, pricing, and delivery fields |
+| 56 | `CRMFlex` | CRM - Dynamic | Configurable CRM entity lookup with flexible destinations |
+| 57 | `EscalatedEventSelection` | Events | Event picker with per-event child components |
+| 52002 | `Stage` | Verkaufsphase | Controls which fields appear per sales stage |
+| 52004 | `Type` | Typ | Visit type selector (Iberia-specific) |
+| 56001 | `Owner` | Besitzer | Task/record owner lookup |
+
+---
+
+
+## Text Inputs
+
+### SingleLineText 1 - The Building Block
+
+Every form needs a short text field, and SingleLineText is exactly that - a one-line input for brief, focused content. It's the most commonly used component in the system, appearing in nearly every report type.
+
+
+What makes it versatile is not the component itself but the **title and prompt** it's configured with. The same component type powers radically different fields depending on context:
+
+
+Report title | "Title" / "Titel" | A short summary of the visit in under 50 characters
+
+Location | "Location" | The city where the meeting took place
+
+Main contact | "Main Contact" / "Hauptansprechpartner" | The primary person the user spoke with
+
+Company name | "Company" / "Unternehmen" | Which company was visited
+
+Customer number | "Customer Number" / "Kundennummer" | An identifier like a SAP or CRM ID
+
+ZIP code | "ZIP" | Postal code for address entry
+
+Product interest | "Product Names" | Names of products mentioned
+
+
+**Captures:** A plain string, typically under 50 characters.
+
+
+**AI behavior:** Configured per instance. Some fields are `lead` (asked early in the conversation), some are `skip` (extracted silently from the transcript without asking), and some are `trail` (asked at the end). For example, the report title is usually `skip` - the AI generates it from the full transcript - while the location might be `lead`, prompting the user early if not mentioned.
+
+
+**Example:** A user records a voice memo: *"I visited Siemens in Munich today and spoke with Dr. Muller about the new KR30 robot."* The AI silently extracts:
+
+
+- Title: "Visit at Siemens re: KR30"
+
+- Location: "Munich"
+
+- Main Contact: "Dr. Muller"
+
+
+All three are SingleLineText components - same type, different purpose.
+
+
+---
+
+### MultiLineText 2 - The Workhorse
+
+When a field needs more than one line, MultiLineText takes over. It's the go-to for descriptions, summaries, next steps, comments, and any content that benefits from multiple sentences or paragraphs.
+
+
+Like SingleLineText, the same component type serves many purposes through different configurations:
+
+
+Task description | "Description" / "Beschreibung" | Full task details with all relevant information
+
+Next steps | "Next Steps" / "Nächste Schritte" | Follow-up actions to take after the meeting
+
+To-dos | "To-Dos" / "Aufgaben" | Action items extracted from the conversation
+
+Notes | "Notes" / "Notizen" | General meeting notes
+
+Customer email | "Customer Email" | A customer-facing summary of the interaction
+
+Business case | "Business Case" | The business justification for a deal
+
+Company introduction | "Company Introduction" | Background info on a company
+
+Conclusion | "Conclusion" / "Fazit" | Final takeaways from the conversation
+
+
+**Captures:** A plain string, often multi-paragraph.
+
+
+**AI behavior:** For descriptions and summaries, the AI typically uses `skip` ordering - it processes the full transcript and produces structured output. For next steps, it often uses `trail` - asking the user at the end "Were there any next steps discussed?" if nothing was explicitly mentioned.
+
+
+**Example:** A user dictates a five-minute voice memo about a client visit. The MultiLineText "Next Steps" component extracts: *"1. Send updated pricing proposal by Friday. 2. Schedule follow-up call with engineering team. 3. Prepare demo environment for March presentation."*
+
+
+---
+
+### MarkDownText 39 - The Email Body Generator
+
+MarkDownText is not a text input in the traditional sense. It's a **rich content output** - typically an AI-generated email body rendered as formatted markdown. The user doesn't type into it; the system writes it.
+
+
+#### How It Works
+
+MarkDownText sits at the end of the **email composition pipeline**. It reads the other email components in the report - the recipient, the template, the CC list - and generates a complete email with subject line and body.
+
+
+The generation flow:
+
+
+- The user records a voice memo describing what they want to email about
+
+- **RecipientDraftEmail** determines who it goes to (draft to self, or direct to recipient)
+
+- **Template** selects the email tone and structure
+
+- **CCEmail** / **BoostedCCEmail** identifies CC recipients
+
+- **MarkDownText** takes all of this context and generates the email
+
+
+**Captures:** A markdown-formatted string with two parts:
+
+
+- `EmailSubject` - the email subject line
+
+- `MarkdownText` - the email body content
+
+
+**Behavior:**
+
+
+- **Trailing** - always appears at the bottom of the report, after all other fields
+
+- Has a `FinishedGenerating` flag that the frontend uses to show a loading state while the AI writes
+
+- Post-generation cleanup removes placeholder text like "[Your Name]", "[Dein Name]", "NONE", or "KEINE"
+
+
+**Multilingual:** If the user speaks in German, the email is written in German. If in English, in English. The system detects the language from the transcript and instructs the AI accordingly.
+
+
+**Example:** User records: *"Schreib eine Email an Herrn Meier. Bedanke dich fur das Meeting und fasse zusammen dass wir die Preise nachste Woche schicken."*
+
+
+MarkDownText generates:
+
+
+`Subject: Vielen Dank fur das Meeting
+
+Sehr geehrter Herr Meier,
+
+vielen Dank fur das produktive Meeting heute. Wie besprochen,
+werden wir Ihnen die aktualisierten Preise bis nachste Woche zukommen lassen.
+
+Bei Fragen stehe ich Ihnen gerne zur Verfugung.
+
+Mit freundlichen Grussen,
+[Author Name]
+`
+
+---
+
+
+## Date & Time
+
+### DatePicker 3 - The Single Date Field
+
+**Deprecated.** New reports should use Zeitraum with variant ZeitraumSingleDateAndTime (21003) or ZeitraumSingleDateOnly (21004) instead.
+
+
+A standard date selector for capturing a single point in time. Like the text components, DatePicker serves many different purposes depending on its configuration:
+
+
+Follow-up date | "Follow Up" / "Wiedervorlage" | "The next agreed touch-point with the customer"
+
+Task due date | "Due Date" / "Falligkeitsdatum" | "The date by which the task should be completed"
+
+Visit start | "Visit Start" / "Besuchsstart" | "The time when the visit started"
+
+Visit end | "Visit End" / "Besuchsende" | "The time when the visit ended"
+
+Visit day | "Visit Day" / "Besuchstag" | "The day of the visit"
+
+Recall date | "Recall Date" / "Ruckrufdatum" | "When to call the customer back"
+
+Delivery date | "Expected Delivery Date" | "The expected delivery date for the order"
+
+Opportunity end date | "End Date" / "Enddatum" | "The expected close date for the opportunity"
+
+
+**Captures:** A date (and optionally time) value, formatted as ISO 8601.
+
+
+**AI behavior:** The AI extracts dates from natural language in the transcript. "Next Thursday", "in two weeks", "by the end of March" are all resolved to concrete dates. If the transcript doesn't mention a date, some configurations (like opportunity end date) apply defaults - e.g. 90 days from today.
+
+
+**Ordering:** Follow-up and due dates are typically `trail` (asked at the end), while visit start/end times are `lead` (resolved early).
+
+
+---
+
+### Zeitraum 21 - The Time Range
+
+Where DatePicker captures a single moment, Zeitraum (German for "time period") captures a **range** - a start and end time. It's used whenever the system needs to know *how long* something lasted.
+
+
+Meeting date range | "Meeting Date Range" / "Besprechungszeitraum" | Duration of a client meeting
+
+Call time | "Call Time" / "Anrufzeitpunkt" | When a phone call happened
+
+Conversation time | "Call Time" / "Gesprachszeitpunkt" | Duration of a conversation
+
+Time frame | "Time Frame" / "Zeitrahmen" | General scheduling context
+
+
+**Captures:** Two ISO 8601 timestamps separated by a delimiter - start time and end time.
+
+
+**AI behavior:** The AI extracts both times from the transcript. If the user says "The meeting was from 2 to 3:30", it captures `14:00|15:30`. The prompt instructs the AI to format the response as `<StartTime>|<EndTime>|`.
+
+
+**Example:** User says: *"Heute Vormittag von 10 bis 11:30 Uhr war ich bei Bosch."* Zeitraum extracts: `2024-03-10T10:00:00` to `2024-03-10T11:30:00`
+
+
+#### Variants
+
+Zeitraum supports four variants that control which pickers the frontend displays:
+
+
+ZeitraumDateAndTime (21001) | Date and time | Both date and time pickers. This is the default.
+
+ZeitraumDateRangeOnly (21002) | Date range only | Date range picker with no time pickers.
+
+ZeitraumSingleDateAndTime (21003) | Single date and time | A single date with a time picker. Replaces the deprecated DatePicker for date+time use cases.
+
+ZeitraumSingleDateOnly (21004) | Single date only | A single date with no time picker. Replaces the deprecated DatePicker for date-only use cases.
+
+
+The variant is stored in `DenseInfo.ZeitraumInfo.Variant`. The `ZeitraumInfo` struct also holds `StartDate` and `EndDate` as `time.Time` values.
+
+
+**Code reference:** `library/zeitraum.go`
+
+
+---
+
+
+## Selection Inputs
+
+### SingleSelect 4 - Pick One from a List
+
+A dropdown where the user picks **exactly one** option from a predefined set. This is one of the most versatile components - the same type powers everything from visit reasons to opportunity stages to call directions.
+
+
+The options come from **enum data** that is pre-loaded before the component renders (`NeedsData` = true). Each option has an ID, a display name, and optional multilingual translations.
+
+
+Type of visit | "Type of Visit" / "Art des Besuchs" | First visit, Follow-up, Maintenance, etc.
+
+Call direction | "Direction" / "Richtung" | Inbound, Outbound
+
+Visit reason | "Reason for Visit" / "Besuchsgrund" | New business, Complaint, Service, etc.
+
+Task category | "Category" / "Kategorie" | Administrative, Sales, Support, etc.
+
+Priority | "Priority" / "Prioritat" | High, Medium, Low
+
+Status | "Status" | Open, In Progress, Closed
+
+Opportunity stage | "Opportunity Stage" | Prospecting, Proposal, Negotiation, Closed Won, etc.
+
+Probability | "Probability" / "Wahrscheinlichkeit" | 10%, 25%, 50%, 75%, 90%
+
+Industry | "Industry" / "Branche" | Manufacturing, Retail, Healthcare, etc.
+
+Customer type | "Customer Type" / "Kundentyp" | A-Customer, B-Customer, Prospect, etc.
+
+Salutation | "Salutation" / "Anrede" | Herr, Frau, Dr., Prof. Dr.
+
+Language selection | "Language" / "Sprache" | German, English, French, etc.
+
+
+**Captures:** One selected option ID.
+
+
+**AI behavior:** The AI reads the transcript and matches the user's words to the closest enum option. The prompt always emphasizes: *"The selection must come from the provided enumeration."* If nothing matches, the component gets a **NONE** tag (`GetsNONETag` = true), allowing an explicit "no selection" rather than a guess.
+
+
+**Example:** User says: *"Das war ein Erstbesuch bei der Firma."* The AI matches this to the "First visit" option in the "Type of Visit" enum.
+
+
+---
+
+### MultiSelect 5 - Pick Several from a List
+
+The multi-select version of SingleSelect. When the answer isn't "one of these" but "all of these that apply", MultiSelect lets the user pick multiple options simultaneously.
+
+
+Products | "Products" / "Produkte" | (From CRM product catalog)
+
+Visit reasons | "Reason for Visit" / "Grund des Besuchs" | New business, Service, Training, etc.
+
+Sales topics | "Sales Topics" / "Verkaufsthemen" | Pricing, Product demo, Contract renewal, etc.
+
+Workflows | "Workflows" | (Workspace-specific workflow types)
+
+Competitors | "Competitor" / "Wettbewerber" | Named competitors from config
+
+
+**Captures:** One or more selected option IDs.
+
+
+**AI behavior:** The AI extracts all relevant mentions. If a user discusses three products during a visit, all three should be selected. The prompt says: *"Multiple options can be selected, and the selections must come from the provided enumeration."*
+
+
+---
+
+### SearchableSingleSelect 32 - Pick One, but Searchable
+
+When the dropdown list is too long to scroll through (hundreds of options), SearchableSingleSelect adds a **type-to-filter** search bar. Functionally identical to SingleSelect, but with a better UX for large option sets.
+
+
+**Captures:** One selected option ID.
+
+
+**Common uses:** Country selectors, campaign lookups, partner types - anywhere the list has dozens or hundreds of entries.
+
+
+---
+
+### CombiSelectSingle 17 - Hierarchical Pick One
+
+Options aren't always flat lists. Sometimes they're organized in a **tree**: categories with sub-categories, product lines with specific models, regions with sub-regions.
+
+
+CombiSelectSingle presents this hierarchy and lets the user pick **one leaf value**. The parent context is preserved - so when the user picks "Widget Pro" under "Industrial Widgets", the system knows both the category and the specific selection.
+
+
+**Captures:** One selected option ID with hierarchical context (parent IDs).
+
+
+**Example use:** "Partner type > Sub-type", "Product category > Product model".
+
+
+---
+
+### CombiSelectMulti 18 - Hierarchical Pick Many
+
+The multi-select version of CombiSelectSingle. Users can pick **multiple** values from the hierarchical tree.
+
+
+**Captures:** Multiple selected option IDs with hierarchical context.
+
+
+**Example use:** "Sales topics > Sub-topics discussed" (user might discuss multiple topics across different categories).
+
+
+---
+
+### YesNo 8 - The Binary Question
+
+A simple yes/no toggle. No dropdown, no search - just two choices. Used for binary questions where the answer is definitively one or the other.
+
+
+Task exists | "Task Exists" / "Aufgabe existiert" | Does this conversation contain a task?
+
+Opportunity | "Opportunity" | Is there a sales opportunity here?
+
+Result | "Result" / "Ergebnis" | Was the outcome positive?
+
+Contract cancelled | "Existing Contract Cancelled" | Did the customer cancel?
+
+Close report | "Close Report" | Should this report be finalized?
+
+Status update | "Set Status to In Progress" | Mark the item as in-progress?
+
+Newsletter | "Knoll Newspaper" / "Knoll Zeitung" | Does the customer want the newsletter?
+
+Trade fair invite | "Trade Fair Invitation" / "Messeeinladung" | Invite the customer to the trade fair?
+
+
+**Captures:** Boolean - yes or no.
+
+
+**AI behavior:** The AI infers the answer from context. For "Does this conversation contain a task?", it analyzes whether the user committed to any follow-up action. If the information isn't clear from the transcript, the default is usually "No."
+
+
+**Example:** User says: *"Dem Kunden die aktualisierten Preise bis Freitag schicken."* The "Task Exists" component resolves to **Yes** - there's clearly a follow-up task here.
+
+
+---
+
+
+## Numeric Inputs
+
+### CurrencyInput 6 - Money
+
+A numeric input with currency formatting. Used wherever the value represents money - prices, deal values, budgets.
+
+
+Product price | "Price" / "Preis" | "The mentioned price for the product"
+
+Deal value | "Volume in EUR" / "Volumen" | "The expected volume of the deal in euro"
+
+
+**Captures:** A numeric value (typically in the workspace's default currency).
+
+
+**AI behavior:** If no price is mentioned in the transcript, the AI responds with "NONE" rather than guessing.
+
+
+---
+
+### NumericalInput 14 - Numbers (Not Money)
+
+A plain numeric field for quantities, counts, measurements - anything numeric that isn't currency.
+
+
+Power demand | "Power demand in kWh" / "Strombedarf" | "How much electricity does the customer need?"
+
+Expected value | "Expected Value" / "Erwarteter Wert" | "The expected value of the deal"
+
+Quantity | "Quantity" / "Menge" | "The mentioned quantity"
+
+Participants | "Number of Participants" / "Anzahl Teilnehmer" | "How many people attended?"
+
+Budget | "Budget" | "The mentioned budget"
+
+
+**Captures:** A numeric value. If no number is mentioned, the AI returns 0 or NONE depending on configuration.
+
+
+#### Variants
+
+NumericalInput supports seven formatting variants. Each variant carries a `NumericalInputConfig` that the frontend uses to format the input - it never interprets the variant ID directly.
+
+
+NICurrencyEURV (5601) | Euro currency | EUR | 2 | - | -
+
+NICurrencyUSDV (5602) | US Dollar currency | $ | 2 | - | -
+
+NICurrencyGBPV (5603) | British Pound currency | GBP | 2 | - | -
+
+NICurrencyCHFV (5604) | Swiss Franc currency | CHF | 2 | - | -
+
+NIPercentageV (5605) | Percentage | % | 0 | 0 | 100
+
+NIIntegerV (5606) | Integer | - | 0 | - | -
+
+NIDecimalV (5607) | Decimal | - | 2 | - | -
+
+
+The config struct sent to the frontend via `DenseInfo.NumericalInputInfo`:
+
+```go
+type NumericalInputConfig struct {
+    DecimalPlaces int      `json:"decimal_places"`
+    MinValue      *float64 `json:"min_value,omitempty"`
+    MaxValue      *float64 `json:"max_value,omitempty"`
+    Symbol        string   `json:"symbol,omitempty"`
+}
+```
+
+**Code reference:** `library/numericalinput.go`
+
+
+---
+
+
+## CRM - Accounts
+
+### CRMAccount 30 - One Company
+
+Select **one** company or account from the CRM. This is the most fundamental CRM component - it answers the question "which customer is this report about?"
+
+
+The AI extracts company names from the transcript and searches the CRM to find matches. It uses fuzzy matching with Jaro-Winkler distance scoring to handle misspellings and abbreviations.
+
+
+**Captures:** One CRM account entity (ID, name, and metadata).
+
+
+**AI prompt:** *"The company that was discussed during the visit. The company must be selected from the provided list. If no suitable company is available, NONE should be selected. Only a single company can be selected."*
+
+
+**Common titles:** "Company" / "Firma", "Customer" / "Kunde", "Company" / "Unternehmen"
+
+
+**Example:** User says: *"Heute war ich bei Siemens."* The AI extracts "Siemens", searches the CRM, and finds "Siemens AG" as a match.
+
+
+---
+
+### CRMAccounts 28 - Multiple Companies
+
+Sometimes a report involves **more than one company** - a trade show visit, a joint meeting, or a multi-party deal. CRMAccounts lets the user tag all of them.
+
+
+The AI extracts every company name mentioned in the transcript (excluding the user's own company) and matches each against the CRM.
+
+
+**Captures:** Multiple CRM account entities.
+
+
+**AI prompt:** *"A list of customer accounts that participated in the visit. The selling company should not be mentioned."*
+
+
+**Common titles:** "Companies Involved" / "Beteiligte Unternehmen", "Involved Parties" / "Beteiligte Parteien"
+
+
+**Example:** User says: *"Am Digital Marketing Summit trafen wir uns mit HubSpot, Google und Shopify."* The AI extracts three companies and matches each in the CRM.
+
+
+---
+
+
+## CRM - Contacts
+
+### CRMRelatedContact 20 - The Main Contact
+
+This is the **primary person** the user interacted with - the one main contact. The contact list is **filtered by the selected account**: only people who belong to that company appear as options. This filtering is the key - it prevents the user from accidentally tagging a contact at the wrong company.
+
+
+**Captures:** One CRM contact entity, filtered to the selected account.
+
+
+**AI prompt:** *"The contact that was met during the visit. The contact must be selected from the provided list. If no suitable contact is available, NONE should be selected."*
+
+
+**Restrictions:** Only allowed in primary action types. Forbidden in non-primary actions (`ForbiddenComponentTypesForNonPrimary` = true).
+
+
+**Common titles:** "Responsible" / "Verantwortlicher", "Main Contact" / "Hauptansprechpartner"
+
+
+---
+
+### CRMRelatedContacts 13 - All Attendees
+
+Where CRMRelatedContact captures the *one* main person, CRMRelatedContacts captures **everyone who was there**. It's the participant list - all contacts from the selected account who attended the meeting or were part of the call.
+
+
+The contacts are still **filtered by account**, and the AI matches names from the transcript to the filtered list. Names might be slightly misspelled in the transcript, so the matching is fuzzy.
+
+
+**Captures:** Multiple CRM contact entities, filtered to the selected account.
+
+
+**AI prompt:** *"A list of the attendees that should be selected from the options. Names of attendees might be slightly misspelled in the transcript. If no attendees are mentioned, return the 'NONE' option."*
+
+
+**Restrictions:** Primary action types only. Cannot appear in secondary actions (`NotAllowedInSecondary` = true).
+
+
+**Common titles:** "Attendees" / "Anwesende", "Participants" / "Teilnehmer"
+
+
+---
+
+### CRMRelatedContactSub 16 - The Sub-Contact
+
+**Deprecated.** Consider using CRMCombiRelated variants for new implementations.
+
+
+A **dependent** contact selector that sits below a parent contact selection. Think of it as a secondary layer: after the main contact or participant list is filled, this component shows **additional contacts** in the context of what was already selected.
+
+
+It uses a `ParentPartID` to know which component it depends on, and its options are scoped accordingly.
+
+
+**Captures:** One or more CRM contact entities, dependent on parent selection.
+
+
+**Behavior:** Trailing - appears after its parent component. (`IsTrailing` = true)
+
+
+**Common titles:** "Contact Person" / "Kontaktperson", "Main Contact" / "Hauptansprechpartner"
+
+
+---
+
+### CRMContacts 26 - External, Unfiltered Contacts
+
+Unlike the "Related" variants above, CRMContacts shows contacts that are **not tied to any specific account**. These are free-standing people - external advisors, independent consultants, people from partner companies, or contacts who don't belong to the primary account.
+
+
+This is the right component when the question is "who else was involved?" rather than "who from *this* company was there?"
+
+
+**Captures:** Multiple CRM contact entities (no account filter).
+
+
+**AI prompt:** *"A list of customer contacts that participated in the visit."*
+
+
+**Common titles:** "External Involved" / "Externe Beteiligte", "Participants" / "Teilnehmer"
+
+
+---
+
+
+## CRM - Leads
+
+### CRMLeadContact 50 - One Lead or One Contact
+
+A selector that lets the user pick **either a Lead or a Contact** - a binary choice between two entity types. This exists because some CRM systems maintain separate Lead and Contact objects, and the user needs to indicate which one they're dealing with.
+
+
+**Captures:** One CRM entity (either a Lead or a Contact).
+
+
+**AI prompt:** *"Lead or Contact that is related to the report. If no suitable Lead or Contact is available, NONE should be selected."*
+
+
+**Common titles:** "Contact or Lead" / "Lead oder Kontakt"
+
+
+---
+
+### CRMLeadContactS 51 - Multiple Leads and/or Contacts
+
+The multi-select version. The user can tag **multiple people** who may be any mix of Leads and Contacts - a meeting might include two existing Contacts and one new Lead.
+
+
+**Captures:** Multiple CRM entities (Leads and/or Contacts).
+
+
+**Common titles:** "Leads & Contacts" / "Leads & Kontakte", "Additional Participants" / "Weitere Teilnehmer"
+
+
+---
+
+
+## CRM - Opportunities
+
+### CRMRelatedOppo 43 - One Opportunity, Hard-Filtered
+
+Select **one opportunity** from a list that is **pre-filtered to the selected account**. The user only sees opportunities belonging to the company they've already tagged. This is strict matching - pick from what's available.
+
+
+The AI checks whether the user explicitly mentions a project or opportunity. The prompt is deliberately conservative: *"Do not infer an opportunity from context - the user MUST explicitly mention the project!"* Talks about warranty or feedback on already-purchased products do NOT count as opportunities.
+
+
+**Captures:** One CRM opportunity entity (account-filtered).
+
+
+**AI prompt:** *"First, figure out if the user explicitly uses the word 'project' (in any language). Only one project can be selected."*
+
+
+**Common titles:** "Opportunity" / "Geschaftschance", "Project" / "Projekt"
+
+
+---
+
+### CRMRelatedOppos 33 - Multiple Opportunities, Hard-Filtered
+
+Select **multiple opportunities** from the same hard-filtered list. Same strict matching as CRMRelatedOppo, but the user can tag several deals.
+
+
+The AI is even more conservative here - product names must match **exactly** against the enum options, otherwise the opportunity must not be picked. This prevents false positives where a casually mentioned product name accidentally links to the wrong deal.
+
+
+**Captures:** Multiple CRM opportunity entities (account-filtered).
+
+
+**AI prompt:** *"Product names must match EXACTLY, else it MUST NOT be picked. Only select NONE if no opportunity is referred to."*
+
+
+**Common titles:** "Related Opportunity" / "Verknupfte Geschaftschance", "Opportunities"
+
+
+---
+
+### CRMSoftRelatedOpportunities 22 - Search-Based, Not Account-Filtered
+
+This component takes a fundamentally different approach. Instead of showing a pre-filtered list, it **searches the voice transcript** for opportunity references and uses fuzzy matching to find them in the CRM.
+
+
+The flow:
+
+
+- The AI extracts metadata from the transcript: document IDs (SAP numbers, project codes), opportunity names, geographic context
+
+- The system searches the entire CRM opportunity database
+
+- Results are scored using Jaro-Winkler distance on title similarity, with a bonus for location matches
+
+- High-confidence matches (score > 0.9) are pre-selected; medium matches (> 0.7) are suggested
+
+
+This is the right component when opportunities span across accounts or when the account context alone isn't enough to narrow down the list.
+
+
+**Captures:** Multiple CRM opportunity entities (search-matched, not account-filtered).
+
+
+**Restrictions:** Primary action types only (`NotAllowedInSecondary` = true).
+
+
+**Common titles:** "Opportunities"
+
+
+**Key distinction:** `CRMRelatedOppos` says "show me this account's deals." `CRMSoftRelatedOpportunities` says "find deals mentioned in the transcript, wherever they live."
+
+
+---
+
+
+## CRM - Products
+
+### CRMProduct 29 - One Product
+
+Select **one** product from the CRM catalog. The product list comes from the connected CRM system.
+
+
+**Captures:** One CRM product entity.
+
+
+**AI prompt:** *"The product that was discussed during the visit. Only a single product can be selected."*
+
+
+**Common titles:** "Product" / "Produkt"
+
+
+---
+
+### CRMProducts 24 - Multiple Products
+
+Consider using CRMFlex (56) for new implementations.
+
+
+Select **multiple** products from the CRM catalog. Used when several products were discussed, presented, or ordered during the interaction.
+
+
+**Captures:** Multiple CRM product entities.
+
+
+**Common titles:** "Products" / "Produkte"
+
+
+---
+
+
+## CRM - Generic & Custom
+
+### CRMSingleSelect 11 - Generic CRM Entity (One)
+
+A **generic** single-select for any CRM entity type. Unlike the specific components above (which are hardcoded to contacts, accounts, products, etc.), CRMSingleSelect is a blank slate - the workspace configuration determines what entity type it represents.
+
+
+**Captures:** One CRM entity.
+
+
+**Common titles:** "Customer Entry" / "Kundeneintrag" (varies by workspace).
+
+
+---
+
+### CRMMultiSelect 12 - Generic CRM Entity (Many)
+
+Consider using CRMFlex (56) for new implementations.
+
+
+The multi-select version of CRMSingleSelect. Workspace-defined entity type, multiple selections.
+
+
+**Captures:** Multiple CRM entities.
+
+
+**Common titles:** "Present" / "Anwesende" (often used for attendee lists).
+
+
+---
+
+### CRMMarketSegments 23 - Market Segment Selector
+
+A workspace-specific field for tagging interactions by **market segment or industry vertical**. Not all workspaces use this - it's relevant for companies that categorize their customers by market.
+
+
+**Captures:** One or more market segment entities from the CRM.
+
+
+**Common titles:** "Market Subsegments" / "Marktsegmente"
+
+
+---
+
+### CRMProject 31 - Project or Object
+
+Select a **project, building, or object** from the CRM. The label and meaning change by workspace:
+
+
+- For a robotics company: "Project" (a customer implementation project)
+
+- For a construction supplier: "Object" / "Objekt" (a building site)
+
+- For a services company: "Project Name" / "Projektname"
+
+
+**Captures:** One CRM project entity.
+
+
+**Common titles:** "Project" / "Projekt", "Object" / "Objekt", "Project Name" / "Projektname"
+
+
+---
+
+
+## CRM - Composite
+
+### CRMCombiRelated 47 - The Flexible Relationship Component
+
+#### The Problem
+
+In a CRM, entities are rarely standalone. An Account has Contacts. An Opportunity belongs to an Account. A Product is sold through an Opportunity. These relationships matter - and users need to capture them when logging activities.
+
+
+For a while, every specific pairing got its own dedicated component:
+
+
+- `CRMRelatedContacts` - hardcoded to show contacts
+
+- `CRMRelatedOppos` - hardcoded to show opportunities
+
+- `CRMAccounts` - hardcoded to show accounts
+
+
+This works until you realize the number of possible pairings grows fast. Account + Contacts, Account + Products, Account + Contacts + Opportunities... Building a separate component for each combination is a dead end.
+
+
+#### The Solution
+
+CRMCombiRelated is a **single, composable component** that replaces the need for dozens of specialized ones. Instead of hardcoding what entities it displays, it accepts a configuration - called a **variant** - that defines:
+
+
+- **A main entity type** - the primary CRM object the user selects (e.g., Account)
+
+- **One or more sub-entity types** - related objects that depend on the main selection (e.g., Contacts, Products)
+
+
+The sub-entities are **filtered by the main selection**. Pick an Account first, and the Contacts dropdown narrows to only those linked to that Account. This cascading relationship is the core value - it guides the user toward meaningful, connected data rather than letting them pick unrelated records.
+
+
+#### Variants
+
+
+MainContactCCR (47001) | Account | Single Contact | No | - | -
+
+MainContactsCCR (47002) | Account | Multiple Contacts | No | - | -
+
+MainContactCCRM (47003) | Account | Multiple Contacts | **Yes** | - | -
+
+OppoCCRM (47004) | Account | Opportunities | **Yes** | - | -
+
+SoftOppoCCRM (47005) | Account | Soft Opportunities | No | - | -
+
+ProjectCCRM (47006) | Account | Projects | No | - | -
+
+TestCCRM (47007) | Account | Soft Opportunities | No | Contacts | **Yes**
+
+CCRRelatedContactandOppo (47008) | Account | Multiple Contacts | No | Opportunities | No
+
+
+**Variant titles:**
+
+
+- Main entity: "Company" / "Firma"
+
+- Sub-entity (contact): "Contact" / "Kontakt"
+
+- Sub-entity (contacts): "Contacts" / "Kontakte"
+
+- Sub-entity (opportunity): "Opportunity" / "Geschaftschance"
+
+- Sub-entity (project): "Project" / "Projekt"
+
+
+**Data structure:** Each variant produces a `DenseCRMCombiRelated` object containing:
+
+
+- `MainType` + `MainTagged[]` + `MainSuggested[]` - the primary entity and its selections
+
+- `SubType` + `SecondaryTagged[]` + `SecondarySuggested[]` - the dependent entity
+
+- Optionally `TertiaryType` + tertiary selections - a third level
+
+
+#### Why It Exists
+
+This component was born primarily out of **Tasks** - a context where there is no "main tag" (unlike, say, a visit report that is inherently tied to an account). Tasks are freeform, so the user needs a flexible way to attach CRM context. Rather than building Task-specific components, CRMCombiRelated provides a general-purpose building block that works anywhere.
+
+
+#### The Bigger Picture
+
+Think of it as the shift from fixed-function tools to composable parts. Instead of a drawer full of single-purpose wrenches, it's an adjustable wrench. The variant system defines the shape, and the component handles the rest - rendering the right selectors, enforcing the right filters, and returning structured relationship data back to the backend.
+
+
+---
+
+
+## Team & Employees
+
+### TeamSelector 9 - One Team Member
+
+Select **one** internal team member from the workspace roster. Used for assignment - who owns this task, who's responsible for this opportunity.
+
+
+**Captures:** One team member.
+
+
+**AI prompt:** *"The responsible team member that the user put in charge of the task. The response MUST be selected from the provided enum and returned in the exact spelling of the enum option!"*
+
+
+**Common titles:** "Responsible" / "Verantwortlich", "Assigned to" / "Zustandig"
+
+
+---
+
+### TeamMultiSelector 25 - Multiple Team Members
+
+Select **multiple** internal team members. Used for attendance - who from the team was at the meeting.
+
+
+**Captures:** Multiple team members.
+
+
+**AI prompt:** *"The internal employees who participated in the meeting. The employees must be selected from the provided list."*
+
+
+**Common titles:** "Participants" / "Teilnehmer", "Team Members" / "Mitarbeiter"
+
+
+---
+
+### SelectorEmployee 35 - One Employee (CRM-Integrated)
+
+Functionally similar to TeamSelector, but categorized under **CRM tag types**. This means SelectorEmployee participates in the CRM entity extraction pipeline - the AI uses the same function-calling approach it uses for contacts and accounts to identify the right employee.
+
+
+**Captures:** One employee entity.
+
+
+**Common titles:** "Participant", "Responsible Employee" / "Zustandiger Mitarbeiter"
+
+
+---
+
+### SelectorEmployees 36 - Multiple Employees (CRM-Integrated)
+
+The multi-select version of SelectorEmployee. Multiple employees with CRM-integrated entity extraction.
+
+
+**Captures:** Multiple employee entities.
+
+
+**Common titles:** "Internal Employees" / "Interne Mitarbeiter"
+
+
+---
+
+
+## Email & Communication
+
+### The Email Pipeline
+
+`Voice memo -> [RecipientDraftEmail] -> [Template] -> [CCEmail/BoostedCCEmail] -> [MarkDownText]
+                 Who gets it?         What tone?     Who's CC'd?              Generate the email
+`
+
+### RecipientDraftEmail 40 - Who Gets the Email?
+
+The first decision in the pipeline: **who is the email for?** The options typically include:
+
+
+- "Me as draft" - send to the user themselves for review before forwarding
+
+- "Recipient direct" - send directly to the customer contact
+
+
+The AI determines the intent from the transcript. If the user says "Draft an email to Herr Meier", it selects direct. If they say "Prepare an email for me to review", it selects draft.
+
+
+**Captures:** One selected recipient option (enum).
+
+
+**Common titles:** "Recipient" / "Empfanger"
+
+
+---
+
+### Template 42 - What Tone and Structure?
+
+Selects the **email template** that controls the AI's writing style and structure. Available templates include:
+
+
+General | Formal | Default professional email
+
+Meeting Summary | Formal | Structured recap of a meeting
+
+General Informal | Casual | Friendly, lighter tone
+
+Meeting Informal | Casual | Informal meeting follow-up
+
+German Business Offer | Formal | Structured B2B proposal in German
+
+
+The AI analyzes the full transcript to classify user intent and select the right template. If no template preference is expressed, it defaults to the general/free template.
+
+
+**Captures:** One selected template option (enum).
+
+
+**AI prompt:** *"Determine which email template a user wants based on their transcript. Analyze the whole text to understand the user intention and classify it."*
+
+
+---
+
+### CCEmail 41 - Who's CC'd?
+
+A multi-select for **CC recipients**, drawing from CRM entities. The user can CC internal team members, external contacts, or anyone else in the system. The AI extracts mentioned names from the transcript and suggests them.
+
+
+**Captures:** Multiple CRM entities (contacts and employees).
+
+
+---
+
+### BoostedCCEmail 46 - Smart CC with AI Suggestions
+
+An **enhanced version** of CCEmail. Where regular CCEmail relies on the user mentioning names, BoostedCCEmail proactively analyzes the transcript and **suggests relevant people to CC** - even if they weren't explicitly named.
+
+
+For example, if the transcript discusses a deal that involves a specific account manager, BoostedCCEmail might suggest CC'ing that person even though the user didn't say their name.
+
+
+**Captures:** Multiple CRM entities with AI-powered suggestions.
+
+
+**Restrictions:** Not allowed in secondary action types (`NotAllowedInSecondary` = true).
+
+
+---
+
+
+## Structured Data
+
+### LineItem 10 - The Repeatable Form
+
+#### The Concept
+
+Sometimes a report isn't a flat list of fields - it's a **repeating structure**. A visit report might have multiple talking points. Each talking point has a title and a description. You can't know in advance how many there will be.
+
+
+LineItem solves this by creating a **parent-child structure** - a template of fields that can be repeated as many times as needed. It's the only component in the system where `HasChildren` = true.
+
+
+#### How It Works
+
+Each LineItem instance defines a **children template** - the set of sub-components that make up one "row." The user can add multiple rows, each following the same template. Each child row is a full `FrontendPart` with its own component type, title, and data.
+
+
+Talking points | "Talking Points" / "Gesprachspunkte" | Title (SingleLineText) + Description (MultiLineText)
+
+Topics with category | "Topics" | Category (SingleSelect) + Description (MultiLineText)
+
+Lanes (Dachser) | "Lanes" | Custom freight route fields
+
+Agenda points (Miele) | "Agenda Points" | Type (from enum) + Description
+
+Product talking points | "Products" | Product (SingleSelect) + Notes (MultiLineText)
+
+
+**Captures:** An array of child component groups (each group = one row).
+
+
+**AI prompt:** *"A list of all mentioned talking points from the report. Each talking point consists of a title and a description."* For products: *"IMPORTANT: If multiple products or topics are mentioned, create a SEPARATE talking point for EACH product."*
+
+
+**Example:** User records a visit where they discussed three topics - pricing, delivery timeline, and product demo. The AI creates three LineItem rows, each with a title and description extracted from the transcript.
+
+
+---
+
+### DenseTable 34 - The Typed Grid
+
+#### The Concept
+
+DenseTable is a **table where each column has its own component type**. It combines the structure of a spreadsheet with the type safety of form components. Each cell isn't just text - it's a NumericalInput, a YesNo, or a SingleSelect, depending on the column definition.
+
+
+#### How It Works
+
+The table has:
+
+
+- **Column definitions** - each column has a title and a `ComponentType` (e.g. NumericalInput for quantity columns, YesNo for checkbox columns)
+
+- **Row definitions** - each row has a title (the row identifier) and one cell per column
+
+- **Cell values** - each cell stores a string value that's interpreted according to its column's type
+
+
+Product counts (Miele) | Product models | Quantity columns per store type
+
+Survey (BSH) | Question topics | Yes/No responses per criteria
+
+
+**Captures:** A grid of typed values (rows x columns), where each cell's type matches its column definition.
+
+
+---
+
+### BookOfMaterials 45 - Product + Quantity List
+
+#### The Concept
+
+When a user needs to order or request products with specific quantities, BookOfMaterials provides a focused UI for exactly that - select products from the CRM catalog and specify how many of each.
+
+
+Think of it as a simplified order form. Instead of a generic table, it's purpose-built for the "(product, quantity)" pattern that's extremely common in sales and field service.
+
+
+#### Variants
+
+
+QuantityP (46) | Quantity mode | Each product has a numeric quantity field
+
+
+**Captures:** An array of `BOMData` entries, each containing a product ID and a quantity.
+
+
+**Common titles:** "Book of Materials" / "Buch der Materialien", "Products" / "Produkte"
+
+
+---
+
+
+## Summaries & Bullets
+
+### SpecialSummary 7 - The AI Summary
+
+#### The Concept
+
+SpecialSummary is the **polished output** of a report - an AI-generated, bullet-point summary of the entire voice memo. It's what the user sees as the main body of their report, distilling a rambling five-minute recording into clean, structured content.
+
+
+The AI processes the full transcript and produces formatted bullet points covering what was discussed, what was decided, and what needs to happen next.
+
+
+Standard | "Summary" / "Beschreibung" | General content summary
+
+Visit summary | "Visit Summary" / "Besuchsbeschreibung" | Visit-specific recap
+
+Content | "Content" / "Inhalt" | Full content capture
+
+Report content | "Report Content" / "Berichtsinhalt" | Formal report body
+
+Notes | "Notes" / "Notizen" | Lighter-weight notes
+
+Details | "Details" | Detailed account of what happened
+
+Visit details | "Visit Details" / "Besuchsdetails" | Detailed visit recap
+
+Conclusion | "Conclusion" / "Fazit" | Key takeaways only
+
+Internal comments | "Internal Comments" / "Interne Kommentare" | Internal-only notes
+
+Appointment results | "Appointment Results" / "Terminresultate" | Outcomes of the meeting
+
+
+**Captures:** Bullet-point content (AI-generated from the transcript).
+
+
+**AI prompt:** *"The complete content of the voice memo, written in bullet points. Each bullet point should be a concise statement."*
+
+
+**Behavior:**
+
+
+- **Trailing** - appears at the bottom of the report (`IsTrailing` = true)
+
+- **Not allowed in secondary action types** (`NotAllowedInSecondary` = true)
+
+
+---
+
+### UtilBullets 19 - General Bullet Points
+
+A simpler bullet-point component. Where SpecialSummary is the report's main body, UtilBullets is for **supporting notes** - a sidebar list of points that complement other fields.
+
+
+**Captures:** Bullet-point content.
+
+
+**Common titles:** "Notes" / "Notizen", "Description"
+
+
+---
+
+
+## Profile Generation
+
+### GenProfileInfo 27 - The Structured Profile Card
+
+#### The Concept
+
+When Voiceline captures a new lead, creates a contact, or registers an account, it needs more than just a name - it needs structured data: email, phone, company, role, address. GenProfileInfo provides a **form-like profile card** where each piece of information has its own typed field.
+
+
+Unlike a free-text MultiLineText where "company: Siemens, email: john@siemens.com" is just a string, GenProfileInfo stores each field separately - enabling validation, formatting, and direct CRM integration (the email field can be validated as an email, the phone field formatted as a phone number, etc.).
+
+
+#### Variants
+
+GenProfileInfo has the **most variants of any component** - 17 in total - because different contexts need different field combinations.
+
+
+**Contact Variants**
+
+
+ContactBasicV (28) | Contact basic | Name, First/Last, Role, Email, Phone | Name, Email
+
+ContactBasicWithoutRole (30) | Minimal contact | Name, First/Last, Email, Phone | Name, Email, Phone
+
+ContactGenProfileV (3201) | Contact profile | Name, First/Last, Email, Phone | Name
+
+ContactGenV2 (3207) | Contact v2 | Name, First/Last, Email, Phone, MobilePhone, Role | LastName
+
+ContactGenV3 (3211) | Contact v3 | Name, First/Last, Email, Phone, Role | Name, FirstName, LastName
+
+ContactBasicErco (3208) | Erco contact | Name, First/Last, Role, Email, Phone, Mobile | Name, Email
+
+
+**Lead Variants**
+
+
+LeadGenBasicV (27) | Lead basic | Name, First/Last, Company, Role, Email, Phone, Website, Address | Name, Company, Email
+
+LeadGenBasicVV2 (29) | Lead with mobile | Name, First/Last, Company, Role, Email, Phone, Mobile, Website, Address | Name, Company, Email
+
+LeadGenBasicV3 (31) | Lead (surname mandatory) | Name, First/Last, Company, Email, Phone, Website, Address | LastName, Email
+
+LeadGenBasicCGM (3202) | CGM lead | Name, First/Last, Company, Email, Phone | LastName, Company
+
+LeadGenBasicCGMFair (3212) | CGM fair lead | Name, First/Last, Company, Email, Phone, MobilePhone | LastName, Company
+
+LeadGenBasicJansen (3200) | Jansen lead | Name, First/Last, Role, Company, Email, Phone, Address, Website | Name, Company, Email
+
+LeadGenBasicSiedleFair (3210) | Siedle fair lead | FirstName, LastName, Company, Email, Phone, Address | FirstName, LastName, Company, Email, City
+
+
+**Account Variants**
+
+
+AccountGenBasicV (3203) | Account with website | CompanyName, Address, Street, City, ZIP, Country, Website | CompanyName, Website
+
+AccountGenBasicV2 (3204) | Simple account | CompanyName, Address, Street, City, ZIP | CompanyName
+
+AccountGenBasicV3 (3205) | Account v3 | CompanyName, Address, Street, City, ZIP, Website | CompanyName, Website
+
+AccountGenBasicV4 (3206) | Account with contact | CompanyName, Email, Phone, Address, Street, City, ZIP | Email, ZIP
+
+
+**Available fields:**
+
+
+- **Name fields:** Full Name, First Name, Last Name
+
+- **Contact fields:** Email, Phone, Phone (secondary/mobile)
+
+- **Company fields:** Company, Role
+
+- **Web fields:** Website
+
+- **Address fields:** Street, City, Postal Code, Country
+
+
+Each variant controls not just *which* fields appear, but also:
+
+
+- **Mandatory status** - which fields the user must fill in
+
+- **Layout** - half-width (two fields side by side) vs. full-width
+
+- **Positioning** - the order fields appear in
+
+- **Keyboard type** - email fields get email keyboard, phone gets number pad, URL gets URL keyboard
+
+
+**Common titles:** "Contact info" / "Kontaktinformationen", "New Contact" / "Neuer Kontakt", "Account info" / "Account Informationen"
+
+
+**AI behavior:** The AI assistant is instructed to `lead` - it asks about mandatory fields early in the conversation: *"Ask about Name, Company, and email - these are mandatory fields! Additionally, ask about role, website, and location."*
+
+
+---
+
+
+## Events & Reminders
+
+### EventSelection 37 - The Calendar Event Linker
+
+#### The Concept
+
+Reports don't exist in isolation - they often relate to calendar events. A visit report might correspond to a scheduled meeting. A call log might be tied to a planned phone call. EventSelection lets the user **link their report to an existing CRM calendar event** or **create a new one**.
+
+
+#### How It Works
+
+When the component loads, it fetches available calendar events from the CRM (filtered by the selected account and date range). The user picks the relevant event, or creates a new one. Events carry their own metadata - subject, start/end time, and optionally sub-components for additional event-specific data.
+
+
+The data structure:
+
+
+- `Events[]` - the available CRM events
+
+- `SelectedEvent` - the one the user picked
+
+- `NeedsEvent` - whether the action requires an event
+
+- `EventId` - the selected event's CRM ID (or `"_new_"` if creating)
+
+- `ExampleEvent` - a template for new event creation (populated by the variant)
+
+
+#### Variants
+
+
+SimpleEventSelection (37) | Basic | Shows available events. User can pick one or create new.
+
+NewEventsForbidden (38) | No creation | User can **only pick existing events** - the "create new" option is disabled. Use this when events must already exist in the CRM.
+
+NewEventsMoreInfo (39) | Create with details | User can create new events, but must provide additional information. Includes an example event template.
+
+
+**Common titles:** "Event Selection" / "Ereignisauswahl"
+
+
+**AI behavior:** Ordering is `skip` - event selection is handled by the frontend UI, not extracted from the transcript.
+
+
+---
+
+### ReminderDateController 44 - The Reminder Scheduler
+
+#### The Concept
+
+After a meeting or call, users often want to set a reminder - "remind me to follow up on Thursday at 2 PM." ReminderDateController captures this intent from the voice memo and converts natural language into a concrete date/time.
+
+
+#### How It Works
+
+The AI extracts reminder information from the transcript using function calling:
+
+
+- Parse natural language: "tomorrow at 2 PM", "next Friday", "in two weeks", "end of the month"
+
+- Apply time defaults: if only a date is given, default to 09:00. "End of day" = 17:00. "Afternoon" = 14:00.
+
+- Convert to UTC using the user's timezone (handling DST correctly)
+
+- Optionally set an end time (default: 15 minutes after start) and a calendar event flag
+
+
+#### Variants
+
+
+OnlyDate (44) | Date only | Simple reminder - just a date/time, no calendar integration
+
+CalendarPicker (45) | Calendar picker | Full calendar UI - date, time, duration, and option to create a calendar event block
+
+
+The CalendarPicker variant adds:
+
+
+- `ReminderEndDate` - when the reminder/block ends
+
+- `HasCalendarOption` - whether to create a calendar block (not just a notification)
+
+
+**Common titles:** "Remind me at" / "Erinnere mich um"
+
+
+**Example:** User says: *"Remind me tomorrow at 2 PM for 30 minutes."* Result:
+
+
+- ReminderDate: tomorrow at 14:00 (UTC-adjusted)
+
+- ReminderEndDate: tomorrow at 14:30
+
+- HasCalendarOption: true
+
+
+---
+
+
+## Attachments
+
+### Attachment 15 - Files and Photos
+
+Attachment handles **file and image uploads** - photos taken during a site visit, documents scanned at a meeting, PDFs shared by a customer. It's the only component with `ShouldPreserve` = true, meaning attachments are **never lost** when a report is restructured, regenerated, or transformed.
+
+
+Why the preservation guarantee? Because every other component can be regenerated from the transcript. If the AI messes up a summary, you can re-run it. But a photo the user took at a factory floor cannot be recreated - once it's attached, it must stay attached.
+
+
+Attachments | "Attachments" / "Anhange"
+
+Photos | "Photos" / "Bilder"
+
+Documents | "Documents" / "Dokumente"
+
+Supplier documents | "Supplier Documents" / "Lieferantendokumente"
+
+
+**Captures:** One or more uploaded files (images, PDFs, documents).
+
+
+---
+
+
+## Deduplication
+
+### DeduplicationInformation 38 - Catch Duplicates Before They Happen
+
+#### The Problem
+
+When a user creates a new lead or contact via voice, there's a real risk of creating a duplicate - "John Muller" might already exist in the CRM as "Johann Mueller." Without a check, the system would create a second record, polluting the CRM.
+
+
+#### The Solution
+
+DeduplicationInformation runs a **duplicate check** against the CRM before the record is created. It searches for similar records and categorizes the matches by confidence:
+
+
+**Direct Replacements** | High | Near-certain duplicate found. The system suggests linking to the existing record.
+
+**Potential Duplicates** | Medium | Possible match - the user must decide: create new or link to existing.
+
+**Accounts Found** | Context | Related companies found, providing context for the decision.
+
+
+The component surfaces these matches in the UI so the user can:
+
+
+- **Confirm** a duplicate and link to the existing record
+
+- **Dismiss** a false positive and proceed with creation
+
+- **Merge** records if appropriate
+
+
+**Captures:** User decisions on duplicate resolution.
+
+
+**When it appears:** Automatically, during lead/contact generation workflows. Not manually placed in templates.
+
+
+---
+
+
+## Customer Intelligence
+
+### ICustomerFilter 48 - Configure the Analysis
+
+ICustomerFilter is a **configuration component**, not a user-facing input in the traditional sense. It defines the parameters for the AI analysis:
+
+
+`ActionTypes[]` | Which report types to include (visits, calls, tasks, etc.)
+
+`StartDate` / `EndDate` | Time window to analyze
+
+`ExcludeTagIDs[]` | Company tags to exclude from analysis
+
+`TouchpointLimit` | Maximum number of interactions to process
+
+`SummaryType` | `visitPreparation` (focused prep for an upcoming meeting) or `general` (broad relationship overview)
+
+`Headless` | Skip content fetch (for filter-only mode)
+
+
+**Captures:** Filter configuration.
+
+
+---
+
+### IMarkdownContent 49 - The AI-Generated Briefing
+
+IMarkdownContent is the **output** of the customer intelligence pipeline. It holds the generated markdown content - structured insights assembled from parallel AI analysis.
+
+
+#### How It Works
+
+The pipeline runs **three AI analyses in parallel**, each with a specialized focus:
+
+
+- **Todo Extraction** - A task management specialist extracts action items:
+
+
+- Future to-dos (upcoming commitments)
+
+- Past to-dos that are overdue (missed deadlines)
+
+- To-dos without deadlines
+
+
+- **Demand Extraction** - A B2B sales specialist identifies business opportunities:
+
+
+- Active opportunities in progress
+
+- Expressed customer interests
+
+- Future business needs
+
+- *Anti-hallucination rule: "Only extract EXPLICIT opportunities, not inferred ones"*
+
+
+- **Complaint Extraction** - A customer service analyst identifies issues:
+
+
+- Unresolved issues
+
+- Resolved issues (for context)
+
+- Process complaints
+
+- *Strict rule: "Only extract complaints that are EXPLICITLY mentioned"*
+
+
+The three results are then **synthesized and deduplicated** into a single markdown document with language-specific section headers (e.g., "Kurzfassung" in German, "Summary" in English).
+
+
+**Captures:** Generated markdown with intermediate results (TodoResult, DemandResult, ComplaintResult) preserved for debugging.
+
+
+---
+
+
+## System Components
+
+### ErrorInfoComponent 52 - When Things Go Wrong
+
+A display-only component that shows an **error message** to the user. It contains no input - it's purely informational. Used when report processing fails, when a CRM sync errors out, or when any other system issue needs to be surfaced.
+
+
+**Captures:** Nothing (display only).
+
+
+---
+
+### PBSimple 53 - The Playbook Question
+
+#### The Concept
+
+Sales playbooks define a set of questions that reps should ask during customer interactions - "Did you ask about their budget?", "Did you discuss the competitive landscape?", "Was a next meeting scheduled?" PBSimple represents **one question** from such a playbook.
+
+
+#### How It Works
+
+Before a conversation, the user selects a playbook collection (a set of related questions). After recording the voice memo, the system runs a **two-pass analysis**:
+
+
+**Pass 1 - Boolean Check:** For each playbook question, the AI determines: *was this topic discussed? Yes or no?*
+
+
+**Pass 2 - Content Extraction:** Only for questions where the answer was "yes", the AI extracts the detailed response - what exactly did the customer say about that topic?
+
+
+#### Status Tracking
+
+Each playbook question has a `PlayHappened` status:
+
+
+`NotServed` (0) | The question was never asked - the user didn't cover this topic
+
+`Served` (1) | The topic was raised but the answer was vague or non-committal
+
+`Passed` (2) | The topic was covered and a meaningful answer was captured
+
+
+#### Playbook Collections
+
+Questions are organized into **collections** - groups of related questions that a user can select before their conversation:
+
+
+"demand" | Demand & Opportunities | "Did you ask if the customer has more need for products next quarter?"
+
+"random" | General Questions | General customer interaction questions
+
+
+**Configuration:** Each PBSimple part is defined in the library TOML with a `pb` block containing multilingual descriptions:
+
+
+`[parts.990001002.pb]
+description.en = "This is specifically targeted to explore opportunities for the next quarter"
+description.de = "Dies zielt speziell auf die Erkundung von Moglichkeiten fur das nachste Quartal ab"
+`
+**Captures:** Playbook response status + extracted content.
+
+
+---
+
+
+## Behavioral Reference
+
+### IsTrailing
+
+Components that are positioned at the **end** of the report, after all other fields.
+
+
+MarkDownText | 39
+
+CRMRelatedContactSub | 16
+
+SpecialSummary | 7
+
+### NeedsData
+
+Components that require **enum option data** to be pre-loaded before they can render. The system fetches this data (from CRM, config, or other sources) and passes it as `ExtraInfo`.
+
+
+SingleSelect | 4
+
+MultiSelect | 5
+
+CombiSelectSingle | 17
+
+CombiSelectMulti | 18
+
+SearchableSingleSelect | 32
+
+DenseTable | 34
+
+RecipientDraftEmail | 40
+
+Template | 42
+
+BookOfMaterials | 45
+
+### HasChildren
+
+Components that contain **nested child components** (sub-forms within a form).
+
+
+LineItem | 10
+
+### HasCRMParts
+
+Components that **interact with the CRM system** - they fetch, display, or tag CRM entities.
+
+
+CRMSingleSelect | 11
+
+CRMMultiSelect | 12
+
+CRMRelatedContacts | 13
+
+CRMRelatedContactSub | 16
+
+CRMRelatedContact | 20
+
+CRMSoftRelatedOpportunities | 22
+
+CRMMarketSegments | 23
+
+CRMProducts | 24
+
+CRMContacts | 26
+
+CRMAccounts | 28
+
+CRMProduct | 29
+
+CRMAccount | 30
+
+CRMProject | 31
+
+CRMRelatedOppos | 33
+
+SelectorEmployee | 35
+
+SelectorEmployees | 36
+
+CCEmail | 41
+
+CRMRelatedOppo | 43
+
+BoostedCCEmail | 46
+
+CRMCombiRelated | 47
+
+CRMLeadContact | 50
+
+CRMLeadContactS | 51
+
+CRMFlex | 56
+
+### HasVariants
+
+Components that support **variant configurations** - different modes or layouts defined by a variant ID.
+
+
+GenProfileInfo | 27 | 17 variants
+
+Zeitraum | 21 | 4 variants
+
+NumericalInput | 14 | 7 variants
+
+EventSelection | 37 | 3 variants
+
+ReminderDateController | 44 | 2 variants
+
+BookOfMaterials | 45 | 1 variant
+
+CRMCombiRelated | 47 | 8 variants
+
+PregnantProduct | 55 | 3 variants
+
+### GetsNONETag
+
+Components that receive a special **"NONE" option** - allowing the user to explicitly indicate "no selection" rather than just leaving the field empty. This is important for AI extraction: instead of guessing, the AI can confidently say "nothing was mentioned."
+
+
+SingleSelect | 4
+
+MultiSelect | 5
+
+CombiSelectSingle | 17
+
+CombiSelectMulti | 18
+
+SearchableSingleSelect | 32
+
+DenseTable | 34
+
+CRMRelatedContacts | 13
+
+CRMRelatedContactSub | 16
+
+CRMRelatedContact | 20
+
+CRMRelatedOppos | 33
+
+CRMRelatedOppo | 43
+
+CRMLeadContact | 50
+
+CRMLeadContactS | 51
+
+### ShouldPreserve
+
+Components whose data is **never discarded** during report transformations or restructuring. This guarantees that user-uploaded content survives any re-processing.
+
+
+Attachment | 15
+
+### NotAllowedInSecondary
+
+Components **restricted to primary action types only** - they cannot appear in secondary/follow-up actions.
+
+
+SpecialSummary | 7
+
+CRMRelatedContacts | 13
+
+CRMRelatedContact | 20
+
+CRMSoftRelatedOpportunities | 22
+
+BoostedCCEmail | 46
+
+### ForbiddenComponentTypesForNonPrimary
+
+A stricter version of the above - components that are **completely forbidden** outside of primary action types.
+
+
+CRMRelatedContact | 20
+
+CRMRelatedContacts | 13
+
+
+---
+
+### ConditionalSelect 54 - The Visibility Controller
+
+#### The Concept
+
+ConditionalSelect is a single-select dropdown whose selected value controls which **child components** are visible. It solves a common form problem: some fields only make sense when a specific option is chosen. For example, a "Loss Reason" field should only appear when the opportunity stage is set to "Closed Lost."
+
+
+#### How It Works
+
+ConditionalSelect works like a regular SingleSelect - the user picks one option from an enum. But it carries a `ChildMapping` in its `DenseInfo` that maps each option ID to a list of child part IDs that should be visible when that option is selected.
+
+
+The data structure:
+
+
+type ConditionalSelectInfo struct {
+    // ChildMapping maps option ID to list of visible child part IDs
+    // Example: {"0001": [123, 124], "0002": [123, 124, 125]}
+    ChildMapping map[string][]int64 `json:"child_mapping"`
+}
+
+When the user picks option "0001", only child parts 123 and 124 are shown. When they switch to "0002", part 125 also becomes visible. The frontend reads `DenseInfo.ConditionalSelectInfo.ChildMapping` to decide which children to render.
+
+
+#### AI Behavior
+
+A single LLM call generates both the parent selection and all child values at once. The AI does not need to know about the visibility mapping - it fills in everything, and the frontend hides what is not relevant.
+
+
+#### Known Instances
+
+
+52001 | Opportunity type | Opportunitatstyp | Switches between contract and spot deal fields
+
+52002 | Stage | Verkaufsphase | Controls which fields appear per sales stage
+
+52003 | Loss Reason | Verlustgrund | Captures why a deal was lost
+
+52004 | Type | Typ | Visit type selector (Iberia-specific)
+
+
+**Captures:** One selected option ID (same as SingleSelect), plus controls child visibility.
+
+
+**Code reference:** `library/conditional_select.go`, `shared-structs/action-structs/frontend-report.go`
+
+
+---
+
+### PregnantProduct 55 - The Order Line Builder
+
+#### The Concept
+
+PregnantProduct is a product selector designed for order workflows. Where BookOfMaterials pairs products with quantities, PregnantProduct goes further - each selected product expands into a full set of sub-fields: quantity, unit price, total price, delivery company, delivery conditions, ship-to party, and incoterms.
+
+
+Think of it as a "pregnant" product - each product you select gives birth to a set of child fields.
+
+
+#### How It Works
+
+The component loads products from the CRM catalog. When the user selects a product, it spawns child fields defined by the variant. The child fields include:
+
+
+Quantity | Quantity | Menge | How many units
+
+Unit Price | Price/unit | Preis/Einheit | Price per unit
+
+Price | Price | Preis | Total price
+
+Delivery Company | Delivery Company | Lieferunternehmen | Who delivers
+
+Delivery Conditions | Delivery Conditions | Lieferbedingungen | Terms of delivery
+
+Ship To Party | Ship To Party | Lieferempfanger | Recipient
+
+Incoterms | Incoterms | Incoterms | International trade terms
+
+
+#### Variants
+
+
+PPBasicV (5501) | Basic | true | No
+
+PPBasicNoExclV (5502) | No exclusion | false | No
+
+PPWithPriceV (5503) | With price | true | Yes
+
+
+The `ExcludeSelectedProducts` flag controls whether a product already selected in one row should be hidden from the dropdown in other rows (preventing duplicates). Note: this flag is defined but **not yet implemented** in the frontend.
+
+
+The variant config is stored in `DenseInfo.PregnantProduct`:
+
+
+type DensePregnantProduct struct {
+    ExcludeSelectedProducts bool    `json:"exclude_selected_products"`
+    OpportunityCurrency     *string `json:"opportunity_currency"`
+}
+
+**Captures:** An array of product selections, each with its child field values.
+
+
+**Code reference:** `library/pregnant_product.go`
+
+
+---
+
+### CRMFlex 56 - The Dynamic CRM Lookup
+
+#### The Concept
+
+CRMFlex is a **configurable CRM entity selector** that replaces the need for dedicated components like CRMSingleSelect or CRMMultiSelect in many cases. Instead of hardcoding which entity type to display, CRMFlex reads a runtime configuration that defines:
+
+
+- **Which CRM entity types** to search (contacts, leads, accounts, opportunities, or any mix)
+
+- **What constraint** to apply (none, related to current account, or soft-related)
+
+- **How many** the user can pick (single or multi)
+
+
+This makes it the most flexible CRM component in the system - one component type that can act as a contact picker, an account picker, an opportunity finder, or a multi-entity search depending on configuration.
+
+
+#### How It Works
+
+The configuration is stored in `DenseInfo.CRMFlexInfo`:
+
+
+type CRMFlexInfo struct {
+    Destinations []LookupDestination `json:"destinations"`
+    Cardinality  LookupCardinality   `json:"cardinality"` // "single" or "multi"
+}
+
+type LookupDestination struct {
+    Entity     crm.Destination    `json:"entity"`
+    Constraint LookupConstraint   `json:"constraint"` // "none", "related", "softrelated"
+}
+
+The configuration is parsed from a synthetic `_lookup_config_` entry in the component's enum options at transformation time.
+
+
+#### AI Behavior
+
+CRMFlex uses a dynamic LLM tool called `find_task_responsible`. The tool's parameters are built at runtime based on the EOM (Entity Option Map):
+
+
+- `entity_var` - an enum of available entities from the EOM
+
+- `team_name` - a free text field for team/group name fallback
+
+
+The AI picks whichever parameter applies (or neither), and the system resolves the selection via Typesense search and EOM rule evaluation.
+
+
+#### Known Instances
+
+
+56001 | Owner | Besitzer | Task/record owner lookup
+
+56002 | Contact or Lead (soft-related, multi) | Kontakt oder Lead (soft-related, multi) | Multi-entity contact/lead search
+
+56003 | Account or Opportunity (related, single) | Account oder Opportunity (related, single) | Single related account or opportunity
+
+56004 | Mixed Destinations (multi) | Gemischte Ziele (multi) | Multi-entity mixed lookup
+
+
+**Captures:** One or more CRM entities, depending on cardinality.
+
+
+**Note:** CRMFlex is the recommended replacement for CRMMultiSelect (12) and CRMProducts (24), as indicated by comments in the codebase (`// use CRMFlex`).
+
+
+**Code reference:** `library/crm_flex.go`, `shared-structs/action-structs/frontend-report.go`
+
+
+---
+
+### EscalatedEventSelection 57 - Event Picker with Per-Event Children
+
+#### The Concept
+
+EscalatedEventSelection extends the regular EventSelection with a key addition: each selectable CRM event can have its own **child components**. This enables "before/after" workflows - for example, comparing planned values with actual results for each event.
+
+
+#### How It Works
+
+Like EventSelection, it loads calendar events from the CRM. The difference is the `EventChildMapping` in its `DenseInfo`:
+
+
+type EscalatedEventSelectionInfo struct {
+    EventSelection `json:",inline"`
+    // Maps CRM event ID to the index in ChildParts holding the before/after children
+    EventChildMapping map[string]int `json:"event_child_mapping,omitempty"`
+}
+
+When the user selects an event, the component looks up the event's ID in `EventChildMapping` to find which set of child parts to display. This allows each event to carry unique contextual data.
+
+
+**Captures:** A selected event plus event-specific child component values.
+
+
+**Common titles:** "Event Selection" / "Ereignisauswahl"
+
+
+**Code reference:** `library/escalated_event_selection.go`
+
+
+---
+
+<Note>This catalogue is updated as new components are released. If a configuration requirement is not covered here, submit a [customisation request](/implementation/product-customisation/requesting-customisation).</Note>

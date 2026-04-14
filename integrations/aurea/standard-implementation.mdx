@@ -1,0 +1,66 @@
+---
+title: "Aurea CRM — Standard Implementation"
+status: Live
+last_updated: 2026-04-04
+---
+
+This page documents the standard VoiceLine FSF implementation on Aurea CRM — the default configuration your SA will deploy, and the decisions that need to be made during scoping.
+
+## Aurea object model
+
+| VoiceLine workflow | Aurea object | Notes |
+|-------------------|-------------|-------|
+| Visit Report | Appointment | Type configurable |
+| Call Log | Call | Standard |
+| Task | Task | Standard |
+| Contact | Person | Standard |
+| Account | Company | Standard |
+
+## Aurea implementation context
+
+Aurea CRM is frequently deployed on-premise or in private networks. The integration setup differs from cloud-native CRMs and typically requires closer coordination with your IT team.
+
+Aurea implementations are also workspace-specific — the exact field configuration depends on your Aurea deployment version and any customer-specific customisations in your instance.
+
+## Required scoping decisions
+
+### 1. Network access
+Aurea is frequently deployed on-premise. VoiceLine requires network access to your Aurea instance to sync data.
+
+**Decision required:** Is your Aurea instance internet-accessible, or does it require VPN or IP whitelisting? VPN setups are non-standard and billed at €1,300/day.
+
+### 2. API credentials
+Aurea uses Basic authentication with a dedicated API user. A service account with read/write access to Company, Person, and Activity records must be created.
+
+**Decision required:** Service account created with correct permissions; credentials provided to your SA.
+
+### 3. Account data scope
+The scope of Company records synced from Aurea (territory, rep assignment, active status) depends on your Aurea configuration. Confirm what accounts each rep should see.
+
+**Decision required:** Account scope and rep assignment logic confirmed.
+
+### 4. Appointment type values
+Confirm which Aurea appointment types should be used for Visit Reports and Meetings.
+
+**Decision required:** Appointment type values confirmed with your Aurea administrator.
+
+## Go-live checklist
+
+- [ ] Network access confirmed (VPN configured if needed)
+- [ ] Service account created with API read/write permissions
+- [ ] API credentials provided and connection test passed
+- [ ] Account scope confirmed
+- [ ] Appointment type values confirmed and mapped
+- [ ] Initial sync completed (companies and persons visible in app)
+- [ ] Test visit report submitted and visible in Aurea as Appointment
+- [ ] Test call log submitted and verified in Aurea
+- [ ] Test task submitted and verified in Aurea
+- [ ] Pilot rep group onboarded and using workflows
+
+## Common Aurea implementation issues
+
+**Network connection failure:** The most common Aurea issue. If the connection test fails, the issue is almost always network access. Work with your IT team to confirm VoiceLine's IP range is whitelisted or the VPN is correctly configured.
+
+**Company records not syncing:** Verify that the service account has read access to the Company table and that the rep assignment filter matches your Aurea configuration.
+
+**Appointment type not found:** Confirm exact type values with your Aurea administrator. Type names are case-sensitive and must match what is configured in your Aurea instance.

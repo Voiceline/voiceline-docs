@@ -1,0 +1,47 @@
+---
+title: "Marketing Surveys"
+status: Live
+last_updated: 2026-04-04
+---
+
+The Marketing Surveys module adds structured survey workflows to VoiceLine. Reps complete predefined questionnaires by voice during or after customer visits. Answers are extracted as structured data and synced to your CRM.
+
+For a full description of what the module includes commercially, see [Marketing Surveys](/commercial/modules/marketing-surveys).
+
+## What it activates
+
+| Capability | Description |
+|-----------|-------------|
+| Survey workflow | Complete a structured customer survey by voice |
+| Admin survey builder | Create and manage question sets in workspace settings |
+| Context-aware triggers | Survey appears automatically based on visit type or customer segment |
+
+## Standard implementation
+
+Survey workflows are built per use case — there is no single fixed schema. Your SA configures the survey structure based on your specific questionnaire requirements.
+
+Typical survey field types:
+
+| Input type | Component used | Example |
+|-----------|---------------|---------|
+| Short text answer | SingleLineText | "How did the customer describe the problem?" |
+| Long text answer | MultiLineText | "Summarise the customer's feedback" |
+| Single choice | SingleSelect | "Overall satisfaction: Very satisfied / Satisfied / Neutral / Dissatisfied" |
+| Multiple choice | MultiSelect | "Which topics were discussed?" |
+| Yes / No | YesNo | "Is the customer considering a competitor?" |
+| Number / Score | NumericalInput | "NPS score 0–10" |
+| Date | Zeitraum | "When is the customer's next review?" |
+
+## Required scoping decisions
+
+**Question set design:** Provide the full question list and expected answer types. The SA maps each question to the appropriate component type.
+
+**Trigger logic:** Confirm which visit types or customer segments should trigger which surveys. Surveys can be mandatory (always shown) or optional (rep-initiated).
+
+**CRM field mapping:** Each survey answer maps to a CRM field. Confirm which CRM object receives survey data and which fields map to which questions.
+
+**Survey complexity:** Surveys with conditional questions (e.g. "If yes, then ask...") require ConditionalSelect components. Flag these during scoping.
+
+## Dependencies
+
+Marketing Surveys has no module dependencies. It can be activated as the first module after FSF.

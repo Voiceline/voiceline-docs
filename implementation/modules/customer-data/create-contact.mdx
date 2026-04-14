@@ -1,0 +1,54 @@
+---
+title: "Create Contact"
+status: Live
+last_updated: 2026-04-04
+---
+
+The Contact workflow lets reps create and update contact records by voice — capturing new contacts or updating existing ones immediately after an interaction.
+
+## What it captures
+
+| Field | Type | Description |
+|-------|------|-------------|
+| First name | Text | Contact's first name |
+| Last name | Text | Contact's last name |
+| Account | Lookup | The company the contact works for |
+| Job title | Text | Contact's role |
+| Phone | Text | Direct phone number |
+| Mobile | Text | Mobile number |
+| Email | Text | Email address |
+| Department | Picklist | Organisational department |
+| Notes | Long text | Context from the interaction |
+
+## Deduplication
+
+Before creating a new contact, VoiceLine checks for existing records matching the name and account. If a potential duplicate is detected, the rep is shown the match and can choose to update the existing contact instead.
+
+## CRM sync
+
+| CRM | Target object | Sync trigger |
+|-----|--------------|-------------|
+| SAP C4C | Individual (Contact) | On submission |
+| Salesforce | Contact | On submission |
+| MS Dynamics | Contact | On submission |
+| HubSpot | Contact | On submission |
+| ZOHO | Contact | On submission |
+| Aurea | Contact | On submission |
+
+## What can be configured
+
+- **Department values** — customise to match your CRM's department taxonomy
+- **Required fields** — define minimum required fields for contact creation
+- **Account linkage** — configure whether account is required or optional
+- **Update vs create logic** — configure default behaviour when a potential match is found
+
+## What the standard does not include
+
+- Automatic business card scanning (available via the [Assistant](/customer/productivity/assistant))
+- Contact relationship mapping (e.g. reporting hierarchy)
+- Merging of duplicate contacts (done in CRM)
+
+## FAQ
+
+**Can reps update an existing contact's details rather than creating a new one?**
+Yes — if the contact already exists, the workflow defaults to updating the existing record. Your SA will configure the exact update logic during implementation.

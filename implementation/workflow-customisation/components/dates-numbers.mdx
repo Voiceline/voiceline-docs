@@ -1,0 +1,71 @@
+---
+title: "Dates & Numbers"
+status: Live
+last_updated: 2026-04-04
+---
+
+Date and numeric components capture time-bound and quantitative information from voice recordings. The AI resolves natural language expressions like "next Thursday" or "in two weeks" to exact dates automatically.
+
+---
+
+## Date & Time
+
+### Zeitraum (Time Range)
+
+The standard date/time component. Supports four variants depending on what the workflow needs:
+
+| Variant | What it captures | Typical use |
+|---------|-----------------|-------------|
+| Date + time range | Start and end datetime | Meeting duration, visit window |
+| Date range only | Start and end date, no time | Multi-day events |
+| Single date + time | One datetime | Follow-up call, task due datetime |
+| Single date only | One date, no time | Deadline, opportunity close date |
+
+**AI behaviour:** The AI extracts dates and times from natural language. "Next Thursday at 3pm", "end of the month", and "in two weeks" are all resolved to specific dates. If the rep doesn't mention a date, some configurations apply a default (e.g. opportunity close date defaults to 90 days from today).
+
+**When to use:** Use Zeitraum for all new date and time fields. It replaces the older DatePicker component.
+
+### ReminderDateController
+
+A specialised date/time picker for the Reminder workflow. Captures when a reminder should fire, with support for recurring reminders.
+
+**When to use:** Reminder workflow only.
+
+### DatePicker
+
+Legacy single-date component. Deprecated in favour of Zeitraum (variant: single date + time or single date only). Still present in older workflow configurations.
+
+**When to use:** Only in existing implementations where migration to Zeitraum has not been done. New configurations should use Zeitraum.
+
+---
+
+## Numeric
+
+### NumericalInput
+
+A plain number field. Used for quantities, counts, percentages, or any numeric value without a currency unit.
+
+| Field label | Example use |
+|------------|-------------|
+| Quantity | Number of units discussed |
+| Number of employees | Company size indicator |
+| Probability | Deal probability as a percentage |
+| Rating | Customer satisfaction score |
+
+**AI behaviour:** The AI extracts the numeric value from the transcript. "About fifty units" resolves to `50`. Fractions and decimals are supported.
+
+### CurrencyInput
+
+A monetary value input with a currency unit. Used for deal values, order volumes, and pricing discussions.
+
+| Field label | Example use |
+|------------|-------------|
+| Opportunity value | Estimated deal value |
+| Order volume | Value of products discussed |
+| Budget | Customer's stated budget |
+
+**AI behaviour:** The AI extracts the amount and infers the currency from context or workspace configuration. "About 50,000 euros" resolves to `50000 EUR`.
+
+---
+
+See [Workflow Customisation](/implementation/product-customisation/workflow-customisation) for how date and numeric components fit into the broader schema and CRM mapping model.

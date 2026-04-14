@@ -1,7 +1,7 @@
 ---
 title: "Scenario: Medium Customer"
 status: Live
-last_updated: 2026-03-23
+last_updated: 2026-04-07
 ---
 
 **80 reps · Platform Enterprise · Market Analytics Pro + Sales Coaching Pro + Pipeline Management**
@@ -14,12 +14,12 @@ A large field sales organisation with a mature VoiceLine rollout. SSO deployed, 
 
 | Component | Calculation | Monthly |
 |-----------|-------------|---------|
-| [Field Sales Fundamentals](/commercial/field-sales-fundamentals) | 80 reps × €39 | €3,120 |
+| [Field Sales Fundamentals](/commercial/field-sales-fundamentals) | 80 reps × €49 | €3,920 |
 | [Platform Enterprise](/commercial/platform/enterprise) | Flat fee | €2,490 |
 | [Market Analytics Pro](/commercial/modules/market-analytics-pro) | Flat fee | €900 |
 | [Sales Coaching Pro](/commercial/modules/sales-coaching-pro) | Flat fee | €900 |
 | [Pipeline Management](/commercial/modules/pipeline-management) | Flat fee | €400 |
-| **Fixed total** | | **€7,810** |
+| **Fixed total** | | **€8,610** |
 
 ---
 
@@ -48,24 +48,36 @@ Usage assumes active field activity: approximately 15–18 field days per rep pe
 | Analytics insight extracted | 1 | 180 (60 visits × 3 insights) | 180 |
 | **Total** | | | **1,075** |
 
+### Call minutes
+
+An estimated 40% of workflow submissions are made via the conversational phone assistant, at an average of 2 minutes per call. Each live minute consumes 5 credits.
+
+| | Per rep / month |
+|--|----------------|
+| Voice-triggered workflow submissions | 320 |
+| Estimated phone calls (40%) | 128 |
+| Call credits (128 × 2 min × 5 credits) | **1,280** |
+
 ### Credit balance
 
 | | Credits / month |
 |--|----------------|
-| Estimated consumption (80 reps × 1,075) | 86,000 |
+| Workflow consumption (80 reps × 1,075) | 86,000 |
+| Call minutes (80 reps × 1,280) | 102,400 |
+| Total consumption | **188,400** |
 | Included baseline | 40,000 |
-| Monthly overage | **46,000** |
-| Annual overage | **~552,000** |
+| Monthly overage | **148,400** |
+| Annual overage | **~1,780,800** |
 
 ### Recommended credit packages
 
 | Package | Credits | Cost | Qty | Total credits | Total cost |
 |---------|---------|------|-----|---------------|-----------|
-| Enterprise | 200,000 | €6,000 | 3 | 600,000 | €18,000 |
+| Enterprise | 200,000 | €6,000 | 9 | 1,800,000 | €54,000 |
 
-Three Enterprise packages (600,000 credits total) covers the full year with ~48,000 credits to spare.
+Nine Enterprise packages (1,800,000 credits total) covers the full year with ~19,200 credits to spare.
 
-Annual credit cost: **€18,000**. Amortised monthly: **~€1,500**.
+Annual credit cost: **€54,000**. Amortised monthly: **~€4,500**.
 
 ---
 
@@ -73,25 +85,25 @@ Annual credit cost: **€18,000**. Amortised monthly: **~€1,500**.
 
 | | Monthly | Annual |
 |-|---------|--------|
-| FSF | €3,120 | €37,440 |
+| FSF | €3,920 | €47,040 |
 | Platform Enterprise | €2,490 | €29,880 |
 | Market Analytics Pro | €900 | €10,800 |
 | Sales Coaching Pro | €900 | €10,800 |
 | Pipeline Management | €400 | €4,800 |
-| Credits (amortised) | ~€1,500 | ~€18,000 |
-| **Total** | **~€9,310** | **~€111,720** |
+| Credits (amortised) | ~€4,500 | ~€54,000 |
+| **Total** | **~€13,110** | **~€157,320** |
 
 ---
 
 ## Adoption scenarios
 
-Adoption measures the proportion of the modeled workflow volume that reps actually complete. Fixed fees (FSF, Platform, Modules) are constant at all adoption levels — only credit consumption scales.
+Adoption measures the proportion of the modeled workflow volume that reps actually complete. Fixed fees (FSF, Platform, Modules) are constant at all adoption levels — credit consumption (workflows and call minutes) scales proportionally.
 
 | Adoption | Credits / rep / month | Monthly credit overage | Annual credit cost | Monthly total | Annual total |
 |----------|-----------------------|----------------------|-------------------|---------------|--------------|
-| 30% | 323 | — | €0 | ~€7,810 | ~€93,720 |
-| 60% | 645 | 11,600 | ~€6,000 | ~€8,310 | ~€99,720 |
-| 100% | 1,075 | 46,000 | ~€18,000 | ~€9,310 | ~€111,720 |
+| 30% | 707 | 16,560 | ~€6,000 | ~€9,110 | ~€109,320 |
+| 60% | 1,413 | 73,040 | ~€30,000 | ~€11,110 | ~€133,320 |
+| 100% | 2,355 | 148,400 | ~€54,000 | ~€13,110 | ~€157,320 |
 
 ---
 
@@ -106,14 +118,15 @@ Adoption measures the proportion of the modeled workflow volume that reps actual
 | A5 | 5 account updates / rep / month | Confirmed |
 | A6 | 100 reminders / rep / month (5/day × 20 days) | Confirmed |
 | A7 | 3 analytics insights / visit report | Range 2–5; base case uses midpoint. Insight definition pending product confirmation. |
+| A8 | 40% of voice workflows submitted via phone assistant, 2 min avg call duration | Internal estimate; no empirical data yet |
 
 ### Sensitivity: analytics insights per visit
 
-| Insights / visit | Credits / rep / month | Monthly consumption | Annual overage | Annual credit cost |
-|-----------------|-----------------------|---------------------|---------------|-------------------|
-| 2 | 1,015 | 81,200 | ~41,200 overage/mo | ~€18,000 (3 Enterprise) |
-| 3 (base) | 1,075 | 86,000 | ~46,000 overage/mo | ~€18,000 (3 Enterprise) |
-| 5 | 1,195 | 95,600 | ~55,600 overage/mo | ~€24,000 (4 Enterprise) |
+| Insights / visit | Credits / rep / month | Monthly consumption | Monthly overage | Annual credit cost |
+|-----------------|-----------------------|---------------------|-----------------|--------------------|
+| 2 | 2,295 | 183,600 | ~143,600 | ~€54,000 (9 Enterprise) |
+| 3 (base) | 2,355 | 188,400 | ~148,400 | ~€54,000 (9 Enterprise) |
+| 5 | 2,475 | 198,000 | ~158,000 | ~€60,000 (10 Enterprise) |
 
 ## ARR growth path
 
@@ -121,4 +134,4 @@ Adoption measures the proportion of the modeled workflow volume that reps actual
 |-----------|-----------|
 | + [Customer Data Quality](/commercial/modules/customer-data) | +€3,000 / year |
 | + [Marketing Surveys](/commercial/modules/marketing-surveys) | +€7,200 / year |
-| Higher adoption as rollout matures | Each 10% increase in visit volume adds ~€2,600/year in credit packages |
+| Higher adoption as rollout matures | Each 10% increase in visit volume adds ~€7,500/year in credit packages |

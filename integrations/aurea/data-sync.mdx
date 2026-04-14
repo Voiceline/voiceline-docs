@@ -1,0 +1,99 @@
+---
+title: "Aurea CRM — Data Sync Reference"
+status: Live
+last_updated: 2026-04-04
+---
+
+This page documents what data flows between VoiceLine and Aurea CRM, in which direction, and on what schedule.
+
+## Sync overview
+
+| Object | Direction | Trigger |
+|--------|-----------|---------|
+| Companies (Accounts) | Aurea → VoiceLine | On login + delta refresh |
+| Persons (Contacts) | Aurea → VoiceLine | On login + delta refresh |
+| Visit reports | VoiceLine → Aurea Appointment | On submission |
+| Call logs | VoiceLine → Aurea Call | On submission |
+| Tasks | VoiceLine → Aurea Task | On submission |
+
+## Aurea data model note
+
+Aurea uses "Company" for accounts and "Person" for contacts. VoiceLine maps these internally — reps see "Account" and "Contact" in the app.
+
+Aurea uses a query-based REST API with delta sync support. VoiceLine fetches only records updated since the last sync, using Aurea's `Upd` and `UpdTime` fields as markers.
+
+## Inbound: Aurea → VoiceLine
+
+### Companies (Accounts)
+
+| Aurea field | VoiceLine field | Notes |
+|------------|-----------------|-------|
+| CoNo | Internal ID | Customer number; combined with CoGrp for uniqueness |
+| CoGrp | Group prefix | Used with CoNo to form the full external ID |
+| Company | Account name | Displayed in lookup |
+| Country | Country | ISO country code |
+| Street | Street address | |
+| City | City | |
+| ZipCode | Postal code | |
+| RepID / Rep | Assigned rep | Used to filter accounts per rep |
+| ExtKey | External reference | Alternative identifier |
+| Synonym | Display alias | Alternative company name |
+| Upd + UpdTime | Last updated | Delta sync marker |
+
+### Persons (Contacts)
+
+| Aurea field | VoiceLine field | Notes |
+|------------|-----------------|-------|
+| PeNo | Internal ID | Person number |
+| CoNo | Linked account | Links person to parent company |
+| LastName | Last name | |
+| FirstName | First name | |
+| Email | Email | Retrieved from communication records |
+| Phone | Phone | Retrieved from communication records |
+| Upd + UpdTime | Last updated | Delta sync marker |
+
+## Outbound: VoiceLine → Aurea
+
+### Visit report → Aurea Appointment
+
+| VoiceLine field | Aurea field | Notes |
+|-----------------|------------|-------|
+| Visit summary | Description | Full AI-generated summary |
+| Account | Company reference | Linked to company record |
+| Contact | Person reference | Linked to person record |
+| Visit date | StartDateTime | Date of submission |
+| Visit type | AppointmentType | Mapped to configured Aurea type |
+| Next steps | Description (append) | |
+
+### Call log → Aurea Call
+
+| VoiceLine field | Aurea field | Notes |
+|-----------------|------------|-------|
+| Call summary | Description | |
+| Account | Company reference | |
+| Contact | Person reference | |
+| Call date | StartDateTime | |
+
+### Task → Aurea Task
+
+| VoiceLine field | Aurea field | Notes |
+|-----------------|------------|-------|
+| Task description | Subject | |
+| Account | Company reference | |
+| Contact | Person reference | |
+| Due date | DueDate | |
+
+## Sync cadence
+
+| Direction | Trigger | Details |
+|-----------|---------|---------|
+| Aurea → VoiceLine | On rep login | Delta sync — only records updated since last sync |
+| Aurea → VoiceLine | Scheduled | Delta refresh — interval configured during implementation |
+| VoiceLine → Aurea | On submission | Immediate; queued and retried if Aurea is unreachable |
+
+## What VoiceLine does not sync
+
+- Aurea financial records or order data
+- Custom Aurea modules outside the standard Company/Person/Activity model
+
+<Note>Aurea implementations are workspace-specific. Field configurations vary by customer deployment. Your SA will confirm the exact field mapping for your Aurea instance during scoping.</Note>

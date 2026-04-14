@@ -1,0 +1,107 @@
+---
+title: "CRM Lookups"
+status: Live
+last_updated: 2026-04-04
+---
+
+CRM lookup components connect workflow records to existing entities in your CRM. Rather than typing a company name or contact, the rep selects from records pulled directly from the CRM — ensuring the workflow output links correctly to the right CRM record.
+
+CRM data is refreshed on login and periodically in the background. Lookups are filtered per rep based on your CRM's ownership and assignment model.
+
+---
+
+## Account lookups
+
+### CRMAccount
+
+Single account selector. The rep selects one company from their assigned accounts in the CRM. Present in nearly every workflow — the account is the primary record that visit reports, call logs, tasks, and other activities are linked to.
+
+**AI behaviour:** The AI matches the company name mentioned in the recording to accounts in the CRM. If the rep says "I was at Siemens today", the AI matches this to the Siemens record.
+
+### CRMAccounts
+
+Multiple account selector. Used when a workflow needs to link to more than one account simultaneously.
+
+---
+
+## Contact lookups
+
+### CRMRelatedContact
+
+Single contact selector, filtered to contacts associated with the selected account. The most common contact lookup — used in visit reports and call logs to identify the primary person at the visit.
+
+**Depends on:** Account must be selected first. The contact list updates based on the selected account.
+
+### CRMRelatedContacts
+
+Multiple contacts, all associated with the selected account. Used when a meeting involved several contacts from the same company.
+
+### CRMRelatedContactSub
+
+A sub-contact dependent on a parent contact selection. Used when a workflow requires a contact hierarchy (e.g. primary contact, then a secondary contact from the same organisation).
+
+### CRMContacts
+
+External contacts not tied to a specific account. Used when the rep needs to select a contact regardless of which account they belong to.
+
+### CRMLeadContact / CRMLeadContactS
+
+Selectors that include both leads and contacts in the same lookup. Used in lead qualification and contact creation workflows where the record might be either type.
+
+---
+
+## Opportunity lookups
+
+### CRMRelatedOppo
+
+Single opportunity selector, filtered to opportunities linked to the selected account.
+
+### CRMRelatedOppos
+
+Multiple opportunities, all linked to the selected account.
+
+### CRMSoftRelatedOpportunities
+
+Opportunities found by searching the transcript content rather than filtered by account. Used when the rep mentions an opportunity by name but it may not be directly linked to the visited account.
+
+---
+
+## Product lookups
+
+### CRMProduct
+
+Single product selector from your CRM's product catalogue.
+
+### CRMProducts
+
+Multiple products from the CRM catalogue. Used in opportunity workflows to record which products were discussed.
+
+---
+
+## Generic and flexible lookups
+
+### CRMSingleSelect / CRMMultiSelect
+
+Generic CRM entity pickers — single or multi-select — for CRM objects not covered by the specific lookup components above. Used when your CRM has custom objects or non-standard entities that need to be linked to workflows.
+
+### CRMFlex
+
+A configurable CRM entity lookup with a flexible destination. Used when a field needs to look up different CRM entity types depending on context, or when the target CRM object varies by workspace configuration.
+
+### CRMCombiRelated
+
+A composite component combining multiple CRM entity types in one lookup. Used for complex relationship models where a workflow record needs to link to one of several entity types simultaneously.
+
+---
+
+## Configuration notes
+
+**Account scope:** CRM lookup components filter results based on how your CRM assigns accounts to reps — by owner, territory, or team. Your SA confirms the filter logic during scoping.
+
+**Lookup performance:** All CRM data is pre-loaded on login. Large CRM datasets (10,000+ accounts) may require a narrowing filter to keep the lookup responsive.
+
+**CRM field mapping:** Each lookup component captures a CRM entity ID. This ID is mapped to the appropriate reference field in your CRM during implementation (e.g. `AccountID`, `regardingobjectid`, `Who_Id`). See the [Integrations](/integrations) tab for CRM-specific mapping details.
+
+---
+
+See [Workflow Customisation](/implementation/product-customisation/workflow-customisation) for how CRM lookup components fit into the broader schema and CRM mapping model.

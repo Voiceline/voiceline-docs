@@ -1,0 +1,51 @@
+---
+title: "Overview"
+status: Live
+last_updated: 2026-04-08
+---
+
+This section is the reference guide for your FSF implementation. It documents exactly what gets configured, in what order, and what decisions your team needs to make at each step.
+
+Your FDE owns this process. You don't configure VoiceLine yourself — your FDE does. What this section gives you is full transparency into what's being built and why.
+
+## The four steps
+
+FSF setup runs in four sequential steps. Each step must be complete before the next begins.
+
+**[Step 1 — Workspace Setup](/implementation/standard-implementations/workspace-setup)**
+
+Defines the workspace identity and language configuration, and loads the business-specific data VoiceLine needs to understand your team's conversations. Covers workspace name, interface and recording languages, output language, CRM translation for multinational teams, product catalogue, competitor list, and custom AI vocabulary. Your FDE works with your project lead to confirm these decisions before any technical work begins.
+
+**[Step 2 — Technical Connection](/implementation/standard-implementations/technical-connection)**
+
+Connects the workspace to your organisation's identity infrastructure, CRM, and corporate network. Covers authentication (basic or SSO), CRM OAuth connection, VPN configuration for on-premise CRM deployments, and MDM app deployment. Your FDE works with your CRM administrator and IT team. Step 3 cannot begin until the connection test passes.
+
+**[Step 3 — Environment Configuration](/implementation/standard-implementations/environment-configuration)**
+
+Loads the data VoiceLine needs before workflows can be built. Covers the CRM objects the platform reads from and writes to (accounts, contacts, visit records, call records, tasks, industries), plus the business data required for AI recognition and analytics (products, competitors).
+
+**[Step 4 — Workflow Setup](/implementation/standard-implementations/visit-report)**
+
+Configures the six daily workflows. Each workflow starts from VoiceLine's standard schema and is tailored to your process using the component library — field labels, picklist values, required fields, and hard-coded fields that stamp fixed values to the CRM on every submission. This is where your sales process decisions matter most.
+
+## What you need to bring
+
+Most configuration is handled by your FDE. What you need to provide:
+
+- **Step 1**: Language decisions, translation requirements, user list
+- **Step 2**: Auth method decision, CRM admin credentials, IT contact for VPN/network
+- **Step 3**: CRM admin for field mapping, product catalogue, competitor list with aliases, industry taxonomy decision
+- **Step 4**: Visit types, call outcomes, task categories, and other picklist values that reflect how your team works
+
+Your FDE will walk you through each of these. No technical knowledge required on your side.
+
+## What you'll have when setup is complete
+
+- All FSF workflows live and syncing to your CRM
+- Reps can document visits, calls, tasks, emails, and meetings by voice
+- Product and competitor mentions are extracted automatically from every recording
+- Visit Briefing surfaces recent activity and open tasks before each visit
+- Your team lead has visibility into activity data and documentation rates
+- A clean baseline ready for the adoption phase
+
+<Note>Opportunity, lead, contact, and account creation workflows are part of add-on modules, not FSF. See [Pipeline Management](/implementation/modules/pipeline-management) and [Customer Data](/implementation/modules/customer-data).</Note>

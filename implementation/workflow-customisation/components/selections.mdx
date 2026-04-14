@@ -1,0 +1,88 @@
+---
+title: "Selections"
+status: Live
+last_updated: 2026-04-04
+---
+
+Selection components let reps pick from predefined options. The AI matches spoken words to the configured options — reps don't need to remember exact terminology. Option lists are configured per workspace and can match your existing CRM picklist values exactly.
+
+## SingleSelect
+
+A dropdown where exactly one option is selected. One of the most versatile components — the same type powers visit types, call directions, opportunity stages, and many other fields.
+
+| Field label | Example options |
+|------------|----------------|
+| Type of visit | First visit, Follow-up, Service, Complaint |
+| Call direction | Inbound, Outbound |
+| Priority | High, Normal, Low |
+| Opportunity stage | Prospecting, Proposal, Negotiation, Closed Won |
+| Customer type | A-Customer, B-Customer, Prospect |
+
+**AI behaviour:** The AI reads the transcript and matches to the closest option. If nothing matches clearly, the field is left empty (explicit "no selection") rather than guessing.
+
+**Configurable:** Option labels, option IDs, default value, and the option list itself.
+
+---
+
+## MultiSelect
+
+Multiple options can be selected simultaneously. Used when the answer is "all that apply" rather than "exactly one".
+
+| Field label | Example use |
+|------------|-------------|
+| Products discussed | Multiple products from your CRM catalogue |
+| Visit reasons | New business, Service, Training (several can apply) |
+| Sales topics | Pricing, Demo, Contract renewal |
+| Competitors | Named competitors mentioned in the recording |
+
+**AI behaviour:** The AI extracts all relevant mentions from the transcript. If three products are discussed, all three are selected.
+
+**Configurable:** Same as SingleSelect — option list, labels, and IDs.
+
+---
+
+## YesNo
+
+A binary toggle. Simpler than SingleSelect for yes/no questions.
+
+| Field label | Example use |
+|------------|-------------|
+| Decision maker present | Was the decision maker at the meeting? |
+| Sample requested | Did the customer ask for a sample? |
+| Follow-up required | Does this visit need a follow-up task? |
+
+**AI behaviour:** The AI extracts an affirmative or negative answer from the transcript. Defaults to "no" if not mentioned.
+
+---
+
+## ConditionalSelect
+
+A single-select that controls the visibility of other fields. When a specific option is chosen, additional child fields appear.
+
+**Example:** A "Visit type" field with options "New business" and "Service". Selecting "New business" reveals an opportunity value field and a next meeting field. Selecting "Service" reveals a case reference field.
+
+**Use case:** Reducing clutter in complex workflows — only show fields that are relevant based on what the rep indicates earlier in the recording.
+
+**Configurable:** Trigger field, trigger value(s), and which child components to show/hide.
+
+---
+
+## CombiSelectSingle / CombiSelectMulti
+
+Hierarchical selection components — a two-level picker where the first selection narrows the options in the second. Used when your option space is too large for a flat list (e.g. product categories → specific products).
+
+**Example:** Industry → Sub-industry. First pick "Manufacturing", second pick is filtered to manufacturing-specific sub-types.
+
+**When to use:** When a flat option list would have more than 20–30 items and a hierarchy makes sense.
+
+---
+
+## SearchableSingleSelect
+
+A searchable dropdown for large option sets. Rather than scrolling a long list, the rep types (or the AI matches by voice) to narrow results.
+
+**When to use:** When the option list is large but not hierarchical — for example, a list of 50+ CRM-defined territories or product lines.
+
+---
+
+See [Workflow Customisation](/implementation/product-customisation/workflow-customisation) for how selection components fit into the broader schema and CRM mapping model.

@@ -1,0 +1,43 @@
+---
+title: "SAP Cloud for Customer (v2) — Setup"
+status: Live
+last_updated: 2026-04-04
+---
+
+Connects VoiceLine to SAP C4C using the v2 API, supporting account, contact, and opportunity sync alongside outbound field activity records.
+
+## Overview
+
+VoiceLine pulls accounts, contacts, and opportunities from SAP C4C v2 so reps can search and reference their CRM data in the field. When reps submit field activities — visit reports, call logs, tasks, or new accounts and contacts — VoiceLine pushes these back to SAP as structured CRM objects.
+
+## Where to configure it
+
+Go to **Workspace Settings** → **Integrations** → **SAP Cloud for Customer (v2)**.
+
+## Prerequisites
+
+- SAP C4C v2-compatible tenant URL
+- Service user credentials (username + password) with v2 API access
+- Network access to your SAP tenant (VPN may be required — see [Network requirements](/integrations#network-requirements))
+
+<Note>A dedicated SAP service user is required with API permissions for all objects in the sync table. Individual rep credentials are not used.</Note>
+
+## Setup steps
+
+1. Open **Workspace Settings** → **Integrations**
+2. Select **SAP Cloud for Customer (v2)**
+3. Enter your SAP tenant URL, service username, and password
+4. Click **Test connection**
+5. Save — VoiceLine begins the initial data sync
+
+## Authentication
+
+SAP C4C v2 uses **Basic authentication** — service user credentials are stored in VoiceLine's integration settings, encrypted at rest.
+
+## FAQ
+
+**What is the difference between SAP C4C v1 and v2?**
+v1 uses the OData v1 API. v2 uses a newer API surface with different endpoints and object models. Your SA determines the correct version based on your SAP configuration — consult your SAP administrator if unsure.
+
+**Can new accounts and contacts created in VoiceLine be pushed to SAP v2?**
+Yes — new accounts and contacts created via VoiceLine are pushed to SAP C4C on submission (subject to deduplication checks).

@@ -18,7 +18,8 @@ voiceline-docs/
 │
 ├── _internal/              NOT published — working files for AI agents and maintainers
 │   ├── README.md           Explains each internal file
-│   ├── feature_map.md      Master index: all 45+ pages with research/writing status
+│   ├── feature_map.md      Master index of all pages with file paths and status
+│   ├── docs_hidden_nav.json  Navigation sections removed from docs.json pending completion
 │   ├── blank_spots.md      Known gaps and open questions, routed by audience
 │   ├── cross_ref_queue.md  Forward-carry findings across batches
 │   ├── sources_scanned.md  Log of sources read (prevents re-reading)
@@ -26,11 +27,18 @@ voiceline-docs/
 │   ├── hierarchy_draft.md  CPO-provided feature hierarchy (authoritative)
 │   └── figma_links.md      Figma URLs per feature
 │
-├── commercial/             Internal sales/pricing docs
-│   ├── pricing-overview.mdx         Stacking model + implementation fees
-│   ├── field-sales-fundamentals.mdx Base package (FSF)
-│   ├── project-timeline.mdx         Stub
-│   ├── modules/                     One file per add-on module
+├── commercial/             Sales/pricing docs (Modules & Pricing tab)
+│   ├── index.mdx                       Overview — package structure and entry points
+│   ├── field-sales-fundamentals/       FSF base package
+│   │   ├── index.mdx
+│   │   ├── productivity.mdx
+│   │   ├── market-analytics.mdx
+│   │   └── sales-coaching.mdx
+│   ├── credits/                        AI credit system
+│   │   ├── index.mdx
+│   │   ├── packages.mdx
+│   │   └── consumption.mdx
+│   ├── modules/                        One file per add-on module
 │   │   ├── index.mdx
 │   │   ├── pipeline-management.mdx
 │   │   ├── customer-data.mdx
@@ -40,24 +48,47 @@ voiceline-docs/
 │   │   ├── sales-coaching-pro.mdx
 │   │   ├── industry-fairs.mdx
 │   │   └── inside-sales.mdx
-│   └── platform/
+│   ├── platform/
+│   │   ├── index.mdx
+│   │   ├── professional.mdx
+│   │   └── enterprise.mdx
+│   └── pricing-scenarios/              Example customer configurations
 │       ├── index.mdx
-│       ├── professional.mdx
-│       └── enterprise.mdx
+│       ├── small-customer.mdx
+│       ├── medium-customer.mdx
+│       └── enterprise-customer.mdx
 │
 ├── engineering/            Developer docs (stub)
-├── implementation/         Solutions Architect guides (stub)
 │
-└── customer/               Customer-facing product documentation
-    ├── getting-started/    index.md, platform-overview.md, quick-start.md
+├── implementation/         Solutions Architect / delivery guides (Implementation tab)
+│   ├── getting-started/    initial-setup, project-team, adding-modules, adding-user-groups
+│   ├── standard-implementations/  FSF configuration — workspace, technical, env, workflows
+│   ├── workflow-customisation/    Component library and customisation
+│   ├── modules/            Implementation guides per add-on module (WIP — hidden nav)
+│   ├── data-integrations/  CRM connection and data flow reference
+│   └── security/           Security posture and compliance
+│
+├── integrations/           CRM integration docs — Setup, Data Sync, Standard Implementation
+│   ├── index.mdx           Overview — supported CRMs, connection overview
+│   ├── sap-c4c-v1/         SAP Cloud for Customer v1 (3 pages)
+│   ├── sap-c4c-v2/         SAP Cloud for Customer v2 (3 pages)
+│   ├── salesforce/         Salesforce (3 pages)
+│   ├── ms-dynamics/        Microsoft Dynamics 365 (3 pages)
+│   ├── hubspot/            HubSpot (3 pages)
+│   ├── zoho/               ZOHO CRM (3 pages)
+│   └── aurea/              Aurea CRM (3 pages)
+│                           (WIP — hidden nav; will become its own Integrations tab)
+│
+└── customer/               Customer-facing product documentation (Product tab)
+    ├── getting-started/    index.md, concepts.md, quick-start.md
     ├── productivity/       index.md, assistant.md, visit-briefing.md
     │   ├── workflows/      13 workflow pages (visit-report, call-log, task, email, ...)
     │   └── customer-data-quality/  3 pages (lead, contact, account creation)
-    ├── analytics/          6 pages (competitor, product, industry, data-lake, ai-analyst)
+    ├── analytics/          5 pages (competitor, product, industry, data-lake, ai-analyst)
     ├── coaching/           index.md, team-activity.md, visit-analytics.md
     │   └── playbooks/      index.md, builder.md, analytics.md
-    └── platform/           index.md + 6 top-level pages
-        ├── integrations/   8 CRM integration pages
+    └── platform/           index.md + 5 top-level pages
+        ├── integrations/   8 legacy CRM setup pages (superseded by integrations/ tab)
         └── data-objects/   10 data object pages
 ```
 
@@ -68,13 +99,28 @@ voiceline-docs/
 - **Find a feature page**: `_internal/feature_map.md` — master index of all pages with file paths and status
 - **Find known gaps**: `_internal/blank_spots.md`
 - **Understand a feature**: go to `customer/{area}/{feature}.md`
-- **Understand pricing**: go to `commercial/`
+- **Understand pricing or modules**: go to `commercial/`
+- **Understand implementation**: go to `implementation/`
+- **WIP sections not yet in docs.json**: see `_internal/docs_hidden_nav.json`
 - **Project history / decisions**: `_internal/docs_project.md`
 
 ---
 
+## File naming and structure
+
+- File names must match the page's displayed title in kebab-case: `title: "Adding Modules"` → `adding-modules.mdx`
+- Folder names must mirror the navigation section names shown in the webapp: a page in the "Getting Started" nav group lives in a `getting-started/` subfolder
+- When creating or moving pages, update `docs.json` to match and delete the old files
+
+## Writing rules (all docs)
+
+- **Don't duplicate information across pages.** Every fact belongs in one place. If another page needs to reference it, link to the source page — don't copy the content. This prevents the docs from diverging and means updates only ever need to happen in one place.
+  - The canonical source for a topic is the page whose primary subject it is (e.g. language availability → `/customer/platform/language-settings`, CRM connection → the relevant integration page).
+  - Implementation and commercial docs may summarise a concept briefly, but must link to the canonical customer doc for full detail rather than restating it.
+
 ## Writing rules (customer docs)
 
+- Index pages are always titled `"Overview"` — never repeat the parent category name as the page title
 - Second-person ("you"), active voice, short sentences
 - Lead with concept before mechanics — what it is before how to use it
 - UI navigation paths in bold: **Settings → Integrations → CRM Name**
@@ -84,20 +130,34 @@ voiceline-docs/
 
 ## Writing rules (commercial docs)
 
-- Active voice, third-person or neutral — these are internal reference pages, not instructions
+- Second-person ("you"), active voice — same register as customer docs and the Linear reference style
 - Every page answers: what it is → what problem it solves → what's included
+- **Section headings must be descriptive** — no generic headings like "What's included", "How pricing works", "How it works", or "Overview". Name the section after what it actually covers.
 - **Feature tables use two columns: `Feature | What it does`** — no Notes/Status/Docs columns
+  - Feature names use the actual product name (e.g., "Account Creation", "Visit Report") — not descriptive phrases like "Create a new account by voice"
   - Link the feature name to its customer doc when one exists
-  - Write one sentence (under 15 words) in the "What it does" column
+  - Write one sentence (under 15 words) in the "What it does" column — this is where the behaviour is described
   - No `—` placeholders — always write a description
 - `## Why it exists` section (modules only): 2–3 sentences, lead with the customer pain
 - No ROI numbers — explain the value logic, not the math
 - Feature flags, caveats, and status notes belong in the customer docs, not here
 - Use `<Note>` (Mintlify) for dependency requirements and trial callouts — not `> [!NOTE]`
 
+## Writing rules (implementation docs)
+
+- Pages open with 1–2 sentences stating the problem this configuration solves and its business value — what is missing or broken without it. This comes **before** the "By the end of this page..." block.
+- Then: a **"By the end of this page your FDE will have confirmed..." block** followed by 2–4 bullet points — one per concrete deliverable. Each bullet describes the output of a piece of work, not just a topic.
+  - Name who confirms with whom: "with your CRM admin", "with your project lead", "with your IT team and CRM admin", or just "confirmed:" when there is no fixed counterpart.
+  - Write each bullet as the deliverable itself, not as a question — e.g. "The sync filters to apply" not "Which sync filters to use".
+  - The bullets are the reader's answer to: what does this page produce?
+- The body of the page explains the detail needed to make those decisions — fields, options, constraints.
+- **No "Scoping decisions" sections.** The opening paragraph, "By the end of this page..." block, and body together are sufficient. Never add a trailing section listing open questions.
+
 ---
 
 ## YAML frontmatter (required on every customer doc)
+
+Do **not** include a `description` field — page descriptions are not used.
 
 ```yaml
 ---

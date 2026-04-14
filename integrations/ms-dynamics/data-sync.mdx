@@ -1,0 +1,165 @@
+---
+title: "MS Dynamics 365 — Data Sync Reference"
+status: Live
+last_updated: 2026-04-04
+---
+
+This page documents what data flows between VoiceLine and Microsoft Dynamics 365, in which direction, and on what schedule.
+
+## Sync overview
+
+| Object | Direction | Trigger |
+|--------|-----------|---------|
+| Accounts | Dynamics → VoiceLine | On login + scheduled refresh |
+| Contacts | Dynamics → VoiceLine | On login + scheduled refresh |
+| Leads | Dynamics → VoiceLine | On login + scheduled refresh |
+| Opportunities | Dynamics → VoiceLine | On login + scheduled refresh |
+| CRM users | Dynamics → VoiceLine | On login |
+| Visit reports | VoiceLine → Dynamics Appointment | On submission |
+| Call logs | VoiceLine → Dynamics Phone Call | On submission |
+| Tasks | VoiceLine → Dynamics Task | On submission |
+| Meetings | VoiceLine → Dynamics Appointment | On submission |
+| New leads | VoiceLine → Dynamics Lead | On submission |
+| New contacts | VoiceLine → Dynamics Contact | On submission |
+| New accounts | VoiceLine → Dynamics Account | On submission |
+| Opportunity updates | VoiceLine → Dynamics Opportunity | On submission |
+
+## Inbound: Dynamics → VoiceLine
+
+### Accounts
+
+| Dynamics 365 field | VoiceLine field | Notes |
+|-------------------|-----------------|-------|
+| accountid | Internal ID | Used for record linkage |
+| name | Account name | Displayed in lookup |
+| emailaddress1 | Email | |
+| telephone1 | Phone | |
+| websiteurl | Website | |
+| address1_line1 | Street address | |
+| address1_city | City | |
+| address1_postalcode | Postal code | |
+| address1_country | Country | |
+| modifiedon | Last updated | Used for delta sync |
+
+### Contacts
+
+| Dynamics 365 field | VoiceLine field | Notes |
+|-------------------|-----------------|-------|
+| contactid | Internal ID | |
+| firstname | First name | |
+| lastname | Last name | |
+| emailaddress1 | Email | |
+| telephone1 | Phone | |
+| _parentcustomerid_value | Linked account | Used to filter contacts per account |
+| modifiedon | Last updated | |
+
+### Leads
+
+| Dynamics 365 field | VoiceLine field | Notes |
+|-------------------|-----------------|-------|
+| leadid | Internal ID | |
+| firstname | First name | |
+| lastname | Last name | |
+| emailaddress1 | Email | |
+| telephone1 | Phone | |
+| companyname | Company | |
+| jobtitle | Job title | |
+| modifiedon | Last updated | |
+
+## Outbound: VoiceLine → Dynamics
+
+### Visit report → Dynamics Appointment
+
+| VoiceLine field | Dynamics 365 field | Notes |
+|-----------------|-------------------|-------|
+| Visit summary | description | Full AI-generated summary |
+| Account | regardingobjectid | Linked to account |
+| Contact | requiredattendees | Linked contact |
+| Visit date | scheduledstart | Date of submission |
+| Visit type | (activity type) | Mapped to configured activity type values |
+| Next steps | description (append) | |
+
+### Call log → Dynamics Phone Call
+
+| VoiceLine field | Dynamics 365 field | Notes |
+|-----------------|-------------------|-------|
+| Call summary | description | |
+| Account | regardingobjectid | |
+| Contact | phonecall_activity_parties | |
+| Call date | scheduledend | |
+| Call direction | directioncode | true = Outbound, false = Inbound |
+| Call outcome | statuscode | |
+
+### Task → Dynamics Task
+
+| VoiceLine field | Dynamics 365 field | Notes |
+|-----------------|-------------------|-------|
+| Task description | subject | |
+| Account | regardingobjectid | |
+| Contact | task_activity_parties | |
+| Due date | scheduledend | |
+| Priority | prioritycode | 0 = Low, 1 = Normal, 2 = High |
+| Assigned to | ownerid | Defaults to submitting rep |
+
+### New account → Dynamics Account
+
+| VoiceLine field | Dynamics 365 field | Notes |
+|-----------------|-------------------|-------|
+| Company name | name | Required |
+| Email | emailaddress1 | |
+| Phone | telephone1 | |
+| Website | websiteurl | |
+| Address.Street | address1_line1 | |
+| Address.City | address1_city | |
+| Address.PostalCode | address1_postalcode | |
+| Address.Country | address1_country | |
+
+### New contact → Dynamics Contact
+
+| VoiceLine field | Dynamics 365 field | Notes |
+|-----------------|-------------------|-------|
+| First name | firstname | Required |
+| Last name | lastname | Required |
+| Email | emailaddress1 | |
+| Phone | telephone1 | |
+| Mobile | mobilephone | |
+| Job title | jobtitle | |
+| Address.Street | address1_line1 | |
+| Address.City | address1_city | |
+| Address.PostalCode | address1_postalcode | |
+| Address.Country | address1_country | |
+| Linked account | parentcustomerid_account@odata.bind | OData reference |
+
+### New lead → Dynamics Lead
+
+| VoiceLine field | Dynamics 365 field | Notes |
+|-----------------|-------------------|-------|
+| First name | firstname | Required |
+| Last name | lastname | Required |
+| Email | emailaddress1 | |
+| Phone | telephone1 | |
+| Mobile | mobilephone | |
+| Job title | jobtitle | |
+| Company | companyname | |
+| Website | websiteurl | |
+| Address.Street | address1_line1 | |
+| Address.City | address1_city | |
+| Address.PostalCode | address1_postalcode | |
+| Address.Country | address1_country | |
+
+## Sync cadence
+
+| Direction | Trigger | Details |
+|-----------|---------|---------|
+| Dynamics → VoiceLine | On rep login | Full refresh of assigned accounts, contacts, leads, opportunities |
+| Dynamics → VoiceLine | Scheduled | Background refresh — interval configured during implementation (typically 4–6 hours) |
+| VoiceLine → Dynamics | On submission | Immediate; queued and retried if Dynamics is unreachable |
+
+## What VoiceLine does not sync
+
+- Dynamics Customer Service cases
+- Power Platform flows or automation
+- SharePoint or Teams content
+- Email inbox content
+
+<Note>Field-level mappings shown here are the standard defaults. Your SA may configure different mappings during implementation to match your Dynamics field names and picklist values. Deviations from the standard are documented during your implementation scoping.</Note>

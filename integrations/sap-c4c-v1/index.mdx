@@ -1,0 +1,46 @@
+---
+title: "SAP Cloud for Customer (v1) — Setup"
+status: Live
+last_updated: 2026-04-04
+---
+
+Connects VoiceLine to SAP C4C using the OData v1 API, enabling two-way sync of accounts, contacts, leads, opportunities, and field activities.
+
+## Overview
+
+VoiceLine pulls accounts, contacts, leads, and opportunities from SAP C4C so reps can search their customer base during visits. When a rep submits a visit report, call log, or task, VoiceLine pushes the record back to SAP as a structured appointment, phone call activity, or task linked to the relevant account or contact.
+
+## Where to configure it
+
+Go to **Workspace Settings** → **Integrations** → **SAP Cloud for Customer (v1)**.
+
+## Prerequisites
+
+- SAP C4C tenant URL
+- Service user credentials (username + password) with OData v1 API access
+- Network access to your SAP tenant (VPN may be required — see [Network requirements](/integrations#network-requirements))
+
+<Note>VoiceLine requires a dedicated service user account in SAP C4C, not an individual rep's credentials. The service user must have OData API read/write permissions for the objects in the [sync table](/integrations/sap-c4c-v1/data-sync).</Note>
+
+## Setup steps
+
+1. Open **Workspace Settings** → **Integrations**
+2. Select **SAP Cloud for Customer (v1)**
+3. Enter your SAP tenant URL, service username, and password
+4. Click **Test connection** — VoiceLine verifies credentials and confirms API access
+5. Save — VoiceLine begins the initial data sync
+
+## Authentication
+
+SAP C4C v1 uses **Basic authentication**. Service user credentials are stored in VoiceLine's integration settings and used for all API calls. Credentials are encrypted at rest and are not accessible to VoiceLine employees.
+
+## FAQ
+
+**Can I use SSO for the SAP integration?**
+No — SAP C4C v1 uses Basic authentication via a dedicated service user. Individual reps authenticate to VoiceLine using their own credentials, separately from SAP.
+
+**What is the difference between SAP C4C v1 and v2?**
+v1 uses the OData v1 API and supports a broader range of SAP C4C deployments. v2 uses a newer API surface with different object types. Your SA will determine the correct version based on your SAP configuration.
+
+**How often does data sync from SAP?**
+Account, contact, and other inbound data syncs on rep login and on a scheduled interval. See [Data Sync Reference](/integrations/sap-c4c-v1/data-sync) for details.

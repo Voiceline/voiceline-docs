@@ -1,0 +1,44 @@
+---
+title: "Summaries & AI"
+status: Live
+last_updated: 2026-04-04
+---
+
+Summary components produce AI-generated content from the full voice recording. Unlike text field components where the AI extracts a specific piece of information, summary components process the entire transcript and produce a structured output — a summary paragraph or a bullet list of key points.
+
+---
+
+## SpecialSummary
+
+The primary AI-generated summary component. Produces a structured, formatted summary of the recording with configurable sections.
+
+A SpecialSummary can be configured to produce different content depending on the workflow:
+- A visit report summary covering topics discussed, decisions made, and follow-ups agreed
+- A call summary covering the purpose, outcome, and next steps of a phone call
+- A meeting summary covering agenda items, attendees, and action items
+
+**AI behaviour:** Processes the full transcript after all other fields are extracted. The summary prompt is configured per workflow to match the expected structure and level of detail. The AI writes in the language the rep spoke.
+
+**Output format:** Structured text with optional sub-sections (e.g. "Topics discussed", "Decisions made", "Next steps"). The section structure is configured by your SA.
+
+**When to use:** As the primary summary field in visit reports, call logs, and meeting workflows. One SpecialSummary per workflow is typical.
+
+---
+
+## UtilBullets
+
+A bullet-point list extracted from the recording. Used for structured outputs where a list format is more useful than a paragraph — talking points, action items, product features discussed.
+
+| Field label | Example output |
+|------------|---------------|
+| Action items | • Send updated pricing by Friday • Schedule demo for engineering team |
+| Topics covered | • Product roadmap • Renewal timeline • Competitor comparison |
+| Talking points | • Customer interested in expansion • Budget approved for Q3 |
+
+**AI behaviour:** The AI extracts discrete items from the transcript and formats them as a bullet list. Items are independent — each bullet is a self-contained statement.
+
+**When to use:** When the workflow output needs to be scanned quickly rather than read as prose. Common in coaching and follow-up workflows.
+
+---
+
+See [Workflow Customisation](/implementation/product-customisation/workflow-customisation) for how summary components fit into the broader schema and CRM mapping model.

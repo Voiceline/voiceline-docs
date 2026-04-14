@@ -1,0 +1,51 @@
+---
+title: "Structured Data"
+status: Live
+last_updated: 2026-04-04
+---
+
+Structured data components capture complex, multi-value information that doesn't fit in a single field — product orders with quantities, multi-column tables, or repeating groups of related fields.
+
+---
+
+## LineItem
+
+A repeating group of fields — a parent component that contains child components which repeat for each item. Used when the workflow needs to capture a variable number of related records.
+
+**Example:** A product order with multiple line items. Each line item has a product name, quantity, and price. The rep describes three products; the AI creates three line items.
+
+**AI behaviour:** The AI identifies discrete items in the transcript and populates one group of child fields per item. The number of items is variable.
+
+**When to use:** Any workflow that needs to capture "one or more of these" — order lines, discussion topics with details, multiple contacts at a visit.
+
+---
+
+## DenseTable
+
+A table with typed columns — numbers, yes/no, text, dates. Used for structured data that naturally fits a grid format.
+
+**Example:** A sales coverage review capturing 5 customer segments with: segment name, current status (Active/Inactive), last visit date, and a numeric score.
+
+**AI behaviour:** The AI populates the table row by row, extracting each cell value from the transcript.
+
+**When to use:** When you need to capture the same set of fields for multiple items and a table layout is more readable than stacked line items.
+
+---
+
+## BookOfMaterials
+
+A product list with quantities. A specialised version of LineItem designed specifically for product catalogues — each entry has a product (from the CRM product lookup), a quantity, and optionally a unit.
+
+**When to use:** Visit reports or opportunity workflows where the rep needs to capture products discussed with specific quantities.
+
+---
+
+## PregnantProduct
+
+A product selector with extended fields — quantity, pricing, and delivery information in a single structured component.
+
+**When to use:** Opportunity or order workflows where the product discussion includes pricing and delivery detail that needs to be captured alongside the product reference.
+
+---
+
+See [Workflow Customisation](/implementation/product-customisation/workflow-customisation) for how structured data components fit into the broader schema and CRM mapping model.

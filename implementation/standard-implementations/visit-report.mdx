@@ -1,0 +1,53 @@
+---
+title: "Visit Report"
+status: Live
+last_updated: 2026-04-14
+---
+
+The Visit Report is the primary documentation workflow in FSF — the record of what happened during a customer visit. Because reps use it after every field interaction, the schema and any hard-coded fields need to reflect how your team works and how your CRM categorises activity.
+
+By the end of this page your FDE will have confirmed with your project lead:
+
+- The Visit Report schema, including any fields added beyond the standard
+- The Event Selection schema for on-the-fly visit creation
+- The hard-coded fields to stamp on every Visit Report submitted to the CRM
+
+## Standard schema
+
+The following fields make up the standard Visit Report. The account is the primary object — selected once at the session level, not part of this schema.
+
+| Field | Type | Mandatory |
+|---|---|---|
+| Summary | Bullet point summary | Yes |
+
+The standard schema is a starting point. Using the [component library](/implementation/workflow-customisation/component-library), the schema can be fully customised — fields can be added, removed, relabelled, or made mandatory, and there is no hard limit on the number of fields. What to add and how to structure the schema is a decision to work through with your Solutions Architect. The goal is a schema that maps cleanly to your CRM process while keeping the recording experience fast and straightforward for reps — too many fields increases friction and reduces adoption.
+
+## Event selection
+
+When a rep starts a Visit Report for a visit that was not pre-scheduled in the calendar, they can create the event on the fly from within the workflow. This is called event selection.
+
+Event selection has its own mini-schema. Information that describes the visit event itself — when it happened, who attended, what it was called — belongs here, not in the Visit Report schema. The Visit Report captures what was discussed; the event record captures the visit itself.
+
+On submission, event selection data is written to the event object in the CRM and visit report content is written to the visit report object. Depending on how your CRM environment is set up, these may be the same object — with the report stored in the description field of the visit record — or two separate linked objects. See [Visits & Visit Reports](/implementation/standard-implementations/crm-visit-report) for how this is configured at the environment level.
+
+Standard event selection schema:
+
+| Field | Type | Mandatory |
+|---|---|---|
+| Subject | Single line text | Yes |
+| Visit Date Range | Date range | Yes |
+| Attendees | CRM-related contacts | No |
+
+Additional fields can be added to the event selection schema using the component library.
+
+## Hard-coded fields
+
+Hard-coded fields are values the FDE configures once that are stamped silently onto every Visit Report record in the CRM on submission — regardless of what the rep says or enters. They do not appear in the rep's UI.
+
+Use hard-coded fields to enforce consistent CRM metadata without burdening reps. For each field, define:
+
+- **Field name** — the label used to identify this field in the configuration
+- **Fixed value** — the value stamped on every submission
+- **CRM target field** — the field in the CRM where this value is written
+
+Your FDE configures these during workflow setup.

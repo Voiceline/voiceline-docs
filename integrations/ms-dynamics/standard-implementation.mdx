@@ -1,0 +1,64 @@
+---
+title: "MS Dynamics 365 — Standard Implementation"
+status: Live
+last_updated: 2026-04-04
+---
+
+This page documents the standard VoiceLine FSF implementation on Microsoft Dynamics 365 — the default configuration your SA will deploy, and the decisions that need to be made during scoping.
+
+## Dynamics 365 object model
+
+| VoiceLine workflow | Dynamics object | Notes |
+|-------------------|-----------------|-------|
+| Visit Report | Appointment | Activity type configurable |
+| Call Log | Phone Call | Standard activity |
+| Task | Task | Standard |
+| Meeting | Appointment | Activity type configurable |
+| Opportunity | Opportunity | Stage values must match your pipeline |
+| Lead | Lead | Standard |
+| Contact | Contact | Standard |
+| Account | Account | Standard |
+
+## Required scoping decisions
+
+### 1. Azure AD app registration
+VoiceLine connects to Dynamics 365 via OAuth 2.0. This requires an Azure AD (Entra ID) app registration in your Microsoft tenant. Your IT or Azure administrator must create this before connection setup.
+
+**Decision required:** Azure AD app registration created; Client ID, Client Secret, and Tenant ID provided to your SA.
+
+### 2. Activity type configuration
+Dynamics 365 classifies activities by type. Confirm which activity types VoiceLine should use for Visit Reports, Call Logs, and Meetings.
+
+**Decision required:** Activity type values confirmed for each workflow.
+
+### 3. Opportunity stage mapping
+Opportunity stage values in VoiceLine must match your Dynamics pipeline stages exactly. Provide the stage picklist values from your Dynamics instance during scoping.
+
+**Decision required:** Opportunity stage picklist values provided and mapped.
+
+### 4. Record ownership
+Confirm how accounts and contacts are assigned to reps in Dynamics — by owner field, team membership, or business unit. VoiceLine uses ownership to filter which records each rep sees.
+
+**Decision required:** Account and contact assignment logic confirmed.
+
+## Go-live checklist
+
+- [ ] Azure AD app registration created (Client ID, Secret, Tenant ID available)
+- [ ] VoiceLine OAuth callback URL added to app registration
+- [ ] Connection test passed in VoiceLine workspace settings
+- [ ] Activity type values confirmed and mapped
+- [ ] Opportunity stage values confirmed and mapped
+- [ ] Account assignment logic confirmed
+- [ ] Initial sync completed (accounts and contacts visible in app)
+- [ ] Test visit report submitted and verified in Dynamics
+- [ ] Test call log submitted and verified in Dynamics
+- [ ] Test task submitted and verified in Dynamics
+- [ ] Pilot rep group onboarded and using workflows
+
+## Common Dynamics 365 implementation issues
+
+**OAuth consent error:** If the app registration is missing required API permissions (`Dynamics CRM` → `user_impersonation`), the connection will fail at authorisation. Confirm with your Azure administrator.
+
+**Account lookup returning no results:** Verify that the connected user account has at least read access to the Account entity in Dynamics and that accounts are owned by or shared with the rep's Dynamics user.
+
+**Activity not visible in Dynamics:** Check that the activity type is enabled in your Dynamics instance and that the connected user has write access to the relevant activity entity.

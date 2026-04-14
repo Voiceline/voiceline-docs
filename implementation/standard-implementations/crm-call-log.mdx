@@ -1,0 +1,42 @@
+---
+title: "Call Records"
+status: Live
+last_updated: 2026-04-14
+---
+
+VoiceLine reads existing call records from your CRM to surface call history in the Visit Briefing. Call records are a separate CRM object from visit records in most CRMs — the object type and type field mapping must be confirmed with your CRM admin separately.
+
+This page covers the sync of CRM call records into VoiceLine. For how VoiceLine writes new call log records back to your CRM, see [Call Log](/implementation/standard-implementations/call-log).
+
+By the end of this page your FDE will have confirmed with your CRM admin:
+
+- The CRM object that stores call records and the type values that identify them
+- Whether to filter by call direction (inbound / outbound / both)
+- The fields to sync and which to surface in the Visit Briefing card
+
+## Fields synced from CRM
+
+| Field | Required | Notes |
+|-------|----------|-------|
+| Title | Required | Displayed as the activity heading in the briefing card |
+| Call date | Required | Used in the briefing timeline |
+| Call summary / description | Required | Displayed in the briefing activity card |
+| Linked account | Required | Used to scope briefings to the correct account |
+| Assigned rep | Required | Required to map calls to the correct rep |
+| Linked contact | Optional | Contact display in activity card |
+
+Additional fields (e.g. call outcome, product discussed, custom CRM fields) can be surfaced in the briefing card. Confirm with your FDE which fields to show.
+
+## History window
+
+The default history window is **12 months**. A longer or shorter window can be configured — discuss with your FDE. A very large history window increases sync volume and may affect performance.
+
+## Sync filters
+
+Filters control which call records are synced from the CRM into VoiceLine. Records excluded by a filter are not surfaced in the Visit Briefing.
+
+| Filter | Description |
+|--------|-------------|
+| Active accounts only | Exclude call records linked to inactive or archived accounts |
+| By call direction | Filter to inbound or outbound calls only |
+| By call type | Include only specific call type values — e.g. exclude internal or non-customer calls |

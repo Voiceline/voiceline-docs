@@ -1,0 +1,44 @@
+---
+title: "Market Analytics Pro"
+status: Live
+last_updated: 2026-04-04
+---
+
+The Market Analytics Pro module extends VoiceLine's built-in analytics with custom tracking. You define the competitors, products, and market signals you want to track — VoiceLine detects and extracts these automatically from every voice recording across your team.
+
+For a full description of what the module includes commercially, see [Market Analytics Pro](/commercial/modules/market-analytics-pro).
+
+## What it activates
+
+| Capability | Description |
+|-----------|-------------|
+| Custom competitor trackers | Define specific competitors to track mentions and context |
+| Custom product trackers | Track your own and competitors' products across recordings |
+| Industry signal trackers | Track market-specific topics, terminology, or signals |
+| Analytics dashboards | Aggregated trend data across team, time period, and customer segment |
+
+FSF includes standard competitor, product, and industry detection. Market Analytics Pro adds custom tracker configuration and the advanced analytics surface.
+
+## Standard implementation
+
+Market Analytics Pro adds no new workflow components. The tracking runs in the background on all recordings — there is nothing for reps to do differently.
+
+Implementation involves configuring the tracker catalogue in your workspace:
+
+| Tracker type | What to provide |
+|-------------|----------------|
+| Competitors | List of competitor names and known aliases |
+| Products | Your product names and the competitors' product names to track |
+| Industry signals | Keywords, phrases, or topic clusters to detect |
+
+## Required scoping decisions
+
+**Tracker catalogue:** Provide the list of competitors, products, and signals to track. This is the primary input for configuration.
+
+**Taxonomy alignment:** Confirm whether the tracker categories should align with your existing CRM competitor and product picklists, or use a separate classification.
+
+**Dashboard access:** Confirm which team members (managers, product team, marketing) should have access to the analytics dashboards.
+
+## Dependencies
+
+Market Analytics Pro has no module dependencies. It can be activated as the first module after FSF.

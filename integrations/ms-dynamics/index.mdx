@@ -1,0 +1,41 @@
+---
+title: "Microsoft Dynamics 365 — Setup"
+status: Live
+last_updated: 2026-04-04
+---
+
+Connects VoiceLine to Microsoft Dynamics 365 via OAuth 2.0, syncing accounts, contacts, leads, and opportunities in both directions.
+
+## Overview
+
+VoiceLine pulls accounts, contacts, leads, and opportunities from Dynamics 365 so reps can search their CRM data in the field. When reps submit field activities, VoiceLine pushes structured records back to Dynamics — visit reports as appointments, call logs as phone call activities, tasks as Dynamics tasks.
+
+## Where to configure it
+
+Go to **Workspace Settings** → **Integrations** → **Microsoft Dynamics 365**.
+
+## Prerequisites
+
+- Microsoft Dynamics 365 environment with API access
+- An Azure AD app registration with Dynamics 365 API permissions
+- Workspace administrator permissions in VoiceLine
+
+## Setup steps
+
+1. Open **Workspace Settings** → **Integrations**
+2. Select **Microsoft Dynamics 365**
+3. Click **Connect with Microsoft** — you'll be redirected to Microsoft's OAuth flow
+4. Sign in with your Microsoft administrator account and authorize VoiceLine
+5. You're redirected back to VoiceLine — the integration is active
+
+## Authentication
+
+Microsoft Dynamics 365 uses **OAuth 2.0** via Azure Active Directory. The workspace administrator completes a one-time browser-based authorization. VoiceLine stores and auto-refreshes the access token.
+
+## FAQ
+
+**Which Dynamics 365 apps are supported?**
+VoiceLine integrates with Dynamics 365 Sales. Other Dynamics apps (Customer Service, Field Service) are not currently supported.
+
+**Do reps need Dynamics licenses?**
+Reps do not log into Dynamics through VoiceLine. Whether individual Dynamics licenses are required depends on your Microsoft licensing agreement.

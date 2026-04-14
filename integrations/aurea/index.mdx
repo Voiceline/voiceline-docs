@@ -1,0 +1,41 @@
+---
+title: "Aurea CRM — Setup"
+status: Live
+last_updated: 2026-04-04
+---
+
+Connects VoiceLine to Aurea CRM using Basic authentication, enabling account data sync and outbound field activity logging.
+
+## Overview
+
+VoiceLine pulls account activity history from Aurea CRM so reps have context before and during visits. When reps submit field activities, VoiceLine pushes appointments, call logs, tasks, and leads back to Aurea on the relevant account.
+
+## Where to configure it
+
+Go to **Workspace Settings** → **Integrations** → **Aurea CRM**.
+
+## Prerequisites
+
+- Aurea CRM instance with API access
+- Service user credentials (username + password)
+- Network access to your Aurea instance (VPN may be required — see [Network requirements](/integrations#network-requirements))
+
+## Setup steps
+
+1. Open **Workspace Settings** → **Integrations**
+2. Select **Aurea CRM**
+3. Enter your Aurea instance URL and service user credentials
+4. Click **Test connection**
+5. Save — VoiceLine begins syncing account data
+
+## Authentication
+
+Aurea CRM uses **Basic authentication**. Service user credentials are stored in VoiceLine's integration settings, encrypted at rest.
+
+## FAQ
+
+**Is VPN required for Aurea?**
+Corporate Aurea deployments are often hosted on-premise or in private networks. Check with your IT team to ensure VoiceLine's servers can reach your Aurea API endpoint.
+
+**Does VoiceLine pull full account records from Aurea?**
+VoiceLine primarily pulls activity history from Aurea accounts. Full account record sync may require additional configuration depending on your Aurea deployment.

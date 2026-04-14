@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "almond",
   "name": "VoiceLine",
   "colors": {
     "primary": "#0066CC"
@@ -8,7 +8,7 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Product Documentation",
+        "tab": "Product",
         "groups": [
           {
             "group": "Getting Started",
@@ -19,7 +19,7 @@
             ]
           },
           {
-            "group": "Productivity",
+            "group": "Productivity Platform",
             "pages": [
               "customer/productivity/index",
               "customer/productivity/assistant",
@@ -54,7 +54,7 @@
             ]
           },
           {
-            "group": "Analytics",
+            "group": "Analytics Platform",
             "pages": [
               "customer/analytics/index",
               "customer/analytics/competitor-analytics",
@@ -65,7 +65,7 @@
             ]
           },
           {
-            "group": "Coaching",
+            "group": "Coaching Platform",
             "pages": [
               "customer/coaching/index",
               "customer/coaching/team-activity",
@@ -90,19 +90,6 @@
               "customer/platform/security",
               "customer/platform/workflow-customisation",
               {
-                "group": "Integrations",
-                "pages": [
-                  "customer/platform/integrations/index",
-                  "customer/platform/integrations/salesforce",
-                  "customer/platform/integrations/hubspot",
-                  "customer/platform/integrations/ms-dynamics",
-                  "customer/platform/integrations/sap-c4c-v1",
-                  "customer/platform/integrations/sap-c4c-v2",
-                  "customer/platform/integrations/zoho",
-                  "customer/platform/integrations/aurea"
-                ]
-              },
-              {
                 "group": "Data Objects",
                 "pages": [
                   "customer/platform/data-objects/index",
@@ -117,6 +104,144 @@
                   "customer/platform/data-objects/industries"
                 ]
               }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Modules & Pricing",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "commercial/index"
+            ]
+          },
+          {
+            "group": "Pricing Structure",
+            "pages": [
+              {
+                "group": "Field Sales Fundamentals",
+                "pages": [
+                  "commercial/field-sales-fundamentals/index",
+                  "commercial/field-sales-fundamentals/productivity",
+                  "commercial/field-sales-fundamentals/market-analytics",
+                  "commercial/field-sales-fundamentals/sales-coaching"
+                ]
+              },
+              {
+                "group": "Credits",
+                "pages": [
+                  "commercial/credits/index",
+                  "commercial/credits/packages",
+                  "commercial/credits/consumption"
+                ]
+              },
+              {
+                "group": "Add-On Modules",
+                "pages": [
+                  "commercial/modules/index",
+                  "commercial/modules/market-analytics-pro",
+                  "commercial/modules/sales-coaching-pro",
+                  "commercial/modules/pipeline-management",
+                  "commercial/modules/customer-data",
+                  "commercial/modules/marketing-surveys",
+                  "commercial/modules/service-cases",
+                  "commercial/modules/industry-fairs",
+                  "commercial/modules/inside-sales"
+                ]
+              },
+              {
+                "group": "Platform Packages",
+                "pages": [
+                  "commercial/platform/index",
+                  "commercial/platform/professional",
+                  "commercial/platform/enterprise"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Pricing Scenarios",
+            "pages": [
+              "commercial/pricing-scenarios/index",
+              "commercial/pricing-scenarios/small-customer",
+              "commercial/pricing-scenarios/medium-customer",
+              "commercial/pricing-scenarios/enterprise-customer"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Implementation",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "implementation/getting-started/initial-setup",
+              "implementation/getting-started/project-team",
+              "implementation/getting-started/adding-modules",
+              "implementation/getting-started/adding-user-groups"
+            ]
+          },
+          {
+            "group": "Field Sales Fundamentals",
+            "pages": [
+              "implementation/standard-implementations/index",
+              "implementation/standard-implementations/workspace-setup",
+              "implementation/standard-implementations/technical-connection",
+              {
+                "group": "Environment Configuration",
+                "pages": [
+                  "implementation/standard-implementations/environment-configuration",
+                  "implementation/standard-implementations/crm-accounts",
+                  "implementation/standard-implementations/crm-contacts",
+                  "implementation/standard-implementations/crm-visit-report",
+                  "implementation/standard-implementations/crm-call-log",
+                  "implementation/standard-implementations/crm-tasks",
+                  "implementation/standard-implementations/products",
+                  "implementation/standard-implementations/competitors"
+                ]
+              },
+              {
+                "group": "Workflow Setup",
+                "pages": [
+                  "implementation/standard-implementations/workflow-setup",
+                  "implementation/standard-implementations/visit-report",
+                  "implementation/standard-implementations/call-log",
+                  "implementation/standard-implementations/task"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Workflow Customisation",
+            "pages": [
+              "implementation/workflow-customisation/index",
+              {
+                "group": "Components",
+                "pages": [
+                  "implementation/workflow-customisation/components/text-fields",
+                  "implementation/workflow-customisation/components/selections",
+                  "implementation/workflow-customisation/components/crm-lookups",
+                  "implementation/workflow-customisation/components/dates-numbers",
+                  "implementation/workflow-customisation/components/summaries",
+                  "implementation/workflow-customisation/components/structured-data"
+                ]
+              },
+              "implementation/workflow-customisation/additional-customisation"
+            ]
+          },
+          {
+            "group": "Data & Integrations",
+            "pages": [
+              "implementation/data-integrations/index"
+            ]
+          },
+          {
+            "group": "Security & Compliance",
+            "pages": [
+              "implementation/security/index"
             ]
           }
         ]

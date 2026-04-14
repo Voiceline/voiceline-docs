@@ -1,0 +1,59 @@
+---
+title: "Overview"
+status: Live
+last_updated: 2026-04-04
+---
+
+Every VoiceLine workflow is built from two configurable layers: the **workflow schema** and the **CRM field mapping**. Understanding how these two layers work is key to understanding what can be customised and where.
+
+## The two layers
+
+### Layer 1 — Workflow schema (what the workflow captures)
+
+The schema defines what a workflow collects from the voice recording: which fields, what types, what the AI asks for or extracts. A visit report might capture a summary, a visit type, a contact, next steps, and a follow-up date. A task might capture a description, a due date, and an assignee.
+
+Each field in the schema is a **component** — a pre-built building block with a specific behaviour. Components define the input type (text, date, dropdown, CRM lookup), how the AI extracts the value from the voice recording, and how the field is presented to the rep for review.
+
+The workflow schema is configured by your SA using the [component library](/implementation/workflow-customisation/component-library). The schema is CRM-agnostic — the same visit report schema can sync to SAP, Salesforce, or any other CRM. The full component catalogue is documented in [Component Library](/implementation/workflow-customisation/component-library).
+
+### Layer 2 — CRM field mapping (where the data goes)
+
+Once the workflow captures data, each field is mapped to a specific field in your CRM. The visit summary might go to the appointment description field in SAP, or the activity notes field in Salesforce. The visit type might map to a custom picklist.
+
+CRM field mappings are configured per integration. The standard mappings for each CRM are documented in the [Integrations](/integrations) tab — one page per CRM covering which VoiceLine fields map to which CRM fields by default, and what can be adjusted.
+
+## Why the two layers are separate
+
+Separating schema from CRM mapping means:
+- The same workflow configuration can be deployed across multiple CRMs without rebuilding the schema
+- Changing a CRM field name does not require reconfiguring the workflow itself
+- Standard CRM mappings can be applied with minimal scoping effort for common CRMs
+
+In practice, your SA configures the schema first (working with you on what fields you need and how the AI should behave), then applies the CRM field mapping on top (working with your CRM administrator on where each field lands in your CRM).
+
+## What can be customised in the schema
+
+Using the components documented in this section, the following can be adapted in any workflow:
+
+- **Fields** — add, remove, or reorder fields in the workflow
+- **Field labels** — rename fields to match your team's terminology
+- **Picklist values** — customise the options in dropdown fields
+- **Required fields** — mark fields as mandatory before submission
+- **CRM lookups** — configure which CRM records are searchable from a given workflow
+
+## Component groups
+
+The components available for schema configuration are organised into groups:
+
+| Group | What it covers |
+|-------|---------------|
+| [Text Fields](/implementation/workflow-customisation/components/text-fields) | Single-line, multi-line, and AI-generated text content |
+| [Selections](/implementation/workflow-customisation/components/selections) | Dropdowns, multi-selects, toggles, and conditional pickers |
+| [CRM Lookups](/implementation/workflow-customisation/components/crm-lookups) | Components that link workflow records to CRM entities |
+| [Dates & Numbers](/implementation/workflow-customisation/components/dates-numbers) | Date pickers, time ranges, and numeric inputs |
+| [Summaries & AI](/implementation/workflow-customisation/components/summaries) | AI-generated summaries and bullet lists |
+| [Structured Data](/implementation/workflow-customisation/components/structured-data) | Tables, line items, and multi-field repeating groups |
+
+## CRM field mapping
+
+For the CRM mapping layer, see the [Integrations](/integrations) tab. Each CRM's data sync page documents the standard field mappings — which VoiceLine fields map to which CRM fields by default, and what can be adjusted during implementation scoping.

@@ -1,0 +1,50 @@
+---
+title: "Integrations"
+status: Live
+last_updated: 2026-04-04
+---
+
+VoiceLine integrates with your CRM bidirectionally — pulling account and contact data so reps have context in the field, and writing structured activity records back after each interaction.
+
+All integration configuration is handled at the workspace level by an administrator. Individual reps do not need to configure anything.
+
+## How to use this section
+
+Each CRM has three sub-pages:
+
+| Page | Audience | Purpose |
+|------|----------|---------|
+| **Setup & Authentication** | IT admins, workspace admins | How to connect VoiceLine to your CRM |
+| **Data Sync Reference** | IT, security, project managers | What data syncs in each direction, field mappings, cadence |
+| **Standard Implementation** | Solutions architects, project managers | How FSF workflows map to this CRM's objects |
+
+## Supported CRMs
+
+| CRM | Auth method | Status |
+|-----|-------------|--------|
+| [SAP Cloud for Customer (v1)](/integrations/sap-c4c-v1) | Basic (service user) | Live |
+| [SAP Cloud for Customer (v2)](/integrations/sap-c4c-v2) | Basic (service user) | Live |
+| [Salesforce](/integrations/salesforce) | OAuth 2.0 | Live |
+| [Microsoft Dynamics 365](/integrations/ms-dynamics) | OAuth 2.0 | Live |
+| [Aurea CRM](/integrations/aurea) | Basic (service user) | Live |
+| [ZOHO CRM](/integrations/zoho) | OAuth 2.0 | Live |
+| [HubSpot](/integrations/hubspot) | OAuth 2.0 | Live |
+
+## Network requirements
+
+Some CRM environments (particularly SAP and Aurea on-premise deployments) are accessible only via corporate VPN or a whitelisted IP range. Ensure VoiceLine's servers can reach your CRM's API endpoint before starting setup. Contact your IT team to confirm firewall rules if the connection test fails.
+
+## CRM-agnostic data model
+
+For an overview of what VoiceLine reads and writes across all CRMs — objects, sync direction, timing, and retention — see [Data & Integrations](/implementation/data-integrations).
+
+## FAQ
+
+**Can VoiceLine connect to a CRM not listed here?**
+Additional integrations are evaluated based on customer demand. Contact your account manager.
+
+**Who manages the integration credentials?**
+A workspace administrator stores credentials in VoiceLine's integration settings. Credentials are encrypted at rest. Reps do not need direct CRM access.
+
+**What happens if the CRM connection drops?**
+VoiceLine queues outbound records and retries delivery. Reps are not blocked from creating records — they sync once the connection is restored.

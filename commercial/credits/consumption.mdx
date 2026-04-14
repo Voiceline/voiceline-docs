@@ -1,0 +1,74 @@
+---
+title: "Credit Consumption"
+status: Live
+last_updated: 2026-04-07
+---
+
+Credits cover the AI inference and infrastructure costs that VoiceLine incurs when processing your team's recordings and producing outputs. These costs are passed through to your workspace at fixed rates. More processing-intensive outputs consume more credits than simpler actions. A single interaction can produce multiple outputs — all are counted.
+
+## Workflow outputs
+
+| Output | Credits |
+|--------|---------|
+| Survey completed | 5 |
+| Visit briefing generated | 4 |
+| Opportunity created | 4 |
+| Opportunity updated | 4 |
+| Lead created | 4 |
+| Fair lead created | 4 |
+| Visit report created | 3 |
+| Call log created | 3 |
+| Fair report created | 3 |
+| Account created | 3 |
+| Contact created | 3 |
+| Service case created | 2 |
+| Account updated | 2 |
+| Contact updated | 2 |
+| Meeting created | 2 |
+| Task created | 1 |
+| Email draft created | 1 |
+| Reminder created | 1 |
+
+<Note>Fair lead, fair report, and fair mode outputs require the [Industry Fairs](/commercial/modules/industry-fairs) module. Opportunity creation and updates require [Pipeline Management](/commercial/modules/pipeline-management). Lead, account, and contact creation/updates require [Customer Data](/commercial/modules/customer-data). Service cases require [Service Cases](/commercial/modules/service-cases). Surveys require [Marketing Surveys](/commercial/modules/marketing-surveys).</Note>
+
+**Example:** A visit that produces a visit report, surfaces 3 competitor signals, and triggers a task = 3 + 3 + 1 = 7 credits. A voice command that creates an opportunity = 4 credits.
+
+## Call minutes
+
+When reps use the phone-based assistant — calling the dedicated VoiceLine number to debrief — each minute of the live call consumes **5 credits**, in addition to any workflow outputs the call produces.
+
+| Usage | Credits |
+|-------|---------|
+| 1 minute of live assistant call | 5 |
+
+**Example:** A 3-minute call that produces a visit report = 15 (call minutes) + 3 (report) = 18 credits.
+
+<Note>The per-minute charge applies only to live phone calls. App-based recordings have no per-minute cost — only the workflow outputs they produce are counted.</Note>
+
+## Analytics insight extraction
+
+Analytics insight extraction runs automatically for all customers as part of FSF. Every recording is analysed in the background to surface competitive signals, product feedback, and industry trends.
+
+| Usage | Credits |
+|-------|---------|
+| Analytics insight extracted from recording | 1 |
+
+Each extractable insight counts as one credit. Insight extraction begins at FSF level — the [Market Analytics Pro](/commercial/modules/market-analytics-pro) module unlocks the full analytics dashboard, but background extraction and credit consumption are active regardless.
+
+<Note>The exact definition of one extractable insight is pending product confirmation and will be updated here when finalised.</Note>
+
+---
+
+## When credits run low
+
+Workspace admins receive a notification when the workspace is approaching its credit limit. To purchase additional credits or adjust your package, contact your Solutions Architect — they will advise on the right package size based on your team's usage profile.
+
+## When the pool is exhausted
+
+If the credit pool runs out and no additional package is available, VoiceLine degrades gracefully rather than failing silently — but some functionality is blocked until credits are restored:
+
+- **Live assistant calls** — new live calls cannot be initiated. Incoming calls are routed to the voicemail inbox instead. Reps can still record memos and access previously captured content.
+- **Analytics insight extraction** — new recordings are stored but not processed for market intelligence. Extraction resumes automatically once credits are added; no data is lost.
+- **Workflow outputs** (visit reports, CRM records, tasks) — outputs that would exceed the pool are queued. They are released and processed once a credit package is purchased.
+
+Contact your Solutions Architect to restore full functionality.

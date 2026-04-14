@@ -1,0 +1,136 @@
+---
+title: "SAP C4C v2 — Data Sync Reference"
+status: Live
+last_updated: 2026-04-04
+---
+
+This page documents what data flows between VoiceLine and SAP C4C v2, in which direction, and on what schedule.
+
+## Sync overview
+
+| Object | Direction | Trigger |
+|--------|-----------|---------|
+| Accounts | SAP → VoiceLine | On login + scheduled refresh |
+| Contacts | SAP → VoiceLine | On login + scheduled refresh |
+| Opportunities | SAP → VoiceLine | On login + scheduled refresh |
+| CRM users (employees) | SAP → VoiceLine | On login |
+| Visit reports | VoiceLine → SAP Appointment | On submission |
+| Call logs | VoiceLine → SAP Call Log | On submission |
+| Tasks | VoiceLine → SAP Task | On submission |
+| New accounts | VoiceLine → SAP Account | On submission |
+| New contacts | VoiceLine → SAP Contact | On submission |
+| Opportunity updates | VoiceLine → SAP Opportunity | On submission |
+
+## Inbound: SAP → VoiceLine
+
+### Accounts
+
+| SAP C4C v2 field | VoiceLine field | Notes |
+|-----------------|-----------------|-------|
+| ID | Internal ID | Used for record linkage |
+| FirstLineName | Account name | Displayed in lookup |
+| DefaultAddress.CityName | City | |
+| DefaultAddress.PostalCode | Postal code | |
+| DefaultAddress.StreetName | Street address | |
+| DefaultAddress.Country | Country | ISO format |
+| CustomerRole | Account type | "01" = Customer, "02" = Prospect |
+
+### Contacts
+
+| SAP C4C v2 field | VoiceLine field | Notes |
+|-----------------|-----------------|-------|
+| Id | Internal ID | |
+| GivenName | First name | |
+| FamilyName | Last name | |
+| FormattedName | Display name | Full formatted name |
+| EMail | Email | |
+| AccountId | Linked account | Used to filter contacts per account |
+| AdminData.UpdatedOn | Last updated | Used for delta sync |
+
+### Opportunities
+
+| SAP C4C v2 field | VoiceLine field | Notes |
+|-----------------|-----------------|-------|
+| Id | Internal ID | |
+| Name | Opportunity name | |
+| Account.Id | Linked account | |
+| SalesPhase | Stage | |
+| Status | Status | |
+| CloseDate | Close date | ISO date format |
+
+## Outbound: VoiceLine → SAP
+
+### Visit report → SAP Appointment
+
+| VoiceLine field | SAP C4C v2 field | Notes |
+|-----------------|-----------------|-------|
+| Visit summary | Note / body | Full AI-generated summary |
+| Account | AccountID | Linked to account |
+| Contact | ContactID | Linked to contact |
+| Visit date | StartDateTime | Date of submission |
+| Visit type | AppointmentType | Mapped to configured type values |
+| Next steps | Note (append) | Appended to appointment body |
+
+### Call log → SAP Call Log
+
+| VoiceLine field | SAP C4C v2 field | Notes |
+|-----------------|-----------------|-------|
+| Call summary | Description | |
+| Account | AccountID | |
+| Contact | ContactID | |
+| Call date | StartDateTime | |
+| Call direction | Direction | Inbound / Outbound |
+| Call outcome | Status | |
+
+### Task → SAP Task
+
+| VoiceLine field | SAP C4C v2 field | Notes |
+|-----------------|-----------------|-------|
+| Task description | Subject | |
+| Account | AccountID | |
+| Contact | ContactID | |
+| Due date | DueDate | |
+| Priority | Priority | High / Normal / Low |
+| Assigned to | OwnerID | Defaults to submitting rep |
+
+### New account → SAP Account
+
+| VoiceLine field | SAP C4C v2 field | Notes |
+|-----------------|-----------------|-------|
+| Company name | FirstLineName | Max 40 characters |
+| Email | DefaultCommunication.Email | |
+| Phone | DefaultCommunication.PhoneFormattedNumber | |
+| Address.Street | DefaultAddress.StreetName | |
+| Address.City | DefaultAddress.CityName | |
+| Address.PostalCode | DefaultAddress.PostalCode | |
+| Address.Country | DefaultAddress.Country | ISO format |
+| (Auto) | CustomerRole | Defaults to "02" (Prospect) |
+
+### New contact → SAP Contact
+
+| VoiceLine field | SAP C4C v2 field | Notes |
+|-----------------|-----------------|-------|
+| First name | GivenName | |
+| Last name | FamilyName | |
+| Email | EMail | |
+| Phone | PhoneFormattedNumber | |
+| Mobile | MobileFormattedNumber | |
+| Job title | FunctionalTitleName | |
+| Linked account | AccountId | UUID of parent account |
+
+## Sync cadence
+
+| Direction | Trigger | Details |
+|-----------|---------|---------|
+| SAP → VoiceLine | On rep login | Full refresh of assigned accounts, contacts, opportunities |
+| SAP → VoiceLine | Scheduled | Background refresh — interval configured during implementation (typically 4–6 hours) |
+| VoiceLine → SAP | On submission | Immediate; queued and retried if SAP is unreachable |
+
+## What VoiceLine does not sync
+
+- Financial records (orders, invoices, contracts)
+- SAP custom objects outside the standard data model
+- Email content
+- SAP workflow approvals or status triggers
+
+<Note>Field-level mappings shown here are the standard defaults. Your SA may configure different mappings during implementation to match your SAP field names and picklist values. Deviations from the standard are documented during your implementation scoping.</Note>

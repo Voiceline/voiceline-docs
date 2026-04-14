@@ -1,0 +1,43 @@
+---
+title: "Contacts"
+status: Live
+last_updated: 2026-04-14
+---
+
+Contact sync depends on account sync being complete — visibility and search are account-scoped, so confirm account configuration before starting here. For how contacts work in VoiceLine, see [Contacts](/customer/platform/data-objects/contacts).
+
+By the end of this page your FDE will have confirmed with your CRM admin:
+
+- The fields needed to reliably identify contacts within an account
+- The sync filters to apply
+
+## Contact identification
+
+The goal is ensuring reps can reliably retrieve the correct contact during a workflow. For most teams this means first name + last name is sufficient within an account scope, but teams with common names in their contact data may need additional fields.
+
+Confirm with your CRM admin which fields are consistently populated before enabling them as search criteria — sparsely populated fields are not reliable.
+
+## Fields to sync
+
+| Field | Required | Notes |
+|-------|----------|-------|
+| First name | Required | Primary search field |
+| Last name | Required | Primary search field |
+| Account link | Required | Account-scoped search and deduplication |
+| CRM contact ID | Required | CRM record linkage |
+| Email address | Optional | Extended search, deduplication |
+
+## Sync filters
+
+Filters control which contacts are synced from the CRM into VoiceLine. Contacts excluded by a filter are not visible to any rep.
+
+| Filter | Description |
+|--------|-------------|
+| Active only | Exclude archived or inactive contacts |
+| Linked to synced accounts only | Exclude contacts whose parent account is outside VoiceLine's account scope |
+
+The account-scoped filter is recommended for all deployments — syncing contacts without a matching account serves no purpose and adds noise to lookup results.
+
+## Permissions
+
+Contact visibility is derived from account visibility — if a rep can see an account, they can see all contacts linked to that account. Contacts linked to accounts outside a rep's scope are not visible, regardless of contact ownership in the CRM. There is no separate contact-level permission model to configure.

@@ -1,0 +1,57 @@
+---
+title: "ZOHO CRM — Standard Implementation"
+status: Live
+last_updated: 2026-04-04
+---
+
+This page documents the standard VoiceLine FSF implementation on ZOHO CRM — the default configuration your SA will deploy, and the decisions that need to be made during scoping.
+
+## ZOHO CRM object model
+
+| VoiceLine workflow | ZOHO object | Notes |
+|-------------------|------------|-------|
+| Visit Report | Event (Appointment) | Activity type configurable |
+| Call Log | Call | Standard |
+| Task | Task | Standard |
+| Opportunity | Deal | Stage values must match your pipeline |
+| Lead | Lead | Standard |
+| Contact | Contact | Standard |
+| Account | Account | Standard |
+
+## Required scoping decisions
+
+### 1. Deal stage mapping
+ZOHO deal stage values must match exactly. Provide the stage names from your ZOHO pipeline during scoping.
+
+**Decision required:** Deal stage picklist values provided and mapped.
+
+### 2. Activity type configuration
+ZOHO uses configurable activity types for events and calls. Confirm which types should be used for Visit Reports and Call Logs.
+
+**Decision required:** Activity type values confirmed for Visit Reports and Call Logs.
+
+### 3. Record association logic
+Call logs and tasks can be associated with either a Contact (Who_Id) or an Account/Deal (What_Id). Confirm the primary association model for your team.
+
+**Decision required:** Primary association model confirmed (Contact / Account / Deal).
+
+## Go-live checklist
+
+- [ ] OAuth connection authorised in VoiceLine workspace settings
+- [ ] Connection test passed
+- [ ] Deal stage values confirmed and mapped
+- [ ] Activity type values confirmed
+- [ ] Record association logic confirmed
+- [ ] Initial sync completed (accounts and contacts visible in app)
+- [ ] Test visit report submitted and visible in ZOHO as Event
+- [ ] Test call log submitted and verified in ZOHO
+- [ ] Test task submitted and verified in ZOHO
+- [ ] Pilot rep group onboarded and using workflows
+
+## Common ZOHO CRM implementation issues
+
+**Deal stages not mapping:** Confirm that the stage values in VoiceLine match the exact picklist labels in your ZOHO instance, including capitalisation and spacing.
+
+**Activity not linked to account:** Verify the association logic is configured for `What_Id` in your workspace settings. ZOHO requires either a Contact or an Account/Deal to be linked to activity records.
+
+**OAuth token expiry:** ZOHO OAuth tokens expire and require refresh. If the connection stops working after initial setup, reconnect via workspace settings.

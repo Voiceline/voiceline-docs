@@ -1,0 +1,60 @@
+---
+title: "Create Lead"
+status: Live
+last_updated: 2026-04-04
+---
+
+The Lead workflow lets reps create and qualify new leads by voice — capturing contact details and initial qualification data immediately after an interaction.
+
+## What it captures
+
+| Field | Type | Description |
+|-------|------|-------------|
+| First name | Text | Lead's first name |
+| Last name | Text | Lead's last name |
+| Company | Text | Lead's company or organisation |
+| Job title | Text | Lead's role |
+| Phone | Text | Contact phone number |
+| Email | Text | Contact email address |
+| Lead source | Picklist | How the lead was acquired (e.g. trade fair, referral, cold call) |
+| Lead status | Picklist | Initial qualification status |
+| Notes | Long text | Initial context, interest areas, next steps |
+
+## Deduplication
+
+Before creating a new lead, VoiceLine checks for existing records in the CRM with matching name and company. If a potential duplicate is detected, the rep is shown the existing record and prompted to confirm whether to create a new record or update the existing one.
+
+See [CRM Data Quality](/customer/productivity/customer-data-quality) for full deduplication documentation.
+
+## CRM sync
+
+| CRM | Target object | Sync trigger |
+|-----|--------------|-------------|
+| SAP C4C | Lead | On submission |
+| Salesforce | Lead | On submission |
+| MS Dynamics | Lead | On submission |
+| HubSpot | Contact (Lead status) | On submission |
+| ZOHO | Lead | On submission |
+| Aurea | Lead | On submission |
+
+## What can be configured
+
+- **Lead source values** — customise to match your acquisition channels
+- **Lead status values** — align with your qualification framework
+- **Required fields** — define which fields must be populated (e.g. phone or email required)
+- **Deduplication threshold** — configure how strict the duplicate detection is
+- **Lead routing** — configure which rep or team a lead is assigned to on creation
+
+## What the standard does not include
+
+- Automatic lead scoring
+- Lead conversion to contact/account (done manually in CRM after creation)
+- Territory-based automatic assignment (requires CRM configuration)
+
+## FAQ
+
+**What happens if the lead already exists in the CRM?**
+VoiceLine detects the potential duplicate and shows the rep the existing record. The rep can choose to update the existing record instead of creating a new one.
+
+**Can we capture leads for contacts who are already in the CRM?**
+If the person already exists as a Contact or Account, the standard workflow routes to the Contact or Account creation flow instead. Your SA will configure the overlap logic during implementation.

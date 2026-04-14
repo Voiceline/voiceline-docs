@@ -1,0 +1,57 @@
+---
+title: "Create Opportunity"
+status: Live
+last_updated: 2026-04-04
+---
+
+The Create Opportunity workflow lets reps create opportunity records by voice — capturing deal value, stage, close date, and next steps immediately after a customer conversation.
+
+<Note>This workflow is part of the [Pipeline Management](/commercial/modules/pipeline-management) module. Standard CRM field mappings are documented per CRM in the [Integrations](/integrations) tab.</Note>
+
+## What it captures
+
+| Field | Type | Description |
+|-------|------|-------------|
+| Opportunity name | Text | AI-generated or stated by the rep |
+| Account | Lookup | The customer account the opportunity belongs to |
+| Contact | Lookup | The primary contact for the deal |
+| Stage | Picklist | Current pipeline stage |
+| Expected value | Currency | Estimated deal value |
+| Close date | Date | Expected close date |
+| Products | Lookup (optional) | Products or services in the deal |
+| Notes | Long text | Deal context, objections, next steps |
+
+## CRM sync
+
+| CRM | Target object | Sync trigger |
+|-----|--------------|-------------|
+| SAP C4C | Opportunity | On submission |
+| Salesforce | Opportunity | On submission |
+| MS Dynamics | Opportunity | On submission |
+| HubSpot | Deal | On submission |
+| ZOHO | Deal | On submission |
+| Aurea | Opportunity | On submission |
+
+## What can be configured
+
+- **Stage values** — configure pipeline stages to match your CRM's opportunity stage model (required — there is no universal default)
+- **Required fields** — define which fields must be populated before submission
+- **Products/services list** — configure which products appear in the lookup
+- **Currency** — configure default currency and multi-currency support
+- **Opportunity creation vs update** — configure whether the workflow creates a new opportunity or updates an existing one by default
+
+<Note>Stage configuration is a required step in implementation. There is no universal default. Your SA will align on your stage model during the kickoff scoping session.</Note>
+
+## What the standard does not include
+
+- Pipeline health scoring and dashboards (requires Pipeline Management module)
+- Automatic opportunity creation from visit reports (available as component — discuss with SA)
+- Multi-product or multi-line opportunity support
+
+## FAQ
+
+**Our CRM has 12 pipeline stages. Do we need to implement all of them?**
+No — and we recommend against it. Reps working in the field benefit from a simplified stage model with 4–6 clear stages. Your SA will work with you to identify which stages are meaningful for reps to update by voice, and how they map to your CRM's full stage model.
+
+**Can reps update an existing opportunity rather than creating a new one?**
+Yes — both creation and update modes are supported. Most customers configure the workflow to default to updating an existing opportunity, with creation as a secondary option.

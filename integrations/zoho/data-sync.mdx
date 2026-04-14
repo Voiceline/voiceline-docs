@@ -1,0 +1,106 @@
+---
+title: "ZOHO CRM — Data Sync Reference"
+status: Live
+last_updated: 2026-04-04
+---
+
+This page documents what data flows between VoiceLine and ZOHO CRM, in which direction, and on what schedule.
+
+## Sync overview
+
+| Object | Direction | Trigger |
+|--------|-----------|---------|
+| Accounts | ZOHO → VoiceLine | On login + scheduled refresh |
+| Contacts | ZOHO → VoiceLine | On login + scheduled refresh |
+| Deals | ZOHO → VoiceLine | On login + scheduled refresh |
+| CRM owners | ZOHO → VoiceLine | On login |
+| Visit reports | VoiceLine → ZOHO Event (Appointment) | On submission |
+| Call logs | VoiceLine → ZOHO Call | On submission |
+| Tasks | VoiceLine → ZOHO Task | On submission |
+| Notes | VoiceLine → ZOHO Note on Account/Contact | On submission |
+
+## Inbound: ZOHO → VoiceLine
+
+### Accounts
+
+| ZOHO field | VoiceLine field | Notes |
+|-----------|-----------------|-------|
+| id | Internal ID | Used for record linkage |
+| Account_Name | Account name | Displayed in lookup |
+
+### Contacts
+
+| ZOHO field | VoiceLine field | Notes |
+|-----------|-----------------|-------|
+| id | Internal ID | |
+| Full_Name | Display name | |
+| First_Name | First name | |
+| Last_Name | Last name | |
+
+### Events (for account context)
+
+| ZOHO field | VoiceLine field | Notes |
+|-----------|-----------------|-------|
+| id | Internal ID | |
+| Event_Title | Title | |
+| Start_DateTime | Start date/time | |
+| End_DateTime | End date/time | |
+| Description | Description | |
+| Who_Id.id | Linked contact | |
+| What_Id.id | Linked account or deal | |
+| Owner.id | Owner | |
+
+## Outbound: VoiceLine → ZOHO
+
+### Visit report → ZOHO Event (Appointment)
+
+| VoiceLine field | ZOHO field | Notes |
+|-----------------|-----------|-------|
+| Visit summary | Description | Full AI-generated summary |
+| Title | Event_Title | |
+| Account | What_Id.id | Linked account or deal ID |
+| Contact | Who_Id.id | Linked contact ID |
+| Visit date | Start_DateTime | Date of submission |
+| (End time) | End_DateTime | Defaults to start + 1 hour |
+| Status | Abgeschlossen | false on creation |
+
+### Call log → ZOHO Call
+
+| VoiceLine field | ZOHO field | Notes |
+|-----------------|-----------|-------|
+| Call summary | Description | |
+| Title | Subject | |
+| Contact | Who_Id.id | |
+| Account | What_Id.id | |
+| Call date | Call_Start_Time | ISO datetime |
+| Call direction | Call_Type | Inbound / Outbound |
+| Call outcome | Outgoing_Call_Status | |
+| Duration | Call_Duration | In seconds |
+
+### Task → ZOHO Task
+
+| VoiceLine field | ZOHO field | Notes |
+|-----------------|-----------|-------|
+| Task description | Subject | |
+| Description | Description | |
+| Due date | Due_Date | |
+| Priority | Priority | |
+| Assigned to | Owner.id | Defaults to submitting rep |
+| Contact | Who_Id.id | |
+| Account | What_Id.id | |
+
+## Sync cadence
+
+| Direction | Trigger | Details |
+|-----------|---------|---------|
+| ZOHO → VoiceLine | On rep login | Full refresh of accounts, contacts, deals |
+| ZOHO → VoiceLine | Scheduled | Background refresh — interval configured during implementation (typically 4–6 hours) |
+| VoiceLine → ZOHO | On submission | Immediate |
+
+## What VoiceLine does not sync
+
+- ZOHO Desk tickets
+- ZOHO Campaigns or Marketing Hub data
+- Custom ZOHO modules (unless configured as a non-standard implementation)
+
+<Note>Field-level mappings shown here are the standard defaults. Your SA may configure different mappings during implementation to match your ZOHO field names and pipeline stage values.</Note>

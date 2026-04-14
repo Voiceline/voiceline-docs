@@ -1,0 +1,37 @@
+---
+title: "Call Log"
+status: Live
+last_updated: 2026-04-14
+---
+
+The Call Log captures phone-based customer interactions. Reps dictate a summary immediately after the call and VoiceLine extracts the structured content and syncs it to the CRM. The schema needs to reflect how your team classifies calls and what fields your CRM expects on the call record.
+
+By the end of this page your FDE will have confirmed with your project lead:
+
+- The Call Log schema, including any fields added beyond the standard
+- The hard-coded fields to stamp on every Call Log submitted to the CRM
+
+## Standard schema
+
+The following fields make up the standard Call Log. The account is the primary object — selected once at the session level, not part of this schema.
+
+| Field | Type | Mandatory |
+|---|---|---|
+| Subject | Single line text | Yes |
+| Call time | Date/time | Yes |
+| Contact | CRM-related contact | No |
+| Summary | Bullet point summary | Yes |
+
+The standard schema is a starting point. Using the [component library](/implementation/workflow-customisation/component-library), the schema can be fully customised — fields can be added, removed, relabelled, or made mandatory, and there is no hard limit on the number of fields. What to add and how to structure the schema is a decision to work through with your Solutions Architect. The goal is a schema that maps cleanly to your CRM process while keeping the recording experience fast and straightforward for reps — too many fields increases friction and reduces adoption.
+
+## Hard-coded fields
+
+Hard-coded fields are values the FDE configures once that are stamped silently onto every Call Log record in the CRM on submission — regardless of what the rep says or enters. They do not appear in the rep's UI.
+
+Use hard-coded fields to enforce consistent CRM metadata without burdening reps. For each field, define:
+
+- **Field name** — the label used to identify this field in the configuration
+- **Fixed value** — the value stamped on every submission
+- **CRM target field** — the field in the CRM where this value is written
+
+Your FDE configures these during workflow setup.
