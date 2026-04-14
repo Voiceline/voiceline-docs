@@ -1,88 +1,53 @@
 ---
 title: "Visit Report"
 status: Live
-last_updated: 2026-04-04
+last_updated: 2026-04-14
 ---
+
+The Visit Report is the primary documentation workflow in FSF — the record of what happened during a customer visit. Because reps use it after every field interaction, the schema and any hard-coded fields need to reflect how your team works and how your CRM categorises activity.
 
 By the end of this page your FDE will have confirmed with your project lead:
 
-- The visit report schema and any field customisations
-- The CRM target object and any hard-coded fields to stamp on every submission
+- The Visit Report schema, including any fields added beyond the standard
+- The Event Selection schema for on-the-fly visit creation
+- The hard-coded fields to stamp on every Visit Report submitted to the CRM
 
+## Standard schema
 
-The Visit Report is the core FSF workflow — the primary way reps document customer visits by voice after each interaction.
+The following fields make up the standard Visit Report. The account is the primary object — selected once at the session level, not part of this schema.
 
-## What it captures
+| Field | Type | Mandatory |
+|---|---|---|
+| Summary | Bullet point summary | Yes |
 
-A standard visit report extracts the following fields from the voice recording:
+The standard schema is a starting point. Using the [component library](/implementation/workflow-customisation/component-library), the schema can be fully customised — fields can be added, removed, relabelled, or made mandatory, and there is no hard limit on the number of fields. What to add and how to structure the schema is a decision to work through with your Solutions Architect. The goal is a schema that maps cleanly to your CRM process while keeping the recording experience fast and straightforward for reps — too many fields increases friction and reduces adoption.
 
-| Field | Type | Description |
-|-------|------|-------------|
-| Visit summary | Long text | AI-generated summary of the visit content |
-| Account | Lookup | The customer account visited |
-| Contact | Lookup | Primary contact person at the visit |
-| Visit date | Date | Date of the visit (auto-populated) |
-| Visit type | Picklist | Classification of the visit (e.g. follow-up, new business, service) |
-| Next steps | Text | Action items and follow-ups mentioned in the recording |
-| Competitor mentions | Auto-extracted | Competitor names detected in the recording — feeds analytics |
-| Product mentions | Auto-extracted | Your product names detected — feeds analytics |
-| Mood / sentiment | Auto-scored | AI sentiment assessment of the visit |
+## Event selection
 
-## CRM sync
+When a rep starts a Visit Report for a visit that was not pre-scheduled in the calendar, they can create the event on the fly from within the workflow. This is called event selection.
 
-The visit report syncs to an **Activity** or **Appointment** object in your CRM, depending on the CRM's data model.
+Event selection has its own mini-schema. Information that describes the visit event itself — when it happened, who attended, what it was called — belongs here, not in the Visit Report schema. The Visit Report captures what was discussed; the event record captures the visit itself.
 
-| CRM | Target object | Sync trigger |
-|-----|--------------|-------------|
-| SAP C4C | Appointment | On submission |
-| Salesforce | Event / Task (configurable) | On submission |
-| MS Dynamics | Activity | On submission |
-| HubSpot | Note / Activity | On submission |
-| ZOHO | Activity | On submission |
-| Aurea | Visit (native) | On submission |
+On submission, event selection data is written to the event object in the CRM and visit report content is written to the visit report object. Depending on how your CRM environment is set up, these may be the same object — with the report stored in the description field of the visit record — or two separate linked objects. See [Visits & Visit Reports](/implementation/standard-implementations/crm-visit-report) for how this is configured at the environment level.
 
-For field-level mappings per CRM, see the [Integrations](/integrations) section.
+Standard event selection schema:
 
-## Default schema
+| Field | Type | Mandatory |
+|---|---|---|
+| Subject | Single line text | Yes |
+| Visit Date Range | Date range | Yes |
+| Attendees | CRM-related contacts | No |
 
-The fields listed above are the standard visit report schema — the starting point for every FSF deployment. The schema is configurable using the component library: fields can be added, removed, relabelled, or made required.
-
-To add, remove, or change components, see the [Component Library](/implementation/workflow-customisation/component-library).
-
-## Customising the schema
-
-Using the [component library](/implementation/workflow-customisation/component-library), the following can be adapted:
-
-- **Visit type values** — add, remove, or rename picklist values to match your taxonomy
-- **Additional custom fields** — add structured fields for information specific to your business (e.g. order volume, product discussed, campaign reference)
-- **Field labels** — rename standard fields to match your CRM's terminology
-- **Required fields** — mark fields as mandatory before submission
-- **Account/contact lookup scope** — filter which accounts are searchable (e.g. by territory, by rep assignment)
+Additional fields can be added to the event selection schema using the component library.
 
 ## Hard-coded fields
 
-Hard-coded fields are FDE-configured values that are stamped on every visit report submitted — regardless of what the rep says or enters. They do not appear in the rep's UI; they are written silently to the CRM on submission.
+Hard-coded fields are values the FDE configures once that are stamped silently onto every Visit Report record in the CRM on submission — regardless of what the rep says or enters. They do not appear in the rep's UI.
 
-Use hard-coded fields to enforce consistent CRM metadata across all submissions without burdening reps:
+Use hard-coded fields to enforce consistent CRM metadata without burdening reps. For each field, define:
 
-| Example use case | Hard-coded field | Value |
-|-----------------|-----------------|-------|
-| Tag all VoiceLine records | Source | VoiceLine |
-| Enforce activity type | Activity type | Field Visit |
-| Assign to a fixed team queue | Owner | Field Sales Team |
-| Stamp deployment region | Region | DACH |
+- **Field name** — the label used to identify this field in the configuration
+- **Fixed value** — the value stamped on every submission
+- **CRM target field** — the field in the CRM where this value is written
 
-Your FDE configures hard-coded fields during workflow setup. Define the field name, the fixed value, and the CRM target field for each one.
-
-## FAQ
-
-**Can we add fields that reps fill in manually during the recording?**
-Yes — the component library includes structured field components that prompt reps to provide specific information verbally. Your FDE configures these during setup.
-
-**What if our CRM uses a custom activity object?**
-Standard CRM activity objects (Appointment, Event, Task, Note) are supported natively. Custom CRM objects require a non-standard implementation — let your FDE know during setup so it can be scoped.
-
-**Can a visit automatically create an opportunity?**
-Automatic opportunity creation from a visit report is part of the [Pipeline Management](/commercial/modules/pipeline-management) module, not FSF.
-
-<Note>Need something beyond this standard? Your FDE can adapt it using the [component library](/implementation/workflow-customisation/component-library), or raise a [custom requirement](/implementation/workflow-customisation/additional-customisation) if needed.</Note>
+Your FDE configures these during workflow setup.

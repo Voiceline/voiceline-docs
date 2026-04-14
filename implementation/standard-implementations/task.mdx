@@ -1,76 +1,37 @@
 ---
 title: "Task"
 status: Live
-last_updated: 2026-04-04
+last_updated: 2026-04-14
 ---
+
+The Task workflow lets reps create follow-up actions by voice immediately after a visit or call, while context is fresh. Because tasks sync directly to the CRM task object, the schema needs to align with the fields and assignee structure your team relies on for follow-up tracking.
 
 By the end of this page your FDE will have confirmed with your project lead:
 
-- The task schema and any field customisations
-- Whether auto-creation from visit reports is needed
-- Any hard-coded fields to stamp on every submission
+- The Task schema, including any fields added beyond the standard
+- The hard-coded fields to stamp on every Task submitted to the CRM
 
+## Standard schema
 
-The Task workflow lets reps create follow-up tasks by voice — immediately after a visit or call, while the context is fresh.
+The following fields make up the standard Task. The account is the primary object — selected once at the session level, not part of this schema.
 
-## What it captures
+| Field | Type | Mandatory |
+|---|---|---|
+| Subject | Single line text | Yes |
+| Assignee | Team member | Yes |
+| Due Date | Date/time | Yes |
+| Summary | Bullet point summary | Yes |
 
-| Field | Type | Description |
-|-------|------|-------------|
-| Task description | Text | What needs to be done |
-| Account | Lookup | The customer account the task relates to |
-| Contact | Lookup (optional) | The contact person the task relates to |
-| Due date | Date | When the task should be completed |
-| Priority | Picklist | e.g. high, normal, low |
-| Assigned to | Lookup | The rep responsible (defaults to the rep creating the task) |
-| Task type | Picklist | e.g. follow-up, send offer, internal action |
-
-## CRM sync
-
-| CRM | Target object | Sync trigger |
-|-----|--------------|-------------|
-| SAP C4C | Task | On submission |
-| Salesforce | Task | On submission |
-| MS Dynamics | Task | On submission |
-| HubSpot | Task | On submission |
-| ZOHO | Task | On submission |
-| Aurea | Task | On submission |
-
-For field-level mappings per CRM, see the [Integrations](/integrations) section.
-
-## Default schema
-
-The fields listed above are the standard task schema. The schema is configurable using the component library: fields can be added, removed, relabelled, or made required.
-
-To add, remove, or change components, see the [Component Library](/implementation/workflow-customisation/component-library).
-
-## Customising the schema
-
-- **Task type values** — customise picklist to reflect your team's common task categories
-- **Priority values** — adjust priority scale to match your CRM's picklist
-- **Delegation** — enable task delegation to other reps or managers
-- **Due date defaults** — configure default due date offset (e.g. 3 days from creation)
-- **Linked object scope** — configure which objects a task can be linked to (account only, account + contact, account + opportunity)
-- **Auto-creation from visit reports** — tasks can be automatically created when a rep mentions follow-up actions in a visit report; ask your FDE to configure this
+The standard schema is a starting point. Using the [component library](/implementation/workflow-customisation/component-library), the schema can be fully customised — fields can be added, removed, relabelled, or made mandatory, and there is no hard limit on the number of fields. What to add and how to structure the schema is a decision to work through with your Solutions Architect. The goal is a schema that maps cleanly to your CRM process while keeping the recording experience fast and straightforward for reps — too many fields increases friction and reduces adoption.
 
 ## Hard-coded fields
 
-Hard-coded fields are FDE-configured values stamped on every task submission — regardless of what the rep enters. They do not appear in the rep's UI.
+Hard-coded fields are values the FDE configures once that are stamped silently onto every Task record in the CRM on submission — regardless of what the rep says or enters. They do not appear in the rep's UI.
 
-| Example use case | Hard-coded field | Value |
-|-----------------|-----------------|-------|
-| Enforce task category | Task type | Follow-up |
-| Tag source system | Source | VoiceLine |
-| Default to a shared queue | Assigned team | Field Sales Queue |
+Use hard-coded fields to enforce consistent CRM metadata without burdening reps. For each field, define:
 
-Your FDE configures hard-coded fields during workflow setup. Define the field name, the fixed value, and the CRM target field for each one.
+- **Field name** — the label used to identify this field in the configuration
+- **Fixed value** — the value stamped on every submission
+- **CRM target field** — the field in the CRM where this value is written
 
-## FAQ
-
-**Can reps assign tasks to their manager or a colleague?**
-Yes — delegation is configurable. Your FDE enables this during setup if your process involves cross-rep task handoffs.
-
-**Does completing a task in VoiceLine update the CRM?**
-Task completion status syncs bidirectionally. Completing a task in VoiceLine marks it complete in the CRM, and vice versa.
-
-<Note>Need something beyond this standard? Your FDE can adapt it using the [component library](/implementation/workflow-customisation/component-library), or raise a [custom requirement](/implementation/workflow-customisation/additional-customisation) if needed.</Note>
+Your FDE configures these during workflow setup.

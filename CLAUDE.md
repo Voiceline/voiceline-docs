@@ -118,12 +118,13 @@ voiceline-docs/
 
 ## Writing rules (implementation docs)
 
-- Every configuration page opens with a **"By the end of this page your FDE will have confirmed..." block** followed by 2–4 bullet points — one per concrete deliverable. Each bullet describes the output of a piece of work, not just a topic.
+- Pages open with 1–2 sentences stating the problem this configuration solves and its business value — what is missing or broken without it. This comes **before** the "By the end of this page..." block.
+- Then: a **"By the end of this page your FDE will have confirmed..." block** followed by 2–4 bullet points — one per concrete deliverable. Each bullet describes the output of a piece of work, not just a topic.
   - Name who confirms with whom: "with your CRM admin", "with your project lead", "with your IT team and CRM admin", or just "confirmed:" when there is no fixed counterpart.
   - Write each bullet as the deliverable itself, not as a question — e.g. "The sync filters to apply" not "Which sync filters to use".
   - The bullets are the reader's answer to: what does this page produce?
 - The body of the page explains the detail needed to make those decisions — fields, options, constraints.
-- **`Scoping decisions` sections** list the open questions the FDE must resolve — they complement the intro bullets (which state the outputs) and the body (which explains the options).
+- **No "Scoping decisions" sections.** The opening paragraph, "By the end of this page..." block, and body together are sufficient. Never add a trailing section listing open questions.
 
 ---
 

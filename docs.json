@@ -206,53 +206,12 @@
               {
                 "group": "Workflow Setup",
                 "pages": [
+                  "implementation/standard-implementations/workflow-setup",
                   "implementation/standard-implementations/visit-report",
                   "implementation/standard-implementations/call-log",
-                  "implementation/standard-implementations/task",
-                  "implementation/standard-implementations/email",
-                  "implementation/standard-implementations/meeting",
-                  "implementation/standard-implementations/reminder",
-                  "implementation/standard-implementations/visit-preparation"
+                  "implementation/standard-implementations/task"
                 ]
               }
-            ]
-          },
-          {
-            "group": "Modules",
-            "pages": [
-              "implementation/modules/index",
-              {
-                "group": "Pipeline Management",
-                "pages": [
-                  "implementation/modules/pipeline-management/index",
-                  "implementation/modules/pipeline-management/create-opportunity",
-                  "implementation/modules/pipeline-management/update-opportunity"
-                ]
-              },
-              {
-                "group": "Customer Data",
-                "pages": [
-                  "implementation/modules/customer-data/index",
-                  "implementation/modules/customer-data/create-lead",
-                  "implementation/modules/customer-data/create-contact",
-                  "implementation/modules/customer-data/update-contact",
-                  "implementation/modules/customer-data/create-account",
-                  "implementation/modules/customer-data/update-account"
-                ]
-              },
-              "implementation/modules/marketing-surveys",
-              "implementation/modules/service-cases",
-              "implementation/modules/market-analytics-pro",
-              "implementation/modules/sales-coaching-pro",
-              {
-                "group": "Industry Fairs",
-                "pages": [
-                  "implementation/modules/industry-fairs/index",
-                  "implementation/modules/industry-fairs/fair-report",
-                  "implementation/modules/industry-fairs/lead-tracking"
-                ]
-              },
-              "implementation/modules/inside-sales"
             ]
           },
           {
@@ -283,89 +242,6 @@
             "group": "Security & Compliance",
             "pages": [
               "implementation/security/index"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Integrations",
-        "groups": [
-          {
-            "group": "Overview",
-            "pages": [
-              "integrations/index"
-            ]
-          },
-          {
-            "group": "SAP Cloud for Customer",
-            "pages": [
-              {
-                "group": "SAP C4C v1",
-                "pages": [
-                  "integrations/sap-c4c-v1/index",
-                  "integrations/sap-c4c-v1/data-sync",
-                  "integrations/sap-c4c-v1/standard-implementation"
-                ]
-              },
-              {
-                "group": "SAP C4C v2",
-                "pages": [
-                  "integrations/sap-c4c-v2/index",
-                  "integrations/sap-c4c-v2/data-sync",
-                  "integrations/sap-c4c-v2/standard-implementation"
-                ]
-              }
-            ]
-          },
-          {
-            "group": "Salesforce",
-            "pages": [
-              "integrations/salesforce/index",
-              "integrations/salesforce/data-sync",
-              "integrations/salesforce/standard-implementation"
-            ]
-          },
-          {
-            "group": "Microsoft Dynamics 365",
-            "pages": [
-              "integrations/ms-dynamics/index",
-              "integrations/ms-dynamics/data-sync",
-              "integrations/ms-dynamics/standard-implementation"
-            ]
-          },
-          {
-            "group": "HubSpot",
-            "pages": [
-              "integrations/hubspot/index",
-              "integrations/hubspot/data-sync",
-              "integrations/hubspot/standard-implementation"
-            ]
-          },
-          {
-            "group": "ZOHO CRM",
-            "pages": [
-              "integrations/zoho/index",
-              "integrations/zoho/data-sync",
-              "integrations/zoho/standard-implementation"
-            ]
-          },
-          {
-            "group": "Aurea CRM",
-            "pages": [
-              "integrations/aurea/index",
-              "integrations/aurea/data-sync",
-              "integrations/aurea/standard-implementation"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Engineering",
-        "groups": [
-          {
-            "group": "Overview",
-            "pages": [
-              "engineering/index"
             ]
           }
         ]
