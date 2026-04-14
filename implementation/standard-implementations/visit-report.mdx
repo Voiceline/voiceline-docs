@@ -24,13 +24,30 @@ The standard schema is a starting point. Using the [component library](/implemen
 
 ## Event selection
 
-When a rep starts a Visit Report for a visit that was not pre-scheduled in the calendar, they can create the event on the fly from within the workflow. This is called event selection.
+Event selection is the UI step where the rep links their visit report to a calendar event. It is separate from [event syncing](/implementation/standard-implementations/crm-visit-report) — event syncing pulls calendar events from the CRM into VoiceLine automatically, while event selection presents those synced events to the rep during report creation.
+
+### How it works
+
+When a rep creates a visit report, event selection shows a list of matching calendar events for the selected account. The AI reads the transcript, looks for time clues (dates, times of day, references to "this morning's meeting"), and matches against recently synced events to pre-select the most likely match. The rep can accept the AI's suggestion, override it by picking a different event, or — if no matching event exists — create a new one on the fly.
+
+If the AI cannot find a confident match, it does not guess. Instead, the rep sees the full list of eligible events and can choose manually or create a new event.
+
+### Event selection vs event sync
+
+These are two distinct concepts:
+
+- **Event syncing** pulls calendar events from the CRM into VoiceLine's database on a schedule. It is configured at the environment level — see [Visits & Visit Reports](/implementation/standard-implementations/crm-visit-report).
+- **Event selection** presents those synced events to the rep during report creation, with an AI-assisted pre-pick they can accept or override.
+
+Event selection depends on event syncing. Without synced events, there is nothing to display in the picker, and the rep can only create new events.
+
+### Event selection schema
 
 Event selection has its own mini-schema. Information that describes the visit event itself — when it happened, who attended, what it was called — belongs here, not in the Visit Report schema. The Visit Report captures what was discussed; the event record captures the visit itself.
 
 On submission, event selection data is written to the event object in the CRM and visit report content is written to the visit report object. Depending on how your CRM environment is set up, these may be the same object — with the report stored in the description field of the visit record — or two separate linked objects. See [Visits & Visit Reports](/implementation/standard-implementations/crm-visit-report) for how this is configured at the environment level.
 
-Standard event selection schema:
+Standard fields:
 
 | Field | Type | Mandatory |
 |---|---|---|
