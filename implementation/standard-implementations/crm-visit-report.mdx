@@ -29,6 +29,7 @@ In the standard configuration, visit reports are stored in the description field
 | Assigned rep | Required | Required to map visits to the correct rep |
 | Linked contact | Optional | Displayed in the briefing activity card |
 | Activity type | Optional | Can be used to control playbook distribution and to analyse visit performance |
+| Activity status | Optional | Needed for event selection filtering — without it, the picker includes cancelled and already-reported events. See [Event status field requirement](#event-status-field-requirement). |
 
 Additional fields (e.g. visit outcome, product discussed, custom CRM fields) can be surfaced in the briefing card. Confirm with your FDE which fields to show.
 
@@ -69,6 +70,15 @@ If your organisation syncs calendar events between an email client (Outlook, Gma
 - **Event ownership** — the CRM user must be the owner of the synced event. If events are owned by a system user or another person, permission restrictions in the CRM may prevent VoiceLine from reading them.
 
 Discuss both points with your IT team and CRM admin during the technical connection phase.
+
+### What synced events enable
+
+Synced events power two notification systems:
+
+- **Post-visit notifications** — after a meeting ends, the rep receives a push notification prompting them to write a visit report. Without these notifications, reports are easily forgotten.
+- **Visit Briefings** — before a meeting, VoiceLine sends an AI-generated prep summary (recent interactions, open tasks, key context). See [Visit Briefing](/customer/productivity/visit-briefing) for what reps see.
+
+Both systems require event syncing to be enabled and working correctly. Without synced events, neither notification type can fire.
 
 ## Separate visit report object
 

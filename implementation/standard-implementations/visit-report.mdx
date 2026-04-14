@@ -41,15 +41,6 @@ These are two distinct concepts:
 
 Event selection depends on event syncing. Without synced events, there is nothing to display in the picker, and the rep can only create new events.
 
-### Why event syncing matters for notifications
-
-Synced events power two notification systems:
-
-- **Post-visit notifications** — after a meeting ends, the rep receives a push notification prompting them to write a visit report. Without these notifications, reports are easily forgotten.
-- **Visit Briefings** — before a meeting, VoiceLine can send an AI-generated prep summary (recent interactions, open tasks, key context). See [Visit Briefing](/customer/productivity/visit-briefing) for what reps see.
-
-Both systems require event syncing to be enabled and working correctly. Without synced events, neither notification type can fire.
-
 ### Event selection schema
 
 Event selection has its own mini-schema. Information that describes the visit event itself — when it happened, who attended, what it was called — belongs here, not in the Visit Report schema. The Visit Report captures what was discussed; the event record captures the visit itself.
