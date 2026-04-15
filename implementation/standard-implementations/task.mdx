@@ -17,10 +17,10 @@ The following fields make up the standard Task. The account is the primary objec
 
 | Field | Type | Mandatory |
 |---|---|---|
-| Subject | Single line text | Yes |
-| Assignee | Team member | Yes |
-| Due Date | Date/time | Yes |
-| Summary | Bullet point summary | Yes |
+| Subject | [SingleLineText](/implementation/workflow-customisation/components/text-fields#singlelinetext) | Yes |
+| Assignee | [TeamSelector](/implementation/workflow-customisation/component-library#teamselector-9---one-team-member) | Yes |
+| Due Date | [Zeitraum](/implementation/workflow-customisation/components/dates-numbers#zeitraum-time-range) | Yes |
+| Summary | [SpecialSummary](/implementation/workflow-customisation/components/summaries#specialsummary) | Yes |
 
 The standard schema is a starting point. Using the [component library](/implementation/workflow-customisation/component-library), the schema can be fully customised — fields can be added, removed, relabelled, or made mandatory, and there is no hard limit on the number of fields. What to add and how to structure the schema is a decision to work through with your Solutions Architect. The goal is a schema that maps cleanly to your CRM process while keeping the recording experience fast and straightforward for reps — too many fields increases friction and reduces adoption.
 
