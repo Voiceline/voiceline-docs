@@ -1,32 +1,32 @@
 ---
-title: "Call Log"
+title: "Meeting"
 status: Live
-last_updated: 2026-04-14
+last_updated: 2026-04-15
 ---
 
-The Call Log captures phone-based customer interactions. Reps dictate a summary immediately after the call and VoiceLine extracts the structured content and syncs it to the CRM. The schema needs to reflect how your team classifies calls and what fields your CRM expects on the call record.
+The Meeting workflow lets reps schedule follow-up meetings by voice immediately after a customer interaction. Because meetings sync to both the calendar and the CRM meeting record, the schema needs to align with the fields your CRM expects on the meeting object.
 
 By the end of this page your FDE will have confirmed with your project lead:
 
-- The Call Log schema, including any fields added beyond the standard
-- The hard-coded fields to stamp on every Call Log submitted to the CRM
+- The Meeting schema, including any fields added beyond the standard
+- The hard-coded fields to stamp on every Meeting submitted to the CRM
 
 ## Standard schema
 
-The following fields make up the standard Call Log. The account is the primary object — selected once at the session level, not part of this schema.
+The following fields make up the standard Meeting. The account is the primary object — selected once at the session level, not part of this schema.
 
 | Field | Type | Mandatory |
 |---|---|---|
 | Subject | [SingleLineText](/implementation/workflow-customisation/components/text-fields#singlelinetext) | Yes |
-| Call time | [Zeitraum](/implementation/workflow-customisation/components/dates-numbers#zeitraum-time-range) | Yes |
-| Contact | [CRMRelatedContact](/implementation/workflow-customisation/components/crm-lookups#crmrelatedcontact) | No |
-| Summary | [SpecialSummary](/implementation/workflow-customisation/components/summaries#specialsummary) | Yes |
+| Meeting Date Range | [Zeitraum](/implementation/workflow-customisation/components/dates-numbers#zeitraum-time-range) | Yes |
+| Attendees | [CRMRelatedContacts](/implementation/workflow-customisation/components/crm-lookups#crmrelatedcontacts) | No |
+| Description | [MultiLineText](/implementation/workflow-customisation/components/text-fields#multilinetext) | No |
 
 The standard schema is a starting point. Using the [component library](/implementation/workflow-customisation/component-library), the schema can be fully customised — fields can be added, removed, relabelled, or made mandatory, and there is no hard limit on the number of fields. What to add and how to structure the schema is a decision to work through with your Solutions Architect. The goal is a schema that maps cleanly to your CRM process while keeping the recording experience fast and straightforward for reps — too many fields increases friction and reduces adoption.
 
 ## Hard-coded fields
 
-Hard-coded fields are values the FDE configures once that are stamped silently onto every Call Log record in the CRM on submission — regardless of what the rep says or enters. They do not appear in the rep's UI.
+Hard-coded fields are values the FDE configures once that are stamped silently onto every Meeting record in the CRM on submission — regardless of what the rep says or enters. They do not appear in the rep's UI.
 
 Use hard-coded fields to enforce consistent CRM metadata without burdening reps. For each field, define:
 

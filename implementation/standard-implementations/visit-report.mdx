@@ -18,7 +18,7 @@ The following fields make up the standard Visit Report. The account is the prima
 
 | Field | Type | Mandatory |
 |---|---|---|
-| Summary | Bullet point summary | Yes |
+| Summary | [SpecialSummary](/implementation/workflow-customisation/components/summaries#specialsummary) | Yes |
 
 The standard schema is a starting point. Using the [component library](/implementation/workflow-customisation/component-library), the schema can be fully customised — fields can be added, removed, relabelled, or made mandatory, and there is no hard limit on the number of fields. What to add and how to structure the schema is a decision to work through with your Solutions Architect. The goal is a schema that maps cleanly to your CRM process while keeping the recording experience fast and straightforward for reps — too many fields increases friction and reduces adoption.
 
@@ -51,9 +51,9 @@ Standard fields:
 
 | Field | Type | Mandatory |
 |---|---|---|
-| Subject | Single line text | Yes |
-| Visit Date Range | Date range | Yes |
-| Attendees | CRM-related contacts | No |
+| Subject | [SingleLineText](/implementation/workflow-customisation/components/text-fields#singlelinetext) | Yes |
+| Visit Date Range | [Zeitraum](/implementation/workflow-customisation/components/dates-numbers#zeitraum-time-range) | Yes |
+| Attendees | [CRMRelatedContacts](/implementation/workflow-customisation/components/crm-lookups#crmrelatedcontacts) | No |
 
 Additional fields can be added to the event selection schema using the component library.
 
