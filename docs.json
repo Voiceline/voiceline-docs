@@ -81,7 +81,7 @@
             ]
           },
           {
-            "group": "Workspace Settings",
+            "group": "1. Workspace Setup",
             "pages": [
               "customer/platform/index",
               "customer/platform/workspace-admin",
@@ -191,7 +191,7 @@
               "implementation/standard-implementations/workspace-setup",
               "implementation/standard-implementations/technical-connection",
               {
-                "group": "Environment Configuration",
+                "group": "3. Environment Configuration",
                 "pages": [
                   "implementation/standard-implementations/environment-configuration",
                   "implementation/standard-implementations/crm-accounts",
@@ -204,7 +204,7 @@
                 ]
               },
               {
-                "group": "Workflow Setup",
+                "group": "4. Workflow Setup",
                 "pages": [
                   "implementation/standard-implementations/workflow-setup",
                   "implementation/standard-implementations/visit-report",
