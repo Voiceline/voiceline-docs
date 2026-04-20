@@ -109,6 +109,15 @@
         ]
       },
       {
+        "tab": "Changelog",
+        "groups": [
+          {
+            "group": "Product Updates",
+            "pages": ["changelog/index"]
+          }
+        ]
+      },
+      {
         "tab": "Modules & Pricing",
         "groups": [
           {
