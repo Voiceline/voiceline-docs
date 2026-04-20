@@ -1,7 +1,7 @@
 ---
 title: "Workspace Administration"
 status: Live
-last_updated: 2026-03-06
+last_updated: 2026-04-15
 ---
 
 Manage your VoiceLine workspace — users, roles, and workspace-wide settings.
@@ -41,18 +41,20 @@ Every user is assigned an organisational role when they are added to the workspa
 - **Activity tracking** — whether the user's submissions count toward activity metrics in the Coaching Platform
 - **Analytics & Coaching access** — whether the user can see the Analytics and Coaching platforms
 
-| Role | Activity tracked | Analytics & Coaching access |
-|------|:---:|:---:|
-| Field Sales Representative | Yes | No |
-| Inside Sales | No | No |
-| Account Executive | Yes | Yes |
-| Sales Team Lead | Yes | Yes |
-| Executive | No | Yes |
-| Project Lead | No | Yes |
-| CRM Manager | No | Yes |
-| IT | No | Yes |
+| Role | Activity tracked | Analytics & Coaching access | Playbook Builder access |
+|------|:---:|:---:|:---:|
+| Field Sales Representative | Yes | No | No |
+| Inside Sales | No | No | No |
+| Account Executive | Yes | Yes | Yes |
+| Sales Team Lead | Yes | Yes | Yes |
+| Executive | No | Yes | No |
+| Project Lead | No | Yes | Yes |
+| CRM Manager | No | Yes | Yes |
+| IT | No | Yes | No |
 
 Reps in field-facing roles (Field Sales Representative, Account Executive, Sales Team Lead) have their activity counted because they are the primary users the Coaching Platform is designed to measure. Managers, executives, and operational roles get read access to analytics but are not measured themselves.
+
+Roles with [Playbook Builder](/customer/coaching/playbooks/builder) access can create and edit playbooks and their target audiences. This is typically assigned to roles that manage sales teams or configure CRM workflows.
 
 **User status:**
 - **Active** — user has completed setup and can log in
