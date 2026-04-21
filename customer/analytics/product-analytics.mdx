@@ -1,13 +1,72 @@
 ---
 title: "Product Analytics"
-status: Coming soon
+status: Live
 bundles:
   - field_sales_fundamentals
-last_updated: 2026-03-06
+last_updated: 2026-04-21
 ---
 
-<Note>This feature is coming soon.</Note>
+Shows which products your reps mention most in the field, highlights unrecognised product terms, and lets admins improve recognition accuracy over time.
 
 ## Overview
 
-Product Analytics will surface which products are mentioned most in field conversations, how customers respond to them, and where cross-sell and upsell opportunities are being identified or missed. Data is extracted automatically from visit reports and call logs — no structured product fields required.
+Whenever a rep records a visit report or call log, VoiceLine analyses the transcript and extracts product mentions. Each mention is classified as **matched** (linked to a known product or group in your catalogue) or **unmatched** (not yet recognised). Product Analytics aggregates this data into a dashboard so you can see what reps are selling, spot gaps in your product catalogue, and continuously improve recognition accuracy.
+
+<Note>Available with **[Field Sales Fundamentals](/commercial/field-sales-fundamentals)**.</Note>
+
+## Where to find it
+
+Open VoiceLine → **Analytics** → **Market Intelligence** → **Products** tab.
+
+## Matched mentions
+
+The matched table lists every product and product group from your catalogue that has been mentioned in field recordings during the selected period. For each item you can see:
+
+| Column | What it shows |
+|--------|---------------|
+| **Product name** | The matched product or group name from your catalogue |
+| **Product group** | The parent group in the hierarchy |
+| **Mentions** | Total number of times the product was mentioned |
+| **Last mentioned** | Date and time of the most recent mention |
+
+Use this view to understand which products dominate field conversations and identify under-discussed items that may need more sales enablement.
+
+## Unmatched mentions
+
+The unmatched table lists product terms that VoiceLine detected in recordings but could not link to any item in your catalogue. These are typically abbreviations, trade names, or shorthand that reps use but that are not yet registered as [aliases](/customer/platform/data-objects/products#aliases).
+
+For each unmatched term you can see the mention count and the date it was last heard. From this table, an admin can match the term directly to the correct product or group — saving it as an alias so all future occurrences are recognised automatically.
+
+## Stats overview
+
+A summary bar at the top of the dashboard shows:
+
+| Metric | What it means |
+|--------|---------------|
+| **Matched count** | Number of distinct products with at least one recognised mention |
+| **Unmatched count** | Number of distinct unrecognised terms |
+| **Total mentions** | Combined matched and unmatched mention count |
+| **Recent mentions (24h)** | Mentions recorded in the last 24 hours |
+
+## Improving recognition accuracy
+
+When you see unmatched terms appearing frequently, you can resolve them in two ways:
+
+1. **Match from the dashboard** — click the match action next to an unmatched term, select the correct product or group, and save. The term is stored as an alias and future mentions are matched automatically.
+2. **Add aliases during catalogue sync** — include additional aliases in the JSON payload when you next sync your product catalogue. See [Products](/customer/platform/data-objects/products#aliases) for details.
+
+Over time, the unmatched count should decrease as your alias list grows to cover the vocabulary reps actually use in the field.
+
+## FAQ
+
+**How does VoiceLine detect product mentions?**
+It analyses the AI-processed transcript of each visit report and call log, matching against your configured product catalogue and all registered aliases. Reps don't need to manually tag products — extraction is automatic.
+
+**What happens to mentions when I match an unmatched term?**
+The term is saved as an alias on the selected product or group. Previously recorded unmatched mentions of that term are reclassified as matched, and all future mentions are recognised automatically.
+
+**How often is the data updated?**
+Product mentions are extracted when each recording is processed — typically within minutes of submission. The dashboard reflects data up to the selected date range.
+
+**Can I export product mention data?**
+Raw product mention data flows into the [Data Lake](/customer/analytics/data-lake) alongside all other analytics data, available for export and custom analysis.
