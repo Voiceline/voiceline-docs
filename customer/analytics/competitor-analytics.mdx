@@ -3,7 +3,7 @@ title: "Competitor Analytics"
 status: Live
 bundles:
   - field_sales_fundamentals
-last_updated: 2026-04-17
+last_updated: 2026-04-21
 ---
 
 Turns every field visit into competitive intelligence — showing which competitors appear most, where they're winning, and where they're vulnerable.
@@ -52,6 +52,18 @@ A bar chart showing, per competitor, how many accounts are currently using them 
 
 A breakdown of customer sentiment specifically around pricing, per competitor. Shows how often customers describe a competitor's pricing as favorable, unfavorable, or neutral — across all mentions in the period.
 
+## Unmatched competitor mentions
+
+When VoiceLine detects a competitor reference in a recording that doesn't match any entry on your configured [competitor list](/customer/platform/data-objects/competitors), it saves the mention as an **unmatched competitor**. These appear in a dedicated section of the dashboard alongside your matched competitor data, so you can see exactly which new competitors your team is encountering in the field.
+
+Use unmatched mentions to:
+
+- **Discover new competitors** — spot names that keep appearing before they show up in win/loss reports
+- **Keep your competitor list current** — add frequently mentioned unmatched competitors to your list so future mentions are tracked with full sentiment and dimension scoring
+- **Catch misspellings and aliases** — an unmatched mention may be a known competitor referred to by a different name; adding an alias resolves future matches automatically
+
+Unmatched competitor mentions are counted and sorted by frequency, so the most commonly mentioned unknown competitors surface first.
+
 ## Filters
 
 | Filter | Effect |
@@ -60,15 +72,15 @@ A breakdown of customer sentiment specifically around pricing, per competitor. S
 | **Team / Group** | Limit to a specific team or region |
 | **Competitor** | Focus all views on one competitor |
 
-<Note>Competitors are maintained in **Workspace Settings** → **Data Objects** → **Competitors**. Typical workspaces track 5–50 competitors. VoiceLine only detects competitors that are on the list — add new ones in settings as you learn about them.</Note>
+<Note>Competitors are maintained in **Workspace Settings** → **Data Objects** → **Competitors**. Typical workspaces track 5–50 competitors. Add new competitors as they appear in unmatched mentions to get full analytics coverage.</Note>
 
 ## FAQ
 
 **How does VoiceLine detect competitor mentions?**
 It analyzes the AI-processed transcript of each visit report and call log, matching against your configured competitor list. Reps don't need to manually flag competitors — the extraction is automatic.
 
-**What if a competitor isn't detected?**
-Add it to your competitor list under **Workspace Settings** → **Data Objects** → **Competitors**. Detection applies to recordings made after the competitor is added.
+**What if a competitor isn't on my list?**
+VoiceLine still captures the mention as an unmatched competitor. Check the unmatched mentions section of the dashboard to see which unknown competitors your team is encountering, then add the relevant ones to your competitor list under **Workspace Settings** → **Data Objects** → **[Competitors](/customer/platform/data-objects/competitors)** to get full sentiment and dimension tracking going forward.
 
 **How is sentiment determined?**
 VoiceLine classifies each competitor mention as positive (your product preferred), negative (competitor preferred), or neutral based on the context of the conversation as transcribed.

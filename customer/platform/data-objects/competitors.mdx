@@ -1,7 +1,7 @@
 ---
 title: "Competitors"
 status: Live
-last_updated: 2026-03-06
+last_updated: 2026-04-21
 ---
 
 The list of competitors VoiceLine monitors for mentions in field recordings.
@@ -25,13 +25,17 @@ From here, administrators can:
 |-------|-------------|
 | **Name** | Competitor name as it appears in field conversations |
 
-Competitor names should reflect how reps and customers refer to them in conversation — include common abbreviations or alternate names if relevant. VoiceLine only detects competitors that are on the list.
+Competitor names should reflect how reps and customers refer to them in conversation — include common abbreviations or alternate names if relevant.
 
 <Note>Typical workspaces track 5–50 competitors. Detection applies to recordings made **after** a competitor is added — historical recordings are not re-analyzed retroactively.</Note>
 
+## Unmatched mentions
+
+When VoiceLine detects a competitor reference that doesn't match any entry on this list, the mention is saved as an **unmatched competitor** and surfaced in [Competitor Analytics](/customer/analytics/competitor-analytics). This means competitive intelligence is never lost — even competitors you haven't added yet are captured. Review unmatched mentions regularly and add frequently appearing names to this list to enable full sentiment and dimension tracking.
+
 ## Search behavior
 
-Competitors are not directly searched by reps during recordings. The list is used exclusively for automated extraction — VoiceLine scans each recording transcript and matches mentions against the competitor list.
+Competitors are not directly searched by reps during recordings. The list is used exclusively for automated extraction — VoiceLine scans each recording transcript and matches mentions against the competitor list. Mentions that don't match any entry are saved as unmatched competitors.
 
 ## FAQ
 
