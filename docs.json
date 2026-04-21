@@ -23,6 +23,7 @@
             "pages": [
               "customer/productivity/index",
               "customer/productivity/assistant",
+              "customer/productivity/actions-hub",
               "customer/productivity/visit-briefing",
               {
                 "group": "Workflows",
