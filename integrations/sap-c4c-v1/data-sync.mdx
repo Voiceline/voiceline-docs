@@ -1,7 +1,7 @@
 ---
 title: "SAP C4C v1 — Data Sync Reference"
 status: Live
-last_updated: 2026-04-04
+last_updated: 2026-04-22
 ---
 
 This page documents what data flows between VoiceLine and SAP C4C v1, in which direction, and on what schedule.
@@ -20,6 +20,7 @@ This page documents what data flows between VoiceLine and SAP C4C v1, in which d
 | Tasks | VoiceLine → SAP Task | On submission |
 | New leads | VoiceLine → SAP Lead | On submission |
 | New contacts | VoiceLine → SAP Contact | On submission |
+| Opportunity updates | VoiceLine → SAP Opportunity | On submission |
 
 ## Inbound: SAP → VoiceLine
 
@@ -97,6 +98,16 @@ VoiceLine reads opportunities for lookup in the Opportunity workflow.
 | Due date | DueDate | |
 | Priority | Priority | High / Normal / Low |
 | Assigned to | OwnerID | Defaults to submitting rep |
+
+### Opportunity update → SAP Opportunity
+
+When a rep updates an existing opportunity, VoiceLine patches the record in SAP C4C.
+
+| VoiceLine field | SAP C4C field | Notes |
+|-----------------|---------------|-------|
+| Probability | ProbabilityPercent | Percentage value from configured picklist |
+| Close date | ExpectedProcessingEndDate | Expected close date |
+| Involved accounts | OpportunityParty | Added as party with role code |
 
 ## Sync cadence
 
