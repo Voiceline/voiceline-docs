@@ -3,16 +3,16 @@ title: "Contact"
 status: Live
 bundles:
   - customer_data
-last_updated: 2026-03-06
+last_updated: 2026-04-21
 ---
 
-Add a new person to your CRM from a business card or by speaking their details.
+Create or update a contact in your CRM — by voice or business card scan.
 
 ## Overview
 
-A contact in VoiceLine is a person record linked to an account in your CRM. You create one when you meet a new decision maker, gatekeeper, or stakeholder that isn't already in the system.
+A contact in VoiceLine is a person record linked to an account in your CRM. You create one when you meet a new decision maker, gatekeeper, or stakeholder that isn't already in the system. You update one when a contact's details have changed — new phone number, new job title, new address.
 
-Business cards are the primary source: field reps collect cards constantly but almost never enter them into the CRM manually — it's too slow and too easy to put off. VoiceLine's contact workflow makes it fast enough to do on the spot.
+Business cards are the primary source for creation: field reps collect cards constantly but almost never enter them into the CRM manually — it's too slow and too easy to put off. VoiceLine's contact workflow makes it fast enough to do on the spot.
 
 Two input methods:
 
@@ -45,6 +45,26 @@ Open the VoiceLine mobile app → tap **+** → select **Contact**.
 
 The contact record is saved locally (on your device) in addition to syncing to the CRM.
 
+## Updating an existing contact
+
+When a contact's details change — new phone number, title, or address — you can update the existing CRM record by voice instead of editing it manually in your CRM.
+
+1. **Open Contact Update** from the + menu (your workspace may label this differently).
+2. **Speak the changes** — mention the contact and what changed. Example: *"Update Anna Keller at Braun AG — she's now VP of Operations, new mobile is 0172-99887766."*
+3. **Review the draft** — VoiceLine matches the contact from your CRM and highlights any fields that differ from the current record. Changed fields appear with a blue border so you can spot them at a glance.
+4. **Review updated fields** — tap **Details** to open the Updated Fields panel. This shows each changed field side by side: the new value and the previous value from your CRM.
+5. **Revert if needed** — if any update is incorrect, tap **Revert** next to that field to restore the previous value. You can also tap **Revert all** to discard all changes at once.
+6. **Submit** — the contact record is updated in your CRM.
+
+### Reviewing updated fields
+
+The Updated Fields panel gives you full control before submitting. For each field that changed, you see:
+
+- **Current** — the new value extracted from your voice or card scan
+- **Previous** — the value currently stored in your CRM
+
+This lets you confirm that the AI correctly interpreted your update and catch any mistakes before they reach the CRM. If you revert a field, it returns to the previous CRM value. Tap **Done** to close the panel and return to the form.
+
 ## What syncs to your CRM
 
 | Field | Content |
@@ -68,6 +88,12 @@ Create the account first (see [Account](/customer/productivity/workflows/account
 
 **Is the contact saved if I don't have a CRM connection?**
 The contact data is saved locally on your device regardless of CRM sync status. It will sync when connectivity is restored.
+
+**How do I know which fields were updated?**
+Changed fields are highlighted with a blue border on the form. Tap **Details** to see a side-by-side comparison of every changed field with its current and previous value.
+
+**Can I undo a specific field update without discarding everything?**
+Yes. In the Updated Fields panel, tap **Revert** next to any individual field to restore just that field to its CRM value. Other changes remain intact.
 
 **For trade fair use — is this part of Fair Mode?**
 Lead creation is the primary flow for trade fair contacts (not Contact). See [Lead](/customer/productivity/workflows/lead) and [Industry Fair Mode](/customer/productivity/assistant#fair-mode) for the full fair workflow.
