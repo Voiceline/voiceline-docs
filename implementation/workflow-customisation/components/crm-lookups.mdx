@@ -88,6 +88,8 @@ Generic CRM entity pickers — single or multi-select — for CRM objects not co
 
 A configurable CRM entity lookup with a flexible destination. Used when a field needs to look up different CRM entity types depending on context, or when the target CRM object varies by workspace configuration.
 
+CRMFlex searches by both **entity name** and **city**. Name matches are weighted higher than city matches, so a name match always ranks above a city-only match. This allows reps to find the right record by location when the exact entity name is unclear.
+
 ### CRMCombiRelated
 
 A composite component combining multiple CRM entity types in one lookup. Used for complex relationship models where a workflow record needs to link to one of several entity types simultaneously.
