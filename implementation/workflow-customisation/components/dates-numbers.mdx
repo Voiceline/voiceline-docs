@@ -21,7 +21,9 @@ The standard date/time component. Supports four variants depending on what the w
 | Single date + time | One datetime | Follow-up call, task due datetime |
 | Single date only | One date, no time | Deadline, opportunity close date |
 
-**AI behaviour:** The AI extracts dates and times from natural language. "Next Thursday at 3pm", "end of the month", and "in two weeks" are all resolved to specific dates. If the rep doesn't mention a date, some configurations apply a default (e.g. opportunity close date defaults to 90 days from today).
+**AI behaviour:** The AI extracts dates and times from natural language. "Next Thursday at 3pm", "end of the month", and "in two weeks" are all resolved to specific dates using the user's timezone. If the rep doesn't mention a date, some configurations apply a default (e.g. opportunity close date defaults to 90 days from today).
+
+All extracted timestamps are resolved in the user's own timezone (e.g. `America/New_York`, `Europe/Berlin`). The timezone is detected automatically from the user's device during onboarding and stored in their profile. If no timezone is set, the system falls back to UTC.
 
 **When to use:** Use Zeitraum for all new date and time fields. It replaces the older DatePicker component.
 
