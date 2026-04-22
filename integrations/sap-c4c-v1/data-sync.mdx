@@ -37,6 +37,7 @@ VoiceLine reads account records to populate the account lookup used in all workf
 | CountryCode | Country | |
 | AccountType | Account type | |
 | OwnerID | Assigned rep | Used to filter accounts per rep |
+| ChangedOn | Last updated | Used for delta sync |
 
 ### Contacts
 VoiceLine reads contact records to populate contact lookups in workflows.
@@ -51,6 +52,7 @@ VoiceLine reads contact records to populate contact lookups in workflows.
 | MobilePhone | Mobile | |
 | Email | Email | |
 | JobTitle | Job title | |
+| ChangedOn | Last updated | Used for delta sync |
 
 ### Opportunities
 VoiceLine reads opportunities for lookup in the Opportunity workflow.
@@ -114,7 +116,7 @@ When a rep updates an existing opportunity, VoiceLine patches the record in SAP 
 | Direction | Trigger | Details |
 |-----------|---------|---------|
 | SAP → VoiceLine | On rep login | Full refresh of assigned accounts, contacts, leads, opportunities |
-| SAP → VoiceLine | Scheduled | Background refresh — interval configured during implementation (typically 4–6 hours) |
+| SAP → VoiceLine | Scheduled | Delta sync for accounts and contacts (only records modified since the last sync); full refresh for other objects — interval configured during implementation (typically 4–6 hours) |
 | VoiceLine → SAP | On submission | Immediate; queued and retried if SAP is unreachable |
 
 ## What VoiceLine does not sync
