@@ -1,7 +1,7 @@
 ---
 title: "CRM Lookups"
 status: Live
-last_updated: 2026-04-04
+last_updated: 2026-04-21
 ---
 
 CRM lookup components connect workflow records to existing entities in your CRM. Rather than typing a company name or contact, the rep selects from records pulled directly from the CRM — ensuring the workflow output links correctly to the right CRM record.
@@ -86,7 +86,20 @@ Generic CRM entity pickers — single or multi-select — for CRM objects not co
 
 ### CRMFlex
 
-A configurable CRM entity lookup with a flexible destination. Used when a field needs to look up different CRM entity types depending on context, or when the target CRM object varies by workspace configuration.
+A configurable CRM entity lookup that can resolve multiple entity types in a single field. Use CRM Flex when the person or record linked to a workflow varies by context — for example, a visit report that links to the main contact, versus a task that links to the person responsible for a follow-up.
+
+**Multi-entity support:** CRM Flex derives the entity types it searches from its configured destinations. If destinations include both contacts and leads, the AI considers entities of both types when resolving a name from the recording. If no destinations are configured, it defaults to contacts.
+
+**Workflow-aware AI behaviour:** The AI prompt adapts based on the workflow type:
+
+| Workflow type | AI behaviour |
+|---|---|
+| Visit report | Identifies the **main contact person** of the customer visit |
+| Call log | Identifies the **main contact person** of the phone call |
+| Task | Identifies the **person or team responsible** for the task |
+| Other | Identifies the **relevant person or team** for the interaction |
+
+The AI reads the recording transcript, matches mentioned names against recognized entity placeholders, and returns either a specific person or a team name (e.g. "inside sales", "Innendienst"). If both a specific person and a team are mentioned, the specific person takes priority.
 
 CRMFlex searches by both **entity name** and **city**. Name matches are weighted higher than city matches, so a name match always ranks above a city-only match. This allows reps to find the right record by location when the exact entity name is unclear.
 
