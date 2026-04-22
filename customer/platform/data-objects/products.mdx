@@ -37,7 +37,7 @@ Products, groups, and variants can have aliases — alternative names or abbrevi
 Aliases can be added in three ways:
 
 - **During catalogue sync** — included directly in the JSON payload alongside the product data
-- **In the administration interface** — added or edited manually for any product or product group in the hierarchy through the VoiceLine web app
+- **In the administration interface** — added or edited manually for any product or product group in the hierarchy through the VoiceLine web app. When you add a new alias, existing unmatched mentions matching that term are automatically reclassified as matched. When you remove an alias, previously matched mentions for that term revert to unmatched.
 - **Via the performance dashboard** — when a product mention from a real conversation can't be matched automatically, an admin can link it to the correct product or group and save the term as an alias; the next time a rep uses that term, it is matched correctly
 
 ## Matched and unmatched mentions

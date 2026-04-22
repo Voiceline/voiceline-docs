@@ -53,7 +53,8 @@ A summary bar at the top of the dashboard shows:
 When you see unmatched terms appearing frequently, you can resolve them in two ways:
 
 1. **Match from the dashboard** — click the match action next to an unmatched term, select the correct product or group, and save. The term is stored as an alias and future mentions are matched automatically.
-2. **Add aliases during catalogue sync** — include additional aliases in the JSON payload when you next sync your product catalogue. See [Products](/customer/platform/data-objects/products#aliases) for details.
+2. **Edit aliases in the administration interface** — add aliases directly on any product or product group under **Workspace Settings** → **Data Objects** → **Products**. Existing unmatched mentions matching the new alias are reclassified as matched automatically.
+3. **Add aliases during catalogue sync** — include additional aliases in the JSON payload when you next sync your product catalogue. See [Products](/customer/platform/data-objects/products#aliases) for details.
 
 Over time, the unmatched count should decrease as your alias list grows to cover the vocabulary reps actually use in the field.
 
@@ -62,8 +63,8 @@ Over time, the unmatched count should decrease as your alias list grows to cover
 **How does VoiceLine detect product mentions?**
 It analyses the AI-processed transcript of each visit report and call log, matching against your configured product catalogue and all registered aliases. Reps don't need to manually tag products — extraction is automatic.
 
-**What happens to mentions when I match an unmatched term?**
-The term is saved as an alias on the selected product or group. Previously recorded unmatched mentions of that term are reclassified as matched, and all future mentions are recognised automatically.
+**What happens to mentions when I add or remove an alias?**
+When you add an alias — whether by matching from the dashboard, editing in the administration interface, or including it in a catalogue sync — previously recorded unmatched mentions of that term are reclassified as matched, and all future mentions are recognised automatically. When you remove an alias, previously matched mentions for that term revert to unmatched.
 
 **How often is the data updated?**
 Product mentions are extracted when each recording is processed — typically within minutes of submission. The dashboard reflects data up to the selected date range.
