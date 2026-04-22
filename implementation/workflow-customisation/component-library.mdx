@@ -283,7 +283,7 @@ Time frame | "Time Frame" / "Zeitrahmen" | General scheduling context
 **Captures:** Two ISO 8601 timestamps separated by a delimiter - start time and end time.
 
 
-**AI behavior:** The AI extracts both times from the transcript. If the user says "The meeting was from 2 to 3:30", it captures `14:00|15:30`. The prompt instructs the AI to format the response as `<StartTime>|<EndTime>|`.
+**AI behavior:** The AI extracts both times from the transcript in the user's own timezone. If the user says "The meeting was from 2 to 3:30", it captures `14:00|15:30`. The prompt instructs the AI to format the response as `<StartTime>|<EndTime>|`. When the transcript contains no explicit time (e.g. "I just had a call"), the AI uses `NONE` for the missing boundary and falls back to the recording timestamp for the other.
 
 
 **Example:** User says: *"Heute Vormittag von 10 bis 11:30 Uhr war ich bei Bosch."* Zeitraum extracts: `2024-03-10T10:00:00` to `2024-03-10T11:30:00`
@@ -1429,7 +1429,7 @@ The AI extracts reminder information from the transcript using function calling:
 
 - Apply time defaults: if only a date is given, default to 09:00. "End of day" = 17:00. "Afternoon" = 14:00.
 
-- Convert to UTC using the user's timezone (handling DST correctly)
+- Convert to UTC using the user's timezone from their profile (handling DST correctly)
 
 - Optionally set an end time (default: 15 minutes after start) and a calendar event flag
 
