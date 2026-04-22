@@ -1,7 +1,7 @@
 ---
 title: "Competitors"
 status: Live
-last_updated: 2026-04-21
+last_updated: 2026-04-22
 ---
 
 The list of competitors VoiceLine monitors for mentions in field recordings.
@@ -25,14 +25,31 @@ From here, administrators can:
 | Field | Description |
 |-------|-------------|
 | **Name** | Competitor name as it appears in field conversations |
+| **Aliases** | Alternative names, abbreviations, or shorthand that reps use for this competitor |
 
-Competitor names should reflect how reps and customers refer to them in conversation — include common abbreviations or alternate names if relevant.
+Competitor names should reflect how reps and customers refer to them in conversation. Add aliases for common abbreviations or alternate spellings so VoiceLine can match all variations to the correct competitor entry.
 
 <Note>Typical workspaces track 5–50 competitors. Detection applies to recordings made **after** a competitor is added — historical recordings are not re-analyzed retroactively.</Note>
 
-## Unmatched mentions
+## Aliases
 
-When VoiceLine detects a competitor reference that doesn't match any entry on this list, the mention is saved as an **unmatched competitor** and surfaced in [Competitor Analytics](/customer/analytics/competitor-analytics). This means competitive intelligence is never lost — even competitors you haven't added yet are captured. Review unmatched mentions regularly and add frequently appearing names to this list to enable full sentiment and dimension tracking.
+Competitors can have aliases — alternative names or abbreviations that reps and customers use in conversation. For example, a competitor "Deutsche Telekom" commonly referred to as "Telekom" or "DT" needs those terms as aliases so VoiceLine can match them to the correct competitor entry.
+
+Aliases can be added in two ways:
+
+- **In the administration interface** — added or edited manually for any competitor in the list through the VoiceLine web app
+- **Via the analytics dashboard** — when a competitor mention from a real conversation can't be matched automatically, an admin can link it to the correct competitor and save the term as an alias; the next time a rep uses that term, it is matched correctly
+
+When you edit a competitor's aliases, VoiceLine automatically syncs unmatched mentions: newly added aliases cause matching unmatched mentions to be reclassified as matched, and removed aliases cause previously matched mentions to reappear as unmatched.
+
+## Matched and unmatched mentions
+
+Every time a rep records a visit report or call log, VoiceLine analyses the transcript and extracts competitor mentions. Each mention falls into one of two categories:
+
+- **Matched** — the mention corresponds to a known competitor on your list. VoiceLine links it automatically and includes it in [Competitor Analytics](/customer/analytics/competitor-analytics) with full sentiment and dimension tracking.
+- **Unmatched** — the mention could not be linked to any entry on your competitor list. This typically happens when reps use abbreviations, trade names, or shorthand that are not yet registered as aliases.
+
+Unmatched mentions are not lost. They appear in the [Competitor Analytics](/customer/analytics/competitor-analytics) dashboard so admins can review them and link each one to the correct competitor. Linking an unmatched mention saves the term as an alias — all future occurrences are matched automatically, and previously recorded unmatched mentions of that term are reclassified as matched.
 
 ## Search behavior
 
@@ -44,7 +61,7 @@ Competitors are not directly searched by reps during recordings. The list is use
 Check the [Competitor Analytics](/customer/analytics/competitor-analytics) dashboard. If a competitor you know is mentioned frequently shows zero hits, verify the name matches how reps say it in recordings.
 
 **Can I add aliases for the same competitor?**
-Add the competitor multiple times with different name variations, or contact your VoiceLine account manager to configure alias matching.
+Yes — edit the competitor entry and add alternative names as aliases. VoiceLine matches against all aliases when extracting competitor mentions from recordings.
 
 **Are competitor mentions extracted from all recording types?**
 Yes — visit reports and call logs are both analyzed. Competitors mentioned in any field recording are captured.
