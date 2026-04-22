@@ -1,7 +1,7 @@
 ---
 title: "Products"
 status: Live
-last_updated: 2026-04-21
+last_updated: 2026-04-22
 ---
 
 Your company's sellable items — organised in a searchable hierarchy that reps reference when logging visits, opportunities, and offers.
@@ -55,7 +55,27 @@ Product names and aliases are automatically added to VoiceLine's custom transcri
 
 ## Administration interface
 
-After the catalogue is synced or uploaded, the full product hierarchy is visible and navigable in the VoiceLine administration interface. Admins can browse product groups, sub-groups, products, and variants, and manage aliases at any level. The product alias table supports search — type a term to filter entries by product name or any of its aliases.
+After the catalogue is synced or uploaded, the full product hierarchy is visible and navigable in the VoiceLine administration interface under **Workspace Settings** → **Product Recognition** → **Products**.
+
+### Browsing the hierarchy
+
+The hierarchy is displayed as a collapsible tree. Product groups appear with a folder icon; products appear with a box icon. Click any group to expand or collapse its children. Each row shows the item name, alias badges, and the total number of mentions from field recordings. Variants are displayed beneath their parent product with a tag icon.
+
+### Searching
+
+Use the search bar at the top of the hierarchy to find a specific product, group, or variant by name or alias. Selecting a search result automatically expands the tree path to that item, scrolls it into view, and highlights it briefly so you can locate it quickly in a large catalogue.
+
+### Editing aliases
+
+Click the three-dot menu on any product or group row and select **Edit** to open the alias editor. From there you can add or remove aliases — up to five per item, each no longer than three words. Changes take effect immediately after saving.
+
+### Uploading and updating the catalogue
+
+You can upload or replace your product catalogue by selecting **Update Product List** from the action menu at the top of the hierarchy view. Drop or select a JSON file (up to 10 MB) in VoiceLine's [product JSON format](/implementation/standard-implementations/products#example-payload). The upload replaces the existing hierarchy with the new data.
+
+### Downloading the catalogue
+
+Select **Download Product List** from the same action menu to export the current hierarchy as a JSON file. This is useful for reviewing the live catalogue outside VoiceLine or preparing a modified version for re-upload.
 
 ## Search behaviour
 
