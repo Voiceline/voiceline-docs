@@ -3,7 +3,7 @@ title: "Product Analytics"
 status: Live
 bundles:
   - field_sales_fundamentals
-last_updated: 2026-04-21
+last_updated: 2026-04-22
 ---
 
 Shows which products your reps mention most in the field, highlights unrecognised product terms, and lets admins improve recognition accuracy over time.
@@ -50,10 +50,11 @@ A summary bar at the top of the dashboard shows:
 
 ## Improving recognition accuracy
 
-When you see unmatched terms appearing frequently, you can resolve them in two ways:
+When you see unmatched terms appearing frequently, you can resolve them in three ways:
 
-1. **Match from the dashboard** — click the match action next to an unmatched term, select the correct product or group, and save. The term is stored as an alias and future mentions are matched automatically.
-2. **Add aliases during catalogue sync** — include additional aliases in the JSON payload when you next sync your product catalogue. See [Products](/customer/platform/data-objects/products#aliases) for details.
+1. **Match from the unmatched terms page** — go to **Workspace Settings** → **Unmatched Terms** to see all unrecognised product terms alongside stats on matched, unmatched, and total mention counts. Click **Match Product** next to any term, search your product hierarchy for the correct product or group, and save. The term is stored as an alias and future mentions are matched automatically.
+2. **Match from the analytics dashboard** — click the match action next to an unmatched term directly from the Product Analytics table.
+3. **Add aliases during catalogue sync** — include additional aliases in the JSON payload when you next sync your product catalogue. See [Products](/customer/platform/data-objects/products#aliases) for details.
 
 Over time, the unmatched count should decrease as your alias list grows to cover the vocabulary reps actually use in the field.
 
