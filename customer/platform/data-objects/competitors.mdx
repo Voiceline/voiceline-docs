@@ -1,7 +1,7 @@
 ---
 title: "Competitors"
 status: Live
-last_updated: 2026-04-21
+last_updated: 2026-04-22
 ---
 
 The list of competitors VoiceLine monitors for mentions in field recordings.
@@ -25,14 +25,26 @@ From here, administrators can:
 | Field | Description |
 |-------|-------------|
 | **Name** | Competitor name as it appears in field conversations |
+| **Aliases** | Up to five alternative names, abbreviations, or shorthand for the same competitor |
 
-Competitor names should reflect how reps and customers refer to them in conversation — include common abbreviations or alternate names if relevant.
+Competitor names should reflect how reps and customers refer to them in conversation. Aliases let you cover common abbreviations or alternate names so VoiceLine can recognise them automatically — for example, a competitor named "Acme Corporation" might have aliases "Acme" and "ACME Corp".
 
 <Note>Typical workspaces track 5–50 competitors. Detection applies to recordings made **after** a competitor is added — historical recordings are not re-analyzed retroactively.</Note>
 
 ## Unmatched mentions
 
-When VoiceLine detects a competitor reference that doesn't match any entry on this list, the mention is saved as an **unmatched competitor** and surfaced in [Competitor Analytics](/customer/analytics/competitor-analytics). This means competitive intelligence is never lost — even competitors you haven't added yet are captured. Review unmatched mentions regularly and add frequently appearing names to this list to enable full sentiment and dimension tracking.
+When VoiceLine detects a competitor reference that doesn't match any entry on this list, the mention is saved as an **unmatched competitor**. Unmatched competitor mentions are surfaced in a dedicated tab under **Workspace Settings** → **Unmatched Terms** → **Competitors**, alongside stats showing how many competitors are matched, unmatched, and total mention counts. They also appear in [Competitor Analytics](/customer/analytics/competitor-analytics).
+
+This means competitive intelligence is never lost — even competitors you haven't added yet are captured. Review unmatched mentions regularly and resolve them to enable full sentiment and dimension tracking.
+
+### Resolving unmatched competitor mentions
+
+When you see unmatched terms appearing frequently, you can resolve them in two ways:
+
+1. **Match to an existing competitor** — click the **Match Competitor** action next to an unmatched term, search for the correct competitor by name or alias, and save. The term is stored as an alias on the selected competitor and all future occurrences are recognised automatically.
+2. **Create a new competitor** — if the unmatched term refers to a competitor not yet in your list, click **Create new competitor** from the match dialog. The unmatched term is pre-filled as the first alias, and you can add a name and additional aliases before saving.
+
+Over time, the unmatched count should decrease as your alias list grows to cover the vocabulary reps actually use in the field.
 
 ## Search behavior
 
@@ -41,10 +53,10 @@ Competitors are not directly searched by reps during recordings. The list is use
 ## FAQ
 
 **How do I know if a competitor is being detected?**
-Check the [Competitor Analytics](/customer/analytics/competitor-analytics) dashboard. If a competitor you know is mentioned frequently shows zero hits, verify the name matches how reps say it in recordings.
+Check the [Competitor Analytics](/customer/analytics/competitor-analytics) dashboard. If a competitor you know is mentioned frequently shows zero hits, verify the name matches how reps say it in recordings — or add an alias that matches their pronunciation.
 
 **Can I add aliases for the same competitor?**
-Add the competitor multiple times with different name variations, or contact your VoiceLine account manager to configure alias matching.
+Yes. Each competitor supports up to five aliases. Open the competitor in **Workspace Settings** → **Competitors**, click edit, and add aliases — or match an unmatched term to the competitor from the **Unmatched Terms** → **Competitors** tab, which saves the term as an alias automatically.
 
 **Are competitor mentions extracted from all recording types?**
 Yes — visit reports and call logs are both analyzed. Competitors mentioned in any field recording are captured.

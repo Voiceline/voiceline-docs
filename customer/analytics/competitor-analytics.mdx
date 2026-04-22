@@ -3,7 +3,7 @@ title: "Competitor Analytics"
 status: Live
 bundles:
   - field_sales_fundamentals
-last_updated: 2026-04-21
+last_updated: 2026-04-22
 ---
 
 Turns every field visit into competitive intelligence — showing which competitors appear most, where they're winning, and where they're vulnerable.
@@ -69,9 +69,9 @@ Use unmatched mentions to:
 
 - **Discover new competitors** — spot names that keep appearing before they show up in win/loss reports
 - **Keep your competitor list current** — add frequently mentioned unmatched competitors to your list so future mentions are tracked with full sentiment and dimension scoring
-- **Catch misspellings and aliases** — an unmatched mention may be a known competitor referred to by a different name; adding an alias resolves future matches automatically
+- **Catch misspellings and aliases** — an unmatched mention may be a known competitor referred to by a different name; matching it to the correct competitor saves the term as an alias and resolves future occurrences automatically
 
-Unmatched competitor mentions are counted and sorted by frequency, so the most commonly mentioned unknown competitors surface first.
+Unmatched competitor mentions are counted and sorted by frequency, so the most commonly mentioned unknown competitors surface first. You can resolve them directly from **Workspace Settings** → **Unmatched Terms** → **Competitors** — see [Competitors — resolving unmatched mentions](/customer/platform/data-objects/competitors#resolving-unmatched-competitor-mentions) for details.
 
 ## Filters
 
@@ -91,7 +91,7 @@ Unmatched competitor mentions are counted and sorted by frequency, so the most c
 It analyzes the AI-processed transcript of each visit report and call log, matching against your configured competitor list. Reps don't need to manually flag competitors — the extraction is automatic.
 
 **What if a competitor isn't on my list?**
-VoiceLine still captures the mention as an unmatched competitor. Check the unmatched mentions section of the dashboard to see which unknown competitors your team is encountering, then add the relevant ones to your competitor list under **Workspace Settings** → **Data Objects** → **[Competitors](/customer/platform/data-objects/competitors)** to get full sentiment and dimension tracking going forward.
+VoiceLine still captures the mention as an unmatched competitor. Go to **Workspace Settings** → **Unmatched Terms** → **Competitors** to see which unknown competitors your team is encountering. From there you can match the term to an existing competitor (saving it as an alias) or create a new competitor entry. See [Competitors](/customer/platform/data-objects/competitors) for full details.
 
 **How is sentiment determined?**
 VoiceLine classifies each competitor mention as positive (your product preferred), negative (competitor preferred), or neutral based on the context of the conversation as transcribed.
