@@ -1,10 +1,23 @@
 ---
 title: "Changelog"
 status: Live
-last_updated: 2026-04-21
+last_updated: 2026-04-22
 ---
 
 Stay up to date with new features, improvements, and fixes across the VoiceLine platform.
+
+<Update label="2026-04-22" tags={["Improvement"]} rss={{ title: "Localized CRM error messages" }}>
+  ## Localized CRM error messages
+
+  When a CRM sync fails, error messages are now displayed in your configured language instead of raw technical output. This applies to all supported CRM systems — Salesforce, Microsoft Dynamics, HubSpot, SAP, Aurea, and ZOHO.
+
+  **What changed:**
+  - CRM sync errors now appear in your language — 13 languages are supported, including English, German, French, Spanish, Italian, Dutch, Czech, Croatian, Hungarian, Turkish, Polish, Romanian, and Portuguese
+  - Common errors show specific, actionable guidance: permission issues, outdated meetings, missing CRM objects, VPN connectivity problems, future-dated meetings, and field value length limits
+  - Unrecognized CRM errors are wrapped in a clear format that explains what happened and how to proceed, rather than showing raw system output
+
+  No action is required — these improvements apply automatically to all workspaces with a CRM integration.
+</Update>
 
 <Update label="2026-04-21" tags={["Improvement"]} rss={{ title: "Improved event selection accuracy and language support" }}>
   ## Improved event selection accuracy and language support
