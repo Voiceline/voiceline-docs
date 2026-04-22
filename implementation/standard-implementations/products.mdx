@@ -1,7 +1,7 @@
 ---
 title: "Products"
 status: Live
-last_updated: 2026-04-21
+last_updated: 2026-04-22
 ---
 
 Products are your company's catalogue loaded into VoiceLine as a structured hierarchy — product groups, products, and variants — so reps can find and log the right item during visit reports and opportunity creation, and VoiceLine can detect product mentions in recordings. The sync approach and data format must be agreed before the configuration session. For how products work in VoiceLine, see [Products](/customer/platform/data-objects/products).
@@ -20,6 +20,8 @@ Your product catalogue typically lives in a PIM (Product Information Management)
 | JSON upload | Stable catalogues or when API access is unavailable | Can be re-uploaded whenever the catalogue changes |
 
 If API sync is chosen, you must provide API access before this step can be completed.
+
+For JSON upload, the file can be uploaded directly in the VoiceLine web app under **Workspace Settings** → **Product Recognition** → **Products**. The same interface supports re-uploading a modified file at any time — the new file replaces the existing hierarchy. Maximum file size is 10 MB.
 
 <Note>For the full API specification and schema, see the [Product Sync API docs](https://app.getvoiceline.com/api/products/syncing/docs).</Note>
 
