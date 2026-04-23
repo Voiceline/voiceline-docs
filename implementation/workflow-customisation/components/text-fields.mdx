@@ -22,7 +22,11 @@ The title and prompt determine what the AI extracts. Common uses:
 
 **AI behaviour:** Most SingleLineText fields use `skip` ordering — the AI extracts the value silently from the transcript without asking. Some (like location) use `lead` to prompt the rep early in the recording if not mentioned.
 
-**Captures:** Plain string, typically under 50 characters.
+**Dictating titles verbatim:** For title fields, reps can set the title explicitly by using a signal word such as *Betreff*, *Thema*, *Titel*, *Subject*, or *Topic* in the recording. The AI copies the stated title word-for-word instead of generating one from the transcript. The voice-dictated word *Schrägstrich* is normalised to `/`.
+
+For example, saying *"Betreff des Besuchs: Hydraulikpumpen Serienanlauf Q3"* produces the title `Hydraulikpumpen Serienanlauf Q3`. If no signal word is used, the AI falls back to generating a short descriptive title from the conversation.
+
+**Captures:** Plain string, typically under 50 characters. When a title is dictated verbatim, the length limit does not apply.
 
 ---
 
