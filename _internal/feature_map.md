@@ -46,7 +46,7 @@ Navigation is three tabs: **Product**, **Modules & Pricing**, **Implementation**
 | Page | File path | Status |
 |------|-----------|--------|
 | Overview | `customer/analytics/index` | Live |
-| Competitor Analytics | `customer/analytics/competitor-analytics` | Live |
+| Competitor Analytics | `customer/analytics/competitor-analytics` | Beta |
 | Product Analytics | `customer/analytics/product-analytics` | Coming soon |
 | Industry Analytics | `customer/analytics/industry-analytics` | Coming soon |
 | Data Lake | `customer/analytics/data-lake` | Coming soon |
