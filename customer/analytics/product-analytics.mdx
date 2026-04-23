@@ -48,6 +48,28 @@ A summary bar at the top of the dashboard shows:
 | **Total mentions** | Combined matched and unmatched mention count |
 | **Recent mentions (24h)** | Mentions recorded in the last 24 hours |
 
+## Product claim insights
+
+Alongside product mentions, VoiceLine also extracts **product claim** signals — moments when a customer explicitly brings up a Reklamation, return, exchange, or warranty claim on one of your products. These mentions surface as an insight category, so managers can quickly filter visits where customers raised a formal claim, separate from general product feedback or quality complaints.
+
+A claim insight is recorded only when the customer explicitly uses claim, return, warranty, or credit-note language — for example:
+
+- **Reklamation** / **reklamieren**
+- **Rückgabe** / **zurückgeben**
+- **Umtausch** / **umtauschen**
+- **Gewährleistung** / **Garantie**
+- **Gutschrift**
+- A defect paired with an explicit return or replacement request
+
+General complaints, defect mentions without claim intent, or a rep routinely asking about open Reklamationen (with no customer response) are **not** classified as product claims — those continue to flow into the standard product quality and defect categories.
+
+### Where product claims appear
+
+- **Visit Feed** — use the **Insight categories** filter in [Team Activity → Visit Feed](/customer/coaching/team-activity#visit-feed) to surface only visits where a product claim was raised.
+- **Visit reports** — the claim appears inline as an extracted insight on the visit report detail view, linked back to the exact quote from the recording.
+
+Because claim insights are treated as a separate signal, a single quote that mentions both a quality issue and an explicit return request produces both insights — a product quality insight **and** a product claim insight — so neither signal is lost.
+
 ## Improving recognition accuracy
 
 When you see unmatched terms appearing frequently, you can resolve them in two ways:
